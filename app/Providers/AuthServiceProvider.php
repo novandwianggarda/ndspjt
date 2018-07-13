@@ -24,7 +24,11 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        $this->registerLandLordPolicies();
+    }
 
-        //
+    public function registerLandLordPolicies()
+    {
+        /** LandLord Gate Here */
     }
 }
