@@ -36,7 +36,7 @@ return [
     |
     */
 
-    'logo' => '<b>LandLord</b>DS',
+    'logo' => '<b>DS</b> LandLord',
 
     'logo_mini' => '<b>LL</b>ds',
 
@@ -91,7 +91,7 @@ return [
     |
     */
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
 
     'logout_url' => 'logout',
 
@@ -99,7 +99,7 @@ return [
 
     'login_url' => 'login',
 
-    'register_url' => 'register',
+    // 'register_url' => 'register',
 
     /*
     |--------------------------------------------------------------------------
@@ -116,78 +116,78 @@ return [
     'menu' => [
         'MAIN NAVIGATION',
         [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text' => 'Dashboard',
+            'url'  => '/dashboard',
+            'icon' => 'tachometer',
         ],
         [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        'ACCOUNT SETTINGS',
-        [
-            'text' => 'Profile',
-            'url'  => 'admin/settings',
-            'icon' => 'user',
-        ],
-        [
-            'text' => 'Change Password',
-            'url'  => 'admin/settings',
-            'icon' => 'lock',
-        ],
-        [
-            'text'    => 'Multilevel',
-            'icon'    => 'share',
+            'text'    => 'Leases',
+            'icon'    => 'tags',
             'submenu' => [
                 [
-                    'text' => 'Level One',
-                    'url'  => '#',
+                    'text' => 'Add New',
+                    'url'  => '/leases/new',
+                    'icon' => 'tag',
                 ],
                 [
-                    'text'    => 'Level One',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'Level Two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'Level Two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'Data List',
+                    'url'  => '/leases',
+                    'icon' => 'tag',
                 ],
                 [
-                    'text' => 'Level One',
-                    'url'  => '#',
+                    'text' => 'Import',
+                    'url'  => '/leases/import',
+                    'icon' => 'tag',
                 ],
             ],
         ],
-        'LABELS',
         [
-            'text'       => 'Important',
-            'icon_color' => 'red',
+            'text'    => 'Certificates',
+            'icon'    => 'tags',
+            'submenu' => [
+                [
+                    'text' => 'Add New',
+                    'url'  => '/certificates/new',
+                    'icon' => 'tag',
+                ],
+                [
+                    'text' => 'Data List',
+                    'url'  => '/certificates',
+                    'icon' => 'tag',
+                ],
+                [
+                    'text' => 'Import',
+                    'url'  => '/certificates/import',
+                    'icon' => 'tag',
+                ],
+            ],
         ],
         [
-            'text'       => 'Warning',
-            'icon_color' => 'yellow',
+            'text'    => 'Taxes',
+            'icon'    => 'tags',
+            'submenu' => [
+                [
+                    'text' => 'Add New',
+                    'url'  => '/taxes/new',
+                    'icon' => 'tag',
+                ],
+                [
+                    'text' => 'Data List',
+                    'url'  => '/taxes',
+                    'icon' => 'tag',
+                ],
+                [
+                    'text' => 'Import',
+                    'url'  => '/taxes/import',
+                    'icon' => 'tag',
+                ],
+            ],
         ],
         [
-            'text'       => 'Information',
-            'icon_color' => 'aqua',
+            'text'    => 'Users',
+            'icon'    => 'group',
+            'url'     => '/users'
+            // 'can'     => 'user-manager',
         ],
     ],
 
@@ -222,9 +222,9 @@ return [
     |
     */
 
-    'plugins' => [
-        'datatables' => true,
-        'select2'    => true,
-        'chartjs'    => true,
-    ],
+    // 'plugins' => [
+    //     'datatables' => true,
+    //     'select2'    => true,
+    //     'chartjs'    => true,
+    // ],
 ];

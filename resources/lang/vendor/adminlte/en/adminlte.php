@@ -20,4 +20,5 @@ return [
     'password_reset_message'      => 'Reset Password',
     'reset_password'              => 'Reset Password',
     'send_password_reset_link'    => 'Send Password Reset Link',
+    'log_in'                      => 'Login',
 ];

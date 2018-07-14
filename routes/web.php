@@ -11,12 +11,16 @@
 |
 */
 
-/** Default Route */
+/**
+ * default route
+ */
 Route::get('/', function () {
     return redirect('dashboard');
 });
 
-/** Auth */
+/**
+ * custom authentification routes
+*/
 Route::namespace('Auth')->group(function () {
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login', 'LoginController@login')->name('login');
@@ -24,9 +28,13 @@ Route::namespace('Auth')->group(function () {
     Route::post('logout', 'LoginController@logout')->name('logout');
 });
 
-/** Already Logged In */
+/**
+ * routes with auth middleware
+ * which mean only logged user can access
+ */
 Route::middleware(['web', 'auth'])->group(function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('/profile', 'DashboardController@showUserProfile')->name('profile');
 });
 
 /** Not Used */

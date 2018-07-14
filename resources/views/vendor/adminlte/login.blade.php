@@ -3,6 +3,11 @@
 @section('adminlte_css')
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/iCheck/square/blue.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/auth.css') }}">
+    <style>
+        body {
+            background-color: #00a65a !important;
+        }
+    </style>
     @yield('css')
 @stop
 
@@ -22,7 +27,7 @@
                 <div class="form-group has-feedback {{ $errors->has('username') ? 'has-error' : '' }}">
                     <input type="username" name="username" class="form-control" value="{{ old('username') }}"
                            placeholder="{{ trans('adminlte::adminlte.username') }}">
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     @if ($errors->has('username'))
                         <span class="help-block">
                             <strong>{{ $errors->first('username') }}</strong>
@@ -50,12 +55,12 @@
                     <!-- /.col -->
                     <div class="col-xs-4">
                         <button type="submit"
-                                class="btn btn-primary btn-block btn-flat">{{ trans('adminlte::adminlte.sign_in') }}</button>
+                                class="btn btn-success btn-block btn-flat">{{ trans('adminlte::adminlte.log_in') }}</button>
                     </div>
                     <!-- /.col -->
                 </div>
             </form>
-            <div class="auth-links">
+            {{-- <div class="auth-links">
                 <a href="{{ url(config('adminlte.password_reset_url', 'password/reset')) }}"
                    class="text-center"
                 >{{ trans('adminlte::adminlte.i_forgot_my_password') }}</a>
@@ -65,7 +70,7 @@
                        class="text-center"
                     >{{ trans('adminlte::adminlte.register_a_new_membership') }}</a>
                 @endif
-            </div>
+            </div> --}}
         </div>
         <!-- /.login-box-body -->
     </div><!-- /.login-box -->

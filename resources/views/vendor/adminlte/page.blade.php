@@ -56,6 +56,18 @@
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
 
+                        <div class="navbar-custom-menu">
+                            <ul class="nav navbar-nav">
+                                @include('vendor.adminlte.partials.navbar.messages')
+                                @include('vendor.adminlte.partials.navbar.notifications')
+                                @include('vendor.adminlte.partials.navbar.user')
+                            </ul>
+                        </div>
+
+                </div>
+
+                {{-- <div class="navbar-custom-menu">
+
                     <ul class="nav navbar-nav">
                         <li>
                             @if(config('adminlte.logout_method') == 'GET' || !config('adminlte.logout_method') && version_compare(\Illuminate\Foundation\Application::VERSION, '5.3.0', '<'))
@@ -77,7 +89,7 @@
                             @endif
                         </li>
                     </ul>
-                </div>
+                </div> --}}
                 @if(config('adminlte.layout') == 'top-nav')
                 </div>
                 @endif
