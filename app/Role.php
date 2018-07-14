@@ -14,11 +14,21 @@ class Role extends Model
         'permissions' => 'array',
     ];
 
+    /**
+     * eloquent to get role users
+     * with pivot table
+     */
     public function users()
     {
         return $this->belongsToMany(User::class, 'role_users');
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param array $permissions
+     * @return boolean
+     */
     public function hasAccess(array $permissions) : bool
     {
         foreach ($permissions as $permission) {
@@ -28,6 +38,12 @@ class Role extends Model
         return false;
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param string $permission
+     * @return boolean
+     */
     private function hasPermission(string $permission) : bool
     {
         return $this->permissions[$permission] ?? false;

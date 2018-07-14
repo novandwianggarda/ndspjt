@@ -27,13 +27,34 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * eloquent user roles
+     * with pivot table
+     */
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'role_users');
     }
 
     /**
-     * Checks if User has access to $permissions.
+     * get user role name and slug
+     *
+     * @return array
+     */
+    public function role()
+    {
+        $role = (object)[];
+        $role->name = $this->roles()->first()->name;
+        $role->slug = $this->roles()->first()->slug;
+        $role->permissions = $this->roles()->first()->permissions;
+        return $role;
+    }
+
+    /**
+     * checks if user has access to listed $permissions.
+     *
+     * @param array permission
+     * @return boolean
      */
     public function hasAccess(array $permissions) : bool
     {
@@ -47,7 +68,10 @@ class User extends Authenticatable
     }
 
     /**
-     * Checks if the user belongs to role.
+     * checks if the user belongs to role
+     *
+     * @param string $roleSlug
+     * @return boolean
      */
     public function inRole(string $roleSlug)
     {
