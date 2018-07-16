@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CertificatesTableSeeder extends Seeder
+class LeasesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class CertificatesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Certificate::class, 100)->create();
+        factory(App\Lease::class, 30)->create();
     }
 }

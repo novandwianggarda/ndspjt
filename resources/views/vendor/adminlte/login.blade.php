@@ -4,6 +4,9 @@
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/iCheck/square/blue.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/auth.css') }}">
     <style>
+        html {
+            background-color: #00a65a !important;
+        }
         body {
             background-color: #00a65a !important;
         }

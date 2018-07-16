@@ -11,6 +11,6 @@ class TaxesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Tax::class, 78)->create();
+        factory(App\Tax::class, 70)->create();
     }
 }

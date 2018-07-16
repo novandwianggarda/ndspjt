@@ -2,8 +2,10 @@
 
 use Faker\Generator as Faker;
 use App\Certificate;
+use App\TaxType;
 
 $factory->define(\App\Tax::class, function (Faker $faker) {
+    $taxTypeIds = TaxType::all()->pluck('id')->toArray();
     $certIds = Certificate::all()->pluck('id')->toArray();
     $owners = ['Leonard Hidajat', 'Sango Ina', 'DS-Estates'];
     $njopLand = $faker->numberBetween(1000000, 99999999);
@@ -12,11 +14,12 @@ $factory->define(\App\Tax::class, function (Faker $faker) {
     $paymentMethods = ['Cek', 'Transfer', 'Giro', 'POS', 'VA'];
 
     return [
-        'cert_ids' => $faker->unique()->randomElement($array=$certIds),
+        'tax_type_id' => $faker->randomElement($taxTypeIds),
+        'cert_ids' => $faker->unique()->randomElement($certIds),
 
         // TAX BASE
         'nop' => generateNop(),
-        'owner' => $faker->randomElement($array=$owners),
+        'owner' => $faker->randomElement($owners),
         'year' => '2017',
         'due_date' => randomDate('2017'),
         'value_ly' => $faker->numberBetween(10000, 9999999),
@@ -36,7 +39,7 @@ $factory->define(\App\Tax::class, function (Faker $faker) {
 
         // CORPORATION
         'corp_name' => $faker->company,
-        'corp_payment_method' => $faker->randomElement($array=$paymentMethods),
+        'corp_payment_method' => $faker->randomElement($paymentMethods),
 
         // FOLDER FILLING
         'folder_number' => $faker->safeColorName,

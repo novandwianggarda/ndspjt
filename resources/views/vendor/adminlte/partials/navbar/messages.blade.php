@@ -1,7 +1,7 @@
 <li class="dropdown messages-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <i class="fa fa-envelope-o"></i>
-        <span class="label label-success">2</span>
+        <span class="label label-info">2</span>
     </a>
     <ul class="dropdown-menu">
         <li class="header">You have 2 messages</li>

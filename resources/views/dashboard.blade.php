@@ -7,7 +7,17 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <div class="row">
+        <div class="col-md-4">
+            @include('partials.due_timeline')
+        </div>
+        <div class="col-md-4">
+            @include('partials.due_timeline')
+        </div>
+        <div class="col-md-4">
+            @include('partials.due_timeline')
+        </div>
+    </div>
 @stop
 
 @section('css')

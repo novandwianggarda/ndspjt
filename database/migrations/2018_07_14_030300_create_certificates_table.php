@@ -23,7 +23,7 @@ class CreateCertificatesTable extends Migration
             $table->string('nop')->nullable(); // nomor objek pajak sertifikat
             $table->string('owner')->nullable(); // yg memiliki sertifikat
             $table->string('area')->nullable(); // luas sertifikat
-            $table->string('publish_date')->nullable(); // tgl sertifikat di keluarkan
+            $table->string('published_date')->nullable(); // tgl sertifikat di keluarkan
             $table->string('expired_date')->nullable(); // tgl sertifikat berakhir (hanya utk SHCB dan SHMSRS)
             $table->text('note')->nullable(); // keterangan utk sertifikat
 

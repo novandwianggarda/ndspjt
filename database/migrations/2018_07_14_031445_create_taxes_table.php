@@ -15,6 +15,7 @@ class CreateTaxesTable extends Migration
     {
         Schema::create('taxes', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('tax_type_id');
             $table->string('cert_ids')->unique(); // can hold more that one certificate, ex: 1,2,3,4
 
             // TAX BASE

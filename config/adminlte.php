@@ -126,7 +126,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Add New',
-                    'url'  => '/leases/new',
+                    'url'  => '/leases/add',
                     'icon' => 'tag',
                 ],
                 [
@@ -147,7 +147,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Add New',
-                    'url'  => '/certificates/new',
+                    'url'  => '/certificates/add',
                     'icon' => 'tag',
                 ],
                 [
@@ -168,7 +168,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Add New',
-                    'url'  => '/taxes/new',
+                    'url'  => '/taxes/add',
                     'icon' => 'tag',
                 ],
                 [
@@ -222,9 +222,9 @@ return [
     |
     */
 
-    // 'plugins' => [
-    //     'datatables' => true,
-    //     'select2'    => true,
-    //     'chartjs'    => true,
-    // ],
+    'plugins' => [
+        'datatables' => true,
+        'select2'    => true,
+        // 'chartjs'    => true,
+    ],
 ];

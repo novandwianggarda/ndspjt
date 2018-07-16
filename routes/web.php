@@ -13,10 +13,9 @@
 
 /**
  * default route
+ * redirect to dashboard
  */
-Route::get('/', function () {
-    return redirect('dashboard');
-});
+Route::redirect('/', '/dashboard', 301);
 
 /**
  * custom authentification routes
@@ -35,6 +34,30 @@ Route::namespace('Auth')->group(function () {
 Route::middleware(['web', 'auth'])->group(function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('/profile', 'DashboardController@showUserProfile')->name('profile');
+
+    // Certificate
+    Route::get('certificates', 'CertificatesController@index');
+    Route::get('certificate/{id}', 'CertificatesController@show');
+    Route::get('certificates/add', 'CertificatesController@showAddForm');
+
+    // Tax
+    Route::get('taxes', 'TaxesController@index');
+    Route::get('tax/{id}', 'TaxesController@show');
+    Route::get('taxes/add', 'TaxesController@showAddForm');
+
+    // Lease
+    Route::get('leases', 'LeasesController@index');
+    Route::get('lease/{id}', 'LeasesController@show');
+    Route::get('leases/add', 'LeasesController@showAddForm');
+
+
+    /**
+     * for AJAX requests
+     * prefix: /ajax
+     */
+    Route::prefix('ajax')->group(function() {
+        Route::get('certificate', 'AjaxController@certificate');
+    });
 });
 
 /** Not Used */

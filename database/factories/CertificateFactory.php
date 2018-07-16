@@ -18,7 +18,7 @@ $factory->define(\App\Certificate::class, function (Faker $faker) {
         'nop' => generateNop(),
         'owner' => $faker->name,
         'area' => $faker->numberBetween(100, 1000),
-        'publish_date' => randomDate('2017'),
+        'published_date' => randomDate('2017'),
         'expired_date' => randomDate('2017'),
         'note' => $faker->realText,
 

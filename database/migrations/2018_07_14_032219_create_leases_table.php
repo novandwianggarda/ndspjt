@@ -16,6 +16,7 @@ class CreateLeasesTable extends Migration
         Schema::create('leases', function (Blueprint $table) {
             $table->increments('id');
             $table->string('cert_ids'); // bisa lebih dari satu sertifikat
+            $table->integer('lease_type_id'); // tipe properti (rumah, tanah, dll)
             $table->integer('lease_payment_id'); // payment terms id
 
             // LEASE

@@ -26,10 +26,12 @@
                     <a>Username: {{ $user->username }}</a>
                 </li>
                 <li>
-                    <a>Permissions: <br>
-                        <ul>
+                    <a>Permissions:
+                        <ul class="nav nav-pills nav-stacked" style="margin-left:10px;">
                             @foreach ($role->permissions as $permission => $status)
-                                <li>{{ strtoupper($permission) }} - {{ $status ? 'Allowed' : 'Denied' }}</li>
+                                @if($status)
+                                    <li><i class="fa fa-circle-o text-green"></i> {{ strtoupper($permission) }}</li>
+                                @endif
                             @endforeach
                         </ul>
                     </a>
