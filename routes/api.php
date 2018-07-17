@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\LeaseType;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,7 @@ use Illuminate\Http\Request;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+
+Route::get('/lease_types', function() {
+    return response()->json(LeaseType::select('id', 'name')->get());
+});

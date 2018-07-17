@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Certificate;
+use App\LeaseType;
 
 class AjaxController extends Controller
 {
@@ -68,6 +69,34 @@ class AjaxController extends Controller
                         <dd>' .$certRes->totalArea. ' m<sup>2</sup></dd>
                     </dl>
                 ';
+                return $html;
+
+                break;
+
+            default:
+
+                return response()->json([ 'error' => 'No Action.']);
+
+                break;
+        }
+    }
+
+    /**
+     * all thing about lease
+     */
+    public function lease(Request $request)
+    {
+        $action = $request->input('act');
+        $html = '';
+
+        switch ($action) {
+
+            case 'select-lease-types':
+
+                $types = LeaseType::select('id', 'name')->get();
+                foreach ($types as $type) {
+                    $html .= '<option value="' .$type->id. '">' .$type->name. '</option>';
+                }
                 return $html;
 
                 break;

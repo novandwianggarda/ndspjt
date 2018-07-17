@@ -57,6 +57,7 @@ Route::middleware(['web', 'auth'])->group(function () {
      */
     Route::prefix('ajax')->group(function() {
         Route::get('certificate', 'AjaxController@certificate');
+        Route::get('lease', 'AjaxController@lease');
     });
 });
 
