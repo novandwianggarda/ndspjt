@@ -39,6 +39,7 @@ class TypesTableSeeder extends Seeder
             ['name' => 'Ruko'],
             ['name' => 'Kantor'],
             ['name' => 'Pabrik'],
+            ['name' => 'Rumah'],
             ['name' => 'Apartemen'],
             ['name' => 'Kos'],
             ['name' => 'Hotel'],

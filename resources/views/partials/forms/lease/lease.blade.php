@@ -5,7 +5,7 @@
         </h4>
     </a>
 </div>
-<div id="collapse-lease" class="panel-collapse collapse in">
+<div id="collapse-lease" class="panel-collapse collapse">
     <div class="box-body">
         <div class="form-group">
             <label class="col-sm-2 control-label">

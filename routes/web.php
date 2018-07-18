@@ -50,16 +50,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('lease/{id}', 'LeasesController@show');
     Route::get('leases/add', 'LeasesController@showAddForm');
 
-
-    /**
-     * for AJAX requests
-     * prefix: /ajax
-     */
-    Route::prefix('ajax')->group(function() {
-        Route::get('certificate', 'AjaxController@certificate');
-        Route::get('lease', 'AjaxController@lease');
-    });
 });
 
-/** Not Used */
+/** not used */
 // Auth::routes();

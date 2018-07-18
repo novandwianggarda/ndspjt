@@ -26,7 +26,7 @@
                                 <a href="/lease/{{ $lease->id }}">{{ $lease->prop_name }}</a>
                             </td>
                             <td>{{ $lease->tenant }}</td>
-                            <td>{{ $lease->length }} Year</td>
+                            <td>{{ $lease->duration }} Year</td>
                             <td>{{ $lease->start }}</td>
                             <td>{{ $lease->end }}</td>
                         </tr>

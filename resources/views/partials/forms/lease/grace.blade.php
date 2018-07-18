@@ -25,7 +25,7 @@
                 <input class="form-control pull-right datepicker" type="text" name="grace_end">
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" v-show="grace_period !== 0">
             <label class="col-sm-2 control-label">Grace Total</label>
             <div class="col-sm-10">
                 <span id="grace-total"></span>

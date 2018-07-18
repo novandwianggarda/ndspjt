@@ -1,1 +1,19 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);.ll-head{display:block!important;background-color:#2a8053;padding:10px;color:#fff}
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);.ll-head {
+  display: block !important;
+  background-color: #2a8053;
+  padding: 10px;
+  color: white;
+}
+
+.ll-sub-head {
+  display: block !important;
+  background-color: #2a8053;
+  padding: 10px;
+  margin: 0px 10px !important;
+  color: white;
+}
+
+#collapse-price {
+  margin: 0px 10px !important;
+}
+

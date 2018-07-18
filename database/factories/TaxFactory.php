@@ -15,7 +15,7 @@ $factory->define(\App\Tax::class, function (Faker $faker) {
 
     return [
         'tax_type_id' => $faker->randomElement($taxTypeIds),
-        'cert_ids' => $faker->unique()->randomElement($certIds),
+        'certificate_ids' => $faker->unique()->randomElement($certIds),
 
         // TAX BASE
         'nop' => generateNop(),

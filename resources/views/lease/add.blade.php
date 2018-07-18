@@ -16,12 +16,10 @@
                             <div class="panel box box-success">
                                 <!-- LAND -->
                                 @include('partials.forms.lease.land')
-                                <!-- LEASE -->
-                                @include('partials.forms.lease.lease')
                                 <!-- PROPERTY -->
                                 @include('partials.forms.lease.property')
-                                <!-- PRICE -->
-                                @include('partials.forms.lease.price')
+                                <!-- LEASE -->
+                                @include('partials.forms.lease.lease')
                                 <!-- BROKER -->
                                 @include('partials.forms.lease.broker')
                                 <!-- GRACE -->
@@ -42,78 +40,23 @@
 @section('js')
     <script>
 
-        const form = new Vue({
-            'el': '#form-lease',
-            'data': {
-                'select_certificates': '',
-                'select_lease_types': '',
-                'lease_duration': 0,
-            },
-            methods: {
-                fetchLeaseTypes() {
-                    Axios.get('/api/lease_types').then(res => console.log(res.data));
-                },
-            },
-            mounted() {
-                this.fetchLeaseTypes();
-            },
-        });
-
-
-        $(document).ready(function() {
-            getCertSelectOptions();
-            getLeaseTypeOptions();
-
-            $('#multiple-certs').select2().change(function() {
-                getCertResult();
-            });
+        $(document).ready(function (){
             $('.datepicker').each(function() {
-                $(this).datepicker();
+                $(this).datepicker('setDate', 'today');
             });
         });
 
-        function getCertSelectOptions()
-        {
-            $.ajax({
-                'method': 'GET',
-                'url': '{{ url('/ajax/certificate') }}',
-                'data': {
-                    'act': 'select-options',
+        new Vue({
+            el: '#form-lease',
+            data: {
+                grace_period: 0,
+                fee_total: 0,
+            },
+            computed: {
+                duration: function() {
+                    return 1;
                 },
-                success: function(result) {
-                    $('#multiple-certs').html(result);
-                },
-            });
-        }
-
-        function getLeaseTypeOptions()
-        {
-            $.ajax({
-                'method': 'GET',
-                'url': '{{ url('/ajax/lease') }}',
-                'data': {
-                    'act': 'select-lease-types',
-                },
-                success: function(result) {
-                    $('#lease-types').html(result);
-                },
-            });
-        }
-
-        function getCertResult()
-        {
-            $.ajax({
-                'method': 'GET',
-                'url': '{{ url('/ajax/certificate') }}',
-                'data': {
-                    'act': 'cert-result',
-                    'ids': $('#multiple-certs').val().toString(),
-                },
-                success: function(result) {
-                    $('#cert-result').fadeOut(500);
-                    $('#cert-result').fadeIn(500).html(result);
-                },
-            });
-        }
+            }
+        });
     </script>
 @stop

@@ -15,17 +15,17 @@ class CreateLeasesTable extends Migration
     {
         Schema::create('leases', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cert_ids'); // bisa lebih dari satu sertifikat
+            $table->string('certificate_ids')->unique(); // bisa lebih dari satu sertifikat
             $table->integer('lease_type_id'); // tipe properti (rumah, tanah, dll)
             $table->integer('lease_payment_id'); // payment terms id
 
             // LEASE
+            $table->string('lessor')->nullable(); // yang menyewakan
             $table->string('tenant')->nullable(); // nama penyewa
             $table->string('purpose')->nullable(); // keperluan disewa untuk
-            $table->double('length')->nullable(); // masa sewa (tahun)
             $table->date('start')->nullable(); // tanggal mulai sewa
             $table->date('end')->nullable(); // tanggal berakhir sewa
-            $table->text('note')->nullable();
+            $table->text('note')->nullable(); // keterangan
 
             // PROPERTY
             $table->string('prop_name')->nullable(); // nama lokasi
@@ -33,6 +33,7 @@ class CreateLeasesTable extends Migration
             $table->string('prop_land_area')->nullable(); // luas tanah
             $table->string('prop_building_area')->nullable(); // luas bangunan
             $table->string('prop_block')->nullable(); // blok
+            $table->string('prop_floor')->nullable(); // lantai
             $table->string('prop_unit')->nullable(); // unit
             $table->string('prop_electricity')->nullable(); // listirk
             $table->string('prop_water')->nullable(); // air
@@ -41,7 +42,6 @@ class CreateLeasesTable extends Migration
             // BROKER
             $table->string('brok_name')->nullable(); // nama makelar
             $table->double('brok_fee_yearly', 12, 2)->default(0); // harga per tahun
-            $table->double('brok_fee_total', 12, 2)->default(0); // total harga yg harus dibayar
             $table->double('brok_fee_paid', 12, 2)->default(0); // total dibayar
 
             // GRACE
