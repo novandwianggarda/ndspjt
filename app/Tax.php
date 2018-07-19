@@ -11,7 +11,7 @@ class Tax extends Model
         'tax_type_id', 'certificate_ids',
 
         // TAX BASE
-        'nop', 'owner', 'year', 'due_date', 'value_ly', 'due_date_ly', 'note',
+        'nop', 'owner', 'year', 'due_date', 'nominal_ly', 'due_date_ly', 'note',
 
         // ADDRESS
         'addr_address', 'addr_village', 'addr_land_area', 'addr_building_area',

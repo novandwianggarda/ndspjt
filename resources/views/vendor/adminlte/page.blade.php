@@ -1,7 +1,15 @@
 @extends('adminlte::master')
 
 @section('adminlte_css')
+
+    {{-- App Mixins --}}
+    <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+    <script src="{{ asset('js/app.js')}}"></script>
+    <script src="{{ asset('js/script.js')}}"></script>
+
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/skins/skin-' . config('adminlte.skin', 'blue') . '.min.css')}} ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
+
     @stack('css')
     @yield('css')
 @stop

@@ -1,0 +1,1 @@
+function toCorrectDate(t){}$(document).ready(function(){$(".datepicker").each(function(){$(this).datepicker({setDate:"today",autoclose:!0,format:"dd MM yyyy",language:"en"})})});

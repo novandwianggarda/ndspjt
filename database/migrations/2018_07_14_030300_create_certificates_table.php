@@ -38,7 +38,7 @@ class CreateCertificatesTable extends Migration
             $table->string('ajb_date')->nullable(); // tanggal ajb di tanda tangani
 
             // SCAN FILES
-            $table->text('scan_cert')->nullable(); // scan sertifikat
+            $table->text('scan_certificate')->nullable(); // scan sertifikat
             $table->text('scan_plotting')->nullable(); // scan plotting sertifikat
             $table->text('scan_land_siteplan')->nullable(); //scan land siteplan
             $table->text('scan_krk')->nullable(); // scan krk

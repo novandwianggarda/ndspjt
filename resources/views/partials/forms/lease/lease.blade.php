@@ -1,5 +1,5 @@
 <div class="box-header with-border">
-    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-lease">
+    <a data-toggle="collapse" data-parent="#accordion-lease" href="#collapse-lease">
         <h4 class="box-title ll-head">
             LEASE
         </h4>
@@ -12,7 +12,7 @@
                 Yang Menyewakan
             </label>
             <div class="col-sm-10">
-                <input type="text" name="lessor" class="form-control" />
+                <input type="text" name="lessor" value="{{ old('lessor') }}" class="form-control" />
             </div>
         </div>
         <div class="form-group">
@@ -20,7 +20,7 @@
                 Nama Penyewa
             </label>
             <div class="col-sm-10">
-                <input type="text" name="tenant" class="form-control" />
+                <input type="text" name="tenant" value="{{ old('tenant') }}" class="form-control" />
             </div>
         </div>
         <div class="form-group">
@@ -28,7 +28,7 @@
                 Keperluan Sewa
             </label>
             <div class="col-sm-10">
-                <input type="text" name="purpose" class="form-control" />
+                <input type="text" name="purpose" value="{{ old('purpose') }}" class="form-control" />
             </div>
         </div>
         <div class="form-group">
@@ -36,32 +36,42 @@
                 PIC
             </label>
             <div class="col-sm-10">
-                <input type="text" name="pic" class="form-control" />
+                <input type="text" name="pic" value="{{ old('pic') }}" class="form-control" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Tgl Awal Sewa</label>
-            <div class="input-group date col-sm-10">
-                <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
+            <label class="col-sm-2 control-label">
+                Awal Sewa
+            </label>
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input class="form-control pull-right datepicker" type="text" name="start" value="{{ old('start') }}">
                 </div>
-                <input class="form-control pull-right datepicker" type="text" name="start">
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Tgl Akhir Sewa</label>
-            <div class="input-group date col-sm-10">
-                <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
+            <label class="col-sm-2 control-label">
+                Akhir Sewa
+            </label>
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input class="form-control pull-right datepicker" type="text" name="end" value="{{ old('end') }}">
                 </div>
-                <input class="form-control pull-right datepicker" type="text" name="end">
             </div>
         </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Masa Sewa</label>
-            <div class="input-group date col-sm-10">
-                <span id="duration"></span>
-            </div>
+        <div class="form-group" v-show="duration !== 'NaN'">
+            <label class="col-sm-2 control-label">
+                Masa Sewa
+            </label>
+            <label class="col-sm-2 label-2" v-text="duration + ' Year'"></label>
         </div>
     </div>
+    <!-- BROKER -->
+    @include('partials.forms.lease.broker')
+    <!-- GRACE -->
+    @include('partials.forms.lease.grace')
 </div>

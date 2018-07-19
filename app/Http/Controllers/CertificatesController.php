@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Certificate;
+use App\Http\Requests\CertificateRequest;
 
 class CertificatesController extends Controller
 {
@@ -33,5 +34,15 @@ class CertificatesController extends Controller
     public function showAddForm()
     {
         return view('certificate.add');
+    }
+
+    public function store(CertificateRequest $request)
+    {
+        $data = $request->all();
+        $add = Certificate::create($data);
+        if (!$add) {
+            return 'error';
+        }
+        return 'success';
     }
 }

@@ -49,6 +49,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('leases', 'LeasesController@index');
     Route::get('lease/{id}', 'LeasesController@show');
     Route::get('leases/add', 'LeasesController@showAddForm');
+    Route::post('leases/add', 'LeasesController@store');
 
 });
 

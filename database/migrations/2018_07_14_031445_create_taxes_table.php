@@ -23,7 +23,7 @@ class CreateTaxesTable extends Migration
             $table->string('owner')->nullable(); // wajib pajak
             $table->year('year')->nullable(); // tahun pajak
             $table->date('due_date')->nullable(); // tgl batas maksimal pembayaran
-            $table->double('value_ly', 12, 2)->default(0); // nilai pajak tahun lalu
+            $table->double('nominal_ly', 12, 2)->default(0); // nilai pajak tahun lalu
             $table->date('due_date_ly')->nullable(); // tgl batas maksimal pembayaran tahun lalu
             $table->text('note')->nullable(); // keterangan tambahan
 
@@ -34,8 +34,8 @@ class CreateTaxesTable extends Migration
             $table->string('addr_building_area'); // luas tanah di pbb
 
             // NJOP
-            $table->double('njop_land', 12, 2)->nullable(); // nilai pajak njop total
-            $table->double('njop_building', 12, 2)->nullable(); // nilai pajak njop total
+            $table->double('njop_land', 12, 2)->nullable(); // nilai pajak tanah
+            $table->double('njop_building', 12, 2)->nullable(); // nilai pajak bangunan
             $table->double('njop_total', 12, 2)->nullable(); // nilai pajak njop total
 
             // CORPORATION

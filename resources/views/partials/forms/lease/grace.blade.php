@@ -1,6 +1,6 @@
 <div class="box-header with-border">
-    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-four">
-        <h4 class="box-title ll-head">
+    <a data-toggle="collapse" data-parent="#accordion-grace" href="#collapse-four">
+        <h4 class="box-title ll-sub-head">
             GRACE
         </h4>
     </a>
@@ -13,7 +13,7 @@
                 <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                 </div>
-                <input class="form-control pull-right datepicker" type="text" name="grace_start">
+                <input class="form-control pull-right datepicker" type="text" name="grace_start" v-model="graceStart">
             </div>
         </div>
         <div class="form-group">
@@ -22,13 +22,12 @@
                 <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                 </div>
-                <input class="form-control pull-right datepicker" type="text" name="grace_end">
+                <input class="form-control pull-right datepicker" type="text" name="grace_end" v-model="graceEnd">
             </div>
         </div>
-        <div class="form-group" v-show="grace_period !== 0">
-            <label class="col-sm-2 control-label">Grace Total</label>
-            <div class="col-sm-10">
-                <span id="grace-total"></span>
+        <div class="form-group" v-show="gracePeriod !== 'NaN'">
+                <label class="col-sm-2 control-label">Grace Total</label>
+                <label class="col-sm-2 label-2" v-text="gracePeriod + ' Month'"></label>
             </div>
         </div>
     </div>

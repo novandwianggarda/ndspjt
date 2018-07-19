@@ -50,8 +50,7 @@ $factory->define(\App\Lease::class, function (Faker $faker) {
         'brok_fee_paid' => $faker->numberBetween($brokYearly, $length * $brokYearly),
 
         // GRACE
-        'grace_period' => $faker->numberBetween(1, 12),
         'grace_start' => randomDate('2017'),
-        'grace_end' => randomDate('2017'),
+        'grace_end' => randomDate('2018'),
     ];
 });

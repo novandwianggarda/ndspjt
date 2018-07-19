@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Lease;
 use App\Certificate;
+use App\Http\Requests\LeaseRequet;
 
 class LeasesController extends Controller
 {
@@ -28,11 +29,17 @@ class LeasesController extends Controller
     }
 
     /**
-     * show add new tax form
+     * show add new lease form
      */
     public function showAddForm()
     {
         $certificates = Certificate::all();
         return view('lease.add');
     }
+
+    public function store(LeaseRequet $request)
+    {
+        dd($request->all());
+    }
+
 }

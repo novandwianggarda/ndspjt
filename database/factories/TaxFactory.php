@@ -22,7 +22,7 @@ $factory->define(\App\Tax::class, function (Faker $faker) {
         'owner' => $faker->randomElement($owners),
         'year' => '2017',
         'due_date' => randomDate('2017'),
-        'value_ly' => $faker->numberBetween(10000, 9999999),
+        'nominal_ly' => $faker->numberBetween(10000, 9999999),
         'due_date_ly' => randomDate('2016'),
         'note' => $faker->realText,
 

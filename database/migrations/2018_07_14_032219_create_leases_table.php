@@ -19,13 +19,20 @@ class CreateLeasesTable extends Migration
             $table->integer('lease_type_id'); // tipe properti (rumah, tanah, dll)
             $table->integer('lease_payment_id'); // payment terms id
 
-            // LEASE
+            // LEASE BASE
             $table->string('lessor')->nullable(); // yang menyewakan
             $table->string('tenant')->nullable(); // nama penyewa
             $table->string('purpose')->nullable(); // keperluan disewa untuk
             $table->date('start')->nullable(); // tanggal mulai sewa
             $table->date('end')->nullable(); // tanggal berakhir sewa
             $table->text('note')->nullable(); // keterangan
+
+            // PRICES
+            $table->double('sell_monthly', 12, 2)->default(0); // harga penawaran perbulan
+            $table->double('sell_yearly', 12, 2)->default(0); // harga penawaran pertahun
+            // $table->double('rent_monthly', 12, 2)->default(0); // harga tersewa perbulan
+            // $table->double('rent_yearly', 12, 2)->default(0); // harga tersewa pertahun
+            $table->double('rent_assurance', 12, 2)->default(0); // jaminan sewa
 
             // PROPERTY
             $table->string('prop_name')->nullable(); // nama lokasi
@@ -45,20 +52,8 @@ class CreateLeasesTable extends Migration
             $table->double('brok_fee_paid', 12, 2)->default(0); // total dibayar
 
             // GRACE
-            $table->string('grace_period')->nullable(); // berapa bulan
             $table->date('grace_start')->nullable(); // tgl awal grace
             $table->date('grace_end')->nullable(); // tgl akhir grace
-
-            // PRICES
-            $table->double('sell_monthly', 12, 2)->default(0); // harga penawaran perbulan
-            $table->double('sell_yearly', 12, 2)->default(0); // harga penawaran pertahun
-            // $table->double('rent_monthly', 12, 2)->default(0); // harga tersewa perbulan
-            // $table->double('rent_yearly', 12, 2)->default(0); // harga tersewa pertahun
-            $table->double('rent_assurance', 12, 2)->default(0); // jaminan sewa
-
-            // INCOMES
-            // $table->double('inc_total', 12, 2)->default(0); // pendapatan total termasuk pph
-            // $table->double('inc_pph_yearly', 12, 2)->default(0); // PPH per tahun
 
             $table->timestamps();
         });

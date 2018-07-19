@@ -1,5 +1,5 @@
 <div class="box-header with-border">
-    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-land">
+    <a data-toggle="collapse" data-parent="#accordion-land" href="#collapse-land">
         <h4 class="box-title ll-head">
             LAND
         </h4>

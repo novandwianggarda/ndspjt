@@ -1,11 +1,11 @@
 <div class="box-header with-border">
-    <a data-toggle="collapse" data-parent="#sub-accordion" href="#collapse-price">
+    <a data-toggle="collapse" data-parent="#accordion-price" href="#collapse-price">
         <h4 class="box-title ll-sub-head">
             PRICE
         </h4>
     </a>
 </div>
-<div id="collapse-price" class="panel-collapse collapse in">
+<div id="collapse-price" class="panel-collapse collapse">
     <div class="box-body">
         <div class="form-group">
             <div class="col-sm-12">

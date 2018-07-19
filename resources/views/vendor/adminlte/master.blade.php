@@ -38,8 +38,6 @@
         <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css ">
     @endif
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
-
     @yield('adminlte_css')
 
     <!--[if lt IE 9]>
@@ -50,16 +48,13 @@
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-    <link rel="stylesheet" href="{{ asset('css/app.css')}}">
-    <script src="{{ asset('js/app.js')}}"></script>
-
 </head>
 <body class="hold-transition @yield('body_class')">
 
     @yield('body')
 
-    <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.slimscroll.min.js') }}"></script>
+    {{-- <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.slimscroll.min.js') }}"></script> --}}
     <script src="{{ asset('vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 
     @if(config('adminlte.plugins.select2'))
@@ -76,8 +71,6 @@
         <!-- ChartJS -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js"></script>
     @endif
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
 
     @yield('adminlte_js')
 
