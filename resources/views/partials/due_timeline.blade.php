@@ -6,7 +6,7 @@
     <div class="box-body">
         <ul class="timeline">
             <li>
-                <i class="fa fa-clock-o bg-green"></i>
+                <i class="fa fa-clock-o ll-acolor"></i>
                 <div class="timeline-item">
                     <h3 class="timeline-header no-border">
                         <a href="#">Title Goes Here</a>
@@ -16,7 +16,7 @@
                 </div>
             </li>
             <li>
-                <i class="fa fa-clock-o bg-green"></i>
+                <i class="fa fa-clock-o ll-acolor"></i>
                 <div class="timeline-item">
                     <h3 class="timeline-header no-border">
                         <a href="#">Title Goes Here</a>

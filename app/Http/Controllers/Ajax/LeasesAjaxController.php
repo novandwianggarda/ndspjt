@@ -15,7 +15,7 @@ class LeasesAjaxController extends Controller
      */
     public function leaseTypes()
     {
-        $res = LeaseType::select('id', 'name')->get();
-        return response()->json($res);
+        $leaseTypes = LeaseType::select('id', 'name')->get();
+        return response()->json($leaseTypes);
     }
 }

@@ -20,6 +20,11 @@
     background-color: $ll-bg !important;
 }
 
+.ll-acolor {
+    background-color: $ll-bg !important;
+    color: white !important;
+}
+
 .ll-head {
     display: block !important;
     background-color: $ll-bg;
@@ -44,11 +49,11 @@
 }
 
 .skin-purple .main-header .navbar {
-    // background-color: $ll-bg !important;
+    background-color: $ll-bg !important;
 }
 
 .skin-purple .main-header .logo {
-    // background-color: $ll-bg2 !important;
+    background-color: $ll-bg2 !important;
 }
 
 .label-2 {

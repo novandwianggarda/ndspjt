@@ -55,8 +55,8 @@ class LeaseRequet extends FormRequest
 
             // BROKER
             'brok_name' => 'nullable',
-            'brok_fee_yearly' => 'nullable|numeric',
-            'brok_fee_paid' => 'nullable|numeric',
+            'brok_fee_yearly' => 'nullable',
+            'brok_fee_paid' => 'nullable',
 
             // GRACE
             'grace_start' => 'nullable|date',

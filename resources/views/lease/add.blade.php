@@ -23,7 +23,7 @@
                     <form class="form-horizontal" id="form-lease" action="/leases/add" method="POST">
                         @csrf
                         <div class="box-group" id="accordion">
-                            <div class="panel box box-success">
+                            <div class="panel box">
                                 <!-- LAND -->
                                 @include('partials.forms.lease.land')
                                 <!-- PROPERTY -->

@@ -4,11 +4,8 @@
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/iCheck/square/blue.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/auth.css') }}">
     <style>
-        html {
-            background-color: #00a65a !important;
-        }
-        body {
-            background-color: #00a65a !important;
+        html, body {
+            background-color: #a60099 !important;
         }
     </style>
     @yield('css')
@@ -19,7 +16,7 @@
 @section('body')
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
+            <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}" style="color:white">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
@@ -57,8 +54,8 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-xs-4">
-                        <button type="submit"
-                                class="btn btn-success btn-block btn-flat">{{ trans('adminlte::adminlte.log_in') }}</button>
+                        <button type="submit" style="background-color:#a60099;color:white"
+                                class="btn btn-block btn-flat">{{ trans('adminlte::adminlte.log_in') }}</button>
                     </div>
                     <!-- /.col -->
                 </div>

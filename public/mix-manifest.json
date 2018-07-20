@@ -1,5 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/vendor/adminlte/dist/css/skins/skin-landlord.css": "/vendor/adminlte/dist/css/skins/skin-landlord.css",
+    "/vendor/adminlte/dist/css/skins/skin-landlord.min.css": "/vendor/adminlte/dist/css/skins/skin-landlord.min.css",
     "/js/script.js": "/js/script.js"
 }

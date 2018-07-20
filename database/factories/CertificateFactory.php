@@ -4,13 +4,13 @@ use Faker\Generator as Faker;
 use App\CertificateType;
 
 $factory->define(\App\Certificate::class, function (Faker $faker) {
-    $certTypeIds = CertificateType::all()->pluck('id')->toArray();
+    $certificateTypeIds = CertificateType::all()->pluck('id')->toArray();
     $lat = $faker->latitude($min=-6.901907, $max=-7.746393);
     $lng = $faker->longitude($min=108.611961, $max=111.325584);
     $bnd = generateBoundary($lat, $lng);
 
     return [
-        'certificate_type_id' => $faker->randomElement($array=$certTypeIds),
+        'certificate_type_id' => $faker->randomElement($array=$certificateTypeIds),
 
         // CERTIFICATE BASE
         'number' => $faker->unique()->numberBetween(100, 9999),
@@ -33,7 +33,7 @@ $factory->define(\App\Certificate::class, function (Faker $faker) {
         'ajb_date' => $faker->date,
 
         // SCAN FILES
-        'scan_cert' => '/path/foo/bar',
+        'scan_certificate' => '/path/foo/bar',
         'scan_plotting' => '/path/foo/bar',
         'scan_land_siteplan' => '/path/foo/bar',
         'scan_krk' => '/path/foo/bar',

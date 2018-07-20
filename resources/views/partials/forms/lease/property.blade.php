@@ -35,7 +35,7 @@
             </label>
             <div class="col-sm-2">
                 <div class="input-group">
-                    <input type="number" name="prop_land_area" value="{{ old('prop_land_area') }}" class="form-control" />
+                    <input type="number" min="0" name="prop_land_area" value="{{ old('prop_land_area') }}" class="form-control" />
                     <span class="input-group-addon">m<sup>2</sup></span>
                 </div>
             </div>
@@ -44,7 +44,7 @@
             </label>
             <div class="col-sm-2">
                 <div class="input-group">
-                    <input type="number" name="prop_building_area" value="{{ old('prop_building_area') }}" class="form-control" />
+                    <input type="number" min="0" name="prop_building_area" value="{{ old('prop_building_area') }}" class="form-control" />
                     <span class="input-group-addon">m<sup>2</sup></span>
                 </div>
             </div>

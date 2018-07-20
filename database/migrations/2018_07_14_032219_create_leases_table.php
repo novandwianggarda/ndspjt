@@ -17,7 +17,7 @@ class CreateLeasesTable extends Migration
             $table->increments('id');
             $table->string('certificate_ids')->unique(); // bisa lebih dari satu sertifikat
             $table->integer('lease_type_id'); // tipe properti (rumah, tanah, dll)
-            $table->integer('lease_payment_id'); // payment terms id
+            $table->integer('lease_payment_id')->default(0); // payment terms id
 
             // LEASE BASE
             $table->string('lessor')->nullable(); // yang menyewakan
