@@ -12,6 +12,14 @@ $(document).ready(function (){
 
 });
 
-function toCorrectDate(el) {
-    // return $('el').datepicker('getDate').toLocaleDateString('id-ID');
+// why not using axios? because it doesnt support synchronous
+function diffTwoDates(start, end, period) {
+    var difference = 0;
+    if (start !== '' && end !== '') {
+        $.ajax({
+            async: false,
+            url: '/ajax/diff-two-dates?start=' + start + '&end=' +end + '&period=' + period, success: function(response){ difference = response.difference; }
+        });
+    }
+    return difference;
 }

@@ -77,8 +77,8 @@ if (! function_exists('diffTwoDates')) {
         }
 
         if ($period == 'yearly') {
-            return $difference / 12;
+            return round($difference / 12, 2);
         }
-        return $difference;
+        return round($difference, 2);
     }
 }

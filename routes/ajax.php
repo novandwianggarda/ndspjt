@@ -31,4 +31,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/lease_types', 'LeasesAjaxController@leaseTypes');
     });
 
+    // Global
+    Route::get('/diff-two-dates', 'GlobalAjaxController@diffTwoDates');
+
 });

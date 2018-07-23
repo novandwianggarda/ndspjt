@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group" v-show="duration !== 'NaN'">
+        <div class="form-group" v-show="duration !== 0">
             <label class="col-sm-2 control-label">
                 Masa Sewa
             </label>

@@ -25,7 +25,7 @@
                 <input class="form-control pull-right datepicker" type="text" name="grace_end" v-model="graceEnd">
             </div>
         </div>
-        <div class="form-group" v-show="gracePeriod !== 'NaN'">
+        <div class="form-group" v-show="gracePeriod !== 0">
                 <label class="col-sm-2 control-label">Grace Total</label>
                 <label class="col-sm-2 label-2" v-text="gracePeriod + ' Month'"></label>
             </div>

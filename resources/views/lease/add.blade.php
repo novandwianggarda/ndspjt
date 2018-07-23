@@ -68,24 +68,11 @@
             },
             computed: {
                 gracePeriod: function() {
-                    return this.diffTwoDate(this.graceStart, this.graceEnd, 30);
+                    return diffTwoDates(this.graceStart, this.graceEnd, 'monthly');
                 },
                 duration: function() {
-                    return this.diffTwoDate(this.start, this.end, 365);
+                    return diffTwoDates(this.start, this.end, 'yearly');
                 },
-            },
-            methods: {
-                diffTwoDate: function(start, end, base){
-                    var startDate = moment(new Date(start));
-                    var endDate = moment(new Date(end));
-                    return (endDate.diff(startDate, 'days') / base).toFixed(2);
-                }
-            },
-            watch: {
-                question: function (newQuestion, oldQuestion) {
-                this.answer = 'Waiting for you to stop typing...'
-                this.debouncedGetAnswer()
-                }
             },
             mounted() {
                 $('input[name="start"]').on('changeDate', () => { this.start = $('input[name="start"]').val() });

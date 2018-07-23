@@ -17,6 +17,6 @@ mix.js('resources/assets/js/app.js', 'public/js')
 mix.sass('resources/assets/sass/skin-landlord.scss', 'public/vendor/adminlte/dist/css/skins')
    .minify('public/vendor/adminlte/dist/css/skins/skin-landlord.css', 'public/vendor/adminlte/dist/css/skins');
 
-mix.scripts([
+mix.combine([
     'resources/assets/js/script.js'
 ], 'public/js/script.js');
