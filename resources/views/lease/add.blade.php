@@ -55,6 +55,7 @@
     <script>
 
         var form = $('#form-lease');
+        var oldBrokFeeYearly = "{{ old('brok_fee_yearly') }}";
 
         var fvue = new Vue({
             el: '#form-lease',
@@ -64,7 +65,16 @@
                 graceStart: "{{ old('grace_start') }}",
                 graceEnd: "{{ old('grace_end') }}",
                 feeTotal: 0,
-                brokFeeTotal: 0,
+                brokFeeYearly: oldBrokFeeYearly == '' ? 0 : parseInt(oldBrokFeeYearly),
+                price: 123.45,
+                money: {
+                decimal: ',',
+                thousands: '.',
+                prefix: 'R$ ',
+                suffix: ' #',
+                precision: 2,
+                masked: false /* doesn't work with directive */
+                },
             },
             computed: {
                 gracePeriod: function() {
@@ -72,6 +82,9 @@
                 },
                 duration: function() {
                     return diffTwoDates(this.start, this.end, 'yearly');
+                },
+                brokFeeTotal: function() {
+                    return this.brokFeeYearly * this.duration;
                 },
             },
             mounted() {

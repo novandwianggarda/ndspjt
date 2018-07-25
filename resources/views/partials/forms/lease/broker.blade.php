@@ -20,15 +20,15 @@
                 Fee per Tahun
             </label>
             <div class="col-sm-10">
-                <input type="text" name="brok_fee_yearly" value="{{ old('brok_fee_yearly') }}" class="form-control" />
+                <money name="brok_fee_yearly" v-model="brokFeeYearly" class="form-control"></money>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" v-show="brokFeeTotal !== 0">
             <label class="col-sm-2 control-label">
                 Fee Total
             </label>
             <div class="col-sm-10">
-                <span id="brok-fee-total" v-model="brokFeeTotal"></span>
+                <money id="brok-fee-total" v-model="brokFeeTotal" class="form-control" disabled="disabled"></money>
             </div>
         </div>
         <div class="form-group">
@@ -36,7 +36,7 @@
                 Fee Terbayar
             </label>
             <div class="col-sm-10">
-                <input type="text" name="brok_fee_paid" value="{{ old('brok_fee_paid') }}" class="form-control" />
+                <money name="brok_fee_paid" value="{{ old('brok_fee_paid') }}" class="form-control"></money>
             </div>
         </div>
     </div>
