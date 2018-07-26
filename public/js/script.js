@@ -1,1 +1,1 @@
-function toCorrectDate(t){}$(document).ready(function(){$(".datepicker").each(function(){$(this).datepicker({setDate:"today",autoclose:!0,format:"dd MM yyyy",language:"en"})})});
+function diffTwoDates(e,a,t){var n=0;return""!==e&&""!==a&&$.ajax({async:!1,url:"/ajax/diff-two-dates?start="+e+"&end="+a+"&period="+t,success:function(e){n=e.difference}}),n}$(document).ready(function(){$(".datepicker").each(function(){$(this).datepicker({setDate:"today",autoclose:!0,format:"dd MM yyyy",language:"en"})})});

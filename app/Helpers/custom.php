@@ -61,12 +61,16 @@ if (! function_exists('diffTwoDates')) {
         $totalMonths = $endMonth - $startMonth + 1;
         $difference = 0;
 
-        for ($i = $startMonth; $i <= $endMonth; $i++){
-            if ($i == $startMonth) {
+        for ($i = (int)$startMonth; $i <= (int)$endMonth; $i++){
+            if ($i == (int)$startMonth && $i == (int)$endMonth) {
+                $usedDays = $endDay - $startDay + 1;
+                $totalDays = \Carbon\Carbon::parse($startDate)->endOfMonth()->format('d');
+                $difference += ($usedDays/$totalDays);
+            } else if ($i == (int)$startMonth) {
                 $usedDays = \Carbon\Carbon::parse($startDate)->endOfMonth()->format('d') - $startDay + 1;
                 $totalDays = \Carbon\Carbon::parse($startDate)->endOfMonth()->format('d');
                 $difference += ($usedDays/$totalDays);
-            } else if ($i == $endMonth) {
+            } else if ($i == (int)$endMonth) {
                 $usedDays = $endDay;
                 $totalDays = \Carbon\Carbon::parse($startDate)->endOfMonth()->format('d');
                 $difference += ($usedDays/$totalDays);
@@ -77,8 +81,8 @@ if (! function_exists('diffTwoDates')) {
         }
 
         if ($period == 'yearly') {
-            return $difference / 12;
+            return round($difference / 12, 2);
         }
-        return $difference;
+        return round($difference, 2);
     }
 }

@@ -62,7 +62,8 @@
 }
 
 .skin-landlord .main-header .logo:hover {
-    background-color: #545096;
+    background-color: $ll-bg;
+    border-right: 1px solid $ll-bg2;
 }
 
 .skin-landlord .main-header li.user-header {
