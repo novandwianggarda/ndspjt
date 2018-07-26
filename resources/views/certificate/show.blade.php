@@ -11,7 +11,7 @@
         <div class="col-md-12">
             <div class="box">
                 <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover bordered">
+                    <table class="table">
                         <tbody>
                             @foreach ($certificate->getAttributes() as $index => $value)
                                 <tr>

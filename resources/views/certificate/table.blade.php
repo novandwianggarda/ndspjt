@@ -9,7 +9,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <table id="tbl-certificates" class="table table-striped table-bordered" style="width:100%">
+            <table id="tbl-certificates" class="table table-bordered table-striped dataTable" role="grid" style="width:100%">
                 <thead>
                     <tr>
                         <th>Certificate</th>

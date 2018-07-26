@@ -2581,7 +2581,7 @@ a:focus {
   color: #666;
 }
 .pagination.pagination-flat > li > a {
-  border-radius: 0 !important;
+  border-radius: 10 !important;
 }
 /*
  * Component: Products List
@@ -2655,7 +2655,7 @@ a:focus {
   margin-top: 5px;
 }
 .table-bordered {
-  border: 1px solid #f4f4f4;
+  border: 1px solid #ccc !important;
 }
 .table-bordered > thead > tr > th,
 .table-bordered > tbody > tr > th,
@@ -2663,7 +2663,7 @@ a:focus {
 .table-bordered > thead > tr > td,
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
-  border: 1px solid #f4f4f4;
+  border: 1px solid #ccc !important;
 }
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td {
@@ -2686,6 +2686,16 @@ table.text-center th {
 .table.align td {
   text-align: right;
 }
+/*Custom Bordered Table*/
+#tbl-certificates > thead > tr > th,
+#tbl-certificates > tbody > tr > th,
+#tbl-certificates > thead > tr > td,
+#tbl-certificates > tbody > tr > td {
+  border: 1px solid #ccc !important;
+}
+/*.sorting_1{
+  border-right: 1px solid #ccc !important;
+}*/
 /*
  * Component: Label
  * ----------------

@@ -18,7 +18,7 @@
     <style>
         h4.box-title {
             display: block !important;
-            background-color: #199056;
+            background-color: #a60099;
             padding: 10px;
             color: white;
         }
