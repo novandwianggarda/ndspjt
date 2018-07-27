@@ -11,15 +11,8 @@
         <div class="col-md-12">
             <div class="box box-solid">
                 <div class="box-body">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                    <!--ERRORS-->
+                    @include('partials.errors')
                     <form class="form-horizontal" id="form-lease" action="/leases/add" method="POST">
                         @csrf
                         <div class="box-group" id="accordion">
@@ -30,6 +23,7 @@
                                 @include('partials.forms.lease.property')
                                 <!-- LEASE -->
                                 @include('partials.forms.lease.lease')
+                                <!-- SUBMIT BTN -->
                                 <div class="form-group">
                                     <div class="col-sm-12" style="padding:0px 25px">
                                         <button type="submit" class="btn form-control ll-bgcolor ll-white">
@@ -66,15 +60,6 @@
                 graceEnd: "{{ old('grace_end') }}",
                 feeTotal: 0,
                 brokFeeYearly: oldBrokFeeYearly == '' ? 0 : parseInt(oldBrokFeeYearly),
-                price: 123.45,
-                money: {
-                decimal: ',',
-                thousands: '.',
-                prefix: 'R$ ',
-                suffix: ' #',
-                precision: 2,
-                masked: false /* doesn't work with directive */
-                },
             },
             computed: {
                 gracePeriod: function() {
@@ -88,10 +73,18 @@
                 },
             },
             mounted() {
-                $('input[name="start"]').on('changeDate', () => { this.start = $('input[name="start"]').val() });
-                $('input[name="end"]').on('changeDate', () => { this.end = $('input[name="end"]').val() });
-                $('input[name="grace_start"]').on('changeDate', () => { this.graceStart = $('input[name="grace_start"]').val() });
-                $('input[name="grace_end"]').on('changeDate', () => { this.graceEnd = $('input[name="grace_end"]').val() });
+                $('input[name="start"]').on('changeDate', () => {
+                    this.start = $('input[name="start"]').val()
+                });
+                $('input[name="end"]').on('changeDate', () => {
+                    this.end = $('input[name="end"]').val()
+                });
+                $('input[name="grace_start"]').on('changeDate', () => {
+                    this.graceStart = $('input[name="grace_start"]').val()
+                });
+                $('input[name="grace_end"]').on('changeDate', () => {
+                    this.graceEnd = $('input[name="grace_end"]').val()
+                });
             },
             created() {
                 watcher.$on('certificateSelected', function() {

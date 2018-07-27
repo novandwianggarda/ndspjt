@@ -9,6 +9,22 @@
     <div class="box-body">
         <div class="form-group">
             <label class="col-sm-2 control-label">
+                No. Akte Sewa
+            </label>
+            <div class="col-sm-10">
+                <input type="text" name="lease_deed" value="{{ old('lease_deed') }}" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">
+                Tgl. Akte Sewa
+            </label>
+            <div class="col-sm-10">
+                <input type="text" name="lease_deed_date" value="{{ old('lease_deed_date') }}" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">
                 Yang Menyewakan
             </label>
             <div class="col-sm-10">
@@ -70,6 +86,8 @@
             <label class="col-sm-2 label-2" v-text="duration + ' Year'"></label>
         </div>
     </div>
+    <!-- PRICE -->
+    @include('partials.forms.lease.lease_price')
     <!-- BROKER -->
     @include('partials.forms.lease.broker')
     <!-- GRACE -->

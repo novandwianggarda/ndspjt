@@ -13,9 +13,12 @@ $factory->define(\App\Lease::class, function (Faker $faker) {
     $waters = ['Tidak Ada', 'PAM', 'Sumur', 'Artetis'];
     $brokYearly = $faker->numberBetween(1000000, 99999999);
     $sellMonthly = $faker->numberBetween(100000, 9999999);
+    $rentMontlyYearly = $faker->numberBetween(200000, 2000000);
+    $randCertId = $faker->unique()->randomElement($certificateIds);
+    $certArea = Certificate::find($randCertId)->area;
 
     return [
-        'certificate_ids' => $faker->unique()->randomElement($certificateIds),
+        'certificate_ids' => $randCertId,
         'lease_type_id' => $faker->randomElement($leaseTypeIds),
         'lease_payment_id' => 1,
 
@@ -26,10 +29,14 @@ $factory->define(\App\Lease::class, function (Faker $faker) {
         'start' => randomDate('2017'),
         'end' => randomDate(2017+round($length)),
         'note' => $faker->realText,
+        'lease_deed' => $faker->numberBetween(1111111111, 9999999999),
+        'lease_deed_date' => randomDate('2017'),
 
         // PRICES
         'sell_monthly' => $sellMonthly,
         'sell_yearly' => $sellMonthly * 12,
+        'rent_meterly_monthly' => $rentMontlyYearly,
+        'rent_yearly' => $rentMontlyYearly * 12 * $certArea,
         'rent_assurance' => $faker->numberBetween(2000000, 50000000),
 
         // PROPERTY

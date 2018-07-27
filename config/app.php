@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'DS-LandLord'),
 
     /*
     |--------------------------------------------------------------------------
@@ -152,6 +152,7 @@ return [
          */
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+
 
         /*
          * Application Service Providers...

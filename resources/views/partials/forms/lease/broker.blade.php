@@ -28,7 +28,7 @@
                 Fee Total
             </label>
             <div class="col-sm-10">
-                <money id="brok-fee-total" v-model="brokFeeTotal" class="form-control" disabled="disabled"></money>
+                <money id="brok-fee-total" v-bind:value="brokFeeTotal" class="form-control" disabled="disabled"></money>
             </div>
         </div>
         <div class="form-group">

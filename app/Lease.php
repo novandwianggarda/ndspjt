@@ -13,7 +13,7 @@ class Lease extends Model
         'certificate_ids', 'lease_type_id', 'lease_payment_id',
 
         // LEASE BASE
-        'tenant', 'purpose', 'duration', 'start', 'end', 'note',
+        'tenant', 'purpose', 'duration', 'start', 'end', 'note', 'lease_deed', 'lease_deed_date',
 
         // PROPERTY
         'prop_name', 'prop_address', 'prop_land_area', 'prop_building_area', 'prop_block', 'prop_unit', 'prop_electricity', 'prop_water', 'prop_telephone',

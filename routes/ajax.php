@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function() {
     Route::prefix('/certificate')->group(function() {
         Route::get('/available', 'CertificatesAjaxController@availableCertificates');
         Route::get('/result', 'CertificatesAjaxController@result');
+        Route::get('/certificate_types', 'CertificatesAjaxController@certificateTypes');
     });
 
     // Lease

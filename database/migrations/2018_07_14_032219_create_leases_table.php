@@ -26,13 +26,16 @@ class CreateLeasesTable extends Migration
             $table->date('start')->nullable(); // tanggal mulai sewa
             $table->date('end')->nullable(); // tanggal berakhir sewa
             $table->text('note')->nullable(); // keterangan
+            // LEASE DEED aka Akta Sewa
+            $table->text('lease_deed'); // nomor akta sewa
+            $table->text('lease_deed_date'); // tanggal akta sewa
 
             // PRICES
-            $table->double('sell_monthly', 12, 2)->default(0); // harga penawaran perbulan
-            $table->double('sell_yearly', 12, 2)->default(0); // harga penawaran pertahun
-            // $table->double('rent_monthly', 12, 2)->default(0); // harga tersewa perbulan
-            // $table->double('rent_yearly', 12, 2)->default(0); // harga tersewa pertahun
-            $table->double('rent_assurance', 12, 2)->default(0); // jaminan sewa
+            $table->double('sell_monthly', 13, 2)->default(0); // harga penawaran perbulan
+            $table->double('sell_yearly', 13, 2)->default(0); // harga penawaran pertahun
+            $table->double('rent_meterly_monthly', 13, 2)->default(0); // harga tersewa permeter perbulan
+            $table->double('rent_yearly', 13, 2)->default(0); // harga tersewa pertahun
+            $table->double('rent_assurance', 13, 2)->default(0); // jaminan sewa
 
             // PROPERTY
             $table->string('prop_name')->nullable(); // nama lokasi
@@ -48,8 +51,8 @@ class CreateLeasesTable extends Migration
 
             // BROKER
             $table->string('brok_name')->nullable(); // nama makelar
-            $table->double('brok_fee_yearly', 12, 2)->default(0); // harga per tahun
-            $table->double('brok_fee_paid', 12, 2)->default(0); // total dibayar
+            $table->double('brok_fee_yearly', 13, 2)->default(0); // harga per tahun
+            $table->double('brok_fee_paid', 13, 2)->default(0); // total dibayar
 
             // GRACE
             $table->date('grace_start')->nullable(); // tgl awal grace

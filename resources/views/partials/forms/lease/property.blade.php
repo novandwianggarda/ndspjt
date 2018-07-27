@@ -91,5 +91,5 @@
         </div>
     </div>
     <!-- PRICE -->
-    @include('partials.forms.lease.price')
+    @include('partials.forms.lease.property_price')
 </div>

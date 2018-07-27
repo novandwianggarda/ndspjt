@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Ajax;
 use App\Http\Controllers\AjaxController;
 use Illuminate\Http\Request;
 use App\Certificate;
+use App\CertificateType;
 
 class CertificatesAjaxController extends AjaxController
 {
@@ -51,5 +52,16 @@ class CertificatesAjaxController extends AjaxController
         }
         @$result->total_area = @$result->total_area . ' m<sup>2</sup>';
         return response()->json($result);
+    }
+
+    /**
+     * get all certificate types
+     *
+     * @return JSON
+     */
+    public function certificateTypes()
+    {
+        $certificateTypes = CertificateType::select('id', 'short_name', 'long_name')->get();
+        return response()->json($certificateTypes);
     }
 }

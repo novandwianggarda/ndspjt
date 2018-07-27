@@ -28,7 +28,7 @@ if (token) {
 }
 
 // Moment
-window.moment = require('moment');
+// window.moment = require('moment');
 
 // Datepicker
 window.datepicker = require('bootstrap-datepicker');
