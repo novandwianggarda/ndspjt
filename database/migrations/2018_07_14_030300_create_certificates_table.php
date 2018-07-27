@@ -30,7 +30,7 @@ class CreateCertificatesTable extends Migration
             // ADDRESS
             $table->string('addr_city')->nullable(); // kota/kab
             $table->string('addr_district')->nullable(); // kecamatan
-            $table->string('addr_village')->nullable(); // desa
+            $table->string('addr_village')->nullable(); // kelurahan
             $table->string('addr_address')->nullable(); // alamat
 
             // AJB
