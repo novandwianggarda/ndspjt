@@ -1,7 +1,7 @@
 <div class="box-header with-border">
     <a data-toggle="collapse" data-parent="#accordion-lease" href="#collapse-lease">
         <h4 class="box-title ll-head">
-            LEASE
+            {{ trans('lease.hd_lease') }}
         </h4>
     </a>
 </div>

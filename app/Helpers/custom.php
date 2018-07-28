@@ -86,3 +86,20 @@ if (! function_exists('diffTwoDates')) {
         return round($difference, 2);
     }
 }
+
+/**
+ * get translations json file
+ * located at /resources/lang/vendor/landlord
+ * and return as a php array
+ *
+ * @param $group group translation
+ *
+ * @return array
+ */
+if (! function_exists('getTranslations')) {
+    function getTranslations($group)
+    {
+        $file = realpath(dirname(__FILE__)) . '/../../resources/lang/vendor/landlord/' . $group . '.json';
+        return json_decode(file_get_contents($file), true);
+    }
+}

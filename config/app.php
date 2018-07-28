@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => env('APP_LANG', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -143,7 +143,7 @@ return [
         Illuminate\Redis\RedisServiceProvider::class,
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
         Illuminate\Session\SessionServiceProvider::class,
-        Illuminate\Translation\TranslationServiceProvider::class,
+        // Illuminate\Translation\TranslationServiceProvider::class, // replaced with spatie translation-loader
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
@@ -152,6 +152,7 @@ return [
          */
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Spatie\TranslationLoader\TranslationServiceProvider::class,
 
 
         /*

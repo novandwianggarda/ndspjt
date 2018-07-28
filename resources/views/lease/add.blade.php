@@ -3,7 +3,7 @@
 @section('title', 'Add Lease')
 
 @section('content_header')
-    <h1>Add Lease</h1>
+    <h1>{{ trans('lease.m_add_lease') }}</h1>
 @stop
 
 @section('content')

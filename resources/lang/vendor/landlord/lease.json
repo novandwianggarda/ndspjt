@@ -1,0 +1,114 @@
+{
+    "m_add_lease": {
+        "en": "Add Lease",
+        "id": "Tambah Sewa"
+    },
+    "hd_land": {
+        "en": "LAND",
+        "id": "TANAH"
+    },
+    "hd_property": {
+        "en": "PROPERTY",
+        "id": "PROPERTI"
+    },
+    "hd_lease": {
+        "en": "LEASE",
+        "id": "SEWA"
+    },
+    "shdp_offer": {
+        "en": "OFFER PRICE",
+        "id": "HARGA PENAWARAN"
+    },
+    "shdl_price": {
+        "en": "LEASE PRICE",
+        "id": "HARGA SEWA"
+    },
+    "shdl_broker": {
+        "en": "BROKER",
+        "id": "MAKELAR"
+    },
+    "shdl_grace": {
+        "en": "GRACE",
+        "id": "GRACE"
+    },
+    "frm_certificate": {
+        "en": "Certificate(s)",
+        "id": "Sertifikat"
+    },
+    "frm_type": {
+        "en": "Type",
+        "id": "Tipe"
+    },
+    "frm_location": {
+        "en": "Location Name",
+        "id": "Nama Lokasi"
+    },
+    "frm_address": {
+        "en": "Address",
+        "id": "Alamat"
+    },
+    "frm_land_area": {
+        "en": "Land Area",
+        "id": "Luas Tanah"
+    },
+    "frm_bld_area": {
+        "en": "Building Area",
+        "id": "Luas Bangunan"
+    },
+    "frm_block": {
+        "en": "Block/Tower",
+        "id": "Blok/Tower"
+    },
+    "frm_floor": {
+        "en": "Floor",
+        "id": "Lantai"
+    },
+    "frm_unit": {
+        "en": "Unit",
+        "id": "Unit"
+    },
+    "frm_electry": {
+        "en": "Electricity",
+        "id": "Listrik"
+    },
+    "frm_water": {
+        "en": "Water",
+        "id": "Air"
+    },
+    "frm_phone": {
+        "en": "Telephone",
+        "id": "Telepon"
+    },
+    "frm_deed": {
+        "en": "No. Lease Deed",
+        "id": "No. Akta Sewa"
+    },
+    "frm_deed_date": {
+        "en": "Dt. Lease Deed",
+        "id": "Tgl. Akta Sewa"
+    },
+    "frm_lessor": {
+        "en": "Lessor",
+        "id": "Yang Menyewakan"
+    },
+    "frm_tenant": {
+        "en": "Tenant Name",
+        "id": "Nama Penyewa"
+    },
+    "frm_purpose": {
+        "en": "Lease Purpose",
+        "id": "Keperluan Sewa"
+    },
+    "frm_pic": {
+        "en": "PIC",
+        "id": "PIC"
+    },
+    "frm_lease_start": {
+        "en": "Lease Start",
+        "id": "Awal Sewa"
+    },
+    "frm_lease_end": {
+        "en": "Lease End",
+        "id": "Akhir Sewa"
+    }
+}
