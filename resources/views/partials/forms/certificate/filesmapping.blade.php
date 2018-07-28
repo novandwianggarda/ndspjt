@@ -11,48 +11,56 @@
             <label class="col-sm-2 control-label">
                 Boundary Image
             </label>
-            <div class="col-sm-10">
-                <input type="text" name="lessor" value="{{ old('lessor') }}" class="form-control" />
+            <div class="col-sm-4">
+                <input type="file" name="" class="form-control" />
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">
                 Plotting Certificate
             </label>
-            <div class="col-sm-10">
-                <input type="text" name="tenant" value="{{ old('tenant') }}" class="form-control" />
+            <div class="col-sm-4">
+                <input type="file" name="scan_plotting"  class="form-control" />
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">
                 Land Siteplan
             </label>
-            <div class="col-sm-10">
-                <input type="text" name="purpose" value="{{ old('purpose') }}" class="form-control" />
+            <div class="col-sm-4">
+                <input type="file" name="scan_land_siteplan"  class="form-control" />
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">
-                PIC
+                Scan KRK 
             </label>
-            <div class="col-sm-10">
-                <input type="text" name="pic" value="{{ old('pic') }}" class="form-control" />
+            <div class="col-sm-4">
+                <input type="file" name="scan_krk"  class="form-control" />
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">
-                PIC
+                Scan IMB
             </label>
-            <div class="col-sm-10">
-                <input type="text" name="pic" value="{{ old('pic') }}" class="form-control" />
+            <div class="col-sm-4">
+                <input type="file" name="scan_imb"  class="form-control" />
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">
-                PIC
+                Certificate Scan
             </label>
-            <div class="col-sm-10">
-                <input type="text" name="pic" value="{{ old('pic') }}" class="form-control" />
+            <div class="col-sm-4">
+                <input type="file" name="scan_certificate"  class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">
+                GoogleMap Link
+            </label>
+            <div class="col-sm-4">
+                <input type="text" name="map_link"  class="form-control" />
             </div>
         </div>
 
