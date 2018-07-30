@@ -24,7 +24,7 @@
                                 <!-- LEASE -->
                                 @include('partials.forms.lease.lease')
                                 <!-- SUBMIT BTN -->
-                                <div class="form-group">
+                                <div class="form-group" style="margin-top:15px;">
                                     <div class="col-sm-12" style="padding:0px 25px">
                                         <button type="submit" class="btn form-control ll-bgcolor ll-white">
                                             <i class="fa fa-plus"></i>
@@ -49,7 +49,8 @@
     <script>
 
         var form = $('#form-lease');
-        var oldBrokFeeYearly = "{{ old('brok_fee_yearly') }}";
+        var oldBrokFeeYearly = "{{ old('brok_fee_yearly') }}" == '' ? 0 : parseInt(oldBrokFeeYearly);
+        var oldPeriodType = "{{ old('period_type') }}" == '' ? 'yearly' : oldPeriodType;
 
         var fvue = new Vue({
             el: '#form-lease',
@@ -59,18 +60,26 @@
                 graceStart: "{{ old('grace_start') }}",
                 graceEnd: "{{ old('grace_end') }}",
                 feeTotal: 0,
-                brokFeeYearly: oldBrokFeeYearly == '' ? 0 : parseInt(oldBrokFeeYearly),
+                brokFeeYearly: oldBrokFeeYearly,
+                periodType: oldPeriodType,
+                includePPN: false,
+                includePPH: false,
+                ppnTotal: 0,
+                pphTotal: 0,
             },
             computed: {
                 gracePeriod: function() {
                     return diffTwoDates(this.graceStart, this.graceEnd, 'monthly');
                 },
                 duration: function() {
-                    return diffTwoDates(this.start, this.end, 'yearly');
+                    return diffTwoDates(this.start, this.end, this.periodType);
                 },
                 brokFeeTotal: function() {
                     return this.brokFeeYearly * this.duration;
                 },
+                periodTypeStr: function() {
+                    return this.periodType == 'yearly' ? 'Year' : 'Month';
+                }
             },
             mounted() {
                 $('input[name="start"]').on('changeDate', () => {

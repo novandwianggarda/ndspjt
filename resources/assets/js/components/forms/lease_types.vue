@@ -1,9 +1,7 @@
 <template>
-    <div class="col-sm-10">
-        <select name="lease_type_id" class="form-control">
-            <option v-for="option in options" :value="option.id" :key="option.id">{{ option.name }}</option>
-        </select>
-    </div>
+    <select name="lease_type_id" class="form-control">
+        <option v-for="option in options" :value="option.id" :key="option.id">{{ option.name }}</option>
+    </select>
 </template>
 
 <script>

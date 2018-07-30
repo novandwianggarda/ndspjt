@@ -110,5 +110,10 @@
     "frm_lease_end": {
         "en": "Lease End",
         "id": "Akhir Sewa"
+    },
+    "frm_period_type": {
+        "en": "Period Type",
+        "id": "Tipe Periode"
     }
+
 }

@@ -36,28 +36,34 @@
     display: block !important;
     background-color: $ll-bg;
     padding: 10px;
-    margin: 0px 10px !important;
+    margin: 0px 25px !important;
     color: white;
-}
-
-#collapse-price {
-    margin: 0px 10px !important;
 }
 
 .input-group {
     padding-left: 0px !important;
 }
 
-.skin-purple .main-header .navbar {
-    background-color: $ll-bg !important;
-}
-
-.skin-purple .main-header .logo {
-    background-color: $ll-bg2 !important;
-}
-
 .label-2 {
     padding-top: 7px;
     margin-bottom: 0;
     text-align: left;
+}
+
+.select2-container--default.select2-container {
+    width: 100% !important;
+}
+
+.left-border {
+    border-left-width: 5px;
+    border-left-style: solid;
+    border-left-color: $ll-bg;
+    margin-left: 10px;
+}
+
+.box-header {
+    padding: 0px !important;
+    border-top-width: 15px;
+    border-top-style: solid;
+    border-top-color: white;
 }

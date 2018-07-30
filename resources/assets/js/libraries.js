@@ -14,9 +14,6 @@ try {
     // require('jquery-slimscroll');
 } catch (e) {}
 
-// Vue
-window.Vue = require('vue');
-
 // Axios
 window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
