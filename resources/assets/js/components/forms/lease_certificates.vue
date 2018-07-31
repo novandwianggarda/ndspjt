@@ -11,7 +11,6 @@
                         {{ option.number }} - {{ option.name }}
                     </option>
                 </select>
-                <input type="hidden" name="certificate_ids">
             </div>
         </frgroup>
 

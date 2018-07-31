@@ -48,24 +48,32 @@
 @section('js')
     <script>
 
+        // Only bind property that are used to calculate something
+
         var form = $('#form-lease');
         var oldBrokFeeYearly = "{{ old('brok_fee_yearly') }}" == '' ? 0 : parseInt(oldBrokFeeYearly);
         var oldPeriodType = "{{ old('period_type') }}" == '' ? 'yearly' : oldPeriodType;
+        var oldLandArea = "{{ old('prop_land_area') }}";
+        var oldBuildingArea = "{{ old('prop_building_area') }}";
+        var oldRentAssurance = "{{ old('rent_assurance') }}";
 
         var fvue = new Vue({
             el: '#form-lease',
             data: {
+                certificateIds: '',
                 start: "{{ old('start') }}",
                 end: "{{ old('end') }}",
+                periodType: oldPeriodType,
+                lessorPKP: 'false',
                 graceStart: "{{ old('grace_start') }}",
                 graceEnd: "{{ old('grace_end') }}",
-                feeTotal: 0,
                 brokFeeYearly: oldBrokFeeYearly,
-                periodType: oldPeriodType,
-                includePPN: false,
-                includePPH: false,
-                ppnTotal: 0,
-                pphTotal: 0,
+                rentPrice: 0,
+                rentAssurance: oldRentAssurance,
+                rentMonthlyM2Type: 'building',
+                landArea: oldLandArea,
+                buildingArea: oldBuildingArea,
+
             },
             computed: {
                 gracePeriod: function() {
@@ -79,6 +87,29 @@
                 },
                 periodTypeStr: function() {
                     return this.periodType == 'yearly' ? 'Year' : 'Month';
+                },
+                rentPriceTotal: function() {
+                    return this.duration * this.rentPrice;
+                    // return roundHundred(this.duration * this.rentPrice);
+                },
+                rentPricePPN: function() {
+                    if (this.lessorPKP === 'false') return 0;
+                    return this.rentPrice * 0.10;
+                },
+                rentPricePPH: function() {
+                    if (this.lessorPKP === 'false') return 0;
+                    return this.rentPrice * 0.10;
+                },
+                rentPriceTotalWithPPN: function() {
+                    return this.rentPriceTotal + this.rentPricePPN;
+                },
+                rentIncomeTotal: function() {
+                    return (this.rentPriceTotalWithPPN - this.rentAssurance - this.rentPricePPH - this.brokFeeTotal);
+                    // return (this.rentPriceTotalWithPPN - this.rentPricePPH - this.brokFeeTotal) / this.duration;
+                },
+                rentPriceMonthlyM2: function() {
+                    var area = this.rentMonthlyM2Type === 'land' ? this.landArea : this.buildingArea;
+                    return this.rentPrice / 12 / parseInt(area);
                 }
             },
             mounted() {
@@ -96,10 +127,9 @@
                 });
             },
             created() {
+                var vm = this;
                 watcher.$on('certificateSelected', function() {
-                    $('input[name="certificate_ids"]').val(
-                        $('#lease-certificates').val().toString()
-                    );
+                    vm.certificateIds = $('#lease-certificates').val().toString();
                 });
             },
         });

@@ -18,11 +18,11 @@
         <indate name="grace_end" v-bind:value="graceEnd"></indate>
     </frgroup>
 
-    <frgroup v-show="gracePeriod !== 0">
+    <frgroup>
         <label slot="label">
             Grace Total
         </label>
-        <label class="label-2" v-text="gracePeriod + ' Month'"></label>
+        <label v-text="gracePeriod + ' Month'"></label>
     </frgroup>
 
 </accordion>

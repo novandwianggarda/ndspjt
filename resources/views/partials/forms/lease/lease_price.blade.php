@@ -1,100 +1,77 @@
-<div class="box-header with-border">
-    <a data-toggle="collapse" data-parent="#accordion-lease-price" href="#collapse-lease-price">
-        <h4 class="box-title ll-sub-head">
-            {{ trans('lease.shdl_price') }}
-        </h4>
-    </a>
-</div>
-<div id="collapse-lease-price" class="panel-collapse collapse">
-    <div class="box-body">
-        <div class="form-group">
-            <div class="col-sm-12">
-                {{-- <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Jaminan
-                    </label>
-                    <div class="col-sm-10">
-                        <money name="rent_assurance" class="form-control" value="{{ old('rent_assurance') }}"></money>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Sewa per Bulan
-                    </label>
-                    <div class="col-sm-10">
-                        <money name="rent_monthly" class="form-control" value="{{ old('rent_monthly') }}"></money>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Sewa per Tahun
-                    </label>
-                    <div class="col-sm-10">
-                        <money name="rent_yearly" class="form-control" value="{{ old('rent_yearly') }}"></money>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Pajak
-                    </label>
-                    <div class="col-sm-5">
-                        <div class="checkbox-inline">
-                            <label><input type="checkbox" value="">Include PPN</label>
-                        </div>
-                        <div class="checkbox-inline">
-                            <label><input type="checkbox" value="">Include PPH</label>
-                        </div>
-                    </div>
-                </div> --}}
-                {{-- <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Sewa/Tahun (DPP)
-                    </label>
-                    <div class="col-sm-10">
-                        <money name="rent_yearly" class="form-control" value="0"></money>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Total Sewa
-                    </label>
-                    <div class="col-sm-10">
-                        <money class="form-control" value="0"></money>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Total PPN
-                    </label>
-                    <div class="col-sm-10">
-                        <money class="form-control" value="0"></money>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Total Sewa + PPN
-                    </label>
-                    <div class="col-sm-10">
-                        <money class="form-control" value="0"></money>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Service Charge + PPN per Bulan
-                    </label>
-                    <div class="col-sm-10">
-                        <money class="form-control" value="0"></money>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Service Charge + PPN per m<sup>2</sup> per Bulan
-                    </label>
-                    <div class="col-sm-10">
-                        <money class="form-control" value="0"></money>
-                    </div>
-                </div> --}}
-            </div>
-        </div>
+<accordion name="collapse-lease-price" collapse="in">
+
+    <div slot="title" class="ll-head">
+        HARGA
     </div>
-</div>
+
+    <frgroup>
+        <label slot="label">
+            Jaminan
+        </label>
+        <money name="rent_assurance" class="form-control" v-bind:value="rentAssurance"></money>
+    </frgroup>
+
+    <frgroup>
+        <label slot="label">
+            Sewa <span v-text="periodType"></span> (DPP)
+        </label>
+        <money name="rent_price" class="form-control" v-model="rentPrice"></money>
+    </frgroup>
+
+    <frgroup wl="2" wi="2">
+        <label slot="label">
+            Tipe Luas
+        </label>
+        <select name="rent_monthly_type" v-model="rentMonthlyM2Type" class="form-control">
+            <option value="building" selected>Building</option>
+            <option value="land">Land</option>
+        </select>
+    </frgroup>
+
+    <frgroup wl="2" wi="6">
+        <label slot="label">
+            Sewa Perbulan /m2
+        </label>
+        <money class="form-control" v-bind:value="rentPriceMonthlyM2" disabled></money>
+    </frgroup>
+
+    <div class="clearfix"></div>
+
+    <frgroup>
+        <label slot="label">
+            Total Sewa
+        </label>
+        <money class="form-control" v-bind:value="rentPriceTotal" disabled></money>
+    </frgroup>
+
+    <div v-show="lessorPKP === 'true'">
+        <frgroup>
+            <label slot="label">
+                Total PPN
+            </label>
+            <money class="form-control" v-bind:value="rentPricePPN" disabled></money>
+        </frgroup>
+
+        <frgroup>
+            <label slot="label">
+                Total Sewa + PPN
+            </label>
+            <money class="form-control" v-bind:value="rentPriceTotalWithPPN" disabled></money>
+        </frgroup>
+
+        <frgroup>
+            <label slot="label">
+                Total PPh
+            </label>
+            <money class="form-control" v-bind:value="rentPricePPH" disabled></money>
+        </frgroup>
+    </div>
+
+    <frgroup>
+        <label slot="label">
+            Pendapatan Setelah PPh &amp; Fee
+        </label>
+        <money class="form-control" v-bind:value="rentIncomeTotal" disabled></money>
+    </frgroup>
+
+</accordion>

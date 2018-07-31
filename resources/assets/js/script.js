@@ -23,3 +23,8 @@ function diffTwoDates(start, end, period) {
     }
     return difference;
 }
+
+// ex: 190191 = 190200
+function roundHundred(x) {
+    return Math.round(x / 100) * 100;
+}

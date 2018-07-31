@@ -19,6 +19,7 @@
 </script>
 <style scoped>
     .pd-1 {
-        padding-bottom: 15px;
+        padding-top: 10px;
+        padding-bottom: 5px;
     }
 </style>
