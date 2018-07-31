@@ -60,6 +60,8 @@
         <indate name="end" value="{{ old('end') }}"></indate>
     </frgroup>
 
+   
+
 {{-- <div id="collapse-lease" class="panel-collapse collapse">
     <div class="box-body">
         <div class="form-group">
