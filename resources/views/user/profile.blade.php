@@ -1,4 +1,8 @@
-@extends('adminlte::page')
+
+
+
+
+{{--@extends('adminlte::page')
 
 @section('title', 'User Profile')
 
@@ -48,3 +52,4 @@
 @section('js')
 
 @stop
+--}}

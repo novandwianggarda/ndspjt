@@ -30,7 +30,7 @@
                                 @include('partials.forms.tax.detailinformation')
                                 <div class="form-groxup">
                                     <div class="col-sm-12" style="padding:0px 25px">
-                                        <button type="submit" class="btn form-control ll-bgcolor ll-white">
+                                        <button type="submit" class="btn form-control ll-bgcolor ll-white" style="margin-top: 10px;">
                                             <i class="fa fa-plus"></i>
                                             Add
                                         </button>
@@ -46,16 +46,20 @@
 @stop
 
 @section('css')
-    <style>
+   {{-- <style>
         h4.box-title {
             display: block !important;
             background-color: #a60099;
             padding: 10px;
             color: white;
         }
-    </style>
+    </style> --}}
 @stop
 
 @section('js')
-
+        <script type="text/javascript">
+            var fvue = new Vue({
+                el: '#form-tax',
+            });
+        </script>
 @stop
