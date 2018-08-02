@@ -1,7 +1,7 @@
-<accordion name="collapse-lease-price" collapse="in">
+<accordion name="collapse-lease-price">
 
     <div slot="title" class="ll-head">
-        HARGA
+        HARGA SEWA
     </div>
 
     <frgroup>

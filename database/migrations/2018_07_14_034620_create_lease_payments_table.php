@@ -15,6 +15,10 @@ class CreateLeasePaymentsTable extends Migration
     {
         Schema::create('lease_payments', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('lease_id');
+            $table->date('due_date');
+            $table->date('paid_date');
+            $table->double('total', 12, 0);
             $table->timestamps();
         });
     }

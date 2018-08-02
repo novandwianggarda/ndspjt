@@ -6,20 +6,6 @@
 
     <frgroup>
         <label slot="label">
-            No Akta Sewa
-        </label>
-        <input type="text" name="lease_deed" value="{{ old('lease_deed') }}" class="form-control" />
-    </frgroup>
-
-    <frgroup>
-        <label slot="label">
-            Tgl. Akta Sewa
-        </label>
-        <indate name="lease_deed_date" value="{{ old('lease_deed_date') }}"></indate>
-    </frgroup>
-
-    <frgroup>
-        <label slot="label">
             Yang Menyewakan
         </label>
         <input type="text" name="lessor" value="{{ old('lessor') }}" class="form-control" />
@@ -34,7 +20,22 @@
 
     <frgroup>
         <label slot="label">
-            PKP Penyewa
+            No Akta Sewa
+        </label>
+        <input type="text" name="lease_deed" value="{{ old('lease_deed') }}" class="form-control" />
+    </frgroup>
+
+    <frgroup>
+        <label slot="label">
+            Tgl. Akta Sewa
+        </label>
+        <indate name="lease_deed_date" value="{{ old('lease_deed_date') }}"></indate>
+    </frgroup>
+
+
+    <frgroup>
+        <label slot="label">
+            PKP Yg Menyewakan
         </label>
         <div class="input-group">
             <label class="radio-inline"><input type="radio" v-model="lessorPKP" value="true">Ya</label>
@@ -55,6 +56,10 @@
         </label>
         <input type="text" name="pic" value="{{ old('pic') }}" class="form-control" />
     </frgroup>
+
+    <!-- GRACE -->
+    <div class="clearfix"></div>
+    @include('partials.forms.lease.grace')
 
     <frgroup wl="2" wi="4">
         <label slot="label">
@@ -93,9 +98,10 @@
     <div class="clearfix"></div>
     @include('partials.forms.lease.lease_price')
 
-    <!-- GRACE -->
+    <!-- PAYMENT -->
     <div class="clearfix"></div>
-    @include('partials.forms.lease.grace')
+    @include('partials.forms.lease.lease_payment')
+
 
     <!-- BROKER -->
     <div class="clearfix"></div>

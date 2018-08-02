@@ -40,11 +40,23 @@ class Lease extends Model
         return $this->belongsTo('App\LeaseType', 'lease_type_id', 'id');
     }
 
+    /**
+     * get lease payments
+     *
+     * @return Illuminate\Database\Eloquent\Collection of App\LeasePayment
+     */
+    public function payments()
+    {
+        return $this->hasMany('App\LeasePayment', 'lease_id', 'id');
+    }
+
 
     /** ATTRIBUTES */
 
     /**
      * get certificates
+     *
+     * @return Illuminate\Database\Eloquent\Collection of App\Certificate
      */
     public function getCertificatesAttribute()
     {

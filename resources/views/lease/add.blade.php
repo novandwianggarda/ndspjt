@@ -28,7 +28,7 @@
                                     <div class="col-sm-12" style="padding:0px 25px">
                                         <button type="submit" class="btn form-control ll-bgcolor ll-white">
                                             <i class="fa fa-plus"></i>
-                                            Add
+                                            Submit
                                         </button>
                                     </div>
                                 </div>
@@ -104,7 +104,7 @@
                     return this.rentPriceTotal + this.rentPricePPN;
                 },
                 rentIncomeTotal: function() {
-                    return (this.rentPriceTotalWithPPN - this.rentAssurance - this.rentPricePPH - this.brokFeeTotal);
+                    return (this.rentPriceTotalWithPPN - this.rentPricePPH - this.brokFeeTotal);
                     // return (this.rentPriceTotalWithPPN - this.rentPricePPH - this.brokFeeTotal) / this.duration;
                 },
                 rentPriceMonthlyM2: function() {

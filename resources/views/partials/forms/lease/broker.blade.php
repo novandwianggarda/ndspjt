@@ -18,7 +18,7 @@
         <money name="brok_fee_yearly" v-model="brokFeeYearly" class="form-control"></money>
     </frgroup>
 
-    <frgroup v-show="brokFeeTotal !== 0">
+    <frgroup>
         <label slot="label">
             Fee Total
         </label>
