@@ -26,10 +26,10 @@
                 <money class="form-control" value=""></money>
             </div>
             <div class="col-md-2">
-                <indate value=""></indate>
+                <indate name="123" value=""></indate>
             </div>
             <div class="col-md-2">
-                <indate value=""></indate>
+                <indate name="456" value=""></indate>
             </div>
             <div class="col-md-2">
                 <button class="btn btn-sm btn-primary">Remove</button>

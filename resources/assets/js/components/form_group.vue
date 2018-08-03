@@ -1,9 +1,9 @@
 <template>
     <div style="display:inline">
-        <label :class="'col-md-' + wl + ' control-label pd-1'">
+        <label :class="`col-md-${wl} col-sm-${wl} control-label pd-1`">
             <slot name="label"></slot>
         </label>
-        <div :class="'col-md-' + wi + ' pd-1'">
+        <div :class="`col-md-${wi} col-sm-${wi} pd-1`">
             <slot></slot>
         </div>
     </div>

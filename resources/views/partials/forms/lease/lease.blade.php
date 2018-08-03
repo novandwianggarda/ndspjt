@@ -27,7 +27,7 @@
 
     <frgroup>
         <label slot="label">
-            Tgl. Akta Sewa
+            Tanggal Akta Sewa
         </label>
         <indate name="lease_deed_date" value="{{ old('lease_deed_date') }}"></indate>
     </frgroup>
@@ -35,7 +35,7 @@
 
     <frgroup>
         <label slot="label">
-            PKP Yg Menyewakan
+            PKP Yang Menyewakan
         </label>
         <div class="input-group">
             <label class="radio-inline"><input type="radio" v-model="lessorPKP" value="true">Ya</label>

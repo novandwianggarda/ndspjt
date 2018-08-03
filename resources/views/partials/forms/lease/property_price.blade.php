@@ -1,6 +1,6 @@
 <accordion name="collapse-property-price">
 
-        <div slot="title" class="ll-head">
+        <div slot="title" class="ll-head-2">
             OFFER
         </div>
 

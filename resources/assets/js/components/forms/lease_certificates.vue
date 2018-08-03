@@ -7,6 +7,7 @@
             </label>
             <div>
                 <select id="lease-certificates" class="form-control" multiple="multiple" v-model="select_certificate_ids" :options="options">
+                    <option value="0">➕ Add New Certificate</option>
                     <option v-for="option in options" :value="option.id" :key="option.id">
                         {{ option.number }} - {{ option.name }}
                     </option>
@@ -45,7 +46,13 @@
                 options: [],
                 select_certificate_ids: [],
                 certificate: [],
+                x: '',
             };
+        },
+        methods: {
+            redirect() {
+                window.location = '/certificates/add';
+            }
         },
         mounted() {
             let select = $('#lease-certificates');
@@ -56,11 +63,15 @@
 
             select.select2().change(() => {
                 this.select_certificate_ids = select.val();
-                axios.get('/ajax/certificate/result?ids=' + select.val().toString())
-                     .then(response => {
-                        this.certificate = response.data;
-                        watcher.$emit('certificateSelected');
-                });
+                if (this.select_certificate_ids.includes('0')) {
+                    this.redirect();
+                } else {
+                    axios.get('/ajax/certificate/result?ids=' + select.val().toString())
+                         .then(response => {
+                            this.certificate = response.data;
+                            watcher.$emit('certificateSelected');
+                    });
+                }
             });
         },
     }

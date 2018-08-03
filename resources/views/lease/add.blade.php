@@ -109,7 +109,11 @@
                 },
                 rentPriceMonthlyM2: function() {
                     var area = this.rentMonthlyM2Type === 'land' ? this.landArea : this.buildingArea;
-                    return this.rentPrice / 12 / parseInt(area);
+                    if (this.periodType === 'yearly') {
+                        return this.rentPrice / 12 / parseInt(area);
+                    } else {
+                        return this.rentPrice / parseInt(area);
+                    }
                 }
             },
             mounted() {

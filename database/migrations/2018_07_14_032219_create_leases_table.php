@@ -16,16 +16,17 @@ class CreateLeasesTable extends Migration
         Schema::create('leases', function (Blueprint $table) {
             $table->increments('id');
             $table->string('certificate_ids')->unique(); // bisa lebih dari satu sertifikat
-            $table->integer('lease_type_id'); // tipe properti (rumah, tanah, dll)
-            $table->integer('lease_payment_id')->default(0); // payment terms id
+            $table->integer('lease_type_id'); // tipe properti (rumah, tanah, dll) id
+            $table->integer('lease_payment_id')->default(0); // payment history id
 
             // LEASE BASE
             $table->string('lessor')->nullable(); // yang menyewakan
             $table->string('tenant')->nullable(); // nama penyewa
-            $table->string('purpose')->nullable(); // keperluan disewa untuk
+            $table->string('purpose')->nullable(); // keperluan disewa untuk apa
             $table->date('start')->nullable(); // tanggal mulai sewa
             $table->date('end')->nullable(); // tanggal berakhir sewa
             $table->text('note')->nullable(); // keterangan
+
             // LEASE DEED aka Akta Sewa
             $table->text('lease_deed'); // nomor akta sewa
             $table->text('lease_deed_date'); // tanggal akta sewa
@@ -34,7 +35,8 @@ class CreateLeasesTable extends Migration
             $table->double('sell_monthly', 13, 2)->default(0); // harga penawaran perbulan
             $table->double('sell_yearly', 13, 2)->default(0); // harga penawaran pertahun
             $table->double('rent_meterly_monthly', 13, 2)->default(0); // harga tersewa permeter perbulan
-            $table->double('rent_yearly', 13, 2)->default(0); // harga tersewa pertahun
+            $table->double('rent_price', 13, 2)->default(0); // harga tersewa (bisa perbulan/pertahun)
+            $table->double('rent_price_type')->enum('monthly', 'yearly')->default('yearly'); // bulanan / tahunan
             $table->double('rent_assurance', 13, 2)->default(0); // jaminan sewa
 
             // PROPERTY

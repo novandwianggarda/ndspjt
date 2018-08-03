@@ -30,7 +30,7 @@
             Luas Tanah
         </label>
         <div class="input-group">
-            <input type="number" min="0" name="prop_land_area" v-model="landArea" class="form-control" />
+            <money class="form-control" name="prop_land_area" v-model="landArea" v-bind="{prefix:'',precision:0,thousands:'.'}"></money>
             <span class="input-group-addon">m<sup>2</sup></span>
         </div>
     </frgroup>
@@ -40,7 +40,7 @@
             Luas Bangunan
         </label>
         <div class="input-group">
-            <input type="number" min="0" name="prop_building_area" v-model="buildingArea" class="form-control" />
+            <money class="form-control" name="prop_building_area" v-model="buildingArea" v-bind="{prefix:'',precision:0,thousands:'.'}"></money>
             <span class="input-group-addon">m<sup>2</sup></span>
         </div>
     </frgroup>
