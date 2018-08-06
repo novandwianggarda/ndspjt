@@ -13,9 +13,14 @@ $factory->define(\App\Lease::class, function (Faker $faker) {
     $waters = ['Tidak Ada', 'PAM', 'Sumur', 'Artetis'];
     $brokYearly = $faker->numberBetween(1000000, 99999999);
     $sellMonthly = $faker->numberBetween(100000, 9999999);
-    $rentMontlyYearly = $faker->numberBetween(200000, 2000000);
+    $rentM2Montly = $faker->numberBetween(2000, 20000);
+    $rentM2MontlyType = $faker->randomElement(['land', 'building']);
     $randCertId = $faker->unique()->randomElement($certificateIds);
     $certArea = Certificate::find($randCertId)->area;
+    $landArea = $faker->numberBetween(100, 9999);
+    $rentPrice = $rentM2Montly * 12 * $certArea;
+    $buildingArea = $faker->numberBetween(10, 999);
+    $rentPrice = $rentM2Montly * 12 * ($rentM2MontlyType == 'land' ? $landArea : $buildingArea);
 
     return [
         'certificate_ids' => $randCertId,
@@ -24,6 +29,7 @@ $factory->define(\App\Lease::class, function (Faker $faker) {
 
         // LEASE
         'lessor' => $faker->randomElement($lessor),
+        'lessor_pkp' => $faker->boolean,
         'tenant' => $faker->name,
         'purpose' => $faker->sentence,
         'start' => randomDate('2017'),
@@ -35,15 +41,15 @@ $factory->define(\App\Lease::class, function (Faker $faker) {
         // PRICES
         'sell_monthly' => $sellMonthly,
         'sell_yearly' => $sellMonthly * 12,
-        'rent_meterly_monthly' => $rentMontlyYearly,
-        'rent_yearly' => $rentMontlyYearly * 12 * $certArea,
+        'rent_m2_monthly' => $rentM2Montly,
+        'rent_price' => $rentPrice,
         'rent_assurance' => $faker->numberBetween(2000000, 50000000),
 
         // PROPERTY
         'prop_name' => $faker->company,
         'prop_address' => $faker->address,
-        'prop_land_area' => $faker->numberBetween(100, 9999),
-        'prop_building_area' => $faker->numberBetween(10, 999),
+        'prop_land_area' => $landArea,
+        'prop_building_area' => $buildingArea,
         'prop_block' => strtoupper($faker->randomLetter),
         'prop_unit' => $faker->numberBetween(1, 100),
         'prop_floor' => $faker->numberBetween(1, 20),

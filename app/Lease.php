@@ -3,29 +3,54 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 use App\Certificate;
 use Carbon\Carbon;
 
-class Lease extends Model
+class Lease extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+
     protected $table = 'leases';
     protected $fillable = [
         'certificate_ids', 'lease_type_id', 'lease_payment_id',
 
         // LEASE BASE
-        'tenant', 'purpose', 'duration', 'start', 'end', 'note', 'lease_deed', 'lease_deed_date',
+        'lessor', 'lessor_pkp', 'tenant', 'purpose', 'start', 'end', 'note', 'lease_deed', 'lease_deed_date', 'payment_terms',
+
+        // PRICES
+        'sell_monthly', 'sell_yearly', 'rent_m2_monthly', 'rent_m2_monthly_type', 'rent_price', 'rent_price_type', 'rent_assurance',
 
         // PROPERTY
-        'prop_name', 'prop_address', 'prop_land_area', 'prop_building_area', 'prop_block', 'prop_unit', 'prop_electricity', 'prop_water', 'prop_telephone',
+        'prop_name', 'prop_address', 'prop_land_area', 'prop_building_area', 'prop_block', 'prop_floor', 'prop_unit', 'prop_electricity', 'prop_water', 'prop_telephone',
 
         // BROKER
-        'brok_name', 'brok_fee_yearly', 'brok_fee_total', 'brok_fee_paid',
+        'brok_name', 'brok_fee_yearly', 'brok_fee_paid',
 
         // GRACE
-        'folder_number', 'folder_current', 'folder_plan'
+        'grace_start', 'grace_end'
     ];
 
     public $timestamp = true;
+
+
+    /** AUDIT */
+
+    /**
+     * Attributes to exclude from the Audit.
+     *
+     * @var array
+     */
+    protected $auditExclude = [
+
+    ];
+
+    /**
+     * Should the audit be strict?
+     *
+     * @var bool
+     */
+    protected $auditStrict = true;
 
 
     /** ELOQUENT RELATIONSHIP */
@@ -41,7 +66,7 @@ class Lease extends Model
     }
 
     /**
-     * get lease payments
+     * get lease payments history
      *
      * @return Illuminate\Database\Eloquent\Collection of App\LeasePayment
      */
@@ -72,9 +97,7 @@ class Lease extends Model
      */
     public function getDurationAttribute()
     {
-        $start = Carbon::parse($this->start);
-        $end = Carbon::parse($this->end);
-        return sprintf('%.2f', $end->diffInDays($start) / 365); // round 365days
+        return diffTwoDates($this->start, $this->end, $this->rent_price_type);
     }
 
     /**
@@ -85,9 +108,7 @@ class Lease extends Model
      */
     public function getGracePeriodAttribute()
     {
-        $start = Carbon::parse($this->grace_start);
-        $end = Carbon::parse($this->grace_end);
-        return sprintf('%.2f', $end->diffInDays($start) / 30); // round 30days
+        return diffTwoDates($this->grace_start, $this->grace_end, 'monthly');
     }
 
 

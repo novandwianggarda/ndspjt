@@ -153,6 +153,7 @@ return [
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         Spatie\TranslationLoader\TranslationServiceProvider::class,
+        OwenIt\Auditing\AuditingServiceProvider::class,
 
 
         /*

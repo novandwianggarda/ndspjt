@@ -3,15 +3,37 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class LeasePayment extends Model
+class LeasePayment extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+
     protected $table = 'lease_payments';
     protected $fillable = [
-        'lease_id', 'due_date', 'paid_date', 'total',
+        'lease_id', 'paid_date', 'total', 'note'
     ];
 
     public $timestamp = true;
+
+
+    /** AUDIT */
+
+    /**
+     * Attributes to exclude from the Audit.
+     *
+     * @var array
+     */
+    protected $auditExclude = [
+
+    ];
+
+    /**
+     * Should the audit be strict?
+     *
+     * @var bool
+     */
+    protected $auditStrict = true;
 
 
     /** ELOQUENT RELATION */

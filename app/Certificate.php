@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Certificate extends Model
+class Certificate extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+
     protected $table = 'certificates';
     protected $fillable = [
         'certificate_type_id',
@@ -27,6 +30,25 @@ class Certificate extends Model
     ];
 
     public $timestamp = true;
+
+
+    /** AUDIT */
+
+    /**
+     * Attributes to exclude from the Audit.
+     *
+     * @var array
+     */
+    protected $auditExclude = [
+
+    ];
+
+    /**
+     * Should the audit be strict?
+     *
+     * @var bool
+     */
+    protected $auditStrict = true;
 
 
     /** ELOQUENT RELATION */

@@ -21,6 +21,7 @@ class CreateLeasesTable extends Migration
 
             // LEASE BASE
             $table->string('lessor')->nullable(); // yang menyewakan
+            $table->boolean('lessor_pkp'); // pkp yg menyewakan, true jika ya, false jika tidak
             $table->string('tenant')->nullable(); // nama penyewa
             $table->string('purpose')->nullable(); // keperluan disewa untuk apa
             $table->date('start')->nullable(); // tanggal mulai sewa
@@ -31,12 +32,18 @@ class CreateLeasesTable extends Migration
             $table->text('lease_deed'); // nomor akta sewa
             $table->text('lease_deed_date'); // tanggal akta sewa
 
+            // PAYMENT TERMS
+            $table->text('payment_terms')->nullable(); // as json
+            // ex: {['number':1, 'total':900000, 'due_date':'2019-01-15', 'note':'lorem ipsum'],
+            //      ['number':2, 'total':1000000, 'due_date':'2019-05-15', 'note':'lorem ipsum']}
+
             // PRICES
             $table->double('sell_monthly', 13, 2)->default(0); // harga penawaran perbulan
             $table->double('sell_yearly', 13, 2)->default(0); // harga penawaran pertahun
-            $table->double('rent_meterly_monthly', 13, 2)->default(0); // harga tersewa permeter perbulan
+            $table->double('rent_m2_monthly', 13, 2)->default(0); // harga tersewa permeter perbulan
+            $table->enum('rent_m2_monthly_type', ['land', 'building'])->default('building'); // tipe harga sewa permeter perbulan (land/building)
             $table->double('rent_price', 13, 2)->default(0); // harga tersewa (bisa perbulan/pertahun)
-            $table->double('rent_price_type')->enum('monthly', 'yearly')->default('yearly'); // bulanan / tahunan
+            $table->enum('rent_price_type', ['monthly', 'yearly'])->default('yearly'); // bulanan / tahunan
             $table->double('rent_assurance', 13, 2)->default(0); // jaminan sewa
 
             // PROPERTY
