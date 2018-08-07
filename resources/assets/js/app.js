@@ -9,7 +9,7 @@ Vue.component('indate', require('./components/input_date.vue'));
 
 Vue.component('lease-types', require('./components/forms/lease_types.vue'));
 Vue.component('lease-certificates', require('./components/forms/lease_certificates.vue'));
-Vue.component('lease-payment', require('./components/forms/lease_payment.vue'));
+Vue.component('lease-payment-terms', require('./components/forms/lease_payment_terms.vue'));
 Vue.component('certificate-types', require('./components/forms/certificate_types.vue'));
 
 Vue.use(money, {

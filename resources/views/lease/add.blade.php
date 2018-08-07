@@ -23,6 +23,8 @@
                                 @include('partials.forms.lease.property')
                                 <!-- LEASE -->
                                 @include('partials.forms.lease.lease')
+                                <!-- OUTSTANDING -->
+                                @include('partials.forms.lease.outstanding')
                                 <!-- SUBMIT BTN -->
                                 <div class="form-group" style="margin-top:15px;">
                                     <div class="col-sm-12" style="padding:0px 25px">
@@ -73,6 +75,7 @@
                 rentMonthlyM2Type: 'building',
                 landArea: oldLandArea,
                 buildingArea: oldBuildingArea,
+                paymentTerms: [],
 
             },
             computed: {
@@ -97,7 +100,7 @@
                     return this.rentPrice * 0.10;
                 },
                 rentPricePPH: function() {
-                    if (this.lessorPKP === 'false') return 0;
+                    // if (this.lessorPKP === 'false') return 0;
                     return this.rentPrice * 0.10;
                 },
                 rentPriceTotalWithPPN: function() {
@@ -114,6 +117,11 @@
                     } else {
                         return this.rentPrice / parseInt(area);
                     }
+                }
+            },
+            methods: {
+                addPaymentTerms: function() {
+                    console.log('sdfsdf')
                 }
             },
             mounted() {

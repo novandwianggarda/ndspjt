@@ -98,11 +98,6 @@
     <div class="clearfix"></div>
     @include('partials.forms.lease.lease_price')
 
-    <!-- PAYMENT -->
-    <div class="clearfix"></div>
-    @include('partials.forms.lease.lease_payment')
-
-
     <!-- BROKER -->
     <div class="clearfix"></div>
     @include('partials.forms.lease.broker')

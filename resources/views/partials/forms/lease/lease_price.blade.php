@@ -44,6 +44,17 @@
         <money class="form-control" v-bind:value="rentPriceTotal" disabled></money>
     </frgroup>
 
+    <!-- PAYMENT -->
+    <div class="clearfix"></div>
+    @include('partials.forms.lease.lease_payment_terms')
+
+    <frgroup>
+        <label slot="label">
+            Total PPh
+        </label>
+        <money class="form-control" v-bind:value="rentPricePPH" disabled></money>
+    </frgroup>
+
     <div v-show="lessorPKP === 'true'">
         <frgroup>
             <label slot="label">
@@ -59,19 +70,13 @@
             <money class="form-control" v-bind:value="rentPriceTotalWithPPN" disabled></money>
         </frgroup>
 
-        <frgroup>
-            <label slot="label">
-                Total PPh
-            </label>
-            <money class="form-control" v-bind:value="rentPricePPH" disabled></money>
-        </frgroup>
     </div>
 
-    <frgroup>
+    {{-- <frgroup>
         <label slot="label">
             Pendapatan Setelah PPh &amp; Fee
         </label>
         <money class="form-control" v-bind:value="rentIncomeTotal" disabled></money>
-    </frgroup>
+    </frgroup> --}}
 
 </accordion>
