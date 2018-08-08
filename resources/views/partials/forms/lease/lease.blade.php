@@ -1,4 +1,4 @@
-<accordion name="collapse-lease" collapse="in">
+<accordion name="collapse-lease">
 
     <div slot="title" class="ll-head">
         {{ trans('lease.hd_lease') }}

@@ -39,3 +39,24 @@
 	border-bottom-right-radius: 10px;
 	cursor: pointer;
 }
+
+
+
+
+
+.panel-title>a, .panel-title>a:active{
+	display:block;
+}
+
+.panel-heading  a:before {
+   font-family: 'Glyphicons Halflings';
+   content: "\e114";
+   float: right;
+   transition: all 0.4s;
+}
+
+.panel-heading.active a:before {
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	transform: rotate(90deg);
+} 
