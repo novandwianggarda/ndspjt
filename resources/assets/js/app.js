@@ -3,6 +3,7 @@ window.Vue = require('vue');
 import money from 'v-money';
 
 /** VUE COMPONENTS */
+Vue.component('row-box', require('./components/row_box.vue'));
 Vue.component('accordion', require('./components/accordion.vue'));
 Vue.component('frgroup', require('./components/form_group.vue'));
 Vue.component('indate', require('./components/input_date.vue'));

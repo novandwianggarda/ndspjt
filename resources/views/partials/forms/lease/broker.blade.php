@@ -1,4 +1,4 @@
-<accordion name="collapse-broker">
+<accordion name="collapse-broker" sub="true">
 
     <div slot="title" class="ll-head-2">
         BROKER

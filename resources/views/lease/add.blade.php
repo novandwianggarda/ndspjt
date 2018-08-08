@@ -7,40 +7,32 @@
 @stop
 
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box box-solid">
-                <div class="box-body">
-                    <!--ERRORS-->
-                    @include('partials.errors')
-                    <form class="form-horizontal" id="form-lease" action="/leases/add" method="POST">
-                        @csrf
-                        <div class="box-group" id="accordion">
-                            <div class="panel box">
-                                <!-- LAND -->
-                                @include('partials.forms.lease.land')
-                                <!-- PROPERTY -->
-                                @include('partials.forms.lease.property')
-                                <!-- LEASE -->
-                                @include('partials.forms.lease.lease')
-                                <!-- OUTSTANDING -->
-                                @include('partials.forms.lease.outstanding')
-                                <!-- SUBMIT BTN -->
-                                <div class="form-group" style="margin-top:15px;">
-                                    <div class="col-sm-12" style="padding:0px 25px">
-                                        <button type="submit" class="btn form-control ll-bgcolor ll-white">
-                                            <i class="fa fa-plus"></i>
-                                            Submit
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+    <row-box>
+        <!--ERRORS-->
+        @include('partials.errors')
+        <form class="form-horizontal" id="form-lease" action="/leases/add" method="POST">
+            @csrf
+            <div class="box-group" id="accordion">
+                <div class="panel box">
+                    <!-- LAND -->
+                    @include('partials.forms.lease.land')
+                    <!-- PROPERTY -->
+                    @include('partials.forms.lease.property')
+                    <!-- LEASE -->
+                    @include('partials.forms.lease.lease')
+                    <!-- SUBMIT BTN -->
+                    <div class="form-group" style="margin-top:15px;">
+                        <div class="col-sm-12" style="padding:0px 25px">
+                            <button type="submit" class="btn form-control ll-bgcolor ll-white">
+                                <i class="fa fa-plus"></i>
+                                Submit
+                            </button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </form>
+    </row-box>
 @stop
 
 @section('css')
@@ -50,47 +42,70 @@
 @section('js')
     <script>
 
-        // Only bind property that are used to calculate something
+        var form = $('#form-add-lease');
 
-        var form = $('#form-lease');
-        var oldBrokFeeYearly = "{{ old('brok_fee_yearly') }}" == '' ? 0 : parseInt(oldBrokFeeYearly);
-        var oldPeriodType = "{{ old('period_type') }}" == '' ? 'yearly' : oldPeriodType;
+        // property
         var oldLandArea = "{{ old('prop_land_area') }}";
         var oldBuildingArea = "{{ old('prop_building_area') }}";
+
+        // lease
+        oldStart = "{{ old('start') }}";
+        oldEnd = "{{ old('end') }}";
+
+        // lease deed
+        var oldLeaseDeedDate = "{{ old('lease_deed_date') }}";
+
+        // lease price
         var oldRentAssurance = "{{ old('rent_assurance') }}";
+
+        // lease grace period
+        var oldPeriodType = "{{ old('period_type') }}" == '' ? 'yearly' : "{{ old('period_type') }}";
+
+        // lease broker
+        var oldBrokFeeYearly = "{{ old('brok_fee_yearly') }}" == '' ? 0 : parseInt("{{ old('brok_fee_yearly') }}");
 
         var fvue = new Vue({
             el: '#form-lease',
             data: {
+                // land
                 certificateIds: '',
-                start: "{{ old('start') }}",
-                end: "{{ old('end') }}",
+                landArea: oldLandArea,
+                buildingArea: oldBuildingArea,
+
+                // lease
+                start: oldStart,
+                end: oldStart,
                 periodType: oldPeriodType,
                 lessorPKP: 'false',
-                graceStart: "{{ old('grace_start') }}",
-                graceEnd: "{{ old('grace_end') }}",
-                brokFeeYearly: oldBrokFeeYearly,
+
+                // lease deed
+                leaseDeedDate: oldLeaseDeedDate,
+
+                // lease price
                 rentPrice: 0,
                 rentAssurance: oldRentAssurance,
                 rentMonthlyM2Type: 'building',
-                landArea: oldLandArea,
-                buildingArea: oldBuildingArea,
-                paymentTerms: [],
 
+                // lease grace
+                graceStart: "{{ old('grace_start') }}",
+                graceEnd: "{{ old('grace_end') }}",
+
+                // lease broker
+                brokFeeYearly: oldBrokFeeYearly,
+
+                // lease payment terms
+                paymentTerms: [],
             },
             computed: {
-                gracePeriod: function() {
-                    return diffTwoDates(this.graceStart, this.graceEnd, 'monthly');
-                },
+                // lease
                 duration: function() {
                     return diffTwoDates(this.start, this.end, this.periodType);
-                },
-                brokFeeTotal: function() {
-                    return this.brokFeeYearly * this.duration;
                 },
                 periodTypeStr: function() {
                     return this.periodType == 'yearly' ? 'Year' : 'Month';
                 },
+
+                // lease price
                 rentPriceTotal: function() {
                     return this.duration * this.rentPrice;
                     // return roundHundred(this.duration * this.rentPrice);
@@ -117,31 +132,31 @@
                     } else {
                         return this.rentPrice / parseInt(area);
                     }
+                },
+
+                // lease grace
+                gracePeriod: function() {
+                    return diffTwoDates(this.graceStart, this.graceEnd, 'monthly');
+                },
+
+                // lease broker
+                brokFeeTotal: function() {
+                    return this.brokFeeYearly * this.duration;
                 }
+
             },
             methods: {
                 addPaymentTerms: function() {
-                    console.log('sdfsdf')
-                }
-            },
-            mounted() {
-                $('input[name="start"]').on('changeDate', () => {
-                    this.start = $('input[name="start"]').val()
-                });
-                $('input[name="end"]').on('changeDate', () => {
-                    this.end = $('input[name="end"]').val()
-                });
-                $('input[name="grace_start"]').on('changeDate', () => {
-                    this.graceStart = $('input[name="grace_start"]').val()
-                });
-                $('input[name="grace_end"]').on('changeDate', () => {
-                    this.graceEnd = $('input[name="grace_end"]').val()
-                });
+                    console.log('sdfsdf');
+                },
             },
             created() {
                 var vm = this;
-                watcher.$on('certificateSelected', function() {
+                watcher.$on('LC-certificateSelected', function() {
                     vm.certificateIds = $('#lease-certificates').val().toString();
+                });
+                watcher.$on('ID-dateChanged', function(bindTo, date) {
+                    vm[bindTo] = date;
                 });
             },
         });

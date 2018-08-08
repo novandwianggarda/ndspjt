@@ -39,12 +39,8 @@
     color: white;
 }
 
-.ll-sub-head {
-    display: block !important;
-    background-color: $ll-bg;
-    padding: 10px;
-    margin: 0px 25px !important;
-    color: white;
+.sub-accordion {
+    margin: 20px;
 }
 
 .input-group {
@@ -68,9 +64,13 @@
     margin-left: 10px;
 }
 
-.box-header {
-    padding: 0px !important;
-    border-top-width: 15px;
-    border-top-style: solid;
-    border-top-color: white;
+.left-border-thin {
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: rgba($color: $ll-bg, $alpha: 0.5);
+    margin-left: 10px;
+}
+
+.bottom-border {
+    border-bottom: 1px solid rgba($color: $ll-bg, $alpha: 0.5);
 }

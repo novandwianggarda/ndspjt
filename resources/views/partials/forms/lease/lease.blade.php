@@ -29,7 +29,7 @@
         <label slot="label">
             Tanggal Akta Sewa
         </label>
-        <indate name="lease_deed_date" value="{{ old('lease_deed_date') }}"></indate>
+        <indate name="lease_deed_date" bind-to="leaseDeedDate"></indate>
     </frgroup>
 
 
@@ -65,15 +65,17 @@
         <label slot="label">
             Awal Sewa
         </label>
-        <indate name="start" value="{{ old('start') }}"></indate>
+        <indate name="start" bind-to="start"></indate>
     </frgroup>
 
     <frgroup wl="2" wi="4">
         <label slot="label">
             Akhir Sewa
         </label>
-        <indate name="end" value="{{ old('end') }}"></indate>
+        <indate name="end" bind-to="end"></indate>
     </frgroup>
+
+    <div class="clearfix"></div>
 
     <frgroup wl="2" wi="4">
         <label slot="label">
@@ -94,13 +96,23 @@
         <label v-text="duration + ' ' + periodTypeStr"></label>
     </frgroup>
 
-    <!-- PRICE -->
     <div class="clearfix"></div>
+
+    <!-- PRICE -->
     @include('partials.forms.lease.lease_price')
 
     <!-- BROKER -->
-    <div class="clearfix"></div>
     @include('partials.forms.lease.broker')
+
+    <!-- PAYMENT TERMS-->
+    @include('partials.forms.lease.lease_payment_terms')
+
+    <!-- PAYMENT HISTORY -->
+    @include('partials.forms.lease.payment_history')
+
+
+    <!-- OUTSTANDING -->
+    @include('partials.forms.lease.outstanding')
 
 </div>
 
