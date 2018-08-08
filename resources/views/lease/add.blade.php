@@ -16,6 +16,7 @@
                     <form class="form-horizontal" id="form-lease" action="/leases/add" method="POST">
                         @csrf
                         <div class="box-group" id="accordion">
+
                             <div class="panel box">
                                 <!-- LAND -->
                                 @include('partials.forms.lease.land')
@@ -25,6 +26,10 @@
                                 @include('partials.forms.lease.lease')
                                 <!-- OUTSTANDING -->
                                 @include('partials.forms.lease.outstanding')
+
+                                <!-- @include('partials.forms.lease.coba') -->
+
+                                
                                 <!-- SUBMIT BTN -->
                                 <div class="form-group" style="margin-top:15px;">
                                     <div class="col-sm-12" style="padding:0px 25px">
@@ -147,4 +152,16 @@
         });
 
     </script>
+
+    <script type="text/javascript">
+   $('.panel-collapse').on('show.bs.collapse', function () {
+    $(this).siblings('.panel-heading').addClass('active');
+  });
+
+  $('.panel-collapse').on('hide.bs.collapse', function () {
+    $(this).siblings('.panel-heading').removeClass('active');
+  });
+
+  
+</script>
 @stop

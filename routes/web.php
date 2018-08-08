@@ -51,7 +51,11 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('leases/add', 'LeasesController@showAddForm');
     Route::post('leases/add', 'LeasesController@store');
 
+    // User Manager
+    Route::get('users', 'UserManagerController@index');
+
 });
+
 
 /** not used */
 // Auth::routes();
