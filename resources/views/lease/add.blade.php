@@ -64,9 +64,17 @@
         // lease broker
         var oldBrokFeeYearly = "{{ old('brok_fee_yearly') }}" == '' ? 0 : parseInt("{{ old('brok_fee_yearly') }}");
 
+
+        // Shared Resources
+        // lease payment terms
+        vueShared.paymentTerms = [];
+
         var fvue = new Vue({
             el: '#form-lease',
             data: {
+                // shared
+                shared: vueShared,
+
                 // land
                 certificateIds: '',
                 landArea: oldLandArea,
@@ -93,8 +101,6 @@
                 // lease broker
                 brokFeeYearly: oldBrokFeeYearly,
 
-                // lease payment terms
-                paymentTerms: [],
             },
             computed: {
                 // lease
@@ -142,21 +148,26 @@
                 // lease broker
                 brokFeeTotal: function() {
                     return this.brokFeeYearly * this.duration;
-                }
+                },
+
+                // lease payment terms
+                paymentTermsText : function() {
+                    return JSON.stringify(this.shared.paymentTerms);
+                },
 
             },
             methods: {
                 addPaymentTerms: function() {
-                    console.log('sdfsdf');
-                },
+                    console.log('123');
+                }
             },
             created() {
                 var vm = this;
-                watcher.$on('LC-certificateSelected', function() {
+                vueWatcher.$on('LC-certificateSelected', function() {
                     vm.certificateIds = $('#lease-certificates').val().toString();
                 });
-                watcher.$on('ID-dateChanged', function(bindTo, date) {
-                    vm[bindTo] = date;
+                vueWatcher.$on('ID-dateChanged', function(bindTo, date) {
+                    _.set(vm, bindTo, date)
                 });
             },
         });
@@ -164,14 +175,12 @@
     </script>
 
     <script type="text/javascript">
-   $('.panel-collapse').on('show.bs.collapse', function () {
-    $(this).siblings('.panel-heading').addClass('active');
-  });
+        $('.panel-collapse').on('show.bs.collapse', function () {
+            $(this).siblings('.panel-heading').addClass('active');
+        });
 
-  $('.panel-collapse').on('hide.bs.collapse', function () {
-    $(this).siblings('.panel-heading').removeClass('active');
-  });
-
-
-</script>
+        $('.panel-collapse').on('hide.bs.collapse', function () {
+            $(this).siblings('.panel-heading').removeClass('active');
+        });
+    </script>
 @stop

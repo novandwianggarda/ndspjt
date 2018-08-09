@@ -2,6 +2,10 @@
 window.Vue = require('vue');
 import money from 'v-money';
 
+// global vm for watcher
+window.vueWatcher = new Vue();
+window.vueShared = {};
+
 /** VUE COMPONENTS */
 Vue.component('row-box', require('./components/row_box.vue'));
 Vue.component('accordion', require('./components/accordion.vue'));
@@ -22,5 +26,3 @@ Vue.use(money, {
     masked: false
 });
 
-// global vm for watcher
-window.watcher = new Vue();

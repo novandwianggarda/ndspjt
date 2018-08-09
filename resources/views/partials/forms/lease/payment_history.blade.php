@@ -1,4 +1,4 @@
-<accordion name="collapse-payment-history">
+<accordion name="collapse-payment-history" sub="true">
 
     <div slot="title" class="ll-head-2">
         PAYMENT HISTORY

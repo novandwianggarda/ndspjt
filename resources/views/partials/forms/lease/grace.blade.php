@@ -8,14 +8,14 @@
         <label slot="label">
             Grace Awal
         </label>
-        <indate name="grace_start" v-bind:value="graceStart"></indate>
+        <indate name="grace_start" bind-to="graceStart"></indate>
     </frgroup>
 
     <frgroup wl="2" wi="4">
         <label slot="label">
             Grace Akhir
         </label>
-        <indate name="grace_end" v-bind:value="graceEnd"></indate>
+        <indate name="grace_end" bind-to="graceEnd"></indate>
     </frgroup>
 
     <div class="clearfix"></div>

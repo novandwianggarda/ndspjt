@@ -3,7 +3,7 @@
  */
 
 // Lodash
-// window._ = require('lodash');
+window._ = require('lodash');
 
 // Popper
 // window.Popper = require('popper.js').default;

@@ -1,4 +1,4 @@
-<accordion name="collapse-lease-price">
+<accordion name="collapse-lease-price" sub="true">
 
     <div slot="title" class="ll-head-2">
         HARGA SEWA
@@ -43,10 +43,6 @@
         </label>
         <money class="form-control" v-bind:value="rentPriceTotal" disabled></money>
     </frgroup>
-
-    <!-- PAYMENT -->
-    <div class="clearfix"></div>
-    @include('partials.forms.lease.lease_payment_terms')
 
     <frgroup>
         <label slot="label">

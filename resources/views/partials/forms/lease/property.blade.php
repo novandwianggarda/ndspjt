@@ -61,6 +61,8 @@
         <input type="text" name="prop_floor" value="{{ old('prop_floor') }}" class="form-control" />
     </frgroup>
 
+    <div class="clearfix"></div>
+
     <frgroup wl="2" wi="4">
         <label slot="label">
             Unit
@@ -74,6 +76,8 @@
         </label>
         <input type="text" name="prop_electricity" value="{{ old('prop_electricity') }}" class="form-control" />
     </frgroup>
+
+    <div class="clearfix"></div>
 
     <frgroup wl="2" wi="4">
         <label slot="label">

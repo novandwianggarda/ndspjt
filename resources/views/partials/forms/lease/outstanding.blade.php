@@ -1,11 +1,8 @@
-<accordion name="collapse-outstanding">
+<accordion name="collapse-outstanding" sub="true">
 
-    <div slot="title" class="ll-head">
+    <div slot="title" class="ll-head-2">
         OUTSTANDING
     </div>
-
-    <!-- PAYMENT HISTORY -->
-    @include('partials.forms.lease.payment_history')
 
     <frgroup>
         <label slot="label">

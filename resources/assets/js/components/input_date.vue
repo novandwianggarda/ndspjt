@@ -13,7 +13,7 @@
     export default {
         props: {
             name: { default: '' },
-            bindTo : { default: '' }
+            bindTo : { default: '' },
         },
         data() {
             return {
@@ -32,7 +32,7 @@
                 .on('changeDate', (e) => {
                     this.date = e.currentTarget.value;
                     if (this.bindTo !== '') {
-                        watcher.$emit('ID-dateChanged', this.bindTo, this.date);
+                        vueWatcher.$emit('ID-dateChanged', this.bindTo, this.date);
                     }
                 });
         },

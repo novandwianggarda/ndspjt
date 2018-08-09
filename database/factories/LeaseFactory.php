@@ -37,6 +37,7 @@ $factory->define(\App\Lease::class, function (Faker $faker) {
         'note' => $faker->realText,
         'lease_deed' => $faker->numberBetween(1111111111, 9999999999),
         'lease_deed_date' => randomDate('2017'),
+        'payment_terms' => '{[]}',
 
         // PRICES
         'sell_monthly' => $sellMonthly,

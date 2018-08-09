@@ -1,7 +1,7 @@
-<accordion name="collapse-property-price">
+<accordion name="collapse-property-price" sub="true">
 
         <div slot="title" class="ll-head-2">
-            OFFER
+            HARGA PENAWARAN
         </div>
 
         <frgroup>
