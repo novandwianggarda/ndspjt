@@ -1,14 +1,11 @@
-<accordion name="collapse-payment-history" sub="true">
+<accordion name="collapse-payment-history" v-bind:sub="true">
 
     <div slot="title" class="ll-head-2">
-        PAYMENT HISTORY
+        PAYMENT
     </div>
 
-    <frgroup>
-        <label slot="label">
-            xse
-        </label>
-        <money name="rent_assurance" class="form-control" v-bind:value="rentAssurance"></money>
-    </frgroup>
+    <input type="hidden" name="payment_history" v-bind:value="shared.paymentHistory">
+
+    <lease-payment-history></lease-payment-history>
 
 </accordion>

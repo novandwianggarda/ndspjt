@@ -32,7 +32,7 @@
                 .on('changeDate', (e) => {
                     this.date = e.currentTarget.value;
                     if (this.bindTo !== '') {
-                        vueWatcher.$emit('ID-dateChanged', this.bindTo, this.date);
+                        vueEvent.$emit('ID-dateChanged', this.bindTo, this.date);
                     }
                 });
         },

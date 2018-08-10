@@ -1,15 +1,8 @@
-<accordion name="collapse-lease-price" sub="true">
+<accordion name="collapse-lease-price" v-bind:sub="true">
 
     <div slot="title" class="ll-head-2">
-        HARGA SEWA
+        LEASE PRICE
     </div>
-
-    <frgroup>
-        <label slot="label">
-            Jaminan
-        </label>
-        <money name="rent_assurance" class="form-control" v-bind:value="rentAssurance"></money>
-    </frgroup>
 
     <frgroup>
         <label slot="label">
@@ -17,25 +10,6 @@
         </label>
         <money name="rent_price" class="form-control" v-model="rentPrice"></money>
     </frgroup>
-
-    <frgroup wl="2" wi="2">
-        <label slot="label">
-            Tipe Luas
-        </label>
-        <select name="rent_monthly_type" v-model="rentMonthlyM2Type" class="form-control">
-            <option value="building" selected>Building</option>
-            <option value="land">Land</option>
-        </select>
-    </frgroup>
-
-    <frgroup wl="2" wi="6">
-        <label slot="label">
-            Sewa Perbulan /m2
-        </label>
-        <money class="form-control" v-bind:value="rentPriceMonthlyM2" disabled></money>
-    </frgroup>
-
-    <div class="clearfix"></div>
 
     <frgroup>
         <label slot="label">
@@ -51,28 +25,11 @@
         <money class="form-control" v-bind:value="rentPricePPH" disabled></money>
     </frgroup>
 
-    <div v-show="lessorPKP === 'true'">
-        <frgroup>
-            <label slot="label">
-                Total PPN
-            </label>
-            <money class="form-control" v-bind:value="rentPricePPN" disabled></money>
-        </frgroup>
-
-        <frgroup>
-            <label slot="label">
-                Total Sewa + PPN
-            </label>
-            <money class="form-control" v-bind:value="rentPriceTotalWithPPN" disabled></money>
-        </frgroup>
-
-    </div>
-
-    {{-- <frgroup>
+    <frgroup>
         <label slot="label">
-            Pendapatan Setelah PPh &amp; Fee
+            Total PPN
         </label>
-        <money class="form-control" v-bind:value="rentIncomeTotal" disabled></money>
-    </frgroup> --}}
+        <money class="form-control" v-bind:value="rentPricePPN" disabled></money>
+    </frgroup>
 
 </accordion>

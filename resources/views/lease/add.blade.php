@@ -59,15 +59,18 @@
         var oldRentAssurance = "{{ old('rent_assurance') }}";
 
         // lease grace period
-        var oldPeriodType = "{{ old('period_type') }}" == '' ? 'yearly' : "{{ old('period_type') }}";
+        var oldPeriodType = "{{ old('period_type') }}" === '' ? 'yearly' : "{{ old('period_type') }}";
 
         // lease broker
-        var oldBrokFeeYearly = "{{ old('brok_fee_yearly') }}" == '' ? 0 : parseInt("{{ old('brok_fee_yearly') }}");
+        var oldBrokFeeYearly = "{{ old('brok_fee_yearly') }}" === '' ? 0 : parseInt("{{ old('brok_fee_yearly') }}");
 
-
-        // Shared Resources
         // lease payment terms
-        vueShared.paymentTerms = [];
+        oldPaymentTerms = "{{ old('payment_terms') }}" === '' ? [] : "{{ old('payment_terms') }}";
+        vueShared.paymentTerms = oldPaymentTerms;
+
+        // lease payment history
+        oldPaymentHistory = "{{ old('payment_history') }}" === '' ? [] : "{{ old('payment_history') }}";
+        vueShared.paymentHistory = oldPaymentHistory;
 
         var fvue = new Vue({
             el: '#form-lease',
@@ -100,7 +103,6 @@
 
                 // lease broker
                 brokFeeYearly: oldBrokFeeYearly,
-
             },
             computed: {
                 // lease
@@ -163,24 +165,14 @@
             },
             created() {
                 var vm = this;
-                vueWatcher.$on('LC-certificateSelected', function() {
+                vueEvent.$on('LC-certificateSelected', function() {
                     vm.certificateIds = $('#lease-certificates').val().toString();
                 });
-                vueWatcher.$on('ID-dateChanged', function(bindTo, date) {
+                vueEvent.$on('ID-dateChanged', function(bindTo, date) {
                     _.set(vm, bindTo, date)
                 });
             },
         });
 
-    </script>
-
-    <script type="text/javascript">
-        $('.panel-collapse').on('show.bs.collapse', function () {
-            $(this).siblings('.panel-heading').addClass('active');
-        });
-
-        $('.panel-collapse').on('hide.bs.collapse', function () {
-            $(this).siblings('.panel-heading').removeClass('active');
-        });
     </script>
 @stop
