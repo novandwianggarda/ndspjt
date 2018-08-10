@@ -69,7 +69,7 @@
                     axios.get('/ajax/certificate/result?ids=' + select.val().toString())
                          .then(response => {
                             this.certificate = response.data;
-                            vueWatcher.$emit('LC-certificateSelected');
+                            vueEvent.$emit('LC-certificateSelected');
                     });
                 }
             });

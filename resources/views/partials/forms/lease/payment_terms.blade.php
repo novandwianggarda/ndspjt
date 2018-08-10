@@ -1,4 +1,4 @@
-<accordion name="collapse-lease-payment" sub="true" style="margin-bottom:10px;" collapse="in">
+<accordion name="collapse-lease-payment" v-bind:sub="true" style="margin-bottom:10px;" collapse="in">
 
     <div slot="title" class="ll-head-2">
         PAYMENT TERMS

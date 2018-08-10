@@ -1,7 +1,7 @@
-<accordion name="collapse-lease" collapse="in">
+<accordion name="collapse-lease">
 
     <div slot="title" class="ll-head">
-        {{ trans('lease.hd_lease') }}
+        LEASE
     </div>
 
     <frgroup>
@@ -105,14 +105,20 @@
     @include('partials.forms.lease.broker')
 
     <!-- PAYMENT TERMS-->
-    @include('partials.forms.lease.lease_payment_terms')
+    @include('partials.forms.lease.payment_terms')
 
     <!-- PAYMENT HISTORY -->
     @include('partials.forms.lease.payment_history')
 
-
     <!-- OUTSTANDING -->
     @include('partials.forms.lease.outstanding')
+
+    <frgroup>
+        <label slot="label">
+            Keterangan
+        </label>
+        <textarea name="note" cols="30" rows="5" class="form-control"></textarea>
+    </frgroup>
 
 </div>
 

@@ -3,7 +3,7 @@ window.Vue = require('vue');
 import money from 'v-money';
 
 // global vm for watcher
-window.vueWatcher = new Vue();
+window.vueEvent = new Vue();
 window.vueShared = {};
 
 /** VUE COMPONENTS */
@@ -15,6 +15,7 @@ Vue.component('indate', require('./components/input_date.vue'));
 Vue.component('lease-types', require('./components/forms/lease_types.vue'));
 Vue.component('lease-certificates', require('./components/forms/lease_certificates.vue'));
 Vue.component('lease-payment-terms', require('./components/forms/lease_payment_terms.vue'));
+Vue.component('lease-payment-history', require('./components/forms/lease_payment_history.vue'));
 Vue.component('certificate-types', require('./components/forms/certificate_types.vue'));
 
 Vue.use(money, {
