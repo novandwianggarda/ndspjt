@@ -10,7 +10,7 @@
 
 <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-sm btn-primary ll-bgcolor ll-white" @click.prevent="addRow"><i class="fa fa-plus"></i>Add New User</button>
+            <button class="btn btn-sm btn-primary ll-bgcolor ll-white"><i class="fa fa-plus"></i>Add New User</button>
 
             <table id="tbl-certificates" class="table table-bordered table-striped dataTable" role="grid" style="width:100%">
  <div class="row">
@@ -31,7 +31,10 @@
                             <td>{{$user->username}} </td>
                             <td>{{$user->name}} </td>
                             <td>{{$user->created_at}}</td>
-                            <td></td>  
+                            <td> 
+                                    <button class="btn btn-sm btn-danger"> <i class="fa fa-trash"> </i></button>
+                                    <button class="btn btn-sm btn-danger"> <i class="fa fa-edit"> </i></button>
+                            </td>  
                         </tr>   
                     @endforeach
                 </tbody>
@@ -39,7 +42,6 @@
                     <tr>
                         <th>Username</th>
                         <th>Full Name</th>
-                
                         <th>Created at</th>
                         <th>Action</th>
                     </tr>
@@ -48,8 +50,9 @@
         </div>
     </div>
       </table>
-        </div>
+
     </div>
+</div>
 
 
 
