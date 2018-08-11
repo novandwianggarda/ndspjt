@@ -53,6 +53,7 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     // User Manager
     Route::get('users', 'UserManagerController@index');
+    Route::get('admin/add_user', 'UserManagerController@ShowAddUser');
 
 });
 

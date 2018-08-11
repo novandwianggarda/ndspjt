@@ -11,7 +11,7 @@ class UserManagerController extends Controller
     	$users=User::all();
 		return view('admin.user_manager')->with('users', $users);    	
     }
-     public function adduser()
+     public function ShowAddUser()
     {
     	return view('admin.add_user');
     }
