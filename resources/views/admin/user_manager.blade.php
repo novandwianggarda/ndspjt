@@ -10,7 +10,7 @@
 
 <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-sm btn-primary ll-bgcolor ll-white"><i class="fa fa-plus"></i>Add New User</button>
+            <button type="button"class="btn btn-sm btn-primary ll-bgcolor" onclick="window.location='{{url("add_user")}}'"><i class="fa fa-plus"></i> Add New User</button>
 
             <table id="tbl-certificates" class="table table-bordered table-striped dataTable" role="grid" style="width:100%">
  <div class="row">

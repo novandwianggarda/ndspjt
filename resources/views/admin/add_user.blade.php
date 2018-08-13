@@ -10,26 +10,32 @@
     <row-box>
         <!--ERRORS-->
         @include('partials.errors')
-        <form class="form-horizontal" id="form-lease" action="" method="POST">
+        <form class="form-horizontal" id="form-add_user" action="" method="POST">
             @csrf
-           <div class="col-sm-5">
-                 <div class="box-group">
+           <div class="box-group" id="accordion">
+                 <div class="panel-box">
                     
           <frgroup class>
             <label>
-                Nama Lengkap
+                Nama Lengkap :
             </label>
             <input type="text" name="" class="form-control"/>
         </frgroup>
             <frgroup>
                 <label>
-                    Username
+                    Username :
                 </label>
                 <input type="text" name="" class="form-control"/>
             </frgroup>
             <frgroup>
                 <label>
-                    Password
+                    Password :
+                </label>
+                <input type="Password" name="" class="form-control"/>
+            </frgroup>
+            <frgroup>
+                <label>
+                    Re-enter Your Password :
                 </label>
                 <input type="Password" name="" class="form-control"/>
             </frgroup>
@@ -39,15 +45,17 @@
            </div>
 
 
-                    <!-- SUBMIT BTN -->
+
+
+                     <!-- SUBMIT BTN -->
                     <div class="form-group" style="margin-top:15px;">
-                        <div class="col-sm-12" style="padding:0px 25px">
-                            <button type="submit" class="btn form-control ll-bgcolor ll-white" style="margin-top: 20px">
-                                <i class="fa fa-plus"></i>
-                                Submit
-                            </button>
-                        </div>
-                    </div>
+                         <div class="col-sm-12" style="padding:0px 25px">
+                             <button type="submit" class="btn form-control ll-bgcolor ll-white" style="margin-top: 20px">
+                                 <i class="fa fa-plus"></i>
+                                 Submit
+                             </button>
+                         </div>
+                     </div>
 
         </form>
     </row-box>

@@ -13,6 +13,6 @@ class UserManagerController extends Controller
     }
      public function ShowAddUser()
     {
-    	return view('admin.add_user');
+    	   return view('admin.add_user');
     }
 }
