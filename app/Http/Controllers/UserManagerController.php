@@ -15,4 +15,12 @@ class UserManagerController extends Controller
     {
     	   return view('admin.add_user');
     }
+    public function store(add_userRequest $request){
+    	$data = $request->all();
+    	$add = add_user::add($data);
+    	if (!$add) {
+    		return 'error';
+    	}
+    	return 'success';
+    }
 }

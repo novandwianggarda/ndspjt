@@ -39,6 +39,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('certificates', 'CertificatesController@index');
     Route::get('certificate/{id}', 'CertificatesController@show');
     Route::get('certificates/add', 'CertificatesController@showAddForm');
+    Route::post('certificate/add', 'CertificatesController@store');
 
     // Tax
     Route::get('taxes', 'TaxesController@index');
@@ -54,6 +55,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     // User Manager
     Route::get('users', 'UserManagerController@index');
     Route::get('add_user', array('uses' => 'UserManagerController@ShowAddUser', 'as' => 'add_user' ));
+    Route::post('add_users', 'UserManagerController@store');
 
 });
 

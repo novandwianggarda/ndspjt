@@ -6,9 +6,9 @@
 
     <frgroup>
         <label slot="label">
-            Booundary Image
+            Boundary Image
         </label>
-        <input type="file" name="" class="form-control"/>        
+        <input type="file" name="" class="form-control" accept="image/jpeg, image/jpg, image/png" />        
     </frgroup>
 
     <frgroup>
@@ -55,3 +55,4 @@
 
 
 </accordion>
+

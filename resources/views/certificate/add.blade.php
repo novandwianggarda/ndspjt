@@ -28,6 +28,11 @@
                                 @include('partials.forms.certificate.basicinformation')
                                 <!-- FILES & MAPPING-->
                                 @include('partials.forms.certificate.filesmapping')
+                                <!-- BOUNDARY MAP -->
+                                @include('partials.forms.certificate.boundarymap')
+                                <!-- FUHRER INFORMATION -->
+                                @include('partials.forms.certificate.furtherinformation')
+                                
                                 <div class="form-groxup">
                                     <div class="col-sm-12" style="padding:0px 25px">
                                         <button type="submit" class="btn form-control ll-bgcolor ll-white" style="margin-top: 10px;">

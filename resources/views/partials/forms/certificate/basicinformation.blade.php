@@ -80,6 +80,6 @@
             <label slot="label">
                 Publish Date
             </label>
-            <indate name="name" value="{{old('start') }}"></indate>
+            <indate name="published_date" value="{{old('published_date') }}"></indate>
         </frgroup>
 </accordion>
