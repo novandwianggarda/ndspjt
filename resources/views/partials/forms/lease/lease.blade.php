@@ -1,4 +1,4 @@
-<accordion name="collapse-lease">
+<accordion name="collapse-lease" collapse="in">
 
     <div slot="title" class="ll-head">
         LEASE
@@ -13,33 +13,44 @@
 
     <frgroup>
         <label slot="label">
+            PKP Yang Menyewakan
+        </label>
+        <div class="input-group">
+            <label class="radio-inline"><input type="radio" name="lessor_pkp" v-model="lessorPKP" :value="true">Ya</label>
+            <label class="radio-inline"><input type="radio" name="lessor_pkp" v-model="lessorPKP" :value="false">Tidak</label>
+            <label class="radio-inline text-muted">
+                <i class="fa fa-info-circle"></i>
+                <span v-if="lessorPKP">Termasuk PPN</span>
+                <span v-else>Tanpa PPN</span>
+            </label>
+        </div>
+    </frgroup>
+
+    <frgroup>
+        <label slot="label">
             Nama Penyewa
         </label>
         <input type="text" name="tenant" value="{{ old('tenant') }}" class="form-control" />
     </frgroup>
 
-    <frgroup>
+    <frgroup wl="2">
         <label slot="label">
-            No Akta Sewa
+            Tipe Penyewa
         </label>
-        <input type="text" name="lease_deed" value="{{ old('lease_deed') }}" class="form-control" />
-    </frgroup>
-
-    <frgroup>
-        <label slot="label">
-            Tanggal Akta Sewa
-        </label>
-        <indate name="lease_deed_date" bind-to="leaseDeedDate"></indate>
-    </frgroup>
-
-
-    <frgroup>
-        <label slot="label">
-            PKP Yang Menyewakan
-        </label>
-        <div class="input-group">
-            <label class="radio-inline"><input type="radio" v-model="lessorPKP" value="true">Ya</label>
-            <label class="radio-inline"><input type="radio" v-model="lessorPKP" value="false">Tidak</label>
+        <div>
+            <div class="row">
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                    <select name="tenant_type" class="form-control" v-model="tenantType">
+                        <option value="personal" selected>Perorangan</option>
+                        <option value="organization">Badan</option>
+                    </select>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-6 text-muted" style="padding-top:5px;">
+                    <i class="fa fa-info-circle"></i>
+                    <span v-if="tenantType === 'personal'">Termasuk PPh</span>
+                    <span v-else>Tanpa PPh</span>
+                </div>
+            </div>
         </div>
     </frgroup>
 
@@ -57,68 +68,32 @@
         <input type="text" name="pic" value="{{ old('pic') }}" class="form-control" />
     </frgroup>
 
-    <!-- GRACE -->
-    <div class="clearfix"></div>
+    <!-- AGREEMENT -->
+    @include('partials.forms.lease.agreement')
+
+    <!-- GRACE PERIOD -->
     @include('partials.forms.lease.grace')
 
-    <frgroup wl="2" wi="4">
-        <label slot="label">
-            Awal Sewa
-        </label>
-        <indate name="start" bind-to="start"></indate>
-    </frgroup>
+    <!-- LEASE PERIOD -->
+    @include('partials.forms.lease.lease_period')
 
-    <frgroup wl="2" wi="4">
-        <label slot="label">
-            Akhir Sewa
-        </label>
-        <indate name="end" bind-to="end"></indate>
-    </frgroup>
-
-    <div class="clearfix"></div>
-
-    <frgroup wl="2" wi="4">
-        <label slot="label">
-            Periode Sewa
-        </label>
-        <div class="input-group">
-            <select name="period_type" class="form-control" v-model="periodType">
-                <option value="yearly" selected>Yearly</option>
-                <option value="monthly">Monthly</option>
-            </select>
-        </div>
-    </frgroup>
-
-    <frgroup wl="2" wi="4">
-        <label slot="label">
-            Masa Sewa
-        </label>
-        <label v-text="duration + ' ' + periodTypeStr"></label>
-    </frgroup>
-
-    <div class="clearfix"></div>
-
-    <!-- PRICE -->
+    <!-- LEASE PRICE -->
     @include('partials.forms.lease.lease_price')
-
-    <!-- BROKER -->
-    @include('partials.forms.lease.broker')
 
     <!-- PAYMENT TERMS-->
     @include('partials.forms.lease.payment_terms')
 
+    <!-- INVOICE -->
+    @include('partials.forms.lease.invoice')
+
     <!-- PAYMENT HISTORY -->
     @include('partials.forms.lease.payment_history')
 
-    <!-- OUTSTANDING -->
-    @include('partials.forms.lease.outstanding')
+    <!-- BROKER -->
+    @include('partials.forms.lease.broker')
 
-    <frgroup>
-        <label slot="label">
-            Keterangan
-        </label>
-        <textarea name="note" cols="30" rows="5" class="form-control"></textarea>
-    </frgroup>
+    <!-- OTHER -->
+    @include('partials.forms.lease.other')
 
 </div>
 

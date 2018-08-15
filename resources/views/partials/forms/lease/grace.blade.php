@@ -1,7 +1,7 @@
 <accordion name="collapse-grace" v-bind:sub="true" style="margin-bottom:10px;">
 
     <div slot="title" class="ll-head-2">
-        GRACE
+        GRACE PERIOD
     </div>
 
     <frgroup wl="2" wi="4">

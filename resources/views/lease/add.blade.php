@@ -49,17 +49,19 @@
         var oldBuildingArea = "{{ old('prop_building_area') }}";
 
         // lease
-        oldStart = "{{ old('start') }}";
-        oldEnd = "{{ old('end') }}";
+        var oldTenantType = "{{ old('tenant_type') }}" === '' ? 'personal' : "{{ old('tenant_type') }}";
+        var oldPeriodType = "{{ old('period_type') }}" === '' ? 'yearly' : "{{ old('period_type') }}";
 
         // lease deed
         var oldLeaseDeedDate = "{{ old('lease_deed_date') }}";
 
+        // lease period
+        var oldStart = "{{ old('start') }}";
+        var oldEnd = "{{ old('end') }}";
+
         // lease price
         var oldRentAssurance = "{{ old('rent_assurance') }}";
 
-        // lease grace period
-        var oldPeriodType = "{{ old('period_type') }}" === '' ? 'yearly' : "{{ old('period_type') }}";
 
         // lease broker
         var oldBrokFeeYearly = "{{ old('brok_fee_yearly') }}" === '' ? 0 : parseInt("{{ old('brok_fee_yearly') }}");
@@ -87,7 +89,8 @@
                 start: oldStart,
                 end: oldStart,
                 periodType: oldPeriodType,
-                lessorPKP: 'false',
+                lessorPKP: false,
+                tenantType: oldTenantType,
 
                 // lease deed
                 leaseDeedDate: oldLeaseDeedDate,
@@ -119,11 +122,11 @@
                     // return roundHundred(this.duration * this.rentPrice);
                 },
                 rentPricePPN: function() {
-                    if (this.lessorPKP === 'false') return 0;
+                    if (! this.lessorPKP) return 0;
                     return this.rentPrice * 0.10;
                 },
                 rentPricePPH: function() {
-                    // if (this.lessorPKP === 'false') return 0;
+                    // if (! this.lessorPKP) return 0;
                     return this.rentPrice * 0.10;
                 },
                 rentPriceTotalWithPPN: function() {

@@ -32,4 +32,11 @@
         <money class="form-control" v-bind:value="rentPricePPN" disabled></money>
     </frgroup>
 
+    <frgroup>
+        <label slot="label">
+            Total Sewa + PPN
+        </label>
+        <money class="form-control" v-bind:value="rentPriceTotalWithPPN" disabled></money>
+    </frgroup>
+
 </accordion>
