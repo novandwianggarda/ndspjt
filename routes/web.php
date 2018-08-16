@@ -45,6 +45,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('taxes', 'TaxesController@index');
     Route::get('tax/{id}', 'TaxesController@show');
     Route::get('taxes/add', 'TaxesController@showAddForm');
+    Route::post('tax/add', 'TaxesController@store');
 
     // Lease
     Route::get('leases', 'LeasesController@index');

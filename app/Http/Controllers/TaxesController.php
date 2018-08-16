@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tax;
+use App\Http\Requests\TaxRequest;
 
 class TaxesController extends Controller
 {
@@ -32,5 +33,14 @@ class TaxesController extends Controller
     public function showAddForm()
     {
         return view('tax.add');
+    }
+    public function store(TaxRequest $request)
+    {
+        $data = $request->all();
+        $add = tax::create($data);
+        if (!$add) {
+            return 'error';
+        }
+        return 'succes';
     }
 }
