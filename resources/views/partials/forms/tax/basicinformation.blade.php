@@ -8,9 +8,9 @@
         <label slot="label">
             Tax Name
         </label>
-<!--         <input type="text" name="tax_type_id" class="form-control" disabled="disabled" option value="PBB"  /> -->
-        <input type="text" name="tax_type_id" value="{{ old('tax_type_id') }}" class="form-control" />
-
+        <input type="text" name="tax_type_id" class="form-control" disabled="disabled" option value="PBB"  />
+<!--         <input type="text" name="tax_type_id" value="{{ old('tax_type_id') }}" class="form-control" />
+ -->
     </frgroup>
 
     <frgroup>
@@ -30,8 +30,8 @@
         <label slot="label">
             Certificate
         </label>
-        <!-- <certificate-types></certificate-types> -->
-        <input type="number" name="certificate_ids" value="{{ old('certificate_ids') }}" class="form-control" />
+        <certificate-types></certificate-types>
+<!--         <input type="number" name="certificate_ids" value="{{ old('certificate_ids') }}" class="form-control" /> -->
     </frgroup>
 
     <frgroup>

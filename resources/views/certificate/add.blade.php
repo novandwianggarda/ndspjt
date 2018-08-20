@@ -37,7 +37,7 @@
                                     <div class="col-sm-12" style="padding:0px 25px">
                                         <button type="submit" class="btn form-control ll-bgcolor ll-white" style="margin-top: 10px;">
                                             <i class="fa fa-plus"></i>
-                                            Add
+                                            Submit
                                         </button>
                                     </div>
                                 </div>
@@ -59,6 +59,20 @@
             color: white;
         }
     </style>--}}
+
+    <style>
+        #images{
+            visibility: hidden; /*hidden button file upload*/
+        }
+        .btn-upload{
+            border-radius: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        
+    </style>
 @stop
 
 @section('js')
@@ -86,48 +100,48 @@
                     })
                 })
 
-                document.addEventListener("DOMContentLoaded", init, false);
+                // document.addEventListener("DOMContentLoaded", init, false);
 
-                function init(){
-                    document.querySelector('#files').addEventListener('change', handleFileSelect, false);
-                }
+                // function init(){
+                //     document.querySelector('#files').addEventListener('change', handleFileSelect, false);
+                // }
 
-                function handleFileSelect(e){
-                    if (!e.target.files) return;
-                    var files = e.target.files;
-                    for (var i=0; i < files.length; i++) {
-                        var f = files[i];
-                    }
-                }
+                // function handleFileSelect(e){
+                //     if (!e.target.files) return;
+                //     var files = e.target.files;
+                //     for (var i=0; i < files.length; i++) {
+                //         var f = files[i];
+                //     }
+                // }
 
 
-                function GetFileSizeNameAndType()
-                        {
-                        var fi = document.getElementById('images'); // GET THE FILE INPUT AS VARIABLE.
+                // function GetFileSizeNameAndType()
+                //         {
+                //         var fi = document.getElementById('images'); // GET THE FILE INPUT AS VARIABLE.
 
-                        var totalFileSize = 0;
+                //         var totalFileSize = 0;
 
-                        // VALIDATE OR CHECK IF ANY FILE IS SELECTED.
-                        if (fi.files.length > 0)
-                        {
-                            // RUN A LOOP TO CHECK EACH SELECTED FILE.
-                            for (var i = 0; i <= fi.files.length - 1; i++)
-                            {
-                                //ACCESS THE SIZE PROPERTY OF THE ITEM OBJECT IN FILES COLLECTION. IN THIS WAY ALSO GET OTHER PROPERTIES LIKE FILENAME AND FILETYPE
-                                var fsize = fi.files.item(i).size;
-                                totalFileSize = totalFileSize + fsize;
-                                document.getElementById('images-to-upload').innerHTML =
-                                document.getElementById('images-to-upload').innerHTML
-                                +
-                                '<br /> ' + 'Title <b>' + fi.files.item(i).name
-                                +
-                                '</b> Size <b>' + Math.round((fsize / 1024)) //DEFAULT SIZE IS IN BYTES SO WE DIVIDING BY 1024 TO CONVERT IT IN KB
-                                +
-                                '</b> KB filetype <b>' + fi.files.item(i).type + "</b>.";
-                            }
-                        }
-                        document.getElementById('divTotalSize').innerHTML = "Total File(s) Size is <b>" + Math.round(totalFileSize / 1024) + "</b> KB";
-                    }
+                //         // VALIDATE OR CHECK IF ANY FILE IS SELECTED.
+                //         if (fi.files.length > 0)
+                //         {
+                //             // RUN A LOOP TO CHECK EACH SELECTED FILE.
+                //             for (var i = 0; i <= fi.files.length - 1; i++)
+                //             {
+                //                 //ACCESS THE SIZE PROPERTY OF THE ITEM OBJECT IN FILES COLLECTION. IN THIS WAY ALSO GET OTHER PROPERTIES LIKE FILENAME AND FILETYPE
+                //                 var fsize = fi.files.item(i).size;
+                //                 totalFileSize = totalFileSize + fsize;
+                //                 document.getElementById('images-to-upload').innerHTML =
+                //                 document.getElementById('images-to-upload').innerHTML
+                //                 +
+                //                 '<br /> ' + 'Title <b>' + fi.files.item(i).name
+                //                 +
+                //                 '</b> Size <b>' + Math.round((fsize / 1024)) //DEFAULT SIZE IS IN BYTES SO WE DIVIDING BY 1024 TO CONVERT IT IN KB
+                //                 +
+                //                 '</b> KB filetype <b>' + fi.files.item(i).type + "</b>.";
+                //             }
+                //         }
+                //         document.getElementById('divTotalSize').innerHTML = "Total File(s) Size is <b>" + Math.round(totalFileSize / 1024) + "</b> KB";
+                //     }
 
 
     //             function showname () {
@@ -168,6 +182,22 @@
                 //         }
                 //     });
                 // }
+
+
+                /* certificate expired */
+
+                function addForm(form){
+                    for (var i=0; i<form.length; i++){
+                        var form_op = form.option[i].value;
+                        if (form_op == form.value) {
+                            document.getElementByName(form_op)[0].style.display="block";
+                        }
+                        else{
+                            document.getElementByName(form_op)[0].style.display="none";
+                        }
+                    }
+                }
+
     </script>
 
 

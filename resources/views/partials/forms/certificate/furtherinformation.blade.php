@@ -1,6 +1,6 @@
 <accordion name="collapse-information">
     <div slot="title" class="ll-head">
-        FUHRER INFORMATION
+        FURTHER INFORMATION
     </div>
 
     <frgroup>
