@@ -121,65 +121,86 @@ return [
             'icon' => 'tachometer',
         ],
         [
-            'text'    => 'Leases',
-            'icon'    => 'tags',
-            'submenu' => [
-                [
-                    'text' => 'Add New',
-                    'url'  => '/leases/add',
-                    'icon' => 'tag',
-                ],
-                [
-                    'text' => 'Data List',
-                    'url'  => '/leases',
-                    'icon' => 'tag',
-                ],
-                [
-                    'text' => 'Import',
-                    'url'  => '/leases/import',
-                    'icon' => 'tag',
-                ],
-            ],
-        ],
-        [
-            'text'    => 'Certificates',
+            'text'    => 'Land', /*certificates*/
             'icon'    => 'tags',
             'submenu' => [
                 [
                     'text' => 'Add New',
                     'url'  => '/certificates/add',
-                    'icon' => 'tag',
+                    'icon' => 'plus',
                 ],
                 [
                     'text' => 'Data List',
                     'url'  => '/certificates',
-                    'icon' => 'tag',
+                    'icon' => 'list',
                 ],
                 [
                     'text' => 'Import',
                     'url'  => '/certificates/import',
-                    'icon' => 'tag',
+                    'icon' => 'file',
                 ],
             ],
         ],
         [
-            'text'    => 'Taxes',
-            'icon'    => 'tags',
+            'text'    => 'Property',
+            'icon'    => 'home',
+            'submenu' => [
+                [
+                    'text' => 'Add New',
+                    'url'  => 'properti/add',
+                    'icon' => 'plus',
+                ],
+                [
+                    'text' => 'Data List',
+                    'url'  => '',
+                    'icon' => 'list',
+                ],
+                [
+                    'text' => 'Import',
+                    'url'  => '',
+                    'icon' => 'file',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Lease',
+            'icon'    => 'dollar',
+            'submenu' => [
+                [
+                    'text' => 'Add New',
+                    'url'  => '/leases/add',
+                    'icon' => 'plus',
+                ],
+                [
+                    'text' => 'Data List',
+                    'url'  => '/leases',
+                    'icon' => 'list',
+                ],
+                [
+                    'text' => 'Import',
+                    'url'  => '/leases/import',
+                    'icon' => 'file',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'PBB',
+            'icon'    => 'money',
             'submenu' => [
                 [
                     'text' => 'Add New',
                     'url'  => '/taxes/add',
-                    'icon' => 'tag',
+                    'icon' => 'plus',
                 ],
                 [
                     'text' => 'Data List',
                     'url'  => '/taxes',
-                    'icon' => 'tag',
+                    'icon' => 'list',
                 ],
                 [
                     'text' => 'Import',
                     'url'  => '/taxes/import',
-                    'icon' => 'tag',
+                    'icon' => 'file',
                 ],
             ],
         ],

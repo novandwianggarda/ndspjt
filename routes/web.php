@@ -53,11 +53,15 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('leases/add', 'LeasesController@showAddForm');
     Route::post('leases/add', 'LeasesController@store');
 
+    // Property
+    Route::get('property', 'PropertiController@index');
+    Route::get('properti/add', 'PropertiController@showAddForm');
+
     // User Manager
     Route::get('users', 'UserManagerController@index');
     Route::get('add_user', array('uses' => 'UserManagerController@ShowAddUser', 'as' => 'add_user' ));
     Route::post('add_users', 'UserManagerController@store');
-
+    // 
 });
 
 
