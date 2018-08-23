@@ -84,7 +84,9 @@ Route::middleware(['web', 'auth'])->group(function () {
             return redirect('/' . $this->current->uri . '/list');
         });
         Route::get('list', 'PropertiesController@index');
+        Route::get('show/{id}', 'PropertiesController@show');
         Route::get('add', 'PropertiesController@showAddForm');
+        // Route::post();
 
     });
 

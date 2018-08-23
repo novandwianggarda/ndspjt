@@ -39,7 +39,7 @@ $factory->define(\App\Lease::class, function (Faker $faker) {
         'note' => $faker->realText,
 
         // LEASE DEED aka Akta Sewa
-        'lease_deed' => $faker->numberBetween(1111111111, 9999999999),
+        'lease_deed' => $faker->numberBetween(1111111111, mt_getrandmax()),
         'lease_deed_date' => randomDate('2017'),
 
         // PAYMENT TERMS
