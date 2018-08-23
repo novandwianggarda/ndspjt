@@ -56,16 +56,6 @@ class Lease extends Model implements Auditable
     /** ELOQUENT RELATIONSHIP */
 
     /**
-     * get lease type
-     *
-     * @return App\LeaseType
-     */
-    public function type()
-    {
-        return $this->belongsTo('App\LeaseType', 'lease_type_id', 'id');
-    }
-
-    /**
      * get lease payments history
      *
      * @return Illuminate\Database\Eloquent\Collection of App\LeasePayment

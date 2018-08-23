@@ -3,7 +3,7 @@
 @section('title', 'Add Property')
 
 @section('content_header')
-    <h1>Add Properties</h1>
+    <h1>Add Property</h1>
 @stop
 
 @section('content')
@@ -20,7 +20,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" id="form-properties" action="/properties/add" method="POST">
+                    <form class="form-horizontal" id="form-property" action="/properties/add" method="POST">
                         @csrf
                         <div class="box-group" id="accordion">
                             <div class="panel box">
@@ -42,4 +42,20 @@
             </div>
         </div>
     </div>
+@stop
+
+@section('js')
+        <script type="text/javascript">
+                    // property
+        var oldLandArea = "{{ old('prop_land_area') }}";
+        var oldBuildingArea = "{{ old('prop_building_area') }}";
+
+            var fvue = new Vue({
+                el: '#form-property',
+                data: {
+                    landArea: oldLandArea,
+                    buildingArea: oldBuildingArea,
+                }
+            });
+        </script>
 @stop

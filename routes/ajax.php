@@ -28,8 +28,8 @@ Route::middleware('auth')->group(function() {
     });
 
     // Lease
-    Route::prefix('/lease')->group(function() {
-        Route::get('/lease_types', 'LeasesAjaxController@leaseTypes');
+    Route::prefix('/property')->group(function() {
+        Route::get('/property_types', 'PropertiesAjaxController@propertyTypes');
     });
 
     // Global

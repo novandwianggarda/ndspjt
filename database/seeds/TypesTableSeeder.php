@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\CertificateType;
 use App\TaxType;
-use App\LeaseType;
+use App\PropertyType;
 
 class TypesTableSeeder extends Seeder
 {
@@ -32,8 +32,8 @@ class TypesTableSeeder extends Seeder
             'long_name' => 'Pajak Bumi & Bangunan',
         ]);
 
-        // lease_types
-        $leaseTypes = [
+        // property_types
+        $propertyTypes = [
             ['name' => 'Tanah'],
             ['name' => 'Gudang'],
             ['name' => 'Ruko'],
@@ -44,6 +44,6 @@ class TypesTableSeeder extends Seeder
             ['name' => 'Kos'],
             ['name' => 'Hotel'],
         ];
-        LeaseType::insert($leaseTypes);
+        PropertyType::insert($propertyTypes);
     }
 }

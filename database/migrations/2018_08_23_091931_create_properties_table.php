@@ -15,6 +15,7 @@ class CreatePropertiesTable extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('property_type_id')->unsigned(); // tipe properti id 
             $table->string('name')->nullable(); // nama lokasi
             $table->string('address')->nullable(); // alamat
             $table->string('land_area')->nullable(); // luas tanah
