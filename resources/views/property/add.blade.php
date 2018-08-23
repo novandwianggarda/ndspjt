@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Add Tax')
+@section('title', 'Add Property')
 
 @section('content_header')
-    <h1>Add Tax</h1>
+    <h1>Add Properties</h1>
 @stop
 
 @section('content')
@@ -20,14 +20,13 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" id="form-tax" action="/tax/add" method="POST">
+                    <form class="form-horizontal" id="form-properties" action="/properties/add" method="POST">
                         @csrf
                         <div class="box-group" id="accordion">
                             <div class="panel box">
                                 <!-- BASIC INFORMATION -->
-                                @include('partials.forms.tax.basicinformation')
-                                <!-- DETAILS INFORMATION-->
-                                @include('partials.forms.tax.detailinformation')
+                                @include('partials.forms.properties.basicinformation')
+                                
                                 <div class="form-groxup">
                                     <div class="col-sm-12" style="padding:0px 25px">
                                         <button type="submit" class="btn form-control ll-bgcolor ll-white" style="margin-top: 10px;">

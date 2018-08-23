@@ -54,8 +54,8 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::post('leases/add', 'LeasesController@store');
 
     // Property
-    Route::get('property', 'PropertiController@index');
-    Route::get('properti/add', 'PropertiController@showAddForm');
+    Route::get('properties', 'PropertiesController@index');
+    Route::get('properties/add', 'PropertiesController@showAddForm');
 
     // User Manager
     Route::get('users', 'UserManagerController@index');

@@ -147,17 +147,17 @@ return [
             'submenu' => [
                 [
                     'text' => 'Add New',
-                    'url'  => 'properti/add',
+                    'url'  => '/properties/add',
                     'icon' => 'plus',
                 ],
                 [
                     'text' => 'Data List',
-                    'url'  => '',
+                    'url'  => '/properties',
                     'icon' => 'list',
                 ],
                 [
                     'text' => 'Import',
-                    'url'  => '',
+                    'url'  => '/properties/import',
                     'icon' => 'file',
                 ],
             ],

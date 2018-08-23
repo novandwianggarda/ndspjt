@@ -46,18 +46,6 @@ class CreateLeasesTable extends Migration
             $table->enum('rent_price_type', ['monthly', 'yearly'])->default('yearly'); // bulanan / tahunan
             $table->double('rent_assurance', 13, 2)->default(0); // jaminan sewa
 
-            // PROPERTY
-            $table->string('prop_name')->nullable(); // nama lokasi
-            $table->string('prop_address')->nullable(); // alamat
-            $table->string('prop_land_area')->nullable(); // luas tanah
-            $table->string('prop_building_area')->nullable(); // luas bangunan
-            $table->string('prop_block')->nullable(); // blok
-            $table->string('prop_floor')->nullable(); // lantai
-            $table->string('prop_unit')->nullable(); // unit
-            $table->string('prop_electricity')->nullable(); // listirk
-            $table->string('prop_water')->nullable(); // air
-            $table->string('prop_telephone')->nullable(); // telepon
-
             // BROKER
             $table->string('brok_name')->nullable(); // nama makelar
             $table->double('brok_fee_yearly', 13, 2)->default(0); // harga per tahun
