@@ -40,7 +40,7 @@ class CertificateRequest extends FormRequest
             'addr_city' => 'nullable',
             'addr_district' => 'nullable',
             'addr_village' => 'nullable',
-            'addr_address' => 'nullable|numeric',
+            'addr_address' => 'nullable',
 
             // AJB
             'ajb_nominal' => 'nullable|numeric',

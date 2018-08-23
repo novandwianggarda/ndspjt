@@ -9,7 +9,8 @@ $factory->define(\App\Lease::class, function (Faker $faker) {
     $certificateIds = Certificate::all()->pluck('id')->toArray();
     $randomCertificateId = $faker->unique()->randomElement($certificateIds);
     $propertyIds = Property::all()->pluck('id')->toArray();
-    $randomPropertyId = $faker->unique()->randomElement($propertyIds);
+    // $randomPropertyId = $faker->unique()->randomElement($propertyIds); // dont know but not works.
+    $randomPropertyId = $randomCertificateId;
 
     $lessor = ['Leonard Hidajat', 'Sango Ina', 'DS-Estates'];
     $length = $faker->randomFloat(1, 1, 5);

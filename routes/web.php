@@ -21,10 +21,12 @@ Route::redirect('/', '/dashboard', 301);
  * custom authentification routes
 */
 Route::namespace('Auth')->group(function () {
+
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login', 'LoginController@login')->name('login');
     Route::get('logout', 'LoginController@logout')->name('logout');
     Route::post('logout', 'LoginController@logout')->name('logout');
+
 });
 
 /**
@@ -32,36 +34,65 @@ Route::namespace('Auth')->group(function () {
  * which mean only logged user can access
  */
 Route::middleware(['web', 'auth'])->group(function () {
+
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('/profile', 'DashboardController@showUserProfile')->name('profile');
 
     // Certificate
-    Route::get('certificates', 'CertificatesController@index');
-    Route::get('certificate/{id}', 'CertificatesController@show');
-    Route::get('certificates/add', 'CertificatesController@showAddForm');
-    Route::post('certificate/add', 'CertificatesController@store');
+    Route::prefix('certificates')->group(function() {
+
+        Route::get('/', function () {
+            return redirect('/' . $this->current->uri . '/list');
+        });
+        Route::get('list', 'CertificatesController@index');
+        Route::get('show/{id}', 'CertificatesController@show');
+        Route::get('add', 'CertificatesController@showAddForm');
+        Route::post('add', 'CertificatesController@store');
+
+    });
 
     // Tax
-    Route::get('taxes', 'TaxesController@index');
-    Route::get('tax/{id}', 'TaxesController@show');
-    Route::get('taxes/add', 'TaxesController@showAddForm');
-    Route::post('tax/add', 'TaxesController@store');
+    Route::prefix('taxes')->group(function () {
+
+        Route::get('/', function () {
+            return redirect('/' . $this->current->uri . '/list');
+        });
+        Route::get('list', 'TaxesController@index');
+        Route::get('show/{id}', 'TaxesController@show');
+        Route::get('add', 'TaxesController@showAddForm');
+        Route::post('add', 'TaxesController@store');
+
+    });
 
     // Lease
-    Route::get('leases', 'LeasesController@index');
-    Route::get('lease/{id}', 'LeasesController@show');
-    Route::get('leases/add', 'LeasesController@showAddForm');
-    Route::post('leases/add', 'LeasesController@store');
+    Route::prefix('leases')->group(function() {
+
+        Route::get('/', function () {
+            return redirect('/' . $this->current->uri . '/list');
+        });
+        Route::get('list', 'LeasesController@index');
+        Route::get('show/{id}', 'LeasesController@show');
+        Route::get('add', 'LeasesController@showAddForm');
+        Route::post('add', 'LeasesController@store');
+
+    });
 
     // Property
-    Route::get('properties', 'PropertiesController@index');
-    Route::get('properties/add', 'PropertiesController@showAddForm');
+    Route::prefix('properties')->group(function() {
+
+        Route::get('/', function () {
+            return redirect('/' . $this->current->uri . '/list');
+        });
+        Route::get('list', 'PropertiesController@index');
+        Route::get('add', 'PropertiesController@showAddForm');
+
+    });
 
     // User Manager
     Route::get('users', 'UserManagerController@index');
     Route::get('add_user', array('uses' => 'UserManagerController@ShowAddUser', 'as' => 'add_user' ));
     Route::post('add_users', 'UserManagerController@store');
-    // 
+
 });
 
 

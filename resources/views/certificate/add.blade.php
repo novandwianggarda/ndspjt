@@ -20,7 +20,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" id="form-certificate" action="/certificate/add" method="POST">
+                    <form class="form-horizontal" id="form-certificate" action="/certificates/add" method="POST">
                         @csrf
                         <div class="box-group" id="accordion">
                             <div class="panel box">
@@ -32,7 +32,7 @@
                                 @include('partials.forms.certificate.documents')
                                 <!-- FUHRER INFORMATION -->
                                 @include('partials.forms.certificate.furtherinformation')
-                                
+
                                 <div class="form-groxup">
                                     <div class="col-sm-12" style="padding:0px 25px">
                                         <button type="submit" class="btn form-control ll-bgcolor ll-white" style="margin-top: 10px;">
@@ -180,7 +180,7 @@ body {
 
 
     //             function showname () {
-    //   var name = document.getElementById('images'); 
+    //   var name = document.getElementById('images');
     //   label('Selected file: ' + name.files.item(0).name);
     //   label('Selected file: ' + name.files.item(0).size);
     //   label('Selected file: ' + name.files.item(0).type);
@@ -400,12 +400,12 @@ body {
         google.maps.event.addListener(map, 'mousehover', function(e) {
             map.setOptions({draggableCursor:'point'});
         });
-        
+
             }
 
     function placeMarker(location) {
         var marker = new google.maps.Marker({
-            position: location, 
+            position: location,
             map: map,
             draggable:true
         });
@@ -483,5 +483,5 @@ body {
     }
     // END MAP
     </script>
-         
+
 @stop

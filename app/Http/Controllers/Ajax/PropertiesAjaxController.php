@@ -15,7 +15,7 @@ class PropertiesAjaxController extends Controller
      */
     public function propertyTypes()
     {
-        $propertyTypes = LeaseType::select('id', 'name')->get();
+        $propertyTypes = PropertyType::select('id', 'name')->get();
         return response()->json($propertyTypes);
     }
 }

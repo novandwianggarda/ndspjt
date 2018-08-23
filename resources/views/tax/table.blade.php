@@ -22,7 +22,7 @@
                     @foreach ($taxes as $tax)
                         <tr>
                             <td>
-                                <a href="/tax/{{ $tax->id }}">{{ $tax->nop }}</a>
+                                <a href="/taxes/show/{{ $tax->id }}">{{ $tax->nop }}</a>
                             </td>
                             <td>{{ $tax->tax_type }}</td>
                             <td>{{ $tax->owner }}</td>

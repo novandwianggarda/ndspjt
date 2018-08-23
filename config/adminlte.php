@@ -131,7 +131,7 @@ return [
                 ],
                 [
                     'text' => 'Data List',
-                    'url'  => '/certificates',
+                    'url'  => '/certificates/list',
                     'icon' => 'list',
                 ],
                 [
@@ -152,7 +152,7 @@ return [
                 ],
                 [
                     'text' => 'Data List',
-                    'url'  => '/properties',
+                    'url'  => '/properties/list',
                     'icon' => 'list',
                 ],
                 [
@@ -173,7 +173,7 @@ return [
                 ],
                 [
                     'text' => 'Data List',
-                    'url'  => '/leases',
+                    'url'  => '/leases/list',
                     'icon' => 'list',
                 ],
                 [
@@ -194,7 +194,7 @@ return [
                 ],
                 [
                     'text' => 'Data List',
-                    'url'  => '/taxes',
+                    'url'  => '/taxes/list',
                     'icon' => 'list',
                 ],
                 [

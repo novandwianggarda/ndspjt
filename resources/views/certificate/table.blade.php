@@ -22,7 +22,7 @@
                     @foreach ($certificates as $cert)
                         <tr>
                             <td>
-                                <a href="/certificate/{{ $cert->id }}">{{ $cert->number }} - {{ $cert->name }}</a>
+                                <a href="/certificates/show/{{ $cert->id }}">{{ $cert->number }} - {{ $cert->name }}</a>
                             </td>
                             <td>{{ $cert->cert_type }}</td>
                             <td>{{ $cert->published_date }}</td>
