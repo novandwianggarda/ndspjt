@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <div class="row" v-for="(row, i) in shared.paymentHistory" v-bind:key="i">
+        <div class="row" v-for="(row, i) in shared.paymentInvoices" v-bind:key="i">
             <div class="col-md-1 col-sm-1 col-xs-6">
                 <b>{{ i + 1 }}</b>
             </div>
@@ -27,7 +27,7 @@
                 <money class="form-control" v-model="row.total"></money>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-6">
-                <indate :bind-to="`shared.paymentHistory[${i}].paid_date`"></indate>
+                <indate :bind-to="`shared.paymentInvoices[${i}].paid_date`"></indate>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-6">
                 <input type="text" class="form-control" v-model="row.note">
@@ -52,16 +52,16 @@
         },
         methods: {
             addRow() {
-                this.shared.paymentHistory.push({total: 0, paid_date: '', note:''});
+                this.shared.paymentInvoices.push({total: 0, paid_date: '', note:''});
             },
             deleteRow(key) {
                 let newRows = [];
-                this.shared.paymentHistory.forEach((row, index) => {
+                this.shared.paymentInvoices.forEach((row, index) => {
                     if (index !== key) {
                         newRows.push(row);
                     }
                 });
-                this.shared.paymentHistory = newRows;
+                this.shared.paymentInvoices = newRows;
             }
         },
     }

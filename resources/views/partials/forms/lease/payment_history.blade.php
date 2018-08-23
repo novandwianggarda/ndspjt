@@ -4,7 +4,7 @@
         PAYMENT & HISTORY
     </div>
 
-    <input type="hidden" name="payment_history" v-bind:value="shared.paymentHistory">
+    <input type="hidden" name="payment_history" v-bind:value="paymentHistoryText">
 
     <lease-payment-history></lease-payment-history>
 

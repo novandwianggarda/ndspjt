@@ -81,10 +81,10 @@
     @include('partials.forms.lease.lease_price')
 
     <!-- PAYMENT TERMS-->
-    @include('partials.forms.lease.payment_terms')
+    @include('partials.forms.lease.payment_term')
 
     <!-- INVOICE -->
-    @include('partials.forms.lease.invoice')
+    @include('partials.forms.lease.payment_invoice')
 
     <!-- PAYMENT HISTORY -->
     @include('partials.forms.lease.payment_history')

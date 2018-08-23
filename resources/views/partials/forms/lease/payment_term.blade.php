@@ -6,6 +6,6 @@
 
     <input type="hidden" name="payment_terms" v-bind:value="paymentTermsText">
 
-    <lease-payment-terms @add="addPaymentTerms"></lease-payment-terms>
+    <lease-payment-terms></lease-payment-terms>
 
 </accordion>

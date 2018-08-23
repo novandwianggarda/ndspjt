@@ -2,30 +2,33 @@
 
 use Faker\Generator as Faker;
 use App\Certificate;
-use App\LeaseType;
+use App\Property;
 
 $factory->define(\App\Lease::class, function (Faker $faker) {
+
     $certificateIds = Certificate::all()->pluck('id')->toArray();
-    $leaseTypeIds = LeaseType::all()->pluck('id')->toArray();
+    $randomCertificateId = $faker->unique()->randomElement($certificateIds);
+    $propertyIds = Property::all()->pluck('id')->toArray();
+    $randomPropertyId = $faker->unique()->randomElement($propertyIds);
+
     $lessor = ['Leonard Hidajat', 'Sango Ina', 'DS-Estates'];
     $length = $faker->randomFloat(1, 1, 5);
+
     $brokYearly = $faker->numberBetween(1000000, 99999999);
     $sellMonthly = $faker->numberBetween(100000, 9999999);
     $rentM2Montly = $faker->numberBetween(2000, 20000);
     $rentM2MontlyType = $faker->randomElement(['land', 'building']);
-    $randCertId = $faker->unique()->randomElement($certificateIds);
-    $certArea = Certificate::find($randCertId)->area;
-    $landArea = $faker->numberBetween(100, 9999);
+    $certArea = Certificate::find($randomCertificateId)->area;
+    $landArea = Property::find($randomPropertyId)->land_area;
+    $buildingArea = Property::find($randomPropertyId)->building_area;
     $rentPrice = $rentM2Montly * 12 * $certArea;
-    $buildingArea = $faker->numberBetween(10, 999);
     $rentPrice = $rentM2Montly * 12 * ($rentM2MontlyType == 'land' ? $landArea : $buildingArea);
 
     return [
-        'certificate_ids' => $randCertId,
-        'lease_type_id' => $faker->randomElement($leaseTypeIds),
-        'lease_payment_id' => 1,
+        'certificate_ids' => $randomCertificateId,
+        'property_ids' => $randomPropertyId,
 
-        // LEASE
+        // LEASE BASE
         'lessor' => $faker->randomElement($lessor),
         'lessor_pkp' => $faker->boolean,
         'tenant' => $faker->name,
@@ -33,13 +36,27 @@ $factory->define(\App\Lease::class, function (Faker $faker) {
         'start' => randomDate('2017'),
         'end' => randomDate(2017+round($length)),
         'note' => $faker->realText,
+
+        // LEASE DEED aka Akta Sewa
         'lease_deed' => $faker->numberBetween(1111111111, 9999999999),
         'lease_deed_date' => randomDate('2017'),
+
+        // PAYMENT TERMS
         'payment_terms' => '{[]}',
 
+        // PAYMENT HISTORY
+        'payment_history' => '{[]}',
+
+        // PAYMENT INVOICES
+        'payment_invoices' => '{[]}',
+
         // PRICES
+
+        // -- Offer Price
         'sell_monthly' => $sellMonthly,
         'sell_yearly' => $sellMonthly * 12,
+
+        // -- Lease Price
         'rent_m2_monthly' => $rentM2Montly,
         'rent_price' => $rentPrice,
         'rent_assurance' => $faker->numberBetween(2000000, 50000000),
@@ -53,4 +70,5 @@ $factory->define(\App\Lease::class, function (Faker $faker) {
         'grace_start' => randomDate('2017'),
         'grace_end' => randomDate('2018'),
     ];
+
 });

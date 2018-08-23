@@ -11,6 +11,6 @@ class LeasesTableSeeder extends Seeder
      */
     public function run()
     {
-        // factory(App\Lease::class, 30)->create();
+        factory(App\Lease::class, 30)->create();
     }
 }

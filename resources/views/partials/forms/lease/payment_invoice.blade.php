@@ -4,6 +4,6 @@
         INVOICE: PBB, FINE, ETC
     </div>
 
-    here come another payment terms like
+    <lease-payment-invoices></lease-payment-invoices>
 
 </accordion>

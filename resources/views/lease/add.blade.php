@@ -62,7 +62,6 @@
         // lease price
         var oldRentAssurance = "{{ old('rent_assurance') }}";
 
-
         // lease broker
         var oldBrokFeeYearly = "{{ old('brok_fee_yearly') }}" === '' ? 0 : parseInt("{{ old('brok_fee_yearly') }}");
 
@@ -73,6 +72,10 @@
         // lease payment history
         oldPaymentHistory = "{{ old('payment_history') }}" === '' ? [] : "{{ old('payment_history') }}";
         vueShared.paymentHistory = oldPaymentHistory;
+
+        // lease invioces
+        oldPaymentInvoices = "{{ old('payment_invoices') }}" === '' ? [] : "{{ old('payment_invoices') }}";
+        vueShared.paymentInvoices = oldPaymentInvoices;
 
         var fvue = new Vue({
             el: '#form-lease',
@@ -160,11 +163,16 @@
                     return JSON.stringify(this.shared.paymentTerms);
                 },
 
-            },
-            methods: {
-                addPaymentTerms: function() {
-                    console.log('123');
-                }
+                // lease payment history
+                paymentHistoryText : function() {
+                    return JSON.stringify(this.shared.paymentHistory);
+                },
+
+                // lease invoices
+                paymentInvoicesText : function() {
+                    return JSON.stringify(this.shared.paymentInvoices);
+                },
+
             },
             created() {
                 var vm = this;
