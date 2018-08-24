@@ -10,15 +10,21 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box">
+                <h1 style="text-align: center;">DS ESTATES</h1>
+                <h3 style="text-align: center;">Data Certificate</h3>
                 <div class="box-body table-responsive no-padding">
-                    <table class="table">
+                    <table class="table table-hover bordered table-bordered">
                         <tbody>
-                            @foreach ($certificate->getAttributes() as $index => $value)
+                            <tr>
+                                <td>Name</td>
+                                <td>{{ $property->name }}</td>
+                            </tr>
+                           <!--  @foreach ($certificate->getAttributes() as $index => $value)
                                 <tr>
                                     <td>{{ $index }}</td>
                                     <td>{{ $value }}</td>
                                 </tr>
-                            @endforeach
+                            @endforeach -->
                         </tbody>
                     </table>
                 </div>

@@ -10,8 +10,10 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box">
+                <h1 style="text-align: center;">DS ESTATES</h1>
+                <h3 style="text-align: center;">Data Tax</h3>                
                 <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover bordered">
+                    <table class="table table-hover bordered table-bordered">
                         <tbody>
                             @foreach ($tax->getAttributes() as $index => $value)
                                 <tr>

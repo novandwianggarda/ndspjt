@@ -86,8 +86,7 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('list', 'PropertiesController@index');
         Route::get('show/{id}', 'PropertiesController@show');
         Route::get('add', 'PropertiesController@showAddForm');
-        // Route::post();
-
+        Route::post('add', 'PropertiesController@store');
     });
 
     // User Manager

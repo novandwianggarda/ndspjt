@@ -15,14 +15,14 @@
         <label slot="label">
             Nama Lokasi
         </label>
-        <input type="text" name="prop_name" value="{{ old('prop_name') }}" class="form-control" />
+        <input type="text" name="name" value="{{ old('name') }}" class="form-control" />
     </frgroup>
 
     <frgroup>
         <label slot="label">
             Alamat
         </label>
-        <input type="text" name="prop_addr" value="{{ old('prop_addr') }}" class="form-control" />
+        <input type="text" name="address" value="{{ old('address') }}" class="form-control" />
     </frgroup>
 
     <frgroup wl="2" wi="4">
@@ -30,7 +30,7 @@
             Luas Tanah
         </label>
         <div class="input-group">
-            <money class="form-control" name="prop_land_area" v-model="landArea" v-bind="{prefix:'',precision:0,thousands:'.'}"></money>
+            <money class="form-control" name="land_area" v-model="landArea" v-bind="{prefix:'',precision:0,thousands:'.'}"></money>
             <span class="input-group-addon">m<sup>2</sup></span>
         </div>
     </frgroup>
@@ -40,7 +40,7 @@
             Luas Bangunan
         </label>
         <div class="input-group">
-            <money class="form-control" name="prop_building_area" v-model="buildingArea" v-bind="{prefix:'',precision:0,thousands:'.'}"></money>
+            <money class="form-control" name="building_area" v-model="buildingArea" v-bind="{prefix:'',precision:0,thousands:'.'}"></money>
             <span class="input-group-addon">m<sup>2</sup></span>
         </div>
     </frgroup>
@@ -51,14 +51,14 @@
         <label slot="label">
             Blok/Tower
         </label>
-        <input type="text" name="prop_block" value="{{ old('prop_block') }}" class="form-control" />
+        <input type="text" name="block" value="{{ old('block') }}" class="form-control" />
     </frgroup>
 
     <frgroup wl="2" wi="4">
         <label slot="label">
             Lantai
         </label>
-        <input type="text" name="prop_floor" value="{{ old('prop_floor') }}" class="form-control" />
+        <input type="text" name="floor" value="{{ old('floor') }}" class="form-control" />
     </frgroup>
 
     <div class="clearfix"></div>
@@ -67,14 +67,14 @@
         <label slot="label">
             Unit
         </label>
-        <input type="text" name="prop_unit" value="{{ old('prop_unit') }}" class="form-control" />
+        <input type="text" name="unit" value="{{ old('unit') }}" class="form-control" />
     </frgroup>
 
     <frgroup wl="2" wi="4">
         <label slot="label">
             Listrik
         </label>
-        <input type="text" name="prop_electricity" value="{{ old('prop_electricity') }}" class="form-control" />
+        <input type="text" name="electricity" value="{{ old('electricity') }}" class="form-control" />
     </frgroup>
 
     <div class="clearfix"></div>
@@ -83,14 +83,14 @@
         <label slot="label">
             Air
         </label>
-        <input type="text" name="prop_water" value="{{ old('prop_water') }}" class="form-control" />
+        <input type="text" name="water" value="{{ old('water') }}" class="form-control" />
     </frgroup>
 
     <frgroup wl="2" wi="4">
         <label slot="label">
             Telepon
         </label>
-        <input type="text" name="prop_telephone" value="{{ old('prop_telephone') }}" class="form-control" />
+        <input type="text" name="telephone" value="{{ old('telephone') }}" class="form-control" />
     </frgroup>
 
     <div class="clearfix"></div>

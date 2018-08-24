@@ -1,4 +1,4 @@
-<accordion name="collapse-certificate">
+<accordion name="collapse-certificate" collapse="in">
         <div slot="title" class="ll-head">
             BASIC INFORMATION
         </div>

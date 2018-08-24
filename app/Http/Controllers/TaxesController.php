@@ -34,6 +34,7 @@ class TaxesController extends Controller
     {
         return view('tax.add');
     }
+    //ini buat add nya :)
     public function store(TaxRequest $request)
     {
         $data = $request->all();

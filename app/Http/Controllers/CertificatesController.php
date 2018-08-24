@@ -36,6 +36,7 @@ class CertificatesController extends Controller
         return view('certificate.add');
     }
 
+    //ini buat add nya :)   
     public function store(CertificateRequest $request)
     {
         $data = $request->all();

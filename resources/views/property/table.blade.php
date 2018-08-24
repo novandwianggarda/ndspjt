@@ -9,10 +9,10 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-12">
-			<table id="tbl-properties" class="table table-stripped table-bordered" style="width: 100%">
+			<table id="tbl-properties" class="table table-bordered" style="width: 100%">
 				<thead>
 					<tr>
-						<th>Name Holder</th>
+						<th>Name</th>
 						<th>Type Property</th>
 						<th>Address</th>
 					</tr>
@@ -21,7 +21,7 @@
 					@foreach ($properties as $property)
 					<tr>
 						<td>
-						<a href="peproperties/show/{{ $property->id}}">{{$property->name}}</a>	
+						<a href="show/{{ $property->id}}">{{$property->name}}</a>	
 						</td>
 
 						<td>{{$property->type->name}}</td>
@@ -31,7 +31,7 @@
 				</tbody>
 				<tfoot>
 					<tr>
-						<th>Name Holder</th>
+						<th>Name</th>
 						<th>Type Property</th>
 						<th>Address</th>
 					</tr>
