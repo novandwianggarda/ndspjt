@@ -10,7 +10,7 @@
     <row-box>
         <!--ERRORS-->
         @include('partials.errors')
-        <form class="form-horizontal" id="form-lease" action="/leases/add" method="POST">
+        <form class="form-horizontal" id="form-lease" action="/leases/add" method="POST" v-on:submit.prevent="submitForm">
             @csrf
             <div class="box-group" id="accordion">
                 <div class="panel box">
@@ -66,15 +66,15 @@
         var oldBrokFeeYearly = "{{ old('brok_fee_yearly') }}" === '' ? 0 : parseInt("{{ old('brok_fee_yearly') }}");
 
         // lease payment terms
-        oldPaymentTerms = "{{ old('payment_terms') }}" === '' ? [] : "{{ old('payment_terms') }}";
+        oldPaymentTerms = '{!! old('payment_terms') !!}' === '' ? [] : JSON.parse('{!! old('payment_terms') !!}');
         vueShared.paymentTerms = oldPaymentTerms;
 
         // lease payment history
-        oldPaymentHistory = "{{ old('payment_history') }}" === '' ? [] : "{{ old('payment_history') }}";
+        oldPaymentHistory = '{!! old('payment_history') !!}' === '' ? [] : JSON.parse('{!! old('payment_history') !!}');
         vueShared.paymentHistory = oldPaymentHistory;
 
         // lease invioces
-        oldPaymentInvoices = "{{ old('payment_invoices') }}" === '' ? [] : "{{ old('payment_invoices') }}";
+        oldPaymentInvoices = "{{ old('payment_invoices') }}" === '' ? [] : JSON.parse('{{ old('payment_invoices') }}');
         vueShared.paymentInvoices = oldPaymentInvoices;
 
         var fvue = new Vue({
@@ -85,6 +85,7 @@
 
                 // land
                 certificateIds: '',
+                propertyIds: '',
                 landArea: oldLandArea,
                 buildingArea: oldBuildingArea,
 
@@ -174,10 +175,18 @@
                 },
 
             },
+            methods: {
+                submitForm() {
+                    console.log(form.serialize());
+                },
+            },
             created() {
                 var vm = this;
                 vueEvent.$on('LC-certificateSelected', function() {
                     vm.certificateIds = $('#lease-certificates').val().toString();
+                });
+                vueEvent.$on('LP-propertiesselected', function() {
+                    vm.propertyIds = $('#lease-properties').val().toString();
                 });
                 vueEvent.$on('ID-dateChanged', function(bindTo, date) {
                     _.set(vm, bindTo, date)

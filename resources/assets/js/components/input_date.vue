@@ -14,12 +14,16 @@
         props: {
             name: { default: '' },
             bindTo : { default: '' },
+            dateval: { default: ''},
         },
         data() {
             return {
                 date: '',
                 uuid: uuidv4(),
             }
+        },
+        created() {
+            if (this.dateval !== this.date) this.date = this.dateval;
         },
         mounted() {
             $(`input[xmark=${this.uuid}]`)

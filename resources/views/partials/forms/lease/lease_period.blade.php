@@ -8,14 +8,14 @@
         <label slot="label">
             Awal Sewa
         </label>
-        <indate name="start" bind-to="start"></indate>
+        <indate name="start" bind-to="start" v-bind:dateval="start"></indate>
     </frgroup>
 
     <frgroup wl="2" wi="4">
         <label slot="label">
             Akhir Sewa
         </label>
-        <indate name="end" bind-to="end"></indate>
+        <indate name="end" bind-to="end" v-bind:dateval="end"></indate>
     </frgroup>
 
     <div class="clearfix"></div>

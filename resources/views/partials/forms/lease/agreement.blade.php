@@ -22,7 +22,7 @@
         <label slot="label">
             Tanggal Akta Sewa
         </label>
-        <indate name="lease_deed_date" bind-to="leaseDeedDate"></indate>
+        <indate name="lease_deed_date" bind-to="leaseDeedDate" v-bind:dateval="leaseDeedDate"></indate>
     </frgroup>
 
 </accordion>

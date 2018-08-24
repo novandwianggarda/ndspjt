@@ -2,35 +2,35 @@
         <div slot="title" class="ll-head">
             BASIC INFORMATION
         </div>
-    
+
         <frgroup>
             <label slot="label">
                 Tipe Sertifikat
             </label>
             <certificate-types></certificate-types>
         </frgroup>
-    
+
         <frgroup>
             <label slot="label">
                 Nomor Sertifikat
             </label>
             <input type="text" name="number" value="{{ old('number') }}" class="form-control" placeholder="Contoh: 1, 2, 3" />
         </frgroup>
-    
+
         <frgroup>
             <label slot="label">
                 Nama Sertifikat
             </label>
             <input type="text" name="name" value="{{ old('name ') }}" class="form-control" placeholder="Contoh: PT. Dirga Surya" />
         </frgroup>
-    
+
         <frgroup>
             <label slot="label">
                 NOP
             </label>
             <input type="text" name="nop" value="{{ old('nop') }}" class="form-control" />
         </frgroup>
-    
+
         <frgroup>
             <label slot="label">
                 Luas Sertifikat
@@ -52,7 +52,7 @@
             <label slot="label">
                 Kecamatan
             </label>
-            <input type="text" name="addr_district" value="{{ old('addr_district') }}" class="form-control" />            
+            <input type="text" name="addr_district" value="{{ old('addr_district') }}" class="form-control" />
         </frgroup>
 
         <frgroup wl="2" wi="2">
@@ -68,7 +68,7 @@
             </label>
             <input type="text" name="addr_address" value="{{ old('addr_address') }}" class="form-control" />
         </frgroup>
-        
+
         <frgroup>
             <label slot="label">
                 Kepemilikan Sertifikat

@@ -42,7 +42,7 @@
         <label slot="label">
             Tgl. AJB
         </label>
-        <indate name="ajb_date" value="{{old ('ajb_nominal')}}" class="datepicker"></indate>
+        <indate name="ajb_date" v-bind:dateval="{{old ('ajb_nominal')}}" class="datepicker"></indate>
     </frgroup>
 
     <frgroup>

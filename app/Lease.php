@@ -13,16 +13,30 @@ class Lease extends Model implements Auditable
 
     protected $table = 'leases';
     protected $fillable = [
-        'certificate_ids', 'lease_type_id', 'lease_payment_id',
+        'certificate_ids', 'property_ids',
 
         // LEASE BASE
-        'lessor', 'lessor_pkp', 'tenant', 'purpose', 'start', 'end', 'note', 'lease_deed', 'lease_deed_date', 'payment_terms',
+        'lessor', 'lessor_pkp', 'tenant', 'purpose', 'start', 'end', 'note',
+
+        // LEASE DEED aka Akta Sewa
+        'lease_deed', 'lease_deed_date',
+
+        // PAYMENT TERMS
+        'payment_terms',
+
+        // PAYMENT HISTORY
+        'payment_history',
+
+        // PAYMENT INVOICES
+        'payment_invoices',
 
         // PRICES
-        'sell_monthly', 'sell_yearly', 'rent_m2_monthly', 'rent_m2_monthly_type', 'rent_price', 'rent_price_type', 'rent_assurance',
 
-        // PROPERTY
-        'prop_name', 'prop_address', 'prop_land_area', 'prop_building_area', 'prop_block', 'prop_floor', 'prop_unit', 'prop_electricity', 'prop_water', 'prop_telephone',
+        // -- Offer Price
+        'sell_monthly', 'sell_yearly',
+
+        // -- Lease Price
+        'rent_m2_monthly', 'rent_m2_monthly_type', 'rent_price', 'rent_price_type', 'rent_assurance',
 
         // BROKER
         'brok_name', 'brok_fee_yearly', 'brok_fee_paid',
@@ -117,6 +131,24 @@ class Lease extends Model implements Auditable
             $certificateIds = explode(',', $lease['certificate_ids']);
             foreach ($certificateIds as $certificateId) {
                 array_push($allIds, ['lease_id' => $lease['id'], 'certificate_id' => $certificateId]);
+            }
+        }
+        return $allIds;
+    }
+
+    /**
+     * get all lease with property id
+     *
+     * @return array
+     */
+    public static function leaseWithpropertyIds()
+    {
+        $leases = Lease::select('id', 'property_ids')->get()->toArray();
+        $allIds = [];
+        foreach ($leases as $lease) {
+            $propertyIds = explode(',', $lease['property_ids']);
+            foreach ($propertyIds as $propertyId) {
+                array_push($allIds, ['lease_id' => $lease['id'], 'property_id' => $propertyId]);
             }
         }
         return $allIds;

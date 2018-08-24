@@ -49,4 +49,20 @@ class Property extends Model implements Auditable
     {
         return $this->belongsTo('App\PropertyType', 'property_type_id', 'id');
     }
+
+    /**
+     * STATIC
+     */
+
+    /**
+     * property that available
+     * to create a new lease
+     *
+     * @return Illuminate\Database\Eloquent\Builder
+     */
+    public static function availableForLease() {
+        $notAvailable = array_column(Lease::leaseWithpropertyIds(), 'property_id');
+        return Property::whereNotIn('properties.id', $notAvailable);
+    }
+
 }

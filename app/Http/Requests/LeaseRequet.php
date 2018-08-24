@@ -24,34 +24,43 @@ class LeaseRequet extends FormRequest
     public function rules()
     {
         return [
-            'certificate_ids' => 'required|unique:leases',
-            'lease_type_id' => 'nullable|numeric',
-            'lease_payment_id' => 'nullable|numeric',
+            'certificate_ids' => 'nullable',
+            'property_ids' => 'nullable',
 
             // LEASE BASE
             'lessor' => 'nullable',
+            'lessor_pkp' => 'nullable',
             'tenant' => 'nullable',
             'purpose' => 'nullable',
             'start' => 'nullable|date',
             'end' => 'nullable|date',
             'note' => 'nullable',
 
-            // PRICE
-            'sell_monthly' => 'nullable|numeric',
-            'sell_yearly' => 'nullable|numeric',
-            'rent_assurance' => 'nullable|numeric',
+            // LEASE DEED aka Akta Sewa
+            'lease_deed' => 'nullable',
+            'lease_deed_date' => 'nullable',
 
-            // PROPERTY
-            'prop_name' => 'nullable',
-            'prop_address' => 'nullable',
-            'prop_land_area' => 'nullable|numeric',
-            'prop_building_area' => 'nullable|numeric',
-            'prop_block' => 'nullable',
-            'prop_floor' => 'nullable|numeric',
-            'prop_unit' => 'nullable',
-            'prop_electricity' => 'nullable',
-            'prop_water' => 'nullable',
-            'prop_telephone' => 'nullable',
+            // PAYMENT TERMS
+            'payment_terms' => 'nullable',
+
+            // PAYMENT HISTORY
+            'payment_history' => 'nullable',
+
+            // PAYMENT INVOICES
+            'payment_invoices' => 'nullable',
+
+            // PRICE
+
+            // -- Offer Price
+            'sell_monthly' => 'nullable',
+            'sell_yearly' => 'nullable',
+
+            // -- Lease Price
+            'rent_m2_monthly' => 'nullable',
+            'rent_m2_monthly_type' => 'nullable',
+            'rent_price' => 'nullable',
+            'rent_price_type' => 'nullable',
+            'rent_assurance' => 'nullable',
 
             // BROKER
             'brok_name' => 'nullable',

@@ -27,8 +27,10 @@ Route::middleware('auth')->group(function() {
         Route::get('/certificate_types', 'CertificatesAjaxController@certificateTypes');
     });
 
-    // Lease
+    // Property
     Route::prefix('/property')->group(function() {
+        Route::get('/available', 'PropertiesAjaxController@availableProperties');
+        Route::get('/result', 'PropertiesAjaxController@result');
         Route::get('/property_types', 'PropertiesAjaxController@propertyTypes');
     });
 

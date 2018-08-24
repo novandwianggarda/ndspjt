@@ -14,6 +14,7 @@ Vue.component('indate', require('./components/input_date.vue'));
 
 Vue.component('property-types', require('./components/forms/property_types.vue'));
 Vue.component('lease-certificates', require('./components/forms/lease_certificates.vue'));
+Vue.component('lease-properties', require('./components/forms/lease_properties.vue'));
 Vue.component('lease-payment-terms', require('./components/forms/lease_payment_terms.vue'));
 Vue.component('lease-payment-history', require('./components/forms/lease_payment_history.vue'));
 Vue.component('lease-payment-invoices', require('./components/forms/lease_payment_invoices.vue'));

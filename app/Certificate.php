@@ -89,6 +89,7 @@ class Certificate extends Model implements Auditable
 
 
     /** STATIC */
+
     /**
      * certificates that available
      * to create a new lease

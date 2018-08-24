@@ -41,8 +41,11 @@ class LeasesController extends Controller
     public function store(LeaseRequet $request)
     {
         $data = $request->all();
+        dd($data);
+        // parse to int
         $data['brok_fee_yearly'] = (int)$data['brok_fee_yearly'];
         $data['brok_fee_paid'] = (int)$data['brok_fee_paid'];
+        // parse to date
         $data['start'] = empty($data['start']) ? null : $this->parseDate($data['start']);
         $data['end'] = empty($data['end']) ? null : $this->parseDate($data['end']);
         $data['grace_start'] = empty($data['grace_start']) ? null : $this->parseDate($data['grace_start']);

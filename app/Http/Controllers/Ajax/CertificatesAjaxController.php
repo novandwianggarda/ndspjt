@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Ajax;
 
-use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\Ajax\AjaxController;
 use Illuminate\Http\Request;
-use App\Certificate;
 use App\CertificateType;
+use App\Certificate;
 
 class CertificatesAjaxController extends AjaxController
 {
