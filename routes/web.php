@@ -89,10 +89,30 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::post('add', 'PropertiesController@store');
     });
 
+    // Route::prefix('user')->group(function() {
+
+    //     Route::get('/', function () {
+    //         return redirect('/' . $this->current->uri . '/user');
+    //     });
+    //     Route::get('list', 'PropertiesController@index');
+    //     Route::get('show/{id}', 'PropertiesController@show');
+    //     Route::get('add', 'PropertiesController@showAddForm');
+    //     Route::post('add', 'PropertiesController@store');
+    // });
+
+
+
     // User Manager
-    Route::get('users', 'UserManagerController@index');
+    // Route::get('users', 'UserManagerController@index');
+    // Route::get('add_user', array('uses' => 'UserManagerController@ShowAddUser', 'as' => 'add_user' ));
+    // Route::post('add_users', 'UserManagerController@store');
+
+    Route::get('/users', 'UserManagerController@index');
     Route::get('add_user', array('uses' => 'UserManagerController@ShowAddUser', 'as' => 'add_user' ));
-    Route::post('add_users', 'UserManagerController@store');
+    Route::post('/storeuser', 'UserManagerController@store');
+    Route::get('/editpemilik/{id}', 'UserManagerController@editpemilik' );
+    Route::patch('/updatepemilik/{edit}', 'UserManagerController@updatepemilik');
+    Route::delete('/deletepemilik/{id}', 'UserManagerController@destroypemilik' );
 
 });
 

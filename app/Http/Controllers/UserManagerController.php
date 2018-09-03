@@ -15,12 +15,27 @@ class UserManagerController extends Controller
     {
     	   return view('admin.add_user');
     }
-    public function store(add_userRequest $request){
-    	$data = $request->all();
-    	$add = add_user::add($data);
-    	if (!$add) {
-    		return 'error';
-    	}
-    	return 'success';
+    public function store(Request $request){
+    	
+        //dd($request->all());
+        $user = new User();
+        $user->name=$request->input('name');
+        $user->username=$request->input('username');
+        $user->password=$user->password=$request->input('password')!=''?bcrypt($request->input('password')):'';
+        $user->save();
+        
+
+        // if($user->save()){
+        //     $kategori='success';
+        //     $pesan="Tersimpan";
+        // }else{
+        //     $kategori='error';
+        //     $pesan="Gagal";
+        // }
+        return redirect()->back()->with('data', ['some kind of data']);
+
+
+
+
     }
 }
