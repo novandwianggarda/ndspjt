@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
 class UserManagerController extends Controller
 {
     public function index()
@@ -13,7 +14,8 @@ class UserManagerController extends Controller
     }
      public function ShowAddUser()
     {
-    	   return view('admin.add_user');
+        $roles = Role::all()->pluck('name', 'id');
+    	return view('admin.add_user', compact('roles'));
     }
     public function store(Request $request){
     	
@@ -22,8 +24,9 @@ class UserManagerController extends Controller
         $user->name=$request->input('name');
         $user->username=$request->input('username');
         $user->password=$user->password=$request->input('password')!=''?bcrypt($request->input('password')):'';
+
         $user->save();
-        
+        $user->roles()->attach($request->input('role_id'));
 
         // if($user->save()){
         //     $kategori='success';

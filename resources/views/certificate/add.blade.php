@@ -31,7 +31,7 @@
                                 <!-- FILES & MAPPING-->
                                 @include('partials.forms.certificate.documents')
                                 <!-- FUHRER INFORMATION -->
-                                @include('partials.forms.certificate.furtherinformation')
+                                <!-- @include('partials.forms.certificate.furtherinformation') -->
 
                                 <div class="form-groxup">
                                     <div class="col-sm-12" style="padding:0px 25px">

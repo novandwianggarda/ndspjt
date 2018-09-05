@@ -49,6 +49,9 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('add', 'CertificatesController@showAddForm');
         Route::post('add', 'CertificatesController@store');
 
+        Route::get('import', 'CertificatesController@import');
+        Route::post('storeimport', 'CertificatesController@storeimport')->name('certificate.import');
+
     });
 
     // Tax
@@ -61,6 +64,9 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('show/{id}', 'TaxesController@show');
         Route::get('add', 'TaxesController@showAddForm');
         Route::post('add', 'TaxesController@store');
+
+        Route::get('import', 'TaxesController@import');
+        Route::post('storeimport', 'TaxesController@storeimport')->name('tax.import');
 
     });
 
@@ -75,6 +81,9 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('add', 'LeasesController@showAddForm');
         Route::post('add', 'LeasesController@store');
 
+        Route::get('import', 'LeasesController@import');
+        Route::post('storeimport', 'LeasesController@storeimport')->name('leases.import');
+
     });
 
     // Property
@@ -87,6 +96,9 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('show/{id}', 'PropertiesController@show');
         Route::get('add', 'PropertiesController@showAddForm');
         Route::post('add', 'PropertiesController@store');
+
+        Route::get('import', 'PropertiesController@import');
+        Route::post('storeimport', 'PropertiesController@storeimport')->name('properti.import');
     });
 
     // Route::prefix('user')->group(function() {

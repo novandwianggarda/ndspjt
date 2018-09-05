@@ -32,5 +32,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123qwe'),
         ]);
         $tata->roles()->attach(2);
+
+        
     }
 }

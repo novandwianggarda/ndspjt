@@ -38,10 +38,17 @@
 
                             <frgroup class>
                                 
-                                {!! Form::label('password', 'Pasword Anda', ['class'=>'form-control-label']) !!}
+                                {!! Form::label('password', 'Pasword Anda', ['class'=>'form-control-label']) !!} <br />
 
-                                {!! Form::text('password', null, ['class'=>'form-control', 'placeholder' => 'Masukkan Password']) !!}
+                                {!! Form::text('password', null, ['class'=>'form-control']) !!}
                                 {!! $errors->has('password')?$errors->first('password'):'' !!} 
+
+                            </frgroup>
+                            <frgroup class>
+                                
+                                {!! Form::label('akses', 'Akses Anda', ['class'=>'form-control-label']) !!} <br />
+                                {!! Form::select('role_id', $roles,null, ['class'=>'form-control']) !!}
+                               
 
                             </frgroup>
                         </div>

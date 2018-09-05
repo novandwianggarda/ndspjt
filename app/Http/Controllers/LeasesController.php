@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Lease;
 use App\Certificate;
 use App\Http\Requests\LeaseRequet;
+use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
 
 class LeasesController extends Controller
@@ -57,6 +58,56 @@ class LeasesController extends Controller
         }
         return 'success';
     }
+
+    // import leases
+    public function import(){
+        return view('lease.upload');
+    }
+
+    public function storeimport(Request $request){
+        //dd($request->all());
+        if ($request->hasFile('upload-file')){
+            $path = $request->file('upload-file')->getRealPath();
+            $data = Excel::load($path, function($reader){})->get();
+            
+            if (!empty($data) && $data->count()) {
+                foreach ($data as $key => $value) {
+                   
+                    $leases = new Lease();
+                    $leases->certificate_ids= $value->certificate_ids;
+                    $leases->property_ids= $value->property_ids;
+                    $leases->lessor= $value->lessor;
+                    $leases->lessor_pkp= $value->lessor_pkp;
+                    $leases->tenant= $value->tenant;
+                    $leases->purpose= $value->purpose;
+                    $leases->start= $value->start;
+                    $leases->end= $value->end;
+                    $leases->note= $value->note;
+                    $leases->lease_deed= $value->lease_deed;
+                    $leases->lease_deed_date= $value->lease_deed_date;
+                    $leases->payment_terms= $value->payment_terms;
+                    $leases->payment_history= $value->payment_history;
+                    $leases->payment_invoices= $value->payment_invoices;
+                    $leases->sell_monthly= $value->sell_monthly;
+                    $leases->sell_yearly= $value->sell_yearly;
+                    $leases->rent_m2_monthly= $value->rent_m2_monthly;
+                    $leases->rent_m2_monthly_type= $value->rent_m2_monthly_type;
+                    $leases->rent_price= $value->rent_price;
+                    $leases->rent_price_type= $value->rent_price_type;
+                    $leases->rent_assurance= $value->rent_assurance;
+                    $leases->brok_name= $value->brok_name;
+                    $leases->brok_fee_yearly= $value->brok_fee_yearly;
+                    $leases->brok_fee_paid= $value->brok_fee_paid;
+                    $leases->grace_start= $value->grace_start;
+                    $leases->grace_end= $value->grace_end;
+                    $leases->save();
+                }
+            }
+        }   
+        return back();
+    }
+
+
 
     private function parseDate($str, $format = 'Y-m-d'){
         return Carbon::parse($str)->format($format);
