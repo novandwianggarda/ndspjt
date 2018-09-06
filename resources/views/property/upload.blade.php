@@ -22,8 +22,17 @@
                     @endif
                     <form class="form-horizontal" id="form-property" action="{{ route('properti.import')}}" method="POST" enctype="multipart/form-data">
                         @csrf
+
                         <div class="box-group" id="accordion">
+                            
                             <div class="panel box">
+                                <div class="">
+                                @if (Session::has('success'))
+                                    <div class="alert-success"> {{ Session::has('success') }}</div>
+                                @elseif(Session::has('warnning'))
+                                    <div class="alert-warnning"> {{ Session::has('warnning') }}</div>
+                                @endif
+                            </div>
                                 <label for="upload-file">Upload CSV</label>
                                 <input type="file" name="upload-file" class="form-control">
                             </div>

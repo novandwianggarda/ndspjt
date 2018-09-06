@@ -63,9 +63,12 @@ class CertificatesController extends Controller
             
             if (!empty($data) && $data->count()) {
                 foreach ($data as $key => $value) {
+                    // dd(\App\CertificateType::where('short_name', strtolower($value->tax_type))->first());
+                    $certificateTypeId = \App\CertificateType::where('short_name', strtolower($value->certificate_type))->first()->id;
+                   
                    
                     $certificate = new Certificate();
-                    $certificate->certificate_type_id= $value->certificate_type_id;
+                    $certificate->certificate_type_id= $certificateTypeId;
                     $certificate->number= $value->number;
                     $certificate->name= $value->name;
                     $certificate->nop= $value->nop;

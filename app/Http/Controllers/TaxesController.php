@@ -43,9 +43,11 @@ class TaxesController extends Controller
             
             if (!empty($data) && $data->count()) {
                 foreach ($data as $key => $value) {
+                    // dd(\App\TaxType::where('short_name', strtolower($value->tax_type))->first());
+                    $taxTypeId = \App\TaxType::where('short_name', strtolower($value->tax_type))->first()->id;
                    
                     $taxes = new Tax();
-                    $taxes->tax_type_id= $value->tax_type_id;
+                    $taxes->tax_type_id= $taxTypeId;
                     $taxes->certificate_ids= $value->certificate_ids;
                     $taxes->nop= $value->nop;
                     $taxes->owner= $value->owner;

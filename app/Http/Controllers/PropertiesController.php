@@ -48,10 +48,12 @@ class PropertiesController extends Controller
             $data = Excel::load($path, function($reader){})->get();
             
             if (!empty($data) && $data->count()) {
+
                 foreach ($data as $key => $value) {
+                    $propertyTypeId = \App\PropertyType::where('name', strtolower($value->property_type))->first()->id;
                    
                     $properties = new Property();
-                    $properties->property_type_id= $value->property_type_id;
+                    $properties->property_type_id= $propertyTypeId;
                     $properties->name= $value->name;
                     $properties->address= $value->address;
                     $properties->land_area= $value->land_area;
@@ -63,6 +65,7 @@ class PropertiesController extends Controller
                     $properties->water= $value->water;
                     $properties->telephone= $value->telephone;
                     $properties->save();
+                    \Session::flash('success','File imported succesfully ');
                 }
             }
         }   
