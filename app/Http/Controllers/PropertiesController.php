@@ -44,14 +44,21 @@ class PropertiesController extends Controller
     public function storeimport(Request $request){
         //dd($request->all());
         if ($request->hasFile('upload-file')){
+
             $path = $request->file('upload-file')->getRealPath();
             $data = Excel::load($path, function($reader){})->get();
-            
+
+            return view('property.import_preview')->with('data', $data, 'file-url', $fileUrl);
+
+            // OLD ONES
+            $path = $request->file('upload-file')->getRealPath();
+            $data = Excel::load($path, function($reader){})->get();
+
             if (!empty($data) && $data->count()) {
 
                 foreach ($data as $key => $value) {
                     $propertyTypeId = \App\PropertyType::where('name', strtolower($value->property_type))->first()->id;
-                   
+
                     $properties = new Property();
                     $properties->property_type_id= $propertyTypeId;
                     $properties->name= $value->name;
@@ -68,7 +75,7 @@ class PropertiesController extends Controller
                     \Session::flash('success','File imported succesfully ');
                 }
             }
-        }   
+        }
         return back();
     }
 
@@ -89,37 +96,37 @@ class PropertiesController extends Controller
 
     //     }
 
-    //     dd('Request data does not have any files to import.');      
+    //     dd('Request data does not have any files to import.');
 
-    // } 
+    // }
 
 
     // public function storeimport(Requests $request)
     // {
-        
+
     //     $upload=$request->file('upload-file');
     //     $filePath=$upload->getRealPath();
-       
+
     //     $file=fopen($filePath, 'r');
     //     $header= fgetcsv($file);
-        
+
     //     $escapedHeader=[];
-        
+
     //     foreach ($header as $key => $value){
     //         $lheader=strtolower($value);
     //         $escapedItem=preg_replace('/[^a-z]/', '', $lheader);
     //         array_push($escapedHeader, $escapedItem);
     //     }
 
-        
-    //     while ($columns=fgetcsv($file)) 
+
+    //     while ($columns=fgetcsv($file))
     //     {
     //         if($columns[0]=="")
     //         {
     //             continue;
     //         }
 
-            
+
     //         foreach ($columns as $key => $value) {
     //             $value=preg_replace('/\D/', '',$value);
     //         }
@@ -130,7 +137,7 @@ class PropertiesController extends Controller
     //             $value=($key=="name" || $key=="month")?(integer)$value: (float)$value;
     //         }
 
-            
+
     //         $name=$data['name'];
     //         $address=$data['address'];
     //         $land_area=$data['land_area'];
