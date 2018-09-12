@@ -24,6 +24,16 @@
                         @csrf
                         <div class="box-group" id="accordion">
                             <div class="panel box">
+
+                                <div class="">
+                                @if (Session::has('success'))
+                                    <div class="alert-success"> {{ Session::get('success') }}</div>
+                                @elseif(Session::has('warnning'))
+                                    <div class="alert-warnning"> {{ Session::get('warnning') }}</div>
+                                @endif
+                                </div>
+
+                                
                                 <label for="upload-file">Upload xls,csv. etc</label>
                                 <input type="file" name="upload-file" class="form-control">
                             </div>

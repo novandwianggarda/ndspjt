@@ -38,11 +38,17 @@
         <input type="text" name="ajb_nominal" value="{{old ('ajb_nominal')}}" class="form-control"/>
     </frgroup>
 
-    <frgroup>
+    <!-- <frgroup>
         <label slot="label">
             Tgl. AJB
         </label>
         <indate name="ajb_date" v-bind:dateval="{{old ('ajb_nominal')}}" class="datepicker"></indate>
+    </frgroup> -->
+     <frgroup>
+        <label slot="label">
+            Tgl. AJB
+        </label>
+        <indate name="ajb_date" value="{{old('ajb_date') }}"></indate>
     </frgroup>
 
     <frgroup>

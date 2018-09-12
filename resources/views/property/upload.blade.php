@@ -28,16 +28,17 @@
                             <div class="panel box">
                                 <div class="">
                                 @if (Session::has('success'))
-                                    <div class="alert-success"> {{ Session::has('success') }}</div>
+                                    <div class="alert-success"> {{ Session::get('success') }}</div>
                                 @elseif(Session::has('warnning'))
-                                    <div class="alert-warnning"> {{ Session::has('warnning') }}</div>
+                                    <div class="alert-warnning"> {{ Session::get('warnning') }}</div>
                                 @endif
-                            </div>
+                                </div>
+                                
                                 <label for="upload-file">Upload CSV</label>
                                 <input type="file" name="upload-file" class="form-control">
                             </div>
                         </div>
-                        <input class="btn btn-success" type="submit" value="Import" name="submit">
+                        <input class="btn btn-info" type="submit" value="Import" name="submit">
                     </form>
                 </div>
             </div>
