@@ -47,6 +47,7 @@ class CertificateRequest extends FormRequest
             'addr_date' => 'nullable|date',
 
             // SCAN FILES
+            
             'scan_certificate' => 'nullable',
             'scan_plotting' => 'nullable',
             'scan_land_siteplan' => 'nullable',

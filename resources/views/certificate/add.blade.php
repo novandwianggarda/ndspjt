@@ -20,7 +20,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" id="form-certificate" action="/certificates/add" method="POST">
+                    <form class="form-horizontal" id="form-certificate" action="/certificates/add" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="box-group" id="accordion">
                             <div class="panel box">
@@ -123,12 +123,13 @@ body {
 
                         var reader = new FileReader();
                         reader.readAsDataURL(file);
+                        console.log(file);
                         reader.onload = function (e){
 
                             var template = '<form action="/upload">'+
                                             '<img style="width: 64px;margin-right: 5px;margin-top: 5px;margin-bottom: 5px;" src="'+e.target.result+'">'+
-                                            '<label>Title : </label> <input type="text" name="title">'+
-                                            '<a href="#" class="btn btn-sm btn-primary ll-bgcolor ll-white" style="margin-left:5px;">Remove</a>'+
+                                            file.name+
+                                            // '<a href="#" class="btn btn-sm btn-primary ll-bgcolor ll-white" style="margin-left:5px;">Remove</a>'+
                                         '</form>';
                             $('#images-to-upload').append(template);
                         }
@@ -371,6 +372,7 @@ body {
 // }
 // google.maps.event.addDomListener(window, 'load', initialize);
 
+
 // MAPS
     var map, markers = [], polygon, polygonCenter, polygonArea = 0;
     function initMap() {
@@ -400,12 +402,12 @@ body {
         google.maps.event.addListener(map, 'mousehover', function(e) {
             map.setOptions({draggableCursor:'point'});
         });
-
+        
             }
 
     function placeMarker(location) {
         var marker = new google.maps.Marker({
-            position: location,
+            position: location, 
             map: map,
             draggable:true
         });
@@ -482,6 +484,7 @@ body {
         return wkt;
     }
     // END MAP
+
     </script>
 
 @stop

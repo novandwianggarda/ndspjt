@@ -5,28 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class Certificate extends Model implements Auditable
+class CertificateDoc extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
-    protected $table = 'certificates';
+    protected $table = 'certificate_docs';
     protected $fillable = [
-        'certificate_type_id',
+        'nama_file',
+        'title',
 
-        // CERTIFICATE BASE
-        'number', 'name', 'nop', 'owner', 'area', 'published_date', 'expired_date', 'note',
-
-        // ADDRESS
-        'addr_city', 'addr_district', 'addr_village', 'addr_address',
-
-        // AJB
-        'ajb_nominal', 'ajb_date',
-
-        // SCAN FILES
-        'scan_certificate', 'scan_plotting', 'scan_land_siteplan', 'scan_krk', 'scan_imb',
-
-        // FOLDER FILLING
-        'folder_number', 'folder_current', 'folder_plan'
     ];
 
     public $timestamp = true;
@@ -58,14 +45,9 @@ class Certificate extends Model implements Auditable
      *
      * @return App\CertificateType
      */
-    public function type()
-    {
-        return $this->belongsTo('App\CertificateType', 'certificate_type_id', 'id');
-    }
-
     public function cerdoc()
     {
-        return $this->hasMany('App\CertificateDoc', 'certificate_id', 'id');
+        return $this->belongsTo('App\Certificate', 'id');
     }
 
 

@@ -20,7 +20,8 @@
 
                 </form>
             </div>
-         <a href="#" class="btn btn-sm ll-bgcolor ll-white" style="margin-top: 5px;"> Upload </a>
+            
+         <a href="#" class="btn btn-sm" style="margin-top: 5px;"> &nbsp; </a>
 
 
          

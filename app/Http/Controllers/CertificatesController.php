@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Certificate;
+use App\CertificateDoc;
 use App\Http\Requests\CertificateRequest;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -41,13 +42,78 @@ class CertificatesController extends Controller
     //ini buat add nya :)   
     public function store(CertificateRequest $request)
     {
+        
+        //dd($request->input('title'));
         $data = $request->all();
         $add = Certificate::create($data);
-        if (!$add) {
+        if (!$add) { 
             return 'error';
         }
+        // print_r($request->file('images')[0]);
+                $file=$request->file('images');
+                // print_r($file);exit;
+                foreach ($file as $img) {
+                    $name =time().'.'.$img->getClientOriginalName();
+                    $img->move('file/certifate', $name);
+                    $certificate_docs = new CertificateDoc();
+                    $certificate_docs->certificate_id=$add->id;
+                    // $certif->title = $request->input('title')[$img];
+                    $certificate_docs->nama_file = $name;
+                    $certificate_docs->save();
+                }
+        // exit;
+         
+
         return 'success';
     }
+
+
+    // public function store(Request $request)
+    // {
+    //     dd($request->images());
+
+    //     $certif = new Certificate();
+    //     $certif->judul = $request->input('judul');
+    //     $certif->number = $request->input('number');
+    //     $certif->name = $request->input('name');
+    //     $certif->nop = $request->input('nop');
+    //     $certif->owner = $request->input('owner');
+    //     $certif->area = $request->input('area');
+    //     $certif->published_date = $request->input('published_date');
+    //     $certif->expired_date = $request->input('expired_date');
+    //     $certif->note = $request->input('note');
+    //     $certif->addr_city = $request->input('addr_city');
+    //     $certif->addr_district = $request->input('addr_district');
+    //     $certif->addr_village = $request->input('addr_village');
+    //     $certif->addr_address = $request->input('addr_address');
+    //     $certif->ajb_nominal = $request->input('ajb_nominal');
+    //     $certif->ajb_date = $request->input('ajb_date');
+    //     $certif->scan_certificate = $request->input('scan_certificate');
+    //     $certif->scan_plotting = $request->input('scan_plotting');
+    //     $certif->map_coordinate = $request->input('map_coordinate');
+    //     $certif->map_boundary = $request->input('map_boundary');
+    //     $certif->map_link = $request->input('map_link');
+    //     $certif->folder_number = $request->input('folder_number');
+    //     $certif->folder_current = $request->input('folder_current');
+    //     $certif->folder_plan = $request->input('folder_plan');
+
+
+
+    //     if ($request->hasFile('file')){
+    //         $file=$request->file('file');
+    //         $path='file/certifate';
+    //         $name=time().'.'.$file->getClientOriginalExtension();
+    //         $file->move($path,$name);
+    //         $certif->gambar=$name;
+    //     }else{
+    //         $certif->gambar='';
+    //     }
+    //     $certif->save();
+    //     //return ($berita->tag);
+    //     return redirect('/supberita');
+    // }
+
+
 
     // import certificate
     public function import(){
@@ -72,7 +138,9 @@ class CertificatesController extends Controller
         // }
         $cert = json_decode($request->data);
         foreach ($cert as $ce => $value) {
+
             $certificateTypeId = \App\CertificateType::where('short_name', strtolower($value->certificate_type))->first()->id;
+
             $certificates = new Certificate();
             $certificates->certificate_type_id= $certificateTypeId;
             $certificates->number= $value->number;

@@ -8,6 +8,8 @@
     <script src="{{ asset('js/libraries.js')}}"></script>
     <script src="{{ asset('js/app.js')}}"></script>
     <script src="{{ asset('js/script.js')}}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpvztVl3eZE0ViClR1QFtIPNQy_gC8jd0&libraries=geometry"
+    ></script>
 
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/skins/skin-' . config('adminlte.skin', 'blue') . '.min.css')}} ">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
