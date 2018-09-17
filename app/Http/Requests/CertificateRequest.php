@@ -27,42 +27,38 @@ class CertificateRequest extends FormRequest
             'certificate_type_id' => 'required|numeric',
 
             // CERTIFICATE BASE
-            'number' => 'required|numeric',
-            'name' => 'nullable',
-            'nop' => 'nullable',
-            'owner' => 'nullable',
-            'area' => 'nullable|numeric',
+            // 'number' => 'required|numeric',
+            'folder_sert' => 'nullable',
+            'no_folder' => 'nullable',
+            'number_hgb' => 'nullable',
+
+            'kepemilikan' => 'nullable',
+            'nama_sertifikat' => 'nullable',
+            'folder_sert' => 'nullable',
+            'keterangan' => 'nullable',
+            'archive' => 'nullable',
+            'kelurahan' => 'nullable',
+            'kecamatan' => 'nullable',
+            'kota' => 'nullable',
             'published_date' => 'nullable|date',
             'expired_date' => 'nullable|date',
-            'note' => 'nullable',
-
-            // ADDRESS
-            'addr_city' => 'nullable',
-            'addr_district' => 'nullable',
-            'addr_village' => 'nullable',
-            'addr_address' => 'nullable',
-
-            // AJB
-            'ajb_nominal' => 'nullable|numeric',
-            'addr_date' => 'nullable|date',
-
-            // SCAN FILES
-            
-            'scan_certificate' => 'nullable',
-            'scan_plotting' => 'nullable',
-            'scan_land_siteplan' => 'nullable',
-            'scan_krk' => 'nullable',
-            'scan_imb' => 'nullable',
-
-            // MAPS
+            'luas_sertifikat' => 'nullable',
+            'addrees' => 'nullable', 
+            'ajb_nominal' => 'nullable',
+            'ajb_date' => 'nullable|date',
             'map_coordinate' => 'nullable|json',
-            'map_boundary' => 'nullable|json',
-            'map_link' => 'nullable',
+            'penanggung_pbb' => 'nullable',
+            'wajib_pajak' => 'nullable',
+            'letak_objek_pajak' => 'nullable',
+            'kelurahan_pbb' => 'nullable',
+            'kota_pbb' => 'nullable',
+            'nop' => 'nullable',
 
-            // FOLDER FILLING
-            'folder_number' => 'nullable',
-            'folder_current' => 'nullable',
-            'folder_plan' => 'nullable',
+            'purposes' => 'nullable',
+            'no_hm_hgb' => 'nullable',
+
+            'luas_tanah_pbb' => 'nullable',
+            'luas_bangun_pbb' => 'nullable',
         ];
     }
 }

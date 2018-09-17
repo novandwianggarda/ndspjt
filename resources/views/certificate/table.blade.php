@@ -22,9 +22,9 @@
                     @foreach ($certificates as $cert)
                         <tr>
                             <td>
-                                <a href="/certificates/show/{{ $cert->id }}">{{ $cert->number }} - {{ $cert->name }}</a>
+                                <a href="/certificates/show/{{ $cert->id }}">{{ $cert->folder_sert }} - {{ $cert->nama_sertifikat }}</a>
                             </td>
-                            <td>{{ $cert->cert_type }}</td>
+                            <td>{{ $cert->certificate_type }}</td>
                             <td>{{ $cert->published_date }}</td>
                             <td>{{ $cert->expired_date }}</td>
                         </tr>

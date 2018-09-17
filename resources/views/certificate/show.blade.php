@@ -16,30 +16,76 @@
                     <table class="table table-hover bordered table-bordered">
                         <tbody>
                             
+                            <tr>
+                                <td>Folder Sertifikat kini</td>
+                                <td>{{ $certificate->folder_sert }}</td>
+                            </tr>
+                            <tr>
+                                <td>No di Folder</td>
+                                <td>{{ $certificate->no_folder }}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Kepemilikan Sertifikat / Tanah </td>
+                                <td>{{ $certificate->kepemilikan }}</td>
+                            </tr>
 
                             <tr>
-                                <td>certificate Type :</td>
+                                <td>Nama Sertifikat </td>
+                                <td>{{ $certificate->nama_sertifikat }}</td>
+                            </tr>
+                            <tr>
+                                <td>Keterangan</td>
+                                <td>{{ $certificate->keterangan }}</td> 
+                            </tr>
+                            <tr>
+                                <td>Archive</td>
+                                <td>{{ $certificate->archive }}</td>
+                            </tr>
+                            <tr>
+                                <td>Jenis Sertifikat</td>
                                 <td>{{ $certificate->type->short_name }} &nbsp;( {{ $certificate->type->long_name }} )</td>
                             </tr>
+
                             <tr>
-                                <td>Number</td>
-                                <td>{{ $certificate->number }}</td>
-                            </tr>
-                            <tr>
-                                <td>Name</td>
-                                <td>{{ $certificate->name }}</td>
-                            </tr>
-                            <tr>
-                                <td>Nop</td>
-                                <td>{{ $certificate->nop }}</td>
+                                <td>No Hm / Hgb</td>
+                                <td>{{ $certificate->no_hm_hgb }}</td>
                             </tr> 
+
                             <tr>
-                                <td>Owner </td>
-                                <td>{{ $certificate->owner }}</td>
+                                <td>Kelurahan </td>
+                                <td>{{ $certificate->kelurahan }}</td>
                             </tr>
                             <tr>
-                                <td>Area </td>
-                                <td>{{ $certificate->area }}</td>
+                                <td>Kecamatan </td>
+                                <td>{{ $certificate->kecamatan }}</td>
+                            </tr>
+                            <tr>
+                                <td>Kota </td>
+                                <td>{{ $certificate->kota }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Luas Sertifikat </td>
+                                <td>{{ $certificate->luas_sertifikat }}</td>
+                            </tr>
+                            <tr>
+                                <td>Alamat </td>
+                                <td>{{ $certificate->addrees }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Purposes </td>
+                                <td>{{ $certificate->purposes }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Penanggung PBB </td>
+                                <td>{{ $certificate->penanggung_pbb }}</td>
+                            </tr>
+                            <tr>
+                                <td>Wajib Pajak </td>
+                                <td>{{ $certificate->wajib_pajak }}</td>
                             </tr>
                             <tr>
                                 <td>Published Date </td>
@@ -49,31 +95,9 @@
                                 <td>Expired Date </td>
                                 <td>{{ $certificate->expired_date }}</td>
                             </tr>
-                            <tr>
-                                <td>Note </td>
-                                <td>{{ $certificate->note }}</td>
-                            </tr>
 
                             <tr>
-                                <td>Address City </td>
-                                <td>{{ $certificate->addr_city }}</td>
-                            </tr>
-                             <tr>
-                                <td>Address District </td>
-                                <td>{{ $certificate->addr_district }}</td>
-                            </tr>
-
-                            <tr>
-                                <td>Addres Village </td>
-                                <td>{{ $certificate->addr_village }}</td>
-                            </tr>
-                             <tr>
-                                <td>Address</td>
-                                <td>{{ $certificate->addr_address }}</td>
-                            </tr>  
-
-                            <tr>
-                                <td>Ajb Nominal</td>
+                                <td>Ajb Nominal </td>
                                 <td>{{ $certificate->ajb_nominal }}</td>
                             </tr>
 
@@ -81,64 +105,57 @@
                                 <td>Ajb Date</td>
                                 <td>{{ $certificate->ajb_date }}</td>
                             </tr>
-                            <tr>
-                                <td>Scan Certificate</td>
-                                <td>{{ $certificate->scan_certificate }}</td>
-                            </tr>
-
-                            <tr>
-                                <td>Scan Plotting</td>
-                                <td>{{ $certificate->scan_plotting }}</td>
-                            </tr>
-                            <tr>
-                                <td>Scan Land Siteplan</td>
-                                <td>{{ $certificate->scan_land_siteplan }}</td>
-                            </tr>
-                            <tr>
-                                <td>Scan krk</td>
-                                <td>{{ $certificate->scan_krk }}</td>
-                            </tr>
-                            <tr>
-                                <td>Scan Imb</td>
-                                <td>{{ $certificate->scan_imb }}</td>
-                            </tr>
-
-                            <tr>
+                             <tr>
                                 <td>Map Coordinate </td>
                                 <td>{{ $certificate->map_coordinate }}</td>
                             </tr>
+
                             <tr>
-                                <td>Map Boundary</td>
-                                <td>{{ $certificate->map_boundary }}</td>
+                                <td>Letak Objek Pajak</td>
+                                <td>{{ $certificate->letak_objek_pajak }}</td>
                             </tr>
+                             <tr>
+                                <td>Kelurahan PBB </td>
+                                <td>{{ $certificate->kelurahan_pbb }}</td>
+                            </tr>  
+
                             <tr>
-                                <td>Map Link</td>
-                                <td>{{ $certificate->map_link }}</td>
+                                <td>Kota PBB</td>
+                                <td>{{ $certificate->kota_pbb }}</td>
                             </tr>
 
                             <tr>
-                                <td>Folder Number:</td>
-                                <td>{{ $certificate->folder_number }}</td>
+                                <td>Nop</td>
+                                <td>{{ $certificate->nop }}</td>
                             </tr>
                             <tr>
-                                <td>Folder Current</td>
-                                <td>{{ $certificate->folder_current }}</td>
+                                <td>Luas Tanah PBB</td>
+                                <td>{{ $certificate->luas_tanah_pbb }}</td>
                             </tr>
+
                             <tr>
-                                <td>Folder Plan :</td>
-                                <td>{{ $certificate->folder_plan }}</td>
+                                <td>Luas Bangun PBB</td>
+                                <td>{{ $certificate->luas_bangun_pbb }}</td>
                             </tr>
+                            
+                           <tr>
+                                @foreach ($certificate->cerdoc as $cert)
+                                <td>
+                                   
+                                    <img src="{{ url('file/certifate/'.$cert->nama_file)}}" class="img-responsive" alt="images" width="200" height="100">
+                                    <p align="left">Title : {{ $cert->title }}</p>
+
+
+                                </td>
+                                @endforeach
+                           </tr>
                            
-                            @foreach ($certificate->getAttributes() as $index => $value)
-                                <!-- <tr>
-                                    <td>{{ $index }}</td>
-                                    <td>{{ $value }}</td>
-                                </tr> -->
-                            @endforeach
 
 
                         </tbody>
+                        
                     </table>
+                    
                 </div>
             </div>
         </div>

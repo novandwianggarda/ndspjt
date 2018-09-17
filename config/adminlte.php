@@ -142,6 +142,27 @@ return [
             ],
         ],
         [
+            'text'    => 'PBB',
+            'icon'    => 'money',
+            'submenu' => [
+                [
+                    'text' => 'Add New',
+                    'url'  => '/taxes/add',
+                    'icon' => 'plus',
+                ],
+                [
+                    'text' => 'Data List',
+                    'url'  => '/taxes/list',
+                    'icon' => 'list',
+                ],
+                [
+                    'text' => 'Import',
+                    'url'  => '/taxes/import',
+                    'icon' => 'file',
+                ],
+            ],
+        ],
+        [
             'text'    => 'Property',
             'icon'    => 'home',
             'submenu' => [
@@ -183,27 +204,7 @@ return [
                 ],
             ],
         ],
-        [
-            'text'    => 'PBB',
-            'icon'    => 'money',
-            'submenu' => [
-                [
-                    'text' => 'Add New',
-                    'url'  => '/taxes/add',
-                    'icon' => 'plus',
-                ],
-                [
-                    'text' => 'Data List',
-                    'url'  => '/taxes/list',
-                    'icon' => 'list',
-                ],
-                [
-                    'text' => 'Import',
-                    'url'  => '/taxes/import',
-                    'icon' => 'file',
-                ],
-            ],
-        ],
+        
         [
             'text'    => 'Users',
             'icon'    => 'group',

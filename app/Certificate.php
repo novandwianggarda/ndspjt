@@ -11,22 +11,11 @@ class Certificate extends Model implements Auditable
 
     protected $table = 'certificates';
     protected $fillable = [
-        'certificate_type_id',
-
-        // CERTIFICATE BASE
-        'number', 'name', 'nop', 'owner', 'area', 'published_date', 'expired_date', 'note',
-
-        // ADDRESS
-        'addr_city', 'addr_district', 'addr_village', 'addr_address',
-
-        // AJB
-        'ajb_nominal', 'ajb_date',
-
-        // SCAN FILES
-        'scan_certificate', 'scan_plotting', 'scan_land_siteplan', 'scan_krk', 'scan_imb',
-
-        // FOLDER FILLING
-        'folder_number', 'folder_current', 'folder_plan'
+        'certificate_type_id', 'folder_sert', 'no_folder', 'purposes',
+        'kepemilikan', 'nama_sertifikat', 'keterangan', 'archive', 'no_hm_hgb', 'kelurahan', 'kecamatan',
+        'kota', 'published_date', 'expired_date', 'luas_sertifikat', 'almt', 'ajb_nominal', 'ajb_date', 'map_coordinate', 'addrees',
+        'penanggung_pbb', 'wajib_pajak', 'letak_objek_pajak', 'kelurahan_pbb', 'kota_pbb', 'nop',
+        'luas_tanah_pbb', 'luas_bangun_pbb'
     ];
 
     public $timestamp = true;

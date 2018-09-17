@@ -6,6 +6,20 @@
 
     <frgroup>
         <label slot="label">
+            Folder PBB kini
+        </label>
+        <input type="text" name="addr_address" value="{{ old('addr_address') }}" class="form-control"/>
+    </frgroup>
+
+    <frgroup>
+        <label slot="label">
+           Rencana Grub Folder PBB
+        </label>
+        <input type="text" name="addr_address" value="{{ old('addr_address') }}" class="form-control"/>
+    </frgroup>
+
+    <frgroup>
+        <label slot="label">
             Letak Objek Pajak
         </label>
         <input type="text" name="addr_address" value="{{ old('addr_address') }}" class="form-control"/>
@@ -72,13 +86,6 @@
             Rencana Folder Sert.
         </label>
         <input type="text" name="folder_plan" value="{{ old('addr_address') }}" class="form-control" />
-    </frgroup>
-
-    <frgroup>
-        <label slot="label">
-            PBB 2017
-        </label>
-        <input type="text" name="" value="{{ old('') }}" class="form-control" />
     </frgroup>
 
     <frgroup>

@@ -12,6 +12,8 @@
                 <span class="caret"></span>
             @endif
         </a>
+
+        
         @if (isset($item['submenu']))
             <ul class="dropdown-menu" role="menu">
                 @foreach($item['submenu'] as $subitem)

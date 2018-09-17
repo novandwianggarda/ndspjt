@@ -116,21 +116,22 @@ body {
             el: '#form-certificate',
         });
 
-                        $('#images').on('change', function(e){
-                    var files = e.target.files;
-
+            $('#images').on('change', function(e){
+                var files = e.target.files;
                     $.each(files, function (i, file){
-
                         var reader = new FileReader();
                         reader.readAsDataURL(file);
                         console.log(file);
-                        reader.onload = function (e){
 
-                            var template = '<form action="/upload">'+
+                        reader.onload = function (e){
+                            var template = ''+
                                             '<img style="width: 64px;margin-right: 5px;margin-top: 5px;margin-bottom: 5px;" src="'+e.target.result+'">'+
-                                            file.name+
+                                            
+                                            '<input type="text" name="title[]" placeholder="Input Title"><br>'+
+
+                                            // file.name+
                                             // '<a href="#" class="btn btn-sm btn-primary ll-bgcolor ll-white" style="margin-left:5px;">Remove</a>'+
-                                        '</form>';
+                                        '';
                             $('#images-to-upload').append(template);
                         }
                     })
@@ -180,12 +181,12 @@ body {
                 //     }
 
 
-    //             function showname () {
-    //   var name = document.getElementById('images');
-    //   label('Selected file: ' + name.files.item(0).name);
-    //   label('Selected file: ' + name.files.item(0).size);
-    //   label('Selected file: ' + name.files.item(0).type);
-    // }
+                //             function showname () {
+                //   var name = document.getElementById('images');
+                //   label('Selected file: ' + name.files.item(0).name);
+                //   label('Selected file: ' + name.files.item(0).size);
+                //   label('Selected file: ' + name.files.item(0).type);
+                // }
 
 
                 // var selDiv = "";
