@@ -19,7 +19,7 @@
                             
                             <tr>
                                 <td>Tax Type :</td>
-                                <td>{{ $tax->type->short_name }} &nbsp;( {{ $tax->type->long_name }} )</td>
+                                <td>{{ $tax->certif->type->short_name }} &nbsp;( {{ $tax->certif->type->long_name }} )</td>
                             </tr>
                             <tr>
                                 <td>Certificate Ids :</td>

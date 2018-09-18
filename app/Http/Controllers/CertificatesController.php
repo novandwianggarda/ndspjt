@@ -104,6 +104,7 @@ class CertificatesController extends Controller
             if($certificate_type){
 
                 $certTypeId = \App\CertificateType::where('short_name', $certificate_type)->get()->first()->id;
+                
                 $ce = new Certificate();
                 $ce->certificate_type_id= $certTypeId;
                 $ce->folder_sert= $value->folder_sert;

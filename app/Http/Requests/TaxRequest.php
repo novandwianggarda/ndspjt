@@ -24,8 +24,7 @@ class TaxRequest extends FormRequest
     public function rules()
     {
         return [
-            'tax_type_id' => 'required|numeric',
-            'certificate_ids' => 'required|unique:taxes',
+            'certificate_id' => 'required|numeric',
 
             // TAX BASE
             'nop' => 'nullable',

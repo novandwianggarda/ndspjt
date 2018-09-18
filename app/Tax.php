@@ -63,6 +63,11 @@ class Tax extends Model implements Auditable
         return $this->belongsTo('App\TaxType', 'tax_type_id', 'id');
     }
 
+    public function certif()
+    {
+        return $this->belongsTo('App\Certificate', 'certificate_id', 'id');
+    }
+
 
     /** ATTRIBUTES */
 

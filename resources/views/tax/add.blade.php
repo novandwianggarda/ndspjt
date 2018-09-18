@@ -27,7 +27,7 @@
                                 <!-- BASIC INFORMATION -->
                                 @include('partials.forms.tax.basicinformation')
                                 <!-- DETAILS INFORMATION-->
-                                @include('partials.forms.tax.detailinformation')
+                                
                                 <div class="form-groxup">
                                     <div class="col-sm-12" style="padding:0px 25px">
                                         <button type="submit" class="btn form-control ll-bgcolor ll-white" style="margin-top: 10px;">

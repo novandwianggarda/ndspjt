@@ -4,13 +4,18 @@
         BASIC INFORMATION
     </div>
 
+
     <frgroup>
         <label slot="label">
-            Tax Name
+            Folder PBB Kini
         </label>
-        <input type="text" name="tax_type_id" class="form-control" disabled="disabled" option value="PBB"  />
-<!--         <input type="text" name="tax_type_id" value="{{ old('tax_type_id') }}" class="form-control" />
- -->
+        <input type="text" name="folder_pbb" value="{{ old('folder_pbb') }}" class="form-control" />
+    </frgroup>
+    <frgroup>
+        <label slot="label">
+            Rencana Group Folder PBB
+        </label>
+        <input type="text" name="rencana_group" value="{{ old('rencana_group') }}" class="form-control" />
     </frgroup>
 
     <frgroup>
@@ -26,19 +31,30 @@
         </select>
     </frgroup>
 
+
     <frgroup>
         <label slot="label">
-            Certificate
+            Nama Sertifikat
         </label>
-        <certificate-types></certificate-types>
-<!--         <input type="number" name="certificate_ids" value="{{ old('certificate_ids') }}" class="form-control" /> -->
+        {!! Form::select('certificate_id', $certificates,null, ['class'=>'form-control']) !!}
+    </frgroup>
+
+
+
+
+
+    <frgroup>
+        <label slot="label">
+            NJOP T/m2
+        </label>
+        <input type="number" name="njopland" value="{{ old('njopland') }}" class="form-control" />
     </frgroup>
 
     <frgroup>
         <label slot="label">
-            Nilai Pajak
+            NJOP B/m2
         </label>
-        <input type="number" name="nominal_ly" value="{{ old('nominal_ly') }}" class="form-control" />
+        <input type="number" name="njop_building" value="{{ old('njop_building') }}" class="form-control" />
     </frgroup>
 
     <frgroup>
@@ -50,30 +66,10 @@
 
     <frgroup>
         <label slot="label">
-            Wajib Pajak
+            Payment PBB 
         </label>
-        <input type="text" name="owner" value="{{ old('owner')}}" class="form-control" />
+        <indate name="due_date_ly" value="{{ old('due_date_ly') }}"></indate>
     </frgroup>
 
-    <frgroup>
-        <label slot="label">
-            PT. Penanggung    
-        </label>
-        <input type="text" name="corp_name" value="{{ old('corp_name') }}" class="form-control" />
-    </frgroup>
-
-    <frgroup>
-        <label slot="label">
-            Payment
-        </label>
-        <input type="text" name="corp_payment_method" value="{{ old('corp_payment_method') }}" class="form-control"/>
-    </frgroup>
-
-    <frgroup>
-        <label slot="label">
-            NOP
-        </label>
-        <input type="text" name="nop" vallue="{{ old('nop') }}" class="form-control"/>
-    </frgroup>
 
 </accordion>

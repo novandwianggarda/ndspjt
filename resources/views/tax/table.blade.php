@@ -12,30 +12,30 @@
             <table id="tbl-taxes" class="table table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>NOP</th>
-                        <th>Type</th>
-                        <th>Holder</th>
-                        <th>Corp Holder</th>
+                        <th>Nama Sertifikat</th>
+                        <th>Jenis Sertifikat</th>
+                        <th>Due Date</th>
+                        <th>Payment PBB</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($taxes as $tax)
                         <tr>
                             <td>
-                                <a href="/taxes/show/{{ $tax->id }}">{{ $tax->nop }}</a>
+                                <a href="/taxes/show/{{ $tax->id }}">{{ $tax->certif->nama_sertifikat }}</a>
                             </td>
-                            <td>{{ $tax->tax_type }}</td>
-                            <td>{{ $tax->owner }}</td>
-                            <td>{{ $tax->corp_name }}</td>
+                            <td>{{ $tax->certif->type->short_name }}</td>
+                            <td>{{ $tax->due_date }}</td>
+                            <td>{{ $tax->due_date_ly }}</td>
                         </tr>
                     @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>NOP</th>
-                        <th>Type</th>
-                        <th>Holder</th>
-                        <th>Corp Holder</th>
+                        <th>Nama Sertifikat</th>
+                        <th>Jenis Sertifikat</th>
+                        <th>Due Date</th>
+                        <th>Payment PBB</th>
                     </tr>
                 </tfoot>
             </table>

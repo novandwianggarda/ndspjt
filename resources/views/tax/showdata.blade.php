@@ -19,30 +19,22 @@
 			<table id="tbl-properties" class="table table-bordered" style="width: 100%">
 				<thead>
 					<tr>
-						<th>Certificate Ids</th>
-						<th>NOP</th>
-						<th>Owner</th>
+						<th>No HM / HGB</th>
+						<th>Folder PBB</th>
+						<th>Rencana Group Folder PBB</th>
 						<th>Year</th>
 						<th>Due Date</th>
-						<th>Nominal ly</th>
-						<th>Addres Village</th>
-						<th>Addr Land Area</th>
-						<th>Addres Building Area </th>
 						<th>NJOP Land</th>
 					</tr>
 				</thead>
 				<tbody>
 					@foreach ($data as $d)
 					<tr>
-						<td>{{$d->certificate_ids}}</td>
-						<td>{{$d->nop}}</td>
-						<td>{{$d->owner}}</td>
+						<td>{{$d->no_hm_hgb}}</td>
+						<td>{{$d->folder_pbb}}</td>
+						<td>{{$d->rencana_group}}</td>
 						<td>{{$d->year}}</td>
 						<td>{{$d->due_date}}</td>
-						<td>{{$d->nominal_ly}}</td>
-						<td>{{$d->addr_village}}</td>
-						<td>{{$d->addr_land_area}}</td>
-						<td>{{$d->addr_building_area}}</td>
 						<td>{{$d->njop_land}}</td>
 					</tr>
 					@endforeach

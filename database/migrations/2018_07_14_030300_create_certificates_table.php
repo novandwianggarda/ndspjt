@@ -17,42 +17,43 @@ class CreateCertificatesTable extends Migration
             $table->increments('id');
             $table->integer('certificate_type_id')->default(0);
 
+
             // CERTIFICATES BASE
-            $table->string('number')->unique(); // nomor sertifikat
-            $table->string('name')->nullable(); // nama sertifikat (bkn org yg ada di sertifikat)
-            $table->string('nop')->nullable(); // nomor objek pajak sertifikat
-            $table->string('owner')->nullable(); // yg memiliki sertifikat
-            $table->string('area')->nullable(); // luas sertifikat
+            $table->text('folder_sert')->nullable(); 
+            $table->text('no_folder')->nullable(); 
+            $table->integer('no_hm_hgb')->nullable();
+            $table->text('kepemilikan')->nullable(); 
+            $table->text('nama_sertifikat')->nullable(); 
+            $table->text('keterangan')->nullable(); 
+            $table->text('archive')->nullable(); 
+            $table->text('kelurahan')->nullable(); 
+            $table->text('kecamatan')->nullable(); 
+            $table->text('kota')->nullable(); 
+            $table->integer('luas_sertifikat')->nullable();
+            $table->text('addrees')->nullable(); 
+            $table->text('purposes')->nullable(); 
+            $table->text('penanggung_pbb')->nullable(); 
+            $table->text('wajib_pajak')->nullable(); 
             $table->string('published_date')->nullable(); // tgl sertifikat di keluarkan
             $table->string('expired_date')->nullable(); // tgl sertifikat berakhir (hanya utk SHCB dan SHMSRS)
-            $table->text('note')->nullable(); // keterangan utk sertifikat
-
-            // ADDRESS
-            $table->string('addr_city')->nullable(); // kota/kab
-            $table->string('addr_district')->nullable(); // kecamatan
-            $table->string('addr_village')->nullable(); // kelurahan
-            $table->string('addr_address')->nullable(); // alamat
-
+            
             // AJB
             $table->double('ajb_nominal', 12, 2)->nullable(); // nominal uang di ajb
             $table->string('ajb_date')->nullable(); // tanggal ajb di tanda tangani
-
-            // SCAN FILES
-            $table->text('scan_certificate')->nullable(); // scan sertifikat
-            $table->text('scan_plotting')->nullable(); // scan plotting sertifikat
-            $table->text('scan_land_siteplan')->nullable(); //scan land siteplan
-            $table->text('scan_krk')->nullable(); // scan krk
-            $table->text('scan_imb')->nullable(); // scan imb
-
+            
             // MAPS
             $table->text('map_coordinate')->nullable(); // JSON {lat:xxx, lng:xxx}
-            $table->text('map_boundary')->nullable(); // JSON [{lat:xxx, lng:xxx}, {lat:xxx, lng:xxx}]
-            $table->text('map_link')->nullable(); // url google my map
 
-            // FOLDER FILLING
-            $table->string('folder_number')->nullable(); // no di folder
-            $table->string('folder_current')->nullable(); // folder saat ini
-            $table->string('folder_plan')->nullable(); // rencana folder
+            //PBB 
+            $table->text('letak_objek_pajak')->nullable(); 
+            $table->text('kelurahan_pbb')->nullable(); 
+            $table->text('kota_pbb')->nullable(); 
+            $table->text('nop')->nullable(); 
+            $table->integer('luas_tanah_pbb')->nullable(); 
+            $table->integer('luas_bangun_pbb')->nullable(); 
+
+
+            
 
             $table->timestamps();
 
