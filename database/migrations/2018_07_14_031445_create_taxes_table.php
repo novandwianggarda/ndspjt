@@ -29,6 +29,16 @@ class CreateTaxesTable extends Migration
             $table->double('nominal_ly', 12, 2)->default(0); // nilai pajak tahun lalu
             $table->string('selisih')->nullable();
 
+            //PBB ke sertifikat
+            $table->text('penanggung_pbb')->nullable(); 
+            $table->text('wajib_pajak')->nullable(); 
+            $table->text('letak_objek_pajak')->nullable(); 
+            $table->text('kelurahan_pbb')->nullable(); 
+            $table->text('kota_pbb')->nullable(); 
+            $table->text('nop')->nullable(); 
+            $table->integer('luas_tanah_pbb')->nullable(); 
+            $table->integer('luas_bangun_pbb')->nullable(); 
+
             $table->timestamps();
         });
     }

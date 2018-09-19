@@ -49,6 +49,11 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('add', 'CertificatesController@showAddForm');
         Route::post('add', 'CertificatesController@store');
 
+        Route::get('/editcert/{id}', 'CertificatesController@editcert' );
+        Route::patch('/updatecert/{edit}', 'CertificatesController@updatecert');
+        Route::delete('/deletecert/{id}', 'CertificatesController@destroycert' );
+
+
         Route::get('import', 'CertificatesController@import');
         Route::post('storeimport', 'CertificatesController@storeimport')->name('certificate.import');
         Route::post('storeimport/save', 'CertificatesController@tes');

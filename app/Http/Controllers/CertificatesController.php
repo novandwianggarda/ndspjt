@@ -33,8 +33,6 @@ class CertificatesController extends Controller
         return view('certificate.show')->with('certificate', $cert);
 
     }
-
-
     /**
      * show add new certificate form
      */
@@ -76,6 +74,55 @@ class CertificatesController extends Controller
     }
 
 
+
+    public function editcert($id)
+    {
+        $cert=Certificate::find($id);
+        $certype = CertificateType::all()->pluck('short_name', 'id');
+        return view('certificate.edit', compact('cert', 'certype'));
+    }
+    public function updatecert(Request $request, $id)
+    {
+        //dd($request->all());
+        $cert = Certificate::find($id);
+        $cert->folder_sert = $request->input('folder_sert');
+        $cert->no_folder = $request->input('no_folder');
+        $cert->purposes = $request->input('purposes');
+        $cert->kepemilikan = $request->input('kepemilikan');
+        $cert->nama_sertifikat = $request->input('nama_sertifikat');
+        $cert->keterangan = $request->input('keterangan');
+        $cert->archive = $request->input('archive');
+        $cert->no_hm_hgb = $request->input('no_hm_hgb');
+        $cert->kelurahan = $request->input('kelurahan');
+        $cert->kecamatan = $request->input('kecamatan');
+        $cert->kota = $request->input('kota');
+        $cert->published_date = $request->input('published_date');
+        $cert->expired_date = $request->input('expired_date');
+        $cert->luas_sertifikat = $request->input('luas_sertifikat');
+
+        $cert->ajb_nominal = $request->input('ajb_nominal');
+        $cert->ajb_date = $request->input('ajb_date');
+        $cert->map_coordinate = $request->input('map_coordinate');
+        $cert->addrees = $request->input('addrees');
+
+        $certUpdate = $request->only([
+        'certificate_type_id', 'folder_sert', 'no_folder', 'purposes',
+        'kepemilikan', 'nama_sertifikat', 'keterangan', 'archive', 'no_hm_hgb', 'kelurahan', 'kecamatan',
+        'kota', 'published_date', 'expired_date', 'luas_sertifikat', 'ajb_nominal', 'ajb_date', 'map_coordinate', 'addrees']);
+        $cert->update($certUpdate);
+
+        return redirect(url('dashboard'));
+    }
+    public function destroycert($id)
+    {
+        $cert=Certificate::find($id);
+        $cert->delete();
+        return redirect('dashboard');
+    }
+
+
+
+
     // import certificate
     public function import(){
         return view('certificate.upload');
@@ -92,8 +139,6 @@ class CertificatesController extends Controller
         return back();
     }
 
-
-    
 
     public function tes(Request $request)
     {
@@ -123,16 +168,8 @@ class CertificatesController extends Controller
                 $ce->ajb_nominal= $value->ajb_nominal;
                 $ce->ajb_date = date('Y-m-d', strtotime($ce->ajb_date));
                 $ce->map_coordinate= $value->map_coordinate;
-                $ce->penanggung_pbb= $value->penanggung_pbb;
                 $ce->purposes= $value->purposes;
                 $ce->addrees  = $value->addrees ;
-                $ce->wajib_pajak= $value->wajib_pajak;
-                $ce->letak_objek_pajak= $value->letak_objek_pajak;
-                $ce->kelurahan_pbb= $value->kelurahan_pbb;
-                $ce->kota_pbb= $value->kota_pbb;
-                $ce->nop= $value->nop;
-                $ce->luas_tanah_pbb= $value->luas_tanah_pbb;
-                $ce->luas_bangun_pbb= $value->luas_bangun_pbb;
                
                 $ce->save();
             }

@@ -9,24 +9,39 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <table id="tbl-certificates" class="table table-bordered dataTable" role="grid" style="width:100%">
+            
+            <table id="example1" class="table table-bordered table-striped" style="width: 100%;">
                 <thead>
                     <tr>
-                        <th>Certificate</th>
+                        <th>Nama Sertifikat</th>
                         <th>Type</th>
                         <th>Publish Date</th>
                         <th>Expired Date</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($certificates as $cert)
                         <tr>
                             <td>
-                                <a href="/certificates/show/{{ $cert->id }}">{{ $cert->folder_sert }} - {{ $cert->nama_sertifikat }}</a>
+                                <a href="/certificates/show/{{ $cert->id }}">{{ $cert->kepemilikan }} - {{ $cert->nama_sertifikat }}</a>
                             </td>
                             <td>{{ $cert->certificate_type }}</td>
                             <td>{{ $cert->published_date }}</td>
                             <td>{{ $cert->expired_date }}</td>
+                            <td>
+                                <a href="/certificates/editcert/{{ $cert->id }}" class="btn btn-success btn-xs"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
+
+                            <form class="delete" action="{{ url('/certificates/deletecert', $cert->id) }}" method="POST">
+
+                                      {{ csrf_field() }}
+
+                                      <input name="_method" type="hidden" value="DELETE">
+
+                                      <button type="submit" class="btn btn-xs btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;&nbsp;Delete</button>
+
+                                    </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -36,6 +51,7 @@
                         <th>Type</th>
                         <th>Publish Date</th>
                         <th>Expired Date</th>
+                        <th>Actions</th>
                     </tr>
                 </tfoot>
             </table>
@@ -48,9 +64,10 @@
 @stop
 
 @section('js')
+
     <script>
-        $(document).ready(function() {
-            $('#tbl-certificates').DataTable();
+        $(function () {
+            $('#example1').DataTable();
         });
     </script>
 @stop

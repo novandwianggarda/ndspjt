@@ -15,14 +15,12 @@
 	</form>
 	</p>
 	<div class="row">
-		<div class="col-md-12">
+            <div class="col-md-12">
             <table id="tbl-certificates" class="table table-bordered dataTable" role="grid" style="width:100%">
 				<thead>
 					<tr>
-						<th>Folder Sert. Kini</th>
 						<th>Kepemilikan</th>
 						<th>Nama Sertifikat</th>
-						<th>Keterangan</th>
 						<th>Jenis Sert</th>
 						<th>Archive</th>
 						<th>Kelurahan</th>
@@ -36,10 +34,8 @@
 				<tbody>
 					@foreach ($data as $d)
 					<tr>
-						<td>{{$d->folder_sert}}</td>
 						<td>{{$d->kepemilikan}}</td>
 						<td>{{$d->nama_sertifikat}}</td>
-						<td>{{$d->keterangan}}</td>
 						<td>{{$d->certificate_type}}</td>
 						<td>{{$d->archive}}</td>
 						<td>{{$d->kelurahan}}</td>
@@ -101,10 +97,15 @@
 	
 @stop
 
+
+@section('css')
+
+@stop
+
 @section('js')
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$('#tbl-properties').DataTable();
-		});
-	</script>
+    <script>
+        $(document).ready(function() {
+            $('#tbl-certificates').DataTable();
+        });
+    </script>
 @stop
