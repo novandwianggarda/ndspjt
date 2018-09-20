@@ -11,11 +11,9 @@ class Certificate extends Model implements Auditable
 
     protected $table = 'certificates';
     protected $fillable = [
-        'certificate_type_id', 'folder_sert', 'no_folder', 'purposes',
+        'certificate_type_id', 'folder_sert', 'no_folder',
         'kepemilikan', 'nama_sertifikat', 'keterangan', 'archive', 'no_hm_hgb', 'kelurahan', 'kecamatan',
-        'kota', 'published_date', 'expired_date', 'luas_sertifikat', 'almt', 'ajb_nominal', 'ajb_date', 'map_coordinate', 'addrees',
-        'penanggung_pbb', 'wajib_pajak', 'letak_objek_pajak', 'kelurahan_pbb', 'kota_pbb', 'nop',
-        'luas_tanah_pbb', 'luas_bangun_pbb'
+        'kota', 'published_date', 'expired_date', 'ajb_nominal', 'ajb_date', 'map_coordinate', 'addrees'
     ];
 
     public $timestamp = true;

@@ -6,94 +6,87 @@
 
     <frgroup>
         <label slot="label">
-            Folder PBB kini
+            Penanggung PBB
         </label>
-        <input type="text" name="addr_address" value="{{ old('addr_address') }}" class="form-control"/>
+        <input type="text" name="pen_pbb" value="{{ old('pen_pbb') }}" class="form-control" />
     </frgroup>
 
-    <frgroup>
+     <frgroup>
         <label slot="label">
-           Rencana Grub Folder PBB
+            Wajib Pajak
         </label>
-        <input type="text" name="addr_address" value="{{ old('addr_address') }}" class="form-control"/>
+        <input type="text" name="wajib_pajak" value="{{ old('wajib_pajak') }}" class="form-control" />
     </frgroup>
 
-    <frgroup>
+     <frgroup>
         <label slot="label">
-            Letak Objek Pajak
+           Letak Objek Pajak
         </label>
-        <input type="text" name="addr_address" value="{{ old('addr_address') }}" class="form-control"/>
+        <input type="text" name="letak_objek_pajak" value="{{ old('letak_objek_pajak') }}" class="form-control" />
     </frgroup>
 
+     <frgroup>
+        <label slot="label">
+            Kelurahan PBB
+        </label>
+        <input type="text" name="kelurahan_pbb" value="{{ old('kelurahan_pbb') }}" class="form-control" />
+    </frgroup>
     <frgroup>
         <label slot="label">
-            Kelurahan Objek Pajak
+            Kota PBB
         </label>
-        <input type="text" name="addr_village" value="{{ old('addr_village') }}" class="form-control"/>
+        <input type="text" name="kota_pbb" value="{{ old('kota_pbb') }}" class="form-control" />
+    </frgroup>
+    <frgroup>
+        <label slot="label">
+            NOP
+        </label>
+        <input type="text" name="nop" value="{{ old('nop') }}" class="form-control" />
     </frgroup>
 
     <frgroup>
         <label slot="label">
             Luas Tanah PBB
         </label>
-        <div class="input-group">
-            <input type="number" name="addr_land_area" min="0" value="{{ old('addr_land_area')}}" class="form-control"/>
-            <span class="input-group-addon">m<sup>2</sup></span>
-        </div>
+        <input type="text" name="luas_tanah_pbb" value="{{ old('luas_tanah_pbb') }}" class="form-control" />
     </frgroup>
 
     <frgroup>
         <label slot="label">
-            Luas Bangunan PBB
+            Luas Bangun PBB
         </label>
-        <div class="input-group">
-            <input type="number" name="addr_building_area" min="0" value="{{ old('addr_building_area')}}" class="form-control"/>
-            <span class="input-group-addon">m<sup>2</sup></span>
-        </div>
+        <input type="text" name="luas_bangun_pbb" value="{{ old('luas_bangun_pbb') }}" class="form-control" />
     </frgroup>
 
     <frgroup>
         <label slot="label">
-            NJOP Total
+            NJOP T/m2
         </label>
-        <div class="input-group">
-            <!-- <money name="njop_total" class="form-control" value="{{ old('njop_total')}}"></money> -->
-            <input type="number" name="njop_total" min="0" value="{{ old('njop_total')}}" class="form-control"/>
-            <span class="input-group-addon">m<sup>2</sup></span>
-        </div>
+        <input type="number" name="njopland" value="{{ old('njopland') }}" class="form-control" />
     </frgroup>
 
     <frgroup>
         <label slot="label">
-            NJOP Bangunan
+            NJOP B/m2
         </label>
-        <div class="input-group">
-            <!-- <money name="njop_building" class="form-control" value="{{ old('njop_building')}}"></money> -->
-            <input type="number" name="njop_building" min="0" value="{{ old('njop_building')}}" class="form-control"/>
-            <span class="input-group-addon">m<sup>2</sup></span>
-        </div>
+        <input type="number" name="njop_building" value="{{ old('njop_building') }}" class="form-control" />
     </frgroup>
 
     <frgroup>
         <label slot="label">
-            Folder Sert. Kini
+            Due Date
         </label>
-        <input type="text" name="folder_current" value="{{ old('folder_current') }}" class="form-control" />
+        <indate name="due_date" value="{{ old('due_date') }}"></indate>
     </frgroup>
 
     <frgroup>
         <label slot="label">
-            Rencana Folder Sert.
+            Payment PBB 
         </label>
-        <input type="text" name="folder_plan" value="{{ old('addr_address') }}" class="form-control" />
+        <indate name="due_date_ly" value="{{ old('due_date_ly') }}"></indate>
     </frgroup>
 
-    <frgroup>
-        <label slot="label">
-            Notes
-        </label>
-        <textarea type="text" name="note" value="{{ old('note')}}" class="form-control">  </textarea>
-    </frgroup>
+    
 </accordion>
 
 <!-- {{--<div class="box-header with-border">

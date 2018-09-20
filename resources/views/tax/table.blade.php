@@ -13,9 +13,11 @@
                 <thead>
                     <tr>
                         <th>Nama Sertifikat</th>
+                        <th>No HM / HGB</th>
                         <th>Jenis Sertifikat</th>
                         <th>Due Date</th>
                         <th>Payment PBB</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,18 +26,40 @@
                             <td>
                                 <a href="/taxes/show/{{ $tax->id }}">{{ $tax->certif->nama_sertifikat }}</a>
                             </td>
+                            <td>{{ $tax->certif->no_hm_hgb }}</td>
                             <td>{{ $tax->certif->type->short_name }}</td>
                             <td>{{ $tax->due_date }}</td>
                             <td>{{ $tax->due_date_ly }}</td>
+                            <td>
+                                <a href="/taxes/edit/{{ $tax->id }}" class="btn btn-success btn-xs"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
+
+                            <form class="delete" action="{{ url('/taxes/delete', $tax->id) }}" method="POST">
+
+                                      {{ csrf_field() }}
+
+                                      <input name="_method" type="hidden" value="DELETE">
+
+                                      <button type="submit" class="btn btn-xs btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;&nbsp;Delete</button>
+
+
+                                       
+                                      
+                            </form>
+
+                                        
+
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
                         <th>Nama Sertifikat</th>
+                        <th>No HM / HGB</th>
                         <th>Jenis Sertifikat</th>
                         <th>Due Date</th>
                         <th>Payment PBB</th>
+                        <th>Actions</th>
                     </tr>
                 </tfoot>
             </table>

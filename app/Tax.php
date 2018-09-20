@@ -11,22 +11,13 @@ class Tax extends Model implements Auditable
 
     protected $table = 'taxes';
     protected $fillable = [
-        'tax_type_id', 'certificate_ids',
-
-        // TAX BASE
-        'nop', 'owner', 'year', 'due_date', 'nominal_ly', 'due_date_ly', 'note',
-
-        // ADDRESS
-        'addr_address', 'addr_village', 'addr_land_area', 'addr_building_area',
-
-        // NJOP
+        'tax_type_id', 'folder_pbb', 'rencana_group', 'luas_sertifikat', 'pen_pbb', 'wajib_pajak', 'letak_objek_pajak', 'kelurahan_pbb', 'kota_pbb', 'purposes',
+        'nop', 'luas_tanah_pbb', 'luas_bangun_pbb', 'year',
+        //njop
         'njop_land', 'njop_building', 'njop_total',
 
-        // CORPORATION
-        'corp_name', 'corp_payment_method',
-
-        // FOLDER FILLING
-        'folder_number', 'folder_current', 'folder_plan'
+        // TAX BASE
+        'due_date', 'nominal_ly', 'due_date_ly', 'selisih'
     ];
 
     public $timestamp = true;

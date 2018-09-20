@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Land Certificate')
+@section('title', 'Tax Certificate')
 
 @section('content_header')
-    <h1>Edit Certificate</h1>
+    <h1>Edit Tax</h1>
 @stop
 
 @section('content')
@@ -21,242 +21,170 @@
                         </div>
                     @endif
 
-                    {!! Form::model($cert,  ['url'=>array( '/certificates/updatecert', $cert->id), 'method' => 'patch','enctype' => 'multipart/form-data', 'files' => true]) !!}
-                    
-                    <div class="form-gorup">
-                      {!! Form::label('folder_sert', 'Folder Sertifikat', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('folder_sert', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('folder_sert')?$errors->first('folder_sert'):'' !!}
-                      </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-gorup">
-                      {!! Form::label('no_folder', 'Nomor Folder', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('no_folder', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('no_folder')?$errors->first('no_folder'):'' !!}
-                      </div>
-                    </div>
-                    <br>
-                    <br>
+                    {!! Form::model($t,  ['url'=>array( '/taxes/updatetax', $t->id), 'method' => 'patch','enctype' => 'multipart/form-data', 'files' => true]) !!}
+
                     <div class="form-group">
-                        {!! Form::label('certificate_type_id', 'Jenis:', ['class'=>'control-label col-md-2']) !!}
-                        <div class="col-md-10">
-                        {!! Form::select('certificate_type_id', $certype,null, ['class'=>'form-control']) !!}
+                        {!! Form::label('certificate_type_id', 'No HM / HGB', ['class'=>'control-label col-md-3']) !!}
+                        <div class="col-md-9">
+                        {!! Form::select('certificate_type_id', $cert,null, ['class'=>'form-control']) !!}
                         </div>
                     </div>
                     <br><br>
                     <div class="form-gorup">
-                      {!! Form::label('no_hm_hgb', 'No HM / HGB', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('no_hm_hgb', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('no_hm_hgb')?$errors->first('no_hm_hgb'):'' !!}
+                      {!! Form::label('folder_pbb', 'Folder PBB', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
+                        {!! Form::text('folder_pbb', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('folder_pbb')?$errors->first('folder_pbb'):'' !!}
                       </div>
-                    </div>
-                    <br>
-                    <br>
+                    </div><br><br>
+
                     <div class="form-gorup">
-                      {!! Form::label('kepemilikan', 'Kepemilikan', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('kepemilikan', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('kepemilikan')?$errors->first('kepemilikan'):'' !!}
-                      </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-gorup">
-                      {!! Form::label('nama_sertifikat', 'Nama Sertifikat', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('nama_sertifikat', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('nama_sertifikat')?$errors->first('nama_sertifikat'):'' !!}
-                      </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-gorup">
-                      {!! Form::label('keterangan', 'Keterangan', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('keterangan', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('keterangan')?$errors->first('keterangan'):'' !!}
-                      </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-gorup">
-                      {!! Form::label('archive', 'Archive', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('archive', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('archive')?$errors->first('archive'):'' !!}
-                      </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-gorup">
-                      {!! Form::label('kelurahan', 'kelurahan', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('kelurahan', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('kelurahan')?$errors->first('kelurahan'):'' !!}
-                      </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-gorup">
-                      {!! Form::label('kecamatan', 'kecamatan', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('kecamatan', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('kecamatan')?$errors->first('kecamatan'):'' !!}
-                      </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-gorup">
-                      {!! Form::label('kota', 'kota', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('kota', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('kota')?$errors->first('kota'):'' !!}
-                      </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-gorup">
-                      {!! Form::label('luas_sertifikat', 'Luas Sertifikat', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
+                      {!! Form::label('luas_sertifikat', 'Luas Sertifikat', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
                         {!! Form::text('luas_sertifikat', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-
-
                         {!! $errors->has('luas_sertifikat')?$errors->first('luas_sertifikat'):'' !!}
                       </div>
                     </div>
                     <br>
                     <br>
+                    
                     <div class="form-gorup">
-                      {!! Form::label('addrees', 'Alamat', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('addrees', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('addrees')?$errors->first('addrees'):'' !!}
+                      {!! Form::label('rencana_group', 'Rencana Group Folder PBB ', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
+                        {!! Form::text('rencana_group', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('rencana_group')?$errors->first('rencana_group'):'' !!}
                       </div>
                     </div>
                     <br>
                     <br>
                     <div class="form-gorup">
-                      {!! Form::label('purposes', 'Purpose', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('purposes', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('purposes')?$errors->first('purposes'):'' !!}
+                      {!! Form::label('pen_pbb', 'Penanggung PBB', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
+                        {!! Form::text('pen_pbb', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('pen_pbb')?$errors->first('pen_pbb'):'' !!}
                       </div>
-                    </div>
-                    <br>
-                    <br>
+                    </div><br><br>
 
                     <div class="form-gorup">
-                      {!! Form::label('penanggung_pbb', 'Penanggung PBB', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('penanggung_pbb', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('penanggung_pbb')?$errors->first('penanggung_pbb'):'' !!}
-                      </div>
-                    </div>
-                    <br>
-                    <br>
-
-                    <div class="form-gorup">
-                      {!! Form::label('wajib_pajak', 'Wajib Pajak', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
+                      {!! Form::label('wajib_pajak', 'Wajib Pajak', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
                         {!! Form::text('wajib_pajak', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
                         {!! $errors->has('wajib_pajak')?$errors->first('wajib_pajak'):'' !!}
                       </div>
-                    </div>
-                    <br>
-                    <br>
-
-                    <div class="form-gorup">
-                      {!! Form::label('published_date', 'Published Date', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('published_date', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('published_date')?$errors->first('published_date'):'' !!}
-                      </div>
                     </div><br><br>
 
                     <div class="form-gorup">
-                      {!! Form::label('expired_date', 'Expired Date', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('expired_date', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('expired_date')?$errors->first('expired_date'):'' !!}
-                      </div>
-                    </div><br><br>
-
-                    <div class="form-gorup">
-                      {!! Form::label('ajb_nominal', 'Ajb Nominal', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('ajb_nominal', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('ajb_nominal')?$errors->first('ajb_nominal'):'' !!}
-                      </div>
-                    </div><br><br>
-
-                    <div class="form-gorup">
-                      {!! Form::label('ajb_date', 'Ajb Date', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('ajb_date', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('ajb_date')?$errors->first('ajb_date'):'' !!}
-                      </div>
-                    </div><br><br>
-
-                    <div class="form-gorup">
-                      {!! Form::label('map_coordinate', 'Map Coordinate', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('map_coordinate', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('map_coordinate')?$errors->first('map_coordinate'):'' !!}
-                      </div>
-                    </div><br><br>
-
-                    <div class="form-gorup">
-                      {!! Form::label('letak_objek_pajak', 'Letak Objek Pajak', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
+                      {!! Form::label('letak_objek_pajak', 'Letak Objek Pajak', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
                         {!! Form::text('letak_objek_pajak', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
                         {!! $errors->has('letak_objek_pajak')?$errors->first('letak_objek_pajak'):'' !!}
                       </div>
                     </div><br><br>
 
                     <div class="form-gorup">
-                      {!! Form::label('kelurahan_pbb', 'Keluraha PBB', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
+                      {!! Form::label('kelurahan_pbb', 'Kelurahan PBB', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
                         {!! Form::text('kelurahan_pbb', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
                         {!! $errors->has('kelurahan_pbb')?$errors->first('kelurahan_pbb'):'' !!}
                       </div>
                     </div><br><br>
 
                     <div class="form-gorup">
-                      {!! Form::label('kota_pbb', 'Kota PBB', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
+                      {!! Form::label('kota_pbb', 'Kota PBB', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
                         {!! Form::text('kota_pbb', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
                         {!! $errors->has('kota_pbb')?$errors->first('kota_pbb'):'' !!}
                       </div>
                     </div><br><br>
 
                     <div class="form-gorup">
-                      {!! Form::label('nop', 'NOP', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
+                      {!! Form::label('nop', 'NOP', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
                         {!! Form::text('nop', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
                         {!! $errors->has('nop')?$errors->first('nop'):'' !!}
                       </div>
                     </div><br><br>
 
                     <div class="form-gorup">
-                      {!! Form::label('luas_tanah_pbb', 'Luas Tanah PBB', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
+                      {!! Form::label('luas_tanah_pbb', 'Luas Tanah PBB', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
                         {!! Form::text('luas_tanah_pbb', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
                         {!! $errors->has('luas_tanah_pbb')?$errors->first('luas_tanah_pbb'):'' !!}
                       </div>
                     </div><br><br>
 
                     <div class="form-gorup">
-                      {!! Form::label('luas_bangun_pbb', 'Luas Bangun PBB', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
+                      {!! Form::label('luas_bangun_pbb', 'Luas Bangun PBB', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
                         {!! Form::text('luas_bangun_pbb', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
                         {!! $errors->has('luas_bangun_pbb')?$errors->first('luas_bangun_pbb'):'' !!}
                       </div>
                     </div><br><br>
+
+                    <div class="form-gorup">
+                      {!! Form::label('year', 'Tahun PBB', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
+                        {!! Form::text('year', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('year')?$errors->first('year'):'' !!}
+                      </div>
+                    </div><br><br>
+
+                    <div class="form-gorup">
+                      {!! Form::label('njop_land', 'NJOP Land', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
+                        {!! Form::text('njop_land', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('njop_land')?$errors->first('njop_land'):'' !!}
+                      </div>
+                    </div><br><br>
+
+                    <div class="form-gorup">
+                      {!! Form::label('njop_building', 'NJOP Building', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
+                        {!! Form::text('njop_building', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('njop_building')?$errors->first('njop_building'):'' !!}
+                      </div>
+                    </div><br><br>
+
+                    <div class="form-gorup">
+                      {!! Form::label('njop_total', 'NJOP Total', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
+                        {!! Form::text('njop_total', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('njop_total')?$errors->first('njop_total'):'' !!}
+                      </div>
+                    </div><br><br>
+
+                    <div class="form-gorup">
+                      {!! Form::label('nominal_ly', 'Nominal Ly', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
+                        {!! Form::text('nominal_ly', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('nominal_ly')?$errors->first('nominal_ly'):'' !!}
+                      </div>
+                    </div><br><br>
+
+                    <div class="form-gorup">
+                      {!! Form::label('due_date', 'Due Date', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
+                        {!! Form::text('due_date', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('due_date')?$errors->first('due_date'):'' !!}
+                      </div>
+                    </div><br><br>
+
+                    <div class="form-gorup">
+                      {!! Form::label('due_date_ly', 'Payment PBB', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
+                        {!! Form::text('due_date_ly', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('due_date_ly')?$errors->first('due_date_ly'):'' !!}
+                      </div>
+                    </div><br><br>
+
+                    <div class="form-gorup">
+                      {!! Form::label('selisih', 'Selisih PBB', ['class'=>'control-label col-md-3']) !!}
+                      <div class="col-md-9">
+                        {!! Form::text('selisih', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('selisih')?$errors->first('selisih'):'' !!}
+                      </div>
+                    </div><br><br>
+                    
 
 
 

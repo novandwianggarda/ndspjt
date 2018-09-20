@@ -26,6 +26,7 @@
                             <div class="panel box">
                                 <!-- BASIC INFORMATION -->
                                 @include('partials.forms.tax.basicinformation')
+                                @include('partials.forms.tax.detailinformation')
                                 <!-- DETAILS INFORMATION-->
                                 
                                 <div class="form-groxup">

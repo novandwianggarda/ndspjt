@@ -71,6 +71,10 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('add', 'TaxesController@showAddForm');
         Route::post('add', 'TaxesController@store');
 
+        Route::get('/edit/{id}', 'TaxesController@edittax' );
+        Route::patch('/updatetax/{edit}', 'TaxesController@updatetax');
+        Route::delete('/delete/{id}', 'TaxesController@destroy' );
+
         Route::get('import', 'TaxesController@import');
         Route::post('storeimport', 'TaxesController@storeimport')->name('tax.import');
         Route::post('storeimport/save', 'TaxesController@tes');

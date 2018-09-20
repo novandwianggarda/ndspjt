@@ -1,8 +1,15 @@
 <accordion name="collapse-taxinfo">
 
     <div slot="title" class="ll-head">
-        BASIC INFORMATION
+        BASIC INFORMATION TAX
     </div>
+
+    <frgroup>
+        <label slot="label">
+            NO HM / HGB
+        </label>
+        {!! Form::select('certificate_id', $certificates,null, ['class'=>'form-control']) !!}
+    </frgroup>
 
 
     <frgroup>
@@ -11,12 +18,27 @@
         </label>
         <input type="text" name="folder_pbb" value="{{ old('folder_pbb') }}" class="form-control" />
     </frgroup>
+
+    <frgroup>
+        <label slot="label">
+            Purpose
+        </label>
+        <input type="text" name="purposes" value="{{ old('purposes') }}" class="form-control" />
+    </frgroup>
+
+     <frgroup>
+        <label slot="label">
+            Luas Sertifikat
+        </label>
+        <input type="text" name="luas_sertifikat" value="{{ old('luas_sertifikat') }}" class="form-control" />
+    </frgroup>
     <frgroup>
         <label slot="label">
             Rencana Group Folder PBB
         </label>
         <input type="text" name="rencana_group" value="{{ old('rencana_group') }}" class="form-control" />
     </frgroup>
+
 
     <frgroup>
         <label slot="label">
@@ -31,45 +53,7 @@
         </select>
     </frgroup>
 
-
-    <frgroup>
-        <label slot="label">
-            Nama Sertifikat
-        </label>
-        {!! Form::select('certificate_id', $certificates,null, ['class'=>'form-control']) !!}
-    </frgroup>
-
-
-
-
-
-    <frgroup>
-        <label slot="label">
-            NJOP T/m2
-        </label>
-        <input type="number" name="njopland" value="{{ old('njopland') }}" class="form-control" />
-    </frgroup>
-
-    <frgroup>
-        <label slot="label">
-            NJOP B/m2
-        </label>
-        <input type="number" name="njop_building" value="{{ old('njop_building') }}" class="form-control" />
-    </frgroup>
-
-    <frgroup>
-        <label slot="label">
-            Due Date
-        </label>
-        <indate name="due_date" value="{{ old('due_date') }}"></indate>
-    </frgroup>
-
-    <frgroup>
-        <label slot="label">
-            Payment PBB 
-        </label>
-        <indate name="due_date_ly" value="{{ old('due_date_ly') }}"></indate>
-    </frgroup>
+    
 
 
 </accordion>

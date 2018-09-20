@@ -22,7 +22,7 @@
 						<th>No HM / HGB</th>
 						<th>Folder PBB</th>
 						<th>Rencana Group Folder PBB</th>
-						<th>Year</th>
+						<th>Luas Sertifikat</th>
 						<th>Due Date</th>
 						<th>NJOP Land</th>
 					</tr>
@@ -30,10 +30,10 @@
 				<tbody>
 					@foreach ($data as $d)
 					<tr>
-						<td>{{$d->no_hm_hgb}}</td>
+						<td>{{$d->no_hm}}</td>
 						<td>{{$d->folder_pbb}}</td>
 						<td>{{$d->rencana_group}}</td>
-						<td>{{$d->year}}</td>
+						<td>{{$d->luas_sertifikat}}</td>
 						<td>{{$d->due_date}}</td>
 						<td>{{$d->njop_land}}</td>
 					</tr>

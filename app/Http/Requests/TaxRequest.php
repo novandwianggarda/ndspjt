@@ -27,33 +27,29 @@ class TaxRequest extends FormRequest
             'certificate_id' => 'required|numeric',
 
             // TAX BASE
+            'folder_pbb' => 'nullable',
+            'luas_sertifikat' => 'nullable',
+            'rencana_group' => 'nullable',
+            'pen_pbb' => 'nullable',
+            'purposes' => 'nullable',
+            'wajib_pajak' => 'nullable',
+            'letak_objek_pajak' => 'nullable',
+            'kelurahan_pbb' => 'nullable',
+            'kota_pbb' => 'nullable',
             'nop' => 'nullable',
-            'owner' => 'nullable',
+            'luas_tanah_pbb' => 'nullable',
+            'luas_bangun_pbb' => 'nullable',
             'year' => 'nullable',
-            'due_date' => 'nullable|date',
-            'nominal_ly' => 'nullable|numeric',
-            'due_date_ly' => 'nullable|date',
-            'note' => 'nullable',
-
-            // ADDRESS
-            'addr_address' => 'nullable',
-            'addr_village' => 'nullable',
-            'addr_land_area' => 'nullable',
-            'addr_building_area' => 'nullable',
-
             // NJOP
             'njop_land' => 'nullable|numeric',
             'njop_building' => 'nullable|numeric',
             'njop_total' => 'nullable|numeric',
+            'nominal_ly' => 'nullable|numeric',
 
-            // CORPORATION
-            'corp_name' => 'nullable',
-            'corp_payment_method' => 'nullable',
+            'due_date' => 'nullable|date',
+            'due_date_ly' => 'nullable|date',
+            'selisih' => 'nullable',
 
-            // FOLDER FILLING
-            'folder_number' => 'nullable',
-            'folder_current' => 'nullable',
-            'folder_plan' => 'nullable',
         ];
     }
 }

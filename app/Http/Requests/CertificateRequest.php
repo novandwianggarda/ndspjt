@@ -42,23 +42,22 @@ class CertificateRequest extends FormRequest
             'kota' => 'nullable',
             'published_date' => 'nullable|date',
             'expired_date' => 'nullable|date',
-            'luas_sertifikat' => 'nullable',
             'addrees' => 'nullable', 
             'ajb_nominal' => 'nullable',
             'ajb_date' => 'nullable|date',
             'map_coordinate' => 'nullable|json',
-            'penanggung_pbb' => 'nullable',
-            'wajib_pajak' => 'nullable',
-            'letak_objek_pajak' => 'nullable',
-            'kelurahan_pbb' => 'nullable',
-            'kota_pbb' => 'nullable',
-            'nop' => 'nullable',
-
-            'purposes' => 'nullable',
             'no_hm_hgb' => 'nullable',
 
-            'luas_tanah_pbb' => 'nullable',
-            'luas_bangun_pbb' => 'nullable',
+            // 'penanggung_pbb' => 'nullable',
+            // 'wajib_pajak' => 'nullable',
+            // 'letak_objek_pajak' => 'nullable',
+            // 'kelurahan_pbb' => 'nullable',
+            // 'kota_pbb' => 'nullable',
+            // 'nop' => 'nullable',
+            // 'luas_sertifikat' => 'nullable',
+            // 'purposes' => 'nullable',
+            // 'luas_tanah_pbb' => 'nullable',
+            // 'luas_bangun_pbb' => 'nullable',
         ];
     }
 }

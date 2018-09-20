@@ -81,6 +81,8 @@ class CertificatesController extends Controller
         $certype = CertificateType::all()->pluck('short_name', 'id');
         return view('certificate.edit', compact('cert', 'certype'));
     }
+
+    
     public function updatecert(Request $request, $id)
     {
         //dd($request->all());
@@ -164,12 +166,12 @@ class CertificatesController extends Controller
                 $ce->kota= $value->kota;
                 $ce->published_date = date('Y-m-d', strtotime($ce->published_date));
                 $ce->expired_date = date('Y-m-d', strtotime($ce->expired_date));
-                $ce->luas_sertifikat= $value->luas_sertifikat;
+                $ce->addrees  = $value->addrees ;
+                
                 $ce->ajb_nominal= $value->ajb_nominal;
                 $ce->ajb_date = date('Y-m-d', strtotime($ce->ajb_date));
                 $ce->map_coordinate= $value->map_coordinate;
-                $ce->purposes= $value->purposes;
-                $ce->addrees  = $value->addrees ;
+
                
                 $ce->save();
             }
