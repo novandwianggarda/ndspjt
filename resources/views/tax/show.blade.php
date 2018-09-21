@@ -16,65 +16,102 @@
                     <table class="table table-hover bordered table-bordered">
                         <tbody>
 
-                            
                             <tr>
-                                <td>Tax Type :</td>
+                                <td>Nama Sertifikat</td>
+                                <td>{{ $tax->certif->nama_sertifikat }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Jenis</td>
                                 <td>{{ $tax->certif->type->short_name }} &nbsp;( {{ $tax->certif->type->long_name }} )</td>
                             </tr>
                             <tr>
-                                <td>Certificate Ids :</td>
-                                <td>{{ $tax->certificate_ids }}</td>
+                                <td>No HM / HGB</td>
+                                <td>{{ $tax->certif->no_hm_hgb }}</td>
                             </tr>
                             <tr>
-                                <td>NOP:</td>
+                                <td>Kepemilikan</td>
+                                <td>{{ $tax->certif->kepemilikan }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>kelurahan</td>
+                                <td>{{ $tax->certif->kelurahan }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Alamat</td>
+                                <td>{{ $tax->certif->addrees }}</td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Folder PBB Kini</td>
+                                <td>{{ $tax->folder_pbb }}</td>
+                            </tr>
+                            <tr>
+                                <td>Purposes</td>
+                                <td>{{ $tax->purposes }}</td>
+                            </tr>
+                            <tr>
+                                <td>Luas Sertifikat </td>
+                                <td>{{ $tax->luas_sertifikat }}</td>
+                            </tr>
+                            <tr>
+                                <td>Rencana Group </td>
+                                <td>{{ $tax->rencana_group }}</td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Penanggung PBB  </td>
+                                <td>{{ $tax->pen_pbb  }}</td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Wajib Pajak </td>
+                                <td>{{ $tax->wajib_pajak }}</td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Letak Objek Pajak :</td>
+                                <td>{{ $tax->letak_objek_pajak }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Kelurahan PBB </td>
+                                <td>{{ $tax->kelurahan_pbb }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Kota PBB </td>
+                                <td>{{ $tax->kota_pbb }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>NOP </td>
                                 <td>{{ $tax->nop }}</td>
                             </tr>
+
                             <tr>
-                                <td>Owner :</td>
-                                <td>{{ $tax->owner }}</td>
+                                <td>Luas Tanah PBB </td>
+                                <td>{{ $tax->luas_tanah_pbb }}</td>
                             </tr>
+
                             <tr>
-                                <td>Year :</td>
+                                <td>Luas Bangun PBB </td>
+                                <td>{{ $tax->luas_bangun_pbb }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Year </td>
                                 <td>{{ $tax->year }}</td>
                             </tr>
-                            <tr>
-                                <td>Due Date :</td>
-                                <td>{{ $tax->due_date }}</td>
-                            </tr>
-                            
-                            <tr>
-                                <td>Nominal ly :</td>
-                                <td>{{ $tax->nominal_ly }}</td>
-                            </tr>
 
                             <tr>
-                                <td>Due Date ly :</td>
-                                <td>{{ $tax->due_date_ly }}</td>
-                            </tr>
-
-                            <tr>
-                                <td>Note :</td>
-                                <td>{{ $tax->note }}</td>
-                            </tr>
-                            <tr>
-                                <td>Address :</td>
-                                <td>{{ $tax->addr_address }}</td>
-                            </tr>
-                            <tr>
-                                <td>Addres Village :</td>
-                                <td>{{ $tax->addr_village }}</td>
-                            </tr>
-                            <tr>
-                                <td>Addr Land Area :</td>
-                                <td>{{ $tax->addr_land_area }}</td>
-                            </tr>
-
-                            <tr>
-                                <td>Addres Building Area :</td>
-                                <td>{{ $tax->addr_building_area }}</td>
-                            </tr>
-                            <tr>
-                                <td>NJOP Land :</td>
+                                <td>NJOP Land </td>
                                 <td>{{ $tax->njop_land }}</td>
                             </tr>
                             <tr>
@@ -82,29 +119,34 @@
                                 <td>{{ $tax->njop_building }}</td>
                             </tr>
                             <tr>
-                                <td>NJOP Total :</td>
+                                <td>NJOP Total </td>
                                 <td>{{ $tax->njop_total }}</td>
                             </tr>
+
                             <tr>
-                                <td>Corp Name :</td>
-                                <td>{{ $tax->corp_name }}</td>
+                                <td>Nominal ly </td>
+                                <td>{{ $tax->nominal_ly }}</td>
                             </tr>
+
                             <tr>
-                                <td>Corp Payment Method:</td>
-                                <td>{{ $tax->corp_payment_method }}</td>
+                                <td>Due Date </td>
+                                <td>{{ $tax->due_date }}</td>
                             </tr>
+                            
+
                             <tr>
-                                <td>Folder Number:</td>
-                                <td>{{ $tax->folder_number }}</td>
+                                <td>Due Date ly </td>
+                                <td>{{ $tax->due_date_ly }}</td>
                             </tr>
+
                             <tr>
-                                <td>Folder Current</td>
-                                <td>{{ $tax->folder_current }}</td>
+                                <td>Selisih</td>
+                                <td>{{ $tax->selisih }}</td>
                             </tr>
-                            <tr>
-                                <td>Folder Plan :</td>
-                                <td>{{ $tax->folder_plan }}</td>
-                            </tr>
+                           
+                            
+
+
                            
                             @foreach ($tax->getAttributes() as $index => $value)
                                 <!-- <tr>

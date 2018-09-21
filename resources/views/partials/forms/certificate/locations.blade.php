@@ -3,47 +3,26 @@
 		LOCATIONS
 	</div>
 
+  <div class="panel-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="map" style="width:100%;height:500px"></div>
+        </div>
 
 
+        <div class="col-md-12 item boundary_coordinates">
+            <br>
+            <div style="float:left;">
+                <button class="btn btn-sm btn-warning" type="button" onclick="clearMap(); return false;"><i class="fa fa-trash"></i> Clear Map</button>
+                <button class="btn btn-sm btn-info" type="button" onclick="makeBoundary(); return false;"><i class="fa fa-map"></i> Make Boundary</button>
+                <span>&nbsp;&nbsp;<b>Area</b>: <span id="polygonArea">0</span> m<sup>2</sup></span>
+            </div>
+            <div class="alert boundary_coordinates" style="">DS-LandLord</div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <input type="hidden" name="boundary_coordinates" id="boundary_coordinates">
+  </div>
 
-
-
-
-
-    <div id="map"></div>
-    <script>
-      // This example requires the Drawing library. Include the libraries=drawing
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=drawing">
-
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-
-        var drawingManager = new google.maps.drawing.DrawingManager({
-          drawingMode: google.maps.drawing.OverlayType.MARKER,
-          drawingControl: true,
-          drawingControlOptions: {
-            position: google.maps.ControlPosition.TOP_CENTER,
-            drawingModes: ['marker', 'circle', 'polygon', 'polyline', 'rectangle']
-          },
-          markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
-          circleOptions: {
-            fillColor: '#ffff00',
-            fillOpacity: 1,
-            strokeWeight: 5,
-            clickable: false,
-            editable: true,
-            zIndex: 1
-          }
-        });
-        drawingManager.setMap(map);
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=drawing&callback=initMap"
-         async defer></script>
-                            
 
 </accordion>

@@ -36,7 +36,7 @@ class CreateTaxesTable extends Migration
              // NJOP
             $table->double('njop_land', 12, 2)->nullable(); // nilai pajak tanah
             $table->double('njop_building', 12, 2)->nullable(); // nilai pajak bangunan
-            $table->double('njop_total', 12, 2)->nullable(); // nilai pajak njop total
+            $table->string('njop_total')->nullable(); // nilai pajak njop total
             $table->double('nominal_ly', 12, 2)->default(0); // nilai pajak tahun lalu
             
             $table->date('due_date')->nullable(); // tgl batas maksimal pembayaran

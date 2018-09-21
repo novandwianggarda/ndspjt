@@ -46,7 +46,7 @@ class TaxesController extends Controller
         $t->njop_land = $request->input('njop_land');
         $t->njop_building = $request->input('njop_building');
         $t->njop_total = $request->input('njop_total');
-        $t->nominal_ly = $request->input('nominal_ly');
+        // $t->nominal_ly = $request->input('nominal_ly');
         $t->due_date = $request->input('due_date');
         $t->due_date_ly = $request->input('due_date_ly');
         $t->selisih = $request->input('selisih');
@@ -127,7 +127,7 @@ class TaxesController extends Controller
                 $taxes->njop_land= $value->njop_land;  
                 $taxes->njop_building= $value->njop_building;
                 $taxes->njop_total= $value->njop_total;
-                $taxes->nominal_ly= $value->nominal_ly;
+                
 
                 $taxes->due_date = date('Y-m-d', strtotime($taxes->due_date));
                 $taxes->due_date_ly = date('Y-m-d', strtotime($taxes->due_date_ly));

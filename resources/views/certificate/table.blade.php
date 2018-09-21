@@ -14,6 +14,7 @@
                 <thead>
                     <tr>
                         <th>Nama Sertifikat</th>
+                        <th>No HM / HGB</th>
                         <th>Type</th>
                         <th>Publish Date</th>
                         <th>Expired Date</th>
@@ -26,6 +27,7 @@
                             <td>
                                 <a href="/certificates/show/{{ $cert->id }}">{{ $cert->kepemilikan }} - {{ $cert->nama_sertifikat }}</a>
                             </td>
+                            <td>{{ $cert->no_hm_hgb }}</td>
                             <td>{{ $cert->certificate_type }}</td>
                             <td>{{ $cert->published_date }}</td>
                             <td>{{ $cert->expired_date }}</td>
