@@ -37,4 +37,25 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->only('username', 'password');
+
+        if (auth()->attempt($credentials)) {
+            if (Auth::role_user()->users->slug =='superadmin') {
+                return redirect('/dashboard');
+            }elseif (Auth::role_user()->users->slug =='administrator'){
+                return redirect('/admin');
+            }else{
+                return redirect('/home');
+            }
+        }else{
+            // alert()->error('Username & Password Anda Salah','Gagal Login')->autoclose(3500);
+            return redirect('/login');
+        }
+    }
+
+
+
 }

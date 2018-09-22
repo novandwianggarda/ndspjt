@@ -10,15 +10,12 @@
         </label>
         {!! Form::select('certificate_id', $certificates,null, ['class'=>'form-control']) !!}
     </frgroup>
-
-
     <frgroup>
         <label slot="label">
             Folder PBB Kini
         </label>
         <input type="text" name="folder_pbb" value="{{ old('folder_pbb') }}" class="form-control" />
     </frgroup>
-
     <frgroup>
         <label slot="label">
             Purpose

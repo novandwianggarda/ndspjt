@@ -22,7 +22,7 @@
                         <a href="#">Title Goes Here</a>
                     </h3>
                     <span>Tenant: XXXX</span> <br>
-                    <span>Due: 12 Feb. 2014</span>
+                    <span>Due: 1 Feb. 2014</span>
                 </div>
             </li>
         </ul>

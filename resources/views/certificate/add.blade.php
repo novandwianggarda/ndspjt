@@ -133,9 +133,9 @@
                         }
                     })
                 })
+            // MAPS
             initMap();
 
-            // MAPS
             var map, markers = [], polygon, polygonCenter, polygonArea = 0;
             function initMap() {
                 map = new google.maps.Map(document.getElementById('map'), {
@@ -166,7 +166,6 @@
                 });
                 
                     }
-
             function placeMarker(location) {
                 var marker = new google.maps.Marker({
                     position: location, 
@@ -230,6 +229,7 @@
                 return google.maps.geometry.spherical.computeArea(polygon.getPath());
             }
 
+            
             // http://cartometric.com/blog/2014/06/06/convert-google-maps-polygon-api-v3-to-well-known-text-wkt-geometry-expression/
             function GMapPolygonToWKT(poly) {
                 var wkt = "POLYGON(";

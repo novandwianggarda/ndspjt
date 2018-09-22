@@ -15,7 +15,6 @@ class Tax extends Model implements Auditable
         'nop', 'luas_tanah_pbb', 'luas_bangun_pbb', 'year',
         //njop
         'njop_land', 'njop_building', 'njop_total',
-
         // TAX BASE
         'due_date', 'nominal_ly', 'due_date_ly', 'selisih'
     ];

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Taxs List')
+@section('title', 'DS Land-Lord')
 
 @section('content_header')
-		<h1>Taxs Import List</h1>
+		<center><h2>PBB List Import</h2></center>
 @stop
 
 @section('content')
