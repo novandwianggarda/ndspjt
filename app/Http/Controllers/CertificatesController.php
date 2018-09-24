@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Certificate;
 use App\CertificateType;
 use App\CertificateDoc;
+use DB;
 use App\Http\Requests\CertificateRequest;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -47,7 +48,7 @@ class CertificatesController extends Controller
     {
         
         // dd($request->input('title'));
-        dd($request->all());
+        //dd($request->all());
         $data = $request->all();
         $add = Certificate::create($data);
         if (!$add) { 
@@ -215,5 +216,64 @@ class CertificatesController extends Controller
         return redirect()->route('dashboard');
 
     }
+
+
+
+
+    public function eksport(){
+        $certificates = Certificate::all();
+        return view('certificate.eksport')->with('certificates', $certificates);
+    }
+
+   public function eksported(){
+        //dd($request->all());
+
+        $certificate_data = DB::table('certificates')->get()->toArray();  
+        $certificate_array[] = array('Folder Serifikat', 'No Folder', 'Kepemilikan', 'Nama Setifikat', 'Keterangan', 'Archive', 'Type Sertifikat', 'No HM / HGB', 'Kelurahan', 'Kecamatan', 'Kota', 'Tgl Terbit', 'Tgl Akhir', 'Luas Sertifikat', 'Alamat', 'AJB Nominal', 'AJB Tanggal', 'Map Coordinate', 'Purpose', 'Penanggung PBB', 'Wajib Pajak', 'Letak Objek Pajak', 'Kelurahan PBB', 'Kota PBB', 'NOP', 'Luas Tanah PBB', 'Luas Bangun PBB');
+
+        foreach ($certificate_data as $certificates) 
+        {
+            $certificate_array[] = array(
+                'Folder Serifikat' => $certificates->folder_sert,
+                'No Folder' => $certificates->no_folder,
+                'Kepemilikan' => $certificates->kepemilikan,
+                'Nama Setifikat' => $certificates->nama_sertifikat,
+                'Keterangan' => $certificates->keterangan,
+                'Archive' => $certificates->archive,
+                'Type Sertifikat' => \App\CertificateType::find($certificates->certificate_type_id)->short_name,
+                'No HM / HGB' => $certificates->no_hm_hgb,
+                'Kelurahan' => $certificates->kelurahan,
+                'Kecamatan' => $certificates->kecamatan,
+                'Kota' => $certificates->kota,
+                'Tgl Terbit' => $certificates->published_date,
+                'Tgl Akhir' => $certificates->expired_date,
+                'Luas Sertifikat' => @ Certificate::find($certificates->id)->certif->first()->luas_sertifikat,
+                'Alamat' => $certificates->addrees,
+                'AJB Nominal' => $certificates->ajb_nominal,
+                'AJB Date' => $certificates->ajb_date,
+                'Map' => $certificates->map_coordinate,
+                'Purposes' => @ Certificate::find($certificates->id)->certif->first()->purposes,
+                'Penanggung PBB' => @ Certificate::find($certificates->id)->certif->first()->pen_pbb,
+                'Wajib Pajak' => @ Certificate::find($certificates->id)->certif->first()->wajib_pajak,
+                'Letak Objek Pajak' => @ Certificate::find($certificates->id)->certif->first()->letak_objek_pajak,
+                'Kota Pajak' => @ Certificate::find($certificates->id)->certif->first()->kota_pbb,
+                'NOP' => @ Certificate::find($certificates->id)->certif->first()->nop,
+                'Luas Tanah PBB' => @ Certificate::find($certificates->id)->certif->first()->luas_tanah_pbb,
+                'Luas Bangun PBB' => @ Certificate::find($certificates->id)->certif->first()->luas_bangun_pbb
+            );
+        }
+
+
+        Excel::create('Certificate Data', function($excel) use (
+            $certificate_array){
+            $excel->setTitle('Certificate Data');
+            $excel->sheet('Certificate Data', function($sheet)
+                use($certificate_array){
+                    $sheet->fromArray($certificate_array, null, 'A1', false, false);
+                });
+        })->download('xlsx');
+    }
+
+    
 
 }

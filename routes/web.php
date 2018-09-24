@@ -57,6 +57,8 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('import', 'CertificatesController@import');
         Route::post('storeimport', 'CertificatesController@storeimport')->name('certificate.import');
         Route::post('storeimport/save', 'CertificatesController@tes');
+        Route::get('eksport', 'CertificatesController@eksport');
+        Route::get('eksported', 'CertificatesController@eksported')->name('export.excel');
 
     });
 

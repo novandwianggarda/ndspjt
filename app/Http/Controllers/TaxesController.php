@@ -67,10 +67,6 @@ class TaxesController extends Controller
     }
 
 
-
-
-
-
     /**
      * show tax
      */
@@ -99,14 +95,13 @@ class TaxesController extends Controller
     public function tes(Request $request){
         $x = json_decode($request->data);
         foreach ($x as $d => $value) {
-            $no_hm= $value->no_hm;
-
+            $no_hm = $value->no_hm;
             if($no_hm){
+                $no_hm = \App\Certificate::where('no_hm_hgb', $no_hm)->get()->first()->id;
 
-                $nohm = \App\Certificate::where('no_hm_hgb', $no_hm)->get()->first()->id;
                    
                 $taxes = new Tax();
-                $taxes->certificate_id= $nohm;
+                $taxes->certificate_id= $no_hm;
                 $taxes->luas_sertifikat= $value->luas_sertifikat;
                 $taxes->folder_pbb= $value->folder_pbb;
                 $taxes->rencana_group= $value->rencana_group;

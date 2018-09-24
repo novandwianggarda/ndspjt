@@ -22,7 +22,7 @@ class CreateTaxesTable extends Migration
 
 
             //PBB ke sertifikat
-            $table->text('penanggung_pbb')->nullable(); 
+            $table->text('pen_pbb')->nullable(); 
             $table->text('wajib_pajak')->nullable(); 
             $table->text('letak_objek_pajak')->nullable(); 
             $table->text('kelurahan_pbb')->nullable(); 

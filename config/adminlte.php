@@ -139,6 +139,11 @@ return [
                     'url'  => '/certificates/import',
                     'icon' => 'file',
                 ],
+                [
+                    'text' => 'Eksport',
+                    'url'  => '/certificates/eksport',
+                    'icon' => 'file',
+                ],
             ],
         ],
         [

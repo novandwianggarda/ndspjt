@@ -56,7 +56,7 @@ class Certificate extends Model implements Auditable
     }
      public function certif()
     {
-        return $this->hasMany('App\Tax', 'id');
+        return $this->hasMany('App\Tax', 'certificate_id');
     }
 
 
