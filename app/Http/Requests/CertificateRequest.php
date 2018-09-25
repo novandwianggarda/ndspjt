@@ -45,7 +45,7 @@ class CertificateRequest extends FormRequest
             'addrees' => 'nullable', 
             'ajb_nominal' => 'nullable',
             'ajb_date' => 'nullable|date',
-            'map_coordinate' => 'nullable|json',
+            'boundary_coordinates' => 'nullable|json',
             'no_hm_hgb' => 'nullable',
 
             // 'penanggung_pbb' => 'nullable',

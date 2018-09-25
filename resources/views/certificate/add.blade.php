@@ -190,6 +190,20 @@
                 return coordinates;
             }
 
+            function initsmakeBoundary(latLang){
+               clearMarker();
+               marker = new google.maps.Marker({
+                position: latLang,
+                map: map,
+                draggable:true,
+                icon: '/images/marker-map-tiny.png'
+               });
+               marker.setMap(map);
+               $('#latitude').val(latLng.lat());
+               $('#longitude').val(latLng.lat());
+            }
+
+
             function makeBoundary(){
                 if (typeof polygon !== 'undefined') {
                     polygon.setMap(null);
@@ -207,6 +221,9 @@
                     polygon.setMap(map);
                     $('#polygonArea').html(parseFloat(calculateArea(polygon)).toFixed(2));
                     $('#boundary_coordinates').val(JSON.stringify(getMarkerCoordinates()));
+
+                    
+
                 } else {
                     alert('Place minimal 3 marker to make a boundary!');
                 }
@@ -228,6 +245,8 @@
             function calculateArea(polygon){
                 return google.maps.geometry.spherical.computeArea(polygon.getPath());
             }
+
+
 
             
             // http://cartometric.com/blog/2014/06/06/convert-google-maps-polygon-api-v3-to-well-known-text-wkt-geometry-expression/

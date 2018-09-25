@@ -165,6 +165,11 @@ return [
                     'url'  => '/taxes/import',
                     'icon' => 'file',
                 ],
+                [
+                    'text' => 'Eksport',
+                    'url'  => '/taxes/eksport',
+                    'icon' => 'file',
+                ],
             ],
         ],
         [

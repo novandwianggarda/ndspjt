@@ -81,6 +81,9 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::post('storeimport', 'TaxesController@storeimport')->name('tax.import');
         Route::post('storeimport/save', 'TaxesController@tes');
 
+        Route::get('eksport', 'TaxesController@eksport');
+        Route::get('eksported', 'TaxesController@eksported')->name('exporttax.excel');
+
     });
 
     // Lease

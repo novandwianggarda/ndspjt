@@ -7,6 +7,7 @@ use App\Tax;
 use App\Certificate;
 use App\Http\Requests\TaxRequest;
 use Maatwebsite\Excel\Facades\Excel;
+use DB;
 
 class TaxesController extends Controller
 {
@@ -178,12 +179,56 @@ class TaxesController extends Controller
 
         $t->save();
         return redirect(url('dashboard'));
-        
-        // $data = $request->all();
-        // $add = tax::create($data);
-        // if (!$add) {
-        //     return 'error';
-        // }
-        // return 'succes';
+    }
+
+
+    public function eksport(){
+        $taxes = Tax::all();
+        return view('tax.eksport')->with('taxes', $taxes);
+    }
+
+   public function eksported(){
+        //dd($request->all());
+
+        $tax_data = DB::table('taxes')->get()->toArray();  
+        $tax_array[] = array('Nama Sertifikat', 'Jenis Sertifikat', 'Folder PBB', 'Rencana Group', 'Purpose', 'LUas Sertifikat', 'Wajib Pajak', 'Letak Objek Pajak', 'Kelurahan', 'Kota', 'Penanggung PBB', 'NOP', 'Luas Tanah PBB', 'Luas Bangun PBB', 'Tahun', 'NJOP Tanah', 'NJOP Bangunan', 'NJOP Total', 'Nominal', 'Tanggal Awal', 'Tanggal Akhir', 'Selisih');
+
+        foreach ($tax_data as $taxess) 
+        {
+            $tax_array[] = array(
+                'Nama Sertifikat' => \App\Certificate::find($taxess->certificate_id)->nama_sertifikat,
+                'Jenis Sertifikat' => @ Certificate::find($taxess->certificate_id)->type->first()->short_name,
+                'Folder PBB' => $taxess->folder_pbb,
+                'Rencana Group' => $taxess->rencana_group,
+                'Purpose' => $taxess->purposes,
+                'LUas Sertifikat' => $taxess->luas_sertifikat,
+                'Wajib Pajak' => $taxess->wajib_pajak,
+                'Letak Objek Pajak' => $taxess->letak_objek_pajak,
+                'Kelurahan' => $taxess->kelurahan_pbb,
+                'Kota' => $taxess->kota_pbb,
+                'Penanggung PBB' => $taxess->pen_pbb,
+                'NOP' => $taxess->nop,
+                'Luas Tanah PBB' => $taxess->luas_tanah_pbb,
+                'Luas Bangun PBB' => $taxess->luas_bangun_pbb,
+                'Tahun' => $taxess->year,
+                'NJOP Tanah' => $taxess->njop_land,
+                'NJOP Bangunan' => $taxess->njop_building,
+                'NJOP Total' => $taxess->njop_total,
+                'Nominal' => $taxess->nominal_ly,
+                'Tanggal Awal' => $taxess->due_date,
+                'Tanggal Akhir' => $taxess->due_date_ly,
+                'Selisih' => $taxess->selisih,
+            );
+        }
+
+
+        Excel::create('PBB', function($excel) use (
+            $tax_array){
+            $excel->setTitle('PBB');
+            $excel->sheet('PBB', function($sheet)
+                use($tax_array){
+                    $sheet->fromArray($tax_array, null, 'A1', false, false);
+                });
+        })->download('xlsx');
     }
 }

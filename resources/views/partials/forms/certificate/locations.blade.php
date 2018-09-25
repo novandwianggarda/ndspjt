@@ -14,6 +14,7 @@
             <div style="float:left;">
                 <button class="btn btn-sm btn-warning" type="button" onclick="clearMap(); return false;"><i class="fa fa-trash"></i> Clear Map</button>
                 <button class="btn btn-sm btn-info" type="button" onclick="makeBoundary(); return false;"><i class="fa fa-map"></i> Make Boundary</button>
+                <button class="btn btn-sm btn-default" type="button" onclick="initsmakeBoundary(); return false;"><i class="fa fa-map"></i>Titik Make Boundary</button>
                 <span>&nbsp;&nbsp;<b>Area</b>: <span id="polygonArea">0</span> m<sup>2</sup></span>
             </div>
             <div class="alert boundary_coordinates" style="">DS-LandLord</div>

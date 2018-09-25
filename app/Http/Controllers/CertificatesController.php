@@ -105,13 +105,15 @@ class CertificatesController extends Controller
 
         $cert->ajb_nominal = $request->input('ajb_nominal');
         $cert->ajb_date = $request->input('ajb_date');
-        $cert->map_coordinate = $request->input('map_coordinate');
+        
+        // $cert->map_coordinate = $request->input('map_coordinate');
+        $cert->boundary_coordinates = $request->input('boundary_coordinates');
         $cert->addrees = $request->input('addrees');
 
         $certUpdate = $request->only([
         'certificate_type_id', 'folder_sert', 'no_folder', 'purposes',
         'kepemilikan', 'nama_sertifikat', 'keterangan', 'archive', 'no_hm_hgb', 'kelurahan', 'kecamatan',
-        'kota', 'published_date', 'expired_date', 'luas_sertifikat', 'ajb_nominal', 'ajb_date', 'map_coordinate', 'addrees']);
+        'kota', 'published_date', 'expired_date', 'luas_sertifikat', 'ajb_nominal', 'ajb_date', 'boundary_coordinates', 'addrees']);
         $cert->update($certUpdate);
 
         return redirect(url('dashboard'));
@@ -171,7 +173,7 @@ class CertificatesController extends Controller
                 
                 $ce->ajb_nominal= $value->ajb_nominal;
                 $ce->ajb_date = date('Y-m-d', strtotime($ce->ajb_date));
-                $ce->map_coordinate= $value->map_coordinate;
+                $ce->boundary_coordinates= $value->boundary_coordinates;
 
                
                 $ce->save();
@@ -251,7 +253,7 @@ class CertificatesController extends Controller
                 'Alamat' => $certificates->addrees,
                 'AJB Nominal' => $certificates->ajb_nominal,
                 'AJB Date' => $certificates->ajb_date,
-                'Map' => $certificates->map_coordinate,
+                'Map' => $certificates->boundary_coordinates,
                 'Purposes' => @ Certificate::find($certificates->id)->certif->first()->purposes,
                 'Penanggung PBB' => @ Certificate::find($certificates->id)->certif->first()->pen_pbb,
                 'Wajib Pajak' => @ Certificate::find($certificates->id)->certif->first()->wajib_pajak,
