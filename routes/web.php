@@ -140,9 +140,10 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('/users', 'UserManagerController@index');
     Route::get('add_user', array('uses' => 'UserManagerController@ShowAddUser', 'as' => 'add_user' ));
     Route::post('/storeuser', 'UserManagerController@store');
-    Route::get('/editpemilik/{id}', 'UserManagerController@editpemilik' );
-    Route::patch('/updatepemilik/{edit}', 'UserManagerController@updatepemilik');
-    Route::delete('/deletepemilik/{id}', 'UserManagerController@destroypemilik' );
+
+    Route::get('/edituser/{id}', 'UserManagerController@edit' );
+    Route::patch('/updateuser/{edit}', 'UserManagerController@update');
+    Route::delete('/deleteuser/{id}', 'UserManagerController@destroy' );
 
 });
 

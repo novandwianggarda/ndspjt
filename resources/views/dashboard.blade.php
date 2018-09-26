@@ -8,19 +8,12 @@
 
 @section('content')
     <div class="row">
+
+        @foreach ($leases as $le)
         <div class="col-md-4">
             @include('partials.due_timeline')
         </div>
-        <div class="col-md-4">
-            @include('partials.due_timeline')
-        </div>
-        <div class="col-md-4">
-            @include('partials.due_timeline')
-        </div>
-        <div>
-        <div class="col-md-4">
-            @include('partials.due_timeline')
-        </div>
+        @endforeach
     </div>
 @stop
 

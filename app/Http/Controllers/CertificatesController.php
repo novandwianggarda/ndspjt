@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Certificate;
+use App\Tax;
 use App\CertificateType;
 use App\CertificateDoc;
 use DB;
@@ -29,9 +30,9 @@ class CertificatesController extends Controller
     public function show($id)
     {
 
-        $cert = Certificate::find($id);
-        // print_r($cert->cerdoc->first());exit;
-        return view('certificate.show')->with('certificate', $cert);
+        $certificate = Certificate::find($id);
+        // print_r($certificate->certif); exit;
+        return view('certificate.show', compact('certificate'));
 
     }
     /**
@@ -90,7 +91,6 @@ class CertificatesController extends Controller
         $cert = Certificate::find($id);
         $cert->folder_sert = $request->input('folder_sert');
         $cert->no_folder = $request->input('no_folder');
-        $cert->purposes = $request->input('purposes');
         $cert->kepemilikan = $request->input('kepemilikan');
         $cert->nama_sertifikat = $request->input('nama_sertifikat');
         $cert->keterangan = $request->input('keterangan');
@@ -101,17 +101,27 @@ class CertificatesController extends Controller
         $cert->kota = $request->input('kota');
         $cert->published_date = $request->input('published_date');
         $cert->expired_date = $request->input('expired_date');
-        $cert->luas_sertifikat = $request->input('luas_sertifikat');
 
         $cert->ajb_nominal = $request->input('ajb_nominal');
         $cert->ajb_date = $request->input('ajb_date');
-        
-        // $cert->map_coordinate = $request->input('map_coordinate');
+            $file=$request->file('images');
+            $titleIndex = 0;
+                
+                foreach ($file as $img) {
+                    $name =time().'.'.$img->getClientOriginalName();
+                    $img->move('file/certifate', $name);
+                    $titleIndex++;
+                    $certificate_docs = new CertificateDoc();
+                    $certificate_docs->certificate_id=$cert->id;
+                    $certificate_docs->nama_file = $name;
+                    $certificate_docs->title = $request->title[$titleIndex-1];
+                    $certificate_docs->save();
+                }
         $cert->boundary_coordinates = $request->input('boundary_coordinates');
         $cert->addrees = $request->input('addrees');
 
         $certUpdate = $request->only([
-        'certificate_type_id', 'folder_sert', 'no_folder', 'purposes',
+        'certificate_type_id', 'folder_sert', 'no_folder',
         'kepemilikan', 'nama_sertifikat', 'keterangan', 'archive', 'no_hm_hgb', 'kelurahan', 'kecamatan',
         'kota', 'published_date', 'expired_date', 'luas_sertifikat', 'ajb_nominal', 'ajb_date', 'boundary_coordinates', 'addrees']);
         $cert->update($certUpdate);

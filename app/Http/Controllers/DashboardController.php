@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Lease;
+use App\Certificate;
 
 class DashboardController extends Controller
 {
@@ -11,7 +13,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $leases = Lease::all();
+        return view('dashboard', compact('leases'));
     }
 
     /**

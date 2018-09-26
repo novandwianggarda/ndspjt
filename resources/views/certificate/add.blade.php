@@ -21,6 +21,7 @@
                         </div>
                     @endif
                     <form class="form-horizontal" id="form-certificate" action="/certificates/add" method="POST" enctype="multipart/form-data">
+
                         @csrf
                         <div class="box-group" id="accordion">
                             <div class="panel box">
@@ -266,8 +267,4 @@
             }
 
     </script>
-    
-
-
-
 @stop

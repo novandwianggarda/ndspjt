@@ -9,13 +9,18 @@
                 <i class="fa fa-clock-o ll-acolor"></i>
                 <div class="timeline-item">
                     <h3 class="timeline-header no-border">
-                        <a href="#">Title Goes Here</a>
+                        <a href="#">{{ $le->lessor }}</a>
                     </h3>
-                    <span>Tenant: XXXX</span> <br>
-                    <span>Due: 12 Feb. 2014</span>
+                    <span>Tenant: {{ $le->tenant }}</span> <br>
+                    <?php 
+                      $tgl=strtotime($le->end);
+                      $tanggal=date("d F Y", $tgl); //d F y adalah tgl bulan thn
+                    ?>
+                    <span>Due: {{ $tanggal }}</span> 
                 </div>
             </li>
-            <li>
+            
+            <!-- <li>
                 <i class="fa fa-clock-o ll-acolor"></i>
                 <div class="timeline-item">
                     <h3 class="timeline-header no-border">
@@ -24,7 +29,7 @@
                     <span>Tenant: XXXX</span> <br>
                     <span>Due: 1 Feb. 2014</span>
                 </div>
-            </li>
+            </li> -->
         </ul>
 
     </div>

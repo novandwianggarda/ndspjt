@@ -16,9 +16,7 @@
         </label>
         <input type="file" name="images[]" id="images" multiple>
             <div id="images-to-upload">
-                <form action="/upload">
-
-                </form>
+                
             </div>
             
          <a href="#" class="btn btn-sm" style="margin-top: 5px;"> &nbsp; </a>

@@ -67,8 +67,10 @@
 
                             <tr>
                                 <td>Luas Sertifikat </td>
-                                <td>{{ $certificate->luas_sertifikat }}</td>
-                            </tr>
+                                <td>@foreach($certificate->certif as $b)
+                                        {{ $b->luas_sertifikat }}
+                                    @endforeach
+                                </td>
                             <tr>
                                 <td>Alamat </td>
                                 <td>{{ $certificate->addrees }}</td>
@@ -76,16 +78,16 @@
 
                             <tr>
                                 <td>Purposes </td>
-                                <td>{{ $certificate->purposes }}</td>
+                                <td>{{ $certificate->certif->first()->purposes }}</td>
                             </tr>
 
                             <tr>
                                 <td>Penanggung PBB </td>
-                                <td>{{ $certificate->penanggung_pbb }}</td>
+                                <td>{{ $certificate->certif->first()->pen_pbb }}</td>
                             </tr>
                             <tr>
                                 <td>Wajib Pajak </td>
-                                <td>{{ $certificate->wajib_pajak }}</td>
+                                <td>{{ $certificate->certif->first()->wajib_pajak }}</td>
                             </tr>
                             <tr>
                                 <td>Published Date </td>
@@ -107,47 +109,54 @@
                             </tr>
                              <tr>
                                 <td>Map Coordinate </td>
-                                <td>{{ $certificate->map_coordinate }}</td>
+                                <td>{{ $certificate->boundary_coordinate }}</td>
                             </tr>
 
                             <tr>
                                 <td>Letak Objek Pajak</td>
-                                <td>{{ $certificate->letak_objek_pajak }}</td>
+                                <td>{{ $certificate->certif->first()->letak_objek_pajak }}</td>
+
                             </tr>
                              <tr>
                                 <td>Kelurahan PBB </td>
-                                <td>{{ $certificate->kelurahan_pbb }}</td>
+                                <td>{{ $certificate->certif->first()->kelurahan_pbb }}</td>
+
                             </tr>  
 
                             <tr>
                                 <td>Kota PBB</td>
-                                <td>{{ $certificate->kota_pbb }}</td>
+                                <td>{{ $certificate->certif->first()->kota_pbb }}</td>
+
                             </tr>
 
                             <tr>
                                 <td>Nop</td>
-                                <td>{{ $certificate->nop }}</td>
+                                <td>{{ $certificate->certif->first()->nop }}</td>
+
                             </tr>
                             <tr>
                                 <td>Luas Tanah PBB</td>
-                                <td>{{ $certificate->luas_tanah_pbb }}</td>
+                                <td>{{ $certificate->certif->first()->luas_tanah_pbb }}</td>
+
                             </tr>
 
                             <tr>
                                 <td>Luas Bangun PBB</td>
-                                <td>{{ $certificate->luas_bangun_pbb }}</td>
+                                <td>{{ $certificate->certif->first()->luas_bangun_pbb }}</td>
+
                             </tr>
                             
                            <tr>
-                                @foreach ($certificate->cerdoc as $cert)
+                                <td>File Dokumen</td>
                                 <td>
                                    
-                                    <img src="{{ url('file/certifate/'.$cert->nama_file)}}" class="img-responsive" alt="images" width="200" height="100">
+                                @foreach ($certificate->cerdoc as $cert)
+                                    <img src="{{ url('file/certifate/'.$cert->nama_file)}}" class="img-responsive" alt="images" width="300" height="100">
                                     <p align="left">Title : {{ $cert->title }}</p>
+                                @endforeach
 
 
                                 </td>
-                                @endforeach
                            </tr>
                            
 

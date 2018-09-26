@@ -33,7 +33,8 @@
                             <td>{{$user->created_at}}</td>
                             <td> 
                                     <button class="btn btn-sm btn-danger"> <i class="fa fa-trash"> </i></button>
-                                    <button class="btn btn-sm btn-danger"> <i class="fa fa-edit"> </i></button>
+                                    <a href="/edituser/{{ $user->id }}" class="btn btn-sm btn-danger"><i class="fa fa-edit" aria-hidden="true"></i></a>
+
                             </td>  
                         </tr>   
                     @endforeach

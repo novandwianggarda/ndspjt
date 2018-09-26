@@ -36,9 +36,43 @@ class UserManagerController extends Controller
         //     $pesan="Gagal";
         // }
         return redirect()->back()->with('data', ['some kind of data']);
+    }
+
+    public function edit($id)
+    {
+        $users = User::find($id);
+        $roles = Role::all()->pluck('name', 'id');
+        return view('admin.edit', compact('users', 'roles'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        //dd($request->all());
 
 
+        $this->validate($request, [
+            'name'=>'Required',
+            'username'=>'Required',
 
+            'role_id'=>'Required',
+            'password'=>'Required'
+        ]);
+
+        $user = User::find($id)->user;
+        $userUpdate = $request->only(['name', 'username', 'role_id', 'password']);
+        $userUpdate['password'] = $request->input('password')!=''?bcrypt($request->input('password')):'';
+        $user->update($userUpdate);
+        return redirect()->back()->with('data', ['some kind of data']);
 
     }
+
+    public function destroy($id)
+    {
+        $users = User::find($id);
+        $users->delete();
+        return redirect()->back()->with('data', ['some kind of data']);
+    }
+
+
+
 }
