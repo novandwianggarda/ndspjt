@@ -49,20 +49,16 @@ class UserManagerController extends Controller
     {
         //dd($request->all());
 
-
-        $this->validate($request, [
-            'name'=>'Required',
-            'username'=>'Required',
-
-            'role_id'=>'Required',
-            'password'=>'Required'
-        ]);
-
-        $user = User::find($id)->user;
-        $userUpdate = $request->only(['name', 'username', 'role_id', 'password']);
+        $user = User::find($id);
+        $userUpdate = $request->only(['name', 'username', 'password']);
         $userUpdate['password'] = $request->input('password')!=''?bcrypt($request->input('password')):'';
+
         $user->update($userUpdate);
-        return redirect()->back()->with('data', ['some kind of data']);
+        \DB::table('role_users')
+            ->where('user_id', User::find($id)->id)
+            ->update(['role_id' => $request->role_id]);
+
+        return redirect('users')->with('status', 'Profile updated!');
 
     }
 
@@ -70,7 +66,9 @@ class UserManagerController extends Controller
     {
         $users = User::find($id);
         $users->delete();
-        return redirect()->back()->with('data', ['some kind of data']);
+        return redirect('users');
+
+
     }
 
 

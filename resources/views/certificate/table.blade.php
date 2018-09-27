@@ -32,11 +32,11 @@
                             <td>{{ $cert->published_date }}</td>
                             <td>{{ $cert->expired_date }}</td>
                             <td>
-                                <a href="/certificates/editcert/{{ $cert->id }}" class="btn btn-success btn-xs"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
 
                             <form class="delete" action="{{ url('/certificates/deletecert', $cert->id) }}" method="POST">
 
                                       {{ csrf_field() }}
+                                <a href="/certificates/editcert/{{ $cert->id }}" class="btn btn-success btn-xs"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
 
                                       <input name="_method" type="hidden" value="DELETE">
 

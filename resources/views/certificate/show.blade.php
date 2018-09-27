@@ -67,7 +67,8 @@
 
                             <tr>
                                 <td>Luas Sertifikat </td>
-                                <td>@foreach($certificate->certif as $b)
+                                <td>
+                                    @foreach($certificate->certif as $b)
                                         {{ $b->luas_sertifikat }}
                                     @endforeach
                                 </td>
@@ -78,16 +79,31 @@
 
                             <tr>
                                 <td>Purposes </td>
-                                <td>{{ $certificate->certif->first()->purposes }}</td>
+
+                                 <td>
+                                    @foreach($certificate->certif as $b)
+                                        {{ $b->purposes }}
+                                    @endforeach
+                                </td>
+
                             </tr>
 
                             <tr>
                                 <td>Penanggung PBB </td>
-                                <td>{{ $certificate->certif->first()->pen_pbb }}</td>
+                                <td>
+                                    @foreach($certificate->certif as $b)
+                                        {{ $b->pen_pbb }}
+                                    @endforeach
+                                </td>
+
                             </tr>
                             <tr>
                                 <td>Wajib Pajak </td>
-                                <td>{{ $certificate->certif->first()->wajib_pajak }}</td>
+                                <td>
+                                    @foreach($certificate->certif as $b)
+                                        {{ $b->wajib_pajak }}
+                                    @endforeach
+                                </td>
                             </tr>
                             <tr>
                                 <td>Published Date </td>
@@ -114,35 +130,59 @@
 
                             <tr>
                                 <td>Letak Objek Pajak</td>
-                                <td>{{ $certificate->certif->first()->letak_objek_pajak }}</td>
 
+                                <td>
+                                    @foreach($certificate->certif as $b)
+                                        {{ $b->letak_objek_pajak }}
+                                    @endforeach
+                                </td>
                             </tr>
                              <tr>
                                 <td>Kelurahan PBB </td>
-                                <td>{{ $certificate->certif->first()->kelurahan_pbb }}</td>
+                                <td>
+                                    @foreach($certificate->certif as $b)
+                                        {{ $b->kelurahan_pbb }}
+                                    @endforeach
+                                </td>
 
                             </tr>  
 
                             <tr>
                                 <td>Kota PBB</td>
-                                <td>{{ $certificate->certif->first()->kota_pbb }}</td>
+                                <td>
+                                    @foreach($certificate->certif as $b)
+                                        {{ $b->kota_pbb }}
+                                    @endforeach
+                                </td>
 
                             </tr>
 
                             <tr>
                                 <td>Nop</td>
-                                <td>{{ $certificate->certif->first()->nop }}</td>
+                                <td>
+                                    @foreach($certificate->certif as $b)
+                                        {{ $b->nop }}
+                                    @endforeach
+                                </td>
 
                             </tr>
                             <tr>
                                 <td>Luas Tanah PBB</td>
-                                <td>{{ $certificate->certif->first()->luas_tanah_pbb }}</td>
+                                <td>
+                                    @foreach($certificate->certif as $b)
+                                        {{ $b->luas_tanah_pbb }}
+                                    @endforeach
+                                </td>
 
                             </tr>
 
                             <tr>
                                 <td>Luas Bangun PBB</td>
-                                <td>{{ $certificate->certif->first()->luas_bangun_pbb }}</td>
+                                 <td>
+                                    @foreach($certificate->certif as $b)
+                                        {{ $b->luas_bangun_pbb }}
+                                    @endforeach
+                                </td>
 
                             </tr>
                             

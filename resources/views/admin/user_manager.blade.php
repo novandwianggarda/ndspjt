@@ -32,8 +32,12 @@
                             <td>{{$user->name}} </td>
                             <td>{{$user->created_at}}</td>
                             <td> 
-                                    <button class="btn btn-sm btn-danger"> <i class="fa fa-trash"> </i></button>
+                                <form class="delete" action="{{ url('/deleteuser', $user->id) }}" method="POST">
+                                    {{ csrf_field() }}
                                     <a href="/edituser/{{ $user->id }}" class="btn btn-sm btn-danger"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                      <input name="_method" type="hidden" value="DELETE">
+                                    <button class="btn btn-sm btn-danger"> <i class="fa fa-trash"> </i></button>
+                                </form>
 
                             </td>  
                         </tr>   

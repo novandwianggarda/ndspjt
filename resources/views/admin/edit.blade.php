@@ -12,10 +12,13 @@
         @include('partials.errors')
 
 
+
         {!! Form::model($users,  ['url'=>array( 'updateuser', $users->id), 'method' => 'patch','enctype' => 'multipart/form-data', 'files' => true]) !!}
 
 
             @csrf
+
+            
                    <div class="box-group" id="accordion">
                         <div class="panel-box">
                             
@@ -53,13 +56,17 @@
                         </div>
                    </div>
                      <!-- SUBMIT BTN -->
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                     <div class="form-group" style="margin-top:15px;">
                          <div class="col-sm-12" style="padding:0px 25px">
                              <button type="submit" class="btn form-control ll-bgcolor ll-white" style="margin-top: 20px">
                                  <i class="fa fa-plus"></i>
-                                 Submit
+                                 Update
                              </button>
-                             <a href="/users">back</a>
                          </div>
                     </div>
 

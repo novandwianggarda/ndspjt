@@ -18,7 +18,9 @@
 
                             <tr>
                                 <td>Nama Sertifikat</td>
-                                <td>{{ $tax->certif->nama_sertifikat }}</td>
+                                <td>@foreach($tax->certif as $b)
+                                        {{ $b->nama_sertifikat }}
+                                @endforeach</td>
                             </tr>
 
                             <tr>

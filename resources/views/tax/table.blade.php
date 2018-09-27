@@ -31,11 +31,11 @@
                             <td>{{ $tax->due_date }}</td>
                             <td>{{ $tax->due_date_ly }}</td>
                             <td>
-                                <a href="/taxes/edit/{{ $tax->id }}" class="btn btn-success btn-xs"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
 
                             <form class="delete" action="{{ url('/taxes/delete', $tax->id) }}" method="POST">
 
                                       {{ csrf_field() }}
+                                <a href="/taxes/edit/{{ $tax->id }}" class="btn btn-success btn-xs"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
 
                                       <input name="_method" type="hidden" value="DELETE">
 
