@@ -27,11 +27,13 @@ class CreateCertificatesTable extends Migration
             $table->text('nama_sertifikat')->nullable(); 
             $table->text('keterangan')->nullable(); 
             $table->text('archive')->nullable(); 
-            $table->text('kelurahan')->nullable(); 
-            $table->text('kecamatan')->nullable(); 
             $table->text('kota')->nullable(); 
-            $table->text('addrees')->nullable(); 
 
+            $table->text('kecamatan')->nullable(); 
+            $table->text('kelurahann')->nullable(); 
+
+
+            $table->text('addrees')->nullable(); 
             $table->string('published_date')->nullable(); // tgl sertifikat di keluarkan
             $table->string('expired_date')->nullable(); // tgl sertifikat berakhir (hanya utk SHCB dan SHMSRS)
             

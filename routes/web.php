@@ -45,7 +45,13 @@ Route::middleware(['web', 'auth'])->group(function () {
             return redirect('/' . $this->current->uri . '/list');
         });
         Route::get('list', 'CertificatesController@index');
+        Route::get('filter', 'CertificatesController@filter');
+
         Route::get('show/{id}', 'CertificatesController@show');
+
+
+        Route::get('shows/', 'CertificatesController@certid');
+
         Route::get('add', 'CertificatesController@showAddForm');
         Route::post('add', 'CertificatesController@store');
 

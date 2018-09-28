@@ -68,7 +68,7 @@
                             <tr>
                                 <td>Luas Sertifikat </td>
                                 <td>
-                                    @foreach($certificate->certif as $b)
+                                    @foreach($certificate->certax as $b)
                                         {{ $b->luas_sertifikat }}
                                     @endforeach
                                 </td>
@@ -81,7 +81,7 @@
                                 <td>Purposes </td>
 
                                  <td>
-                                    @foreach($certificate->certif as $b)
+                                    @foreach($certificate->certax as $b)
                                         {{ $b->purposes }}
                                     @endforeach
                                 </td>
@@ -91,7 +91,7 @@
                             <tr>
                                 <td>Penanggung PBB </td>
                                 <td>
-                                    @foreach($certificate->certif as $b)
+                                    @foreach($certificate->certax as $b)
                                         {{ $b->pen_pbb }}
                                     @endforeach
                                 </td>
@@ -100,7 +100,7 @@
                             <tr>
                                 <td>Wajib Pajak </td>
                                 <td>
-                                    @foreach($certificate->certif as $b)
+                                    @foreach($certificate->certax as $b)
                                         {{ $b->wajib_pajak }}
                                     @endforeach
                                 </td>
@@ -132,7 +132,7 @@
                                 <td>Letak Objek Pajak</td>
 
                                 <td>
-                                    @foreach($certificate->certif as $b)
+                                    @foreach($certificate->certax as $b)
                                         {{ $b->letak_objek_pajak }}
                                     @endforeach
                                 </td>
@@ -140,7 +140,7 @@
                              <tr>
                                 <td>Kelurahan PBB </td>
                                 <td>
-                                    @foreach($certificate->certif as $b)
+                                    @foreach($certificate->certax as $b)
                                         {{ $b->kelurahan_pbb }}
                                     @endforeach
                                 </td>
@@ -150,7 +150,7 @@
                             <tr>
                                 <td>Kota PBB</td>
                                 <td>
-                                    @foreach($certificate->certif as $b)
+                                    @foreach($certificate->certax as $b)
                                         {{ $b->kota_pbb }}
                                     @endforeach
                                 </td>
@@ -160,7 +160,7 @@
                             <tr>
                                 <td>Nop</td>
                                 <td>
-                                    @foreach($certificate->certif as $b)
+                                    @foreach($certificate->certax as $b)
                                         {{ $b->nop }}
                                     @endforeach
                                 </td>
@@ -169,7 +169,7 @@
                             <tr>
                                 <td>Luas Tanah PBB</td>
                                 <td>
-                                    @foreach($certificate->certif as $b)
+                                    @foreach($certificate->certax as $b)
                                         {{ $b->luas_tanah_pbb }}
                                     @endforeach
                                 </td>
@@ -179,7 +179,7 @@
                             <tr>
                                 <td>Luas Bangun PBB</td>
                                  <td>
-                                    @foreach($certificate->certif as $b)
+                                    @foreach($certificate->certax as $b)
                                         {{ $b->luas_bangun_pbb }}
                                     @endforeach
                                 </td>

@@ -31,7 +31,7 @@ class TaxRequest extends FormRequest
             'luas_sertifikat' => 'nullable',
             'rencana_group' => 'nullable',
             'pen_pbb' => 'nullable',
-            'purposes' => 'nullable',
+            
             'wajib_pajak' => 'nullable',
             'letak_objek_pajak' => 'nullable',
             'kelurahan_pbb' => 'nullable',

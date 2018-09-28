@@ -29,11 +29,19 @@ class CertificatesController extends Controller
      */
     public function show($id)
     {
-
         $certificate = Certificate::find($id);
-        // print_r($certificate->certif); exit;
         return view('certificate.show', compact('certificate'));
+    }
 
+    public function filter()    
+    {
+        $certificates = Certificate::all();
+        return view('certificate.filter', compact('certificates'));
+    }
+    public function certid(Request $request)    
+    {
+        $certificate = Certificate::where('no_hm_hgb', $request->no_hm_hgb)->first();
+        return view('certificate.shows', compact('certificate'));
     }
     /**
      * show add new certificate form
@@ -96,8 +104,9 @@ class CertificatesController extends Controller
         $cert->keterangan = $request->input('keterangan');
         $cert->archive = $request->input('archive');
         $cert->no_hm_hgb = $request->input('no_hm_hgb');
-        $cert->kelurahan = $request->input('kelurahan');
+        $cert->kelurahann = $request->input('kelurahann');
         $cert->kecamatan = $request->input('kecamatan');
+        $cert->purposes = $request->input('purposes');
         $cert->kota = $request->input('kota');
         $cert->published_date = $request->input('published_date');
         $cert->expired_date = $request->input('expired_date');
@@ -122,7 +131,7 @@ class CertificatesController extends Controller
 
         $certUpdate = $request->only([
         'certificate_type_id', 'folder_sert', 'no_folder',
-        'kepemilikan', 'nama_sertifikat', 'keterangan', 'archive', 'no_hm_hgb', 'kelurahan', 'kecamatan',
+        'kepemilikan', 'nama_sertifikat', 'purposes', 'keterangan', 'archive', 'no_hm_hgb', 'kelurahan', 'kecamatan',
         'kota', 'published_date', 'expired_date', 'luas_sertifikat', 'ajb_nominal', 'ajb_date', 'boundary_coordinates', 'addrees']);
         $cert->update($certUpdate);
 
@@ -143,12 +152,12 @@ class CertificatesController extends Controller
         return view('certificate.upload');
     }
     public function storeimport(Request $request){
-        //dd($request->all());
         if ($request->hasFile('upload-file')){
 
             $path = $request->file('upload-file')->getRealPath();
             $data = Excel::load($path, function($reader){})->get();
-
+            
+            //dd($data);
             return view('certificate.showdata')->with('data', $data);
         }  
         return back();
@@ -174,12 +183,14 @@ class CertificatesController extends Controller
                 $ce->keterangan= $value->keterangan;
                 $ce->archive= $value->archive;
                 $ce->no_hm_hgb= $value->no_hm_hgb;
-                $ce->kelurahan= $value->kelurahan;
-                $ce->kecamatan= $value->kecamatan;
+
                 $ce->kota= $value->kota;
                 $ce->published_date = date('Y-m-d', strtotime($ce->published_date));
                 $ce->expired_date = date('Y-m-d', strtotime($ce->expired_date));
                 $ce->addrees  = $value->addrees ;
+                $ce->kelurahann = $value->kelurahann;
+                $ce->kecamatan = $value->kecamatan;
+                $ce->purposes = $value->purposes;
                 
                 $ce->ajb_nominal= $value->ajb_nominal;
                 $ce->ajb_date = date('Y-m-d', strtotime($ce->ajb_date));
@@ -231,6 +242,7 @@ class CertificatesController extends Controller
 
 
 
+    //eksport data
 
     public function eksport(){
         $certificates = Certificate::all();

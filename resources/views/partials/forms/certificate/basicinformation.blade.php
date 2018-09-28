@@ -12,6 +12,12 @@
         </frgroup>
         <frgroup>
             <label slot="label">
+                Purposes
+            </label>
+            <input type="text" name="purposes" value="{{ old('purposes') }}" class="form-control" placeholder="purposes" />
+        </frgroup>
+        <frgroup>
+            <label slot="label">
                 Archive
             </label>
             <input type="text" name="archive" value="{{ old('archive') }}" class="form-control" placeholder="Archive" />

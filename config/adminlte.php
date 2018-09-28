@@ -130,8 +130,13 @@ return [
                     'icon' => 'plus',
                 ],
                 [
-                    'text' => 'Data List',
+                    'text' => 'Data List All',
                     'url'  => '/certificates/list',
+                    'icon' => 'list',
+                ],
+                [
+                    'text' => 'Data Filter',
+                    'url'  => '/certificates/filter',
                     'icon' => 'list',
                 ],
                 [

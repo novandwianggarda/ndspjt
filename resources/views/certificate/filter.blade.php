@@ -13,9 +13,9 @@
             <table id="example1" class="table table-bordered table-striped" style="width: 100%;">
                 <thead>
                     <tr>
+                        <th>No HM / HGB</th>
                         <th>Nama Sertifikat</th>
                         <th>Kepemilikan</th>
-                        <th>No HM / HGB</th>
                         <th>Type</th>
                         <th>Publish Date</th>
                         <th>Expired Date</th>
@@ -23,13 +23,18 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $no_hm_hgb_arr = [];?>
+
                     @foreach ($certificates as $cert)
+                        <?php $no_hm_hgb_arr[] = $cert->no_hm_hgb;?>
+                        <?php if(in_array($cert->no_hm_hgb, $no_hm_hgb_arr)&&count(array_keys($no_hm_hgb_arr, $cert->no_hm_hgb)) ==1) : ?>
                         <tr>
                             <td>
-                                <a href="/certificates/show/{{ $cert->id }}">{{ $cert->nama_sertifikat }}</a>
+                                <a href="/certificates/shows/?no_hm_hgb={{ $cert->no_hm_hgb }}">{{ $cert->no_hm_hgb }}</a>
+                            </td>
+                            <td>{{ $cert->nama_sertifikat }}
                             </td>
                             <td>{{ $cert->kepemilikan }}</td>
-                            <td>{{ $cert->no_hm_hgb }}</td>
                             <td>{{ $cert->certificate_type }}</td>
                             <td>{{ $cert->published_date }}</td>
                             <td>{{ $cert->expired_date }}</td>
@@ -47,6 +52,7 @@
                                     </form>
                             </td>
                         </tr>
+                    <?php endif;?>
                     @endforeach
                 </tbody>
                 <tfoot>

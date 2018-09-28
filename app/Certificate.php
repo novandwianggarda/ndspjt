@@ -11,9 +11,9 @@ class Certificate extends Model implements Auditable
 
     protected $table = 'certificates';
     protected $fillable = [
-        'certificate_type_id', 'folder_sert', 'no_folder',
-        'kepemilikan', 'nama_sertifikat', 'keterangan', 'archive', 'no_hm_hgb', 'kelurahan', 'kecamatan',
-        'kota', 'published_date', 'expired_date', 'ajb_nominal', 'ajb_date', 'boundary_coordinates', 'addrees'
+        'certificate_type_id', 'folder_sert', 'no_folder', 'purposes',
+        'kepemilikan', 'nama_sertifikat', 'keterangan', 'archive', 'no_hm_hgb', 
+        'kota', 'published_date', 'expired_date', 'ajb_nominal', 'ajb_date', 'boundary_coordinates', 'kecamatan', 'kelurahann', 'addrees'
     ];
 
     public $timestamp = true;
@@ -54,9 +54,14 @@ class Certificate extends Model implements Auditable
     {
         return $this->hasMany('App\CertificateDoc', 'certificate_id', 'id');
     }
-     public function certif()
-    {
-        return $this->hasMany('App\Tax', 'certificate_id');
+    
+    //  public function certif()
+    // {
+    //     return $this->hasMany('App\Tax', 'certificate_id');
+    // }
+
+    public function certax(){
+        return $this->belongsToMany('App\Tax','certi_taxs');
     }
 
 

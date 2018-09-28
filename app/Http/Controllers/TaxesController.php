@@ -100,9 +100,8 @@ class TaxesController extends Controller
             if($no_hm){
                 $no_hm = \App\Certificate::where('no_hm_hgb', $no_hm)->get()->first()->id;
 
-                   
                 $taxes = new Tax();
-                $taxes->certificate_id= $no_hm;
+
                 $taxes->luas_sertifikat= $value->luas_sertifikat;
                 $taxes->folder_pbb= $value->folder_pbb;
                 $taxes->rencana_group= $value->rencana_group;
@@ -129,6 +128,7 @@ class TaxesController extends Controller
                 $taxes->due_date_ly = date('Y-m-d', strtotime($taxes->due_date_ly));
                 $taxes->selisih= $value->selisih;
                 $taxes->save();
+                $taxes->certax()->attach($request->certificate_id= $no_hm);
             }
         }
         return redirect()->route('dashboard');
@@ -155,7 +155,7 @@ class TaxesController extends Controller
         $t->due_date_ly=$request->input('due_date_ly');
         $t->nominal_ly=$request->input('nominal_ly');
         $t->folder_pbb = $request->input('folder_pbb');
-        $t->purposes = $request->input('purposes');
+        
         $t->luas_sertifikat = $request->input('luas_sertifikat');
         $t->rencana_group = $request->input('rencana_group');
         $t->pen_pbb = $request->input('pen_pbb');
@@ -175,8 +175,6 @@ class TaxesController extends Controller
         $t->due_date_ly = $request->input('due_date_ly');
         $t->selisih = $request->input('selisih');
 
-
-
         $t->save();
         return redirect(url('dashboard'));
     }
@@ -191,7 +189,7 @@ class TaxesController extends Controller
         //dd($request->all());
 
         $tax_data = DB::table('taxes')->get()->toArray();  
-        $tax_array[] = array('Nama Sertifikat', 'Jenis Sertifikat', 'Folder PBB', 'Rencana Group', 'Purpose', 'LUas Sertifikat', 'Wajib Pajak', 'Letak Objek Pajak', 'Kelurahan', 'Kota', 'Penanggung PBB', 'NOP', 'Luas Tanah PBB', 'Luas Bangun PBB', 'Tahun', 'NJOP Tanah', 'NJOP Bangunan', 'NJOP Total', 'Nominal', 'Tanggal Awal', 'Tanggal Akhir', 'Selisih');
+        $tax_array[] = array('Nama Sertifikat', 'Jenis Sertifikat', 'Folder PBB', 'Rencana Group', 'Luas Sertifikat', 'Wajib Pajak', 'Letak Objek Pajak', 'Kelurahan', 'Kota', 'Penanggung PBB', 'NOP', 'Luas Tanah PBB', 'Luas Bangun PBB', 'Tahun', 'NJOP Tanah', 'NJOP Bangunan', 'NJOP Total', 'Nominal', 'Tanggal Awal', 'Tanggal Akhir', 'Selisih');
 
         foreach ($tax_data as $taxess) 
         {
@@ -200,8 +198,7 @@ class TaxesController extends Controller
                 'Jenis Sertifikat' => @ Certificate::find($taxess->certificate_id)->type->first()->short_name,
                 'Folder PBB' => $taxess->folder_pbb,
                 'Rencana Group' => $taxess->rencana_group,
-                'Purpose' => $taxess->purposes,
-                'LUas Sertifikat' => $taxess->luas_sertifikat,
+                'Luas Sertifikat' => $taxess->luas_sertifikat,
                 'Wajib Pajak' => $taxess->wajib_pajak,
                 'Letak Objek Pajak' => $taxess->letak_objek_pajak,
                 'Kelurahan' => $taxess->kelurahan_pbb,

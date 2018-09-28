@@ -23,7 +23,8 @@
 						<th>Nama Sertifikat</th>
 						<th>Jenis Sert</th>
 						<th>No HM/HGB</th>
-						<th>Kelurahan</th>
+						<th>Purposes</th>
+						<th>Kelurahann</th>
 						<th>Kecamatan</th>
 						<th>Kota</th>
 						<th>Alamat</th>
@@ -37,7 +38,8 @@
 						<td>{{$d->nama_sertifikat}}</td>
 						<td>{{$d->certificate_type}}</td>
 						<td>{{$d->no_hm_hgb}}</td>
-						<td>{{$d->kelurahan}}</td>
+						<td>{{$d->purposes}}</td>
+						<td>{{$d->kelurahann}}</td>
 						<td>{{$d->kecamatan}}</td>
 						<td>{{$d->kota}}</td>
 						<td>{{$d->addrees}}</td> 
@@ -45,17 +47,7 @@
 					</tr>
 					@endforeach
 				</tbody>
-				<tfoot>
-					<th>Kepemilikan</th>
-						<th>Nama Sertifikat</th>
-						<th>Jenis Sert</th>
-						<th>No HM/HGB</th>
-						<th>Kelurahan</th>
-						<th>Kecamatan</th>
-						<th>Kota</th>
-						<th>Alamat</th>
-						<th>Penanggung pbb</th>
-				</tfoot>
+				
 			</table>
 		</div>
 	</div>

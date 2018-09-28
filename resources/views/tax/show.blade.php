@@ -15,37 +15,29 @@
                 <div class="box-body table-responsive no-padding">
                     <table class="table table-hover bordered table-bordered">
                         <tbody>
+                                    
 
                             <tr>
                                 <td>Nama Sertifikat</td>
-                                <td>@foreach($tax->certif as $b)
-                                        {{ $b->nama_sertifikat }}
-                                @endforeach</td>
+                                <td>@foreach ($tax->certax as $b)
+                                        
+                            <?php 
+                                print_r($b->nama_sertifikat)
+                            ?>
+                                    @endforeach
+                                </td>
+
                             </tr>
 
                             <tr>
                                 <td>Jenis</td>
-                                <td>{{ $tax->certif->type->short_name }} &nbsp;( {{ $tax->certif->type->long_name }} )</td>
+                                <td>
+                                    @foreach ($tax->certax as $b)
+                                        {{ $b->type->short_name }}&nbsp; ( {{$b->type->long_name}} )
+                                    @endforeach
+                                </td>
                             </tr>
-                            <tr>
-                                <td>No HM / HGB</td>
-                                <td>{{ $tax->certif->no_hm_hgb }}</td>
-                            </tr>
-                            <tr>
-                                <td>Kepemilikan</td>
-                                <td>{{ $tax->certif->kepemilikan }}</td>
-                            </tr>
-
-                            <tr>
-                                <td>kelurahan</td>
-                                <td>{{ $tax->certif->kelurahan }}</td>
-                            </tr>
-
-                            <tr>
-                                <td>Alamat</td>
-                                <td>{{ $tax->certif->addrees }}</td>
-                            </tr>
-
+                           
 
                             <tr>
                                 <td>Folder PBB Kini</td>

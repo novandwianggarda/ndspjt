@@ -24,10 +24,22 @@
                     @foreach ($taxes as $tax)
                         <tr>
                             <td>
-                                <a href="/taxes/show/{{ $tax->id }}">{{ $tax->certif->nama_sertifikat }}</a>
+                                <a href="/taxes/show/{{ $tax->id }}">
+                                    @foreach ($tax->certax as $b)
+                                        {{$b->nama_sertifikat}}
+                                    @endforeach
+                                </a>
                             </td>
-                            <td>{{ $tax->certif->no_hm_hgb }}</td>
-                            <td>{{ $tax->certif->type->short_name }}</td>
+                            <td>
+                                @foreach ($tax->certax as $b)
+                                        {{$b->no_hm_hgb}}
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach ($tax->certax as $b)
+                                        {{$b->type->short_name}}
+                                @endforeach
+                            </td>
                             <td>{{ $tax->due_date }}</td>
                             <td>{{ $tax->due_date_ly }}</td>
                             <td>
