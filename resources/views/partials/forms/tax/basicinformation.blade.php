@@ -16,13 +16,6 @@
         </label>
         <input type="text" name="folder_pbb" value="{{ old('folder_pbb') }}" class="form-control" />
     </frgroup>
-    <frgroup>
-        <label slot="label">
-            Purpose
-        </label>
-        <input type="text" name="purposes" value="{{ old('purposes') }}" class="form-control" />
-    </frgroup>
-
      <frgroup>
         <label slot="label">
             Luas Sertifikat

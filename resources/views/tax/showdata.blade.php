@@ -21,7 +21,7 @@
 					<tr>
 						<th>No HM / HGB</th>
 						<th>Folder PBB</th>
-						<th>Rencana Group Folder PBB</th>
+						<th>Wajib Pajak</th>
 						<th>Luas Sertifikat</th>
 						<th>Due Date</th>
 						<th>NJOP Land</th>
@@ -32,27 +32,13 @@
 					<tr>
 						<td>{{$d->no_hm}}</td>
 						<td>{{$d->folder_pbb}}</td>
-						<td>{{$d->rencana_group}}</td>
+						<td>{{$d->wajib_pajak}}</td>
 						<td>{{$d->luas_sertifikat}}</td>
 						<td>{{$d->due_date}}</td>
 						<td>{{$d->njop_land}}</td>
 					</tr>
 					@endforeach
 				</tbody>
-				<!-- <tfoot>
-					<tr>
-						<th>Name</th>
-						<th>Address</th>
-						<th>Land Area</th>
-						<th>Building Area</th>
-						<th>Block</th>
-						<th>Floor</th>
-						<th>Unit</th>
-						<th>Electricity</th>
-						<th>Water</th>
-						<th>Telephone</th>
-					</tr>
-				</tfoot> -->
 			</table>
 		</div>
 	</div>

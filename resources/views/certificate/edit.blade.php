@@ -103,10 +103,10 @@
                     <br>
                     <br>
                     <div class="form-group">
-                      {!! Form::label('kelurahan', 'Kelurahan', ['class'=>'control-label col-md-2']) !!}
+                      {!! Form::label('kelurahann', 'Kelurahan', ['class'=>'control-label col-md-2']) !!}
                       <div class="col-md-10">
-                        {!! Form::text('kelurahan', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('kelurahan')?$errors->first('kelurahan'):'' !!}
+                        {!! Form::text('kelurahann', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('kelurahann')?$errors->first('kelurahann'):'' !!}
                       </div>
                     </div>
                     <br>

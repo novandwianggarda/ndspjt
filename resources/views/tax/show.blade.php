@@ -44,10 +44,6 @@
                                 <td>{{ $tax->folder_pbb }}</td>
                             </tr>
                             <tr>
-                                <td>Purposes</td>
-                                <td>{{ $tax->purposes }}</td>
-                            </tr>
-                            <tr>
                                 <td>Luas Sertifikat </td>
                                 <td>{{ $tax->luas_sertifikat }}</td>
                             </tr>

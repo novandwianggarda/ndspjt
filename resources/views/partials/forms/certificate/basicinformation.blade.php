@@ -2,8 +2,6 @@
         <div slot="title" class="ll-head">
             BASIC INFORMATION
         </div>
-        
-
         <frgroup>
             <label slot="label">
                 Kepemilikan

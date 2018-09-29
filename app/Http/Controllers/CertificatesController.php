@@ -131,7 +131,7 @@ class CertificatesController extends Controller
 
         $certUpdate = $request->only([
         'certificate_type_id', 'folder_sert', 'no_folder',
-        'kepemilikan', 'nama_sertifikat', 'purposes', 'keterangan', 'archive', 'no_hm_hgb', 'kelurahan', 'kecamatan',
+        'kepemilikan', 'nama_sertifikat', 'purposes', 'keterangan', 'archive', 'no_hm_hgb', 'kelurahann', 'kecamatan',
         'kota', 'published_date', 'expired_date', 'luas_sertifikat', 'ajb_nominal', 'ajb_date', 'boundary_coordinates', 'addrees']);
         $cert->update($certUpdate);
 
@@ -266,26 +266,27 @@ class CertificatesController extends Controller
                 'Archive' => $certificates->archive,
                 'Type Sertifikat' => \App\CertificateType::find($certificates->certificate_type_id)->short_name,
                 'No HM / HGB' => $certificates->no_hm_hgb,
-                'Kelurahan' => $certificates->kelurahan,
+                'Kelurahan' => $certificates->kelurahann,
                 'Kecamatan' => $certificates->kecamatan,
                 'Kota' => $certificates->kota,
                 'Tgl Terbit' => $certificates->published_date,
                 'Tgl Akhir' => $certificates->expired_date,
-                'Luas Sertifikat' => @ Certificate::find($certificates->id)->certif->first()->luas_sertifikat,
+                'Luas Sertifikat' => @ Certificate::find($certificates->id)->certax->first()->luas_sertifikat,
                 'Alamat' => $certificates->addrees,
                 'AJB Nominal' => $certificates->ajb_nominal,
                 'AJB Date' => $certificates->ajb_date,
                 'Map' => $certificates->boundary_coordinates,
-                'Purposes' => @ Certificate::find($certificates->id)->certif->first()->purposes,
-                'Penanggung PBB' => @ Certificate::find($certificates->id)->certif->first()->pen_pbb,
-                'Wajib Pajak' => @ Certificate::find($certificates->id)->certif->first()->wajib_pajak,
-                'Letak Objek Pajak' => @ Certificate::find($certificates->id)->certif->first()->letak_objek_pajak,
-                'Kota Pajak' => @ Certificate::find($certificates->id)->certif->first()->kota_pbb,
-                'NOP' => @ Certificate::find($certificates->id)->certif->first()->nop,
-                'Luas Tanah PBB' => @ Certificate::find($certificates->id)->certif->first()->luas_tanah_pbb,
-                'Luas Bangun PBB' => @ Certificate::find($certificates->id)->certif->first()->luas_bangun_pbb
+                'Purposes' => @ Certificate::find($certificates->id)->certax->first()->purposes,
+                'Penanggung PBB' => @ Certificate::find($certificates->id)->certax->first()->pen_pbb,
+                'Wajib Pajak' => @ Certificate::find($certificates->id)->certax->first()->wajib_pajak,
+                'Letak Objek Pajak' => @ Certificate::find($certificates->id)->certax->first()->letak_objek_pajak,
+                'Kota Pajak' => @ Certificate::find($certificates->id)->certax->first()->kota_pbb,
+                'NOP' => @ Certificate::find($certificates->id)->certax->first()->nop,
+                'Luas Tanah PBB' => @ Certificate::find($certificates->id)->certax->first()->luas_tanah_pbb,
+                'Luas Bangun PBB' => @ Certificate::find($certificates->id)->certax->first()->luas_bangun_pbb,
             );
         }
+        // dd($certificate_data);
 
 
         Excel::create('Certificate Data', function($excel) use (

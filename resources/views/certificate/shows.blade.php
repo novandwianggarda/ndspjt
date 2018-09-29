@@ -16,6 +16,12 @@
                     <table class="table table-hover bordered table-bordered">
                         <tbody>
                             
+                            <tr>
+                                <td>NOP</td>
+                                @foreach($certificate->certax as $cer)
+                                    <td>{{ $cer->nop }}</td>
+                                @endforeach
+                            </tr>
 
                             <tr>
                                 <td>Letak Objek Pajak</td>
@@ -24,9 +30,9 @@
                                 @endforeach
                             </tr>
                             <tr>
-                                <td>Penanggung PBB</td>
+                                <td>Luas Sertifikat</td>
                                 @foreach($certificate->certax as $cer)
-                                    <td>{{ $cer->pen_pbb }}</td>
+                                    <td>{{ $cer->luas_sertifikat }}</td>
                                 @endforeach
                             </tr>
                             <tr>
