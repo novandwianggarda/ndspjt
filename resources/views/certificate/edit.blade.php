@@ -315,10 +315,10 @@
                   </accordion>
                     <div class="form-group">
                       <div class="col-sm-6" style="padding:0px 25px">
-                        <a href="../" class="btn form-control ll-bgcolor ll-white" style="margin-top: 10px;">Cancel</a>
+                        <a href="../" class="btn btn-danger form-control" style="margin-top: 10px;">Cancel</a>
                       </div>
                       <div class="col-sm-6" style="padding:0px 25px">
-                        <button type="submit" class="btn form-control ll-bgcolor ll-white" style="margin-top: 10px;">
+                        <button type="submit" class="btn btn-primary form-control" style="margin-top: 10px;">
                           <i class="fa fa-plus"></i>
                             Update
                         </button>

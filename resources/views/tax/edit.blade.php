@@ -24,9 +24,9 @@
                     {!! Form::model($t,  ['url'=>array( '/taxes/updatetax', $t->id), 'method' => 'patch','enctype' => 'multipart/form-data', 'files' => true]) !!}
 
                     <div class="form-group">
-                        {!! Form::label('certificate_type_id', 'No HM / HGB', ['class'=>'control-label col-md-3']) !!}
+                        {!! Form::label('certificate_id', 'No HM / HGB', ['class'=>'control-label col-md-3']) !!}
                         <div class="col-md-9">
-                        {!! Form::select('certificate_type_id', $cert,null, ['class'=>'form-control']) !!}
+                        {!! Form::select('certificate_id', $cert,null, ['class'=>'form-control']) !!}
                         </div>
                     </div>
                     <br><br>

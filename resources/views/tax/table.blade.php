@@ -25,6 +25,7 @@
                         <tr>
                             <td>
                                 <a href="/taxes/show/{{ $tax->id }}">
+                                    
                                     @foreach ($tax->certax as $b)
                                         {{$b->nama_sertifikat}}
                                     @endforeach

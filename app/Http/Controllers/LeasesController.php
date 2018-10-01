@@ -42,7 +42,7 @@ class LeasesController extends Controller
     public function store(LeaseRequet $request)
     {
         $data = $request->all();
-        dd($data);
+        //dd($data);
         // parse to int
         $data['brok_fee_yearly'] = (int)$data['brok_fee_yearly'];
         $data['brok_fee_paid'] = (int)$data['brok_fee_paid'];

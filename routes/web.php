@@ -46,20 +46,16 @@ Route::middleware(['web', 'auth'])->group(function () {
         });
         Route::get('list', 'CertificatesController@index');
         Route::get('filter', 'CertificatesController@filter');
-
         Route::get('show/{id}', 'CertificatesController@show');
-
-
         Route::get('shows/', 'CertificatesController@certid');
-
+        //create
         Route::get('add', 'CertificatesController@showAddForm');
         Route::post('add', 'CertificatesController@store');
-
+        //edit
         Route::get('/editcert/{id}', 'CertificatesController@editcert' );
         Route::patch('/updatecert/{edit}', 'CertificatesController@updatecert');
         Route::delete('/deletecert/{id}', 'CertificatesController@destroycert' );
-
-
+        //import
         Route::get('import', 'CertificatesController@import');
         Route::post('storeimport', 'CertificatesController@storeimport')->name('certificate.import');
         Route::post('storeimport/save', 'CertificatesController@tes');

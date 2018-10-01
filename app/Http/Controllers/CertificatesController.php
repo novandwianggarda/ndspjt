@@ -8,6 +8,7 @@ use App\Tax;
 use App\CertificateType;
 use App\CertificateDoc;
 use DB;
+use Storage;
 use App\Http\Requests\CertificateRequest;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -125,7 +126,14 @@ class CertificatesController extends Controller
                     $certificate_docs->nama_file = $name;
                     $certificate_docs->title = $request->title[$titleIndex-1];
                     $certificate_docs->save();
+
+                    $oldPhoto=$certificate_docs->img;
+
+                    $certificate_docs->image=$name;
+                    Storage::delete($oldPhoto);
                 }
+
+
         $cert->boundary_coordinates = $request->input('boundary_coordinates');
         $cert->addrees = $request->input('addrees');
 

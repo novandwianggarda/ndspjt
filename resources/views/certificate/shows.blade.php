@@ -30,6 +30,12 @@
                                 @endforeach
                             </tr>
                             <tr>
+                                <td>Kelurahan PBB</td>
+                                @foreach($certificate->certax as $cer)
+                                    <td>{{ $cer->kelurahan_pbb }}</td>
+                                @endforeach
+                            </tr>
+                            <tr>
                                 <td>Luas Sertifikat</td>
                                 @foreach($certificate->certax as $cer)
                                     <td>{{ $cer->luas_sertifikat }}</td>
@@ -44,7 +50,13 @@
                             <tr>
                                 <td>Luas Tanah PBB</td>
                                 @foreach($certificate->certax as $cer)
-                                    <td>{{ $cer->luas_tanah_pbb }}</td>
+                                    <td>{{ $cer->luas_tanah_pbb }}&nbsp;m<sup>2</sup></td>
+                                @endforeach
+                            </tr>
+                            <tr>
+                                <td>Luas Bangun PBB</td>
+                                @foreach($certificate->certax as $cer)
+                                    <td>{{ $cer->luas_bangun_pbb }}&nbsp;m<sup>2</sup></td>
                                 @endforeach
                             </tr>
                         </tbody>

@@ -24,7 +24,7 @@ class CertificatesAjaxController extends AjaxController
             $builder = Certificate::availableForLease();
         }
 
-        $certificates = $builder->select('id', 'name', 'number')->get();
+        $certificates = $builder->select('id', 'nama_sertifikat', 'no_hm_hgb')->get();
         return response()->json($certificates);
     }
 
@@ -41,7 +41,7 @@ class CertificatesAjaxController extends AjaxController
         $certificates = Certificate::whereIn('id', explode(',', $ids))->get();
         $result = (object)[];
         foreach ($certificates as $certificates) {
-            @$result->number .='|| ' . $certificates->number. ' ';
+            @$result->no_hm_hgb .='|| ' . $certificates->no_hm_hgb. ' ';
             @$result->name .='|| <span title="' .$certificates->area. ' m2">'. $certificates->name. ' </span> ';
             @$result->type .='|| ' . $certificates->certificate_type. ' ';
             @$result->owner .='|| ' . $certificates->owner. ' ';

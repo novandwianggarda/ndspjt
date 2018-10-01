@@ -11,12 +11,12 @@
                     <h3 class="timeline-header no-border">
                         <a href="#">{{ $le->lessor }}</a>
                     </h3>
-                    <span>Tenant: {{ $le->tenant }}</span> <br>
+                    <span>Tenant&nbsp;: {{ $le->tenant }}</span> <br>
                     <?php 
                       $tgl=strtotime($le->end);
                       $tanggal=date("d F Y", $tgl); //d F y adalah tgl bulan thn
                     ?>
-                    <span>Due: {{ $tanggal }}</span> 
+                    <span>Due &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $tanggal }}</span> 
                 </div>
             </li>
             
@@ -35,7 +35,7 @@
     </div>
     <!-- /.box-body -->
     <div class="box-footer text-center">
-        <a href="javascript:void(0)" class="uppercase">View All</a>
+        <a href="/lease/{{ $le->id }}" class="uppercase">View All</a>
     </div>
     <!-- /.box-footer -->
 </div>

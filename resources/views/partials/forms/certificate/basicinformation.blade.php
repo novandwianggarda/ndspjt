@@ -4,38 +4,22 @@
         </div>
         <frgroup>
             <label slot="label">
-                Kepemilikan
-            </label>
-            <input type="text" name="kepemilikan" value="{{ old('kepemilikan') }}" class="form-control" placeholder="Kepemilikan" />
-        </frgroup>
-        <frgroup>
-            <label slot="label">
-                Purposes
-            </label>
-            <input type="text" name="purposes" value="{{ old('purposes') }}" class="form-control" placeholder="purposes" />
-        </frgroup>
-        <frgroup>
-            <label slot="label">
-                Archive
-            </label>
-            <input type="text" name="archive" value="{{ old('archive') }}" class="form-control" placeholder="Archive" />
-        </frgroup>
-
-        <frgroup>
-            <label slot="label">
                 No HM / HGB
             </label>
             <input type="text" name="no_hm_hgb" value="{{ old('no_hm_hgb') }}" class="form-control" placeholder="No HM / HGB" />
         </frgroup>
-
         <frgroup>
             <label slot="label">
                 Nama Sertifikat
             </label>
             <input type="text" name="nama_sertifikat" value="{{ old('nama_sertifikat') }}" class="form-control" placeholder="Contoh: PT. Dirga Surya" />
         </frgroup>
-       
-
+        <frgroup>
+            <label slot="label">
+                Kepemilikan
+            </label>
+            <input type="text" name="kepemilikan" value="{{ old('kepemilikan') }}" class="form-control" placeholder="Kepemilikan" />
+        </frgroup>
         <frgroup>
             <label slot="label">
                 Tipe Sertifikat
@@ -48,7 +32,7 @@
             <label slot="label">
                 Kelurahan
             </label>
-            <input type="text" name="kelurahan" value="{{ old('kelurahan') }}" class="form-control" />
+            <input type="text" name="kelurahan" value="{{ old('kelurahan') }}" class="form-control" placeholder="Kelurahan" />
         </frgroup>
 
         <frgroup wl="2" wi="2">
@@ -74,13 +58,6 @@
 
         <frgroup>
             <label slot="label">
-                NOP
-            </label>
-            <input type="text" name="nop" value="{{ old('nop') }}" class="form-control" />
-        </frgroup>
-
-        <frgroup>
-            <label slot="label">
                 Luas Sertifikat
             </label>
             <div class="input-group">
@@ -91,16 +68,5 @@
 
 
 
-        <frgroup>
-            <label slot="label">
-                Publish Date
-            </label>
-            <indate name="published_date" value="{{old('published_date') }}"></indate>
-        </frgroup>
-        <frgroup>
-            <label slot="label">
-                Expired Date HGB
-            </label>
-            <indate name="expired_date" value="{{old('expired_date') }}"></indate>
-        </frgroup>
+        
 </accordion>

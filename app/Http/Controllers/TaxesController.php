@@ -53,9 +53,11 @@ class TaxesController extends Controller
         $t->selisih = $request->input('selisih');
 
         $tUpdate = $request->only([
-        'certificate_id', 'folder_pbb', 'luas_sertifikat', 'purposes', 'rencana_group',
+        'folder_pbb', 'luas_sertifikat', 'purposes', 'rencana_group',
         'pen_pbb', 'wajib_pajak', 'letak_objek_pajak', 'kelurahan_pbb', 'kota_pbb', 'nop', 'luas_tanah_pbb',
         'luas_bangun_pbb', 'year', 'njop_land', 'njop_building', 'njop_total', 'nominal_ly', 'due_date', 'selisih', 'due_date_ly']);
+
+        $updatecertax = DB::table('certi_taxs')->where('tax_id', $id)->update(['certificate_id' => $request->input('certificate_id')]);
         $t->update($tUpdate);
 
         return redirect(url('dashboard'));
@@ -176,6 +178,7 @@ class TaxesController extends Controller
         $t->selisih = $request->input('selisih');
 
         $t->save();
+        $t->certax()->attach($request->input('certificate_id'));
         return redirect(url('dashboard'));
     }
 

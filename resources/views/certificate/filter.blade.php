@@ -26,7 +26,9 @@
 
                         @foreach ($certificates as $cert)
                             <?php $no_hm_hgb_arr[] = $cert->no_hm_hgb;?>
-                            <?php if(in_array($cert->no_hm_hgb, $no_hm_hgb_arr)&&count(array_keys($no_hm_hgb_arr, $cert->no_hm_hgb)) ==1) : ?>
+                            <?php 
+                                if(in_array($cert->no_hm_hgb, $no_hm_hgb_arr)&&count(array_keys($no_hm_hgb_arr, $cert->no_hm_hgb)) ==1) : 
+                            ?>
                             <tr>
                                 <td>
                                     <a href="/certificates/shows/?no_hm_hgb={{ $cert->no_hm_hgb }}">{{ $cert->no_hm_hgb }}</a>
