@@ -81,7 +81,6 @@ trait AuthenticatesUsers
             $this->credentials($request), $request->filled('remember')
         );
     }
-
     /**
      * Get the needed authorization credentials from the request.
      *

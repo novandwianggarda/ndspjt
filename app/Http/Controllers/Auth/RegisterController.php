@@ -72,4 +72,9 @@ class RegisterController extends Controller
         $user->roles()->attach($data['role']);
         return $user;
     }
+
+    // public function showRegistrationForm(){
+    //     $roles=Role::orderBy('name')->pluck('name', 'id');
+    //     return view('auth.register', compact('roles'));
+    // }
 }

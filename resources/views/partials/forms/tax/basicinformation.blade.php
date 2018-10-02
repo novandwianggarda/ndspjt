@@ -1,7 +1,7 @@
 <accordion name="collapse-taxinfo">
 
     <div slot="title" class="ll-head">
-        BASIC INFORMATION TAX
+        BASIC INFORMATION
     </div>
 
     <frgroup>

@@ -16,12 +16,10 @@
  * redirect to dashboard
  */
 Route::redirect('/', '/dashboard', 301);
-
 /**
  * custom authentification routes
 */
 Route::namespace('Auth')->group(function () {
-
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login', 'LoginController@login')->name('login');
     Route::get('logout', 'LoginController@logout')->name('logout');
@@ -34,6 +32,7 @@ Route::namespace('Auth')->group(function () {
  * which mean only logged user can access
  */
 Route::middleware(['web', 'auth'])->group(function () {
+    
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('/profile', 'DashboardController@showUserProfile')->name('profile');
@@ -85,9 +84,7 @@ Route::middleware(['web', 'auth'])->group(function () {
 
         Route::get('eksport', 'TaxesController@eksport');
         Route::get('eksported', 'TaxesController@eksported')->name('exporttax.excel');
-
     });
-
     // Lease
     Route::prefix('leases')->group(function() {
 
@@ -102,7 +99,6 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('import', 'LeasesController@import');
         Route::post('storeimport', 'LeasesController@storeimport')->name('leases.import');
         Route::post('storeimport/save', 'LeasesController@leaseimport');
-
     });
 
     // Property

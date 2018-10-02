@@ -134,6 +134,7 @@ return [
                     'url'  => '/certificates/list',
                     'icon' => 'list',
                 ],
+                
                 [
                     'text' => 'Data Filter',
                     'url'  => '/certificates/filter',
