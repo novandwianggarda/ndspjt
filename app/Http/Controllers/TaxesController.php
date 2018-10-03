@@ -17,8 +17,9 @@ class TaxesController extends Controller
      */
     public function index()
     {
+        $i=1;
         $taxes = Tax::all();
-        return view('tax.table')->with('taxes', $taxes);
+        return view('tax.table', compact('taxes', 'i'));
     }
 
     public function edittax($id)

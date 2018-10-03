@@ -19,6 +19,7 @@ Route::redirect('/', '/dashboard', 301);
 /**
  * custom authentification routes
 */
+
 Route::namespace('Auth')->group(function () {
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login', 'LoginController@login')->name('login');
@@ -26,6 +27,15 @@ Route::namespace('Auth')->group(function () {
     Route::post('logout', 'LoginController@logout')->name('logout');
 
 });
+
+// Route::get('/login', function () {
+//     return view('auth.login');
+// });
+
+// Auth::routes();
+// Route::post('exit', 'Auth\LoginController@logout')->name('logout');
+
+
 
 /**
  * routes with auth middleware

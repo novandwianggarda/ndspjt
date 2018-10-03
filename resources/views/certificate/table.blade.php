@@ -10,15 +10,28 @@
     <div class="row">
         <div class="col-md-12">
             
-            <table id="example1" class="table table-bordered table-striped" style="width: 100%;">
+            <!-- <table id="example1" class="table table-bordered table-striped" style="width: 100%;"> -->
+        <div class="box">
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-hover bordered table-bordered">
                 <thead>
                     <tr>
                         <th>Nama Sertifikat</th>
                         <th>Kepemilikan</th>
                         <th>No HM / HGB</th>
                         <th>Type</th>
+                        <th>Kepemilikan</th>
+                        <th>Keterangan</th>
+                        <th>Archive</th>
+                        <th>Kota</th>
+                        <th>Alamat</th>
+                        <th>Purposes</th>
+                        <th>Kelurahan</th>
+                        <th>Kecamatan</th>
                         <th>Publish Date</th>
                         <th>Expired Date</th>
+                        <th>Ajb Nominal</th>
+                        <th>Ajb Date</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -31,8 +44,18 @@
                             <td>{{ $cert->kepemilikan }}</td>
                             <td>{{ $cert->no_hm_hgb }}</td>
                             <td>{{ $cert->certificate_type }}</td>
+                            <td>{{ $cert->kepemilikan }}</td>
+                            <td>{{ $cert->keterangan }}</td>
+                            <td>{{ $cert->archive }}</td>
+                            <td>{{ $cert->kota }}</td>
+                            <td>{{ $cert->addrees }}</td>
+                            <td>{{ $cert->purposes }}</td>
+                            <td>{{ $cert->kelurahann }}</td>
+                            <td>{{ $cert->kecamatan }}</td>
                             <td>{{ $cert->published_date }}</td>
                             <td>{{ $cert->expired_date }}</td>
+                            <td>{{ $cert->ajb_nominal }}</td>
+                            <td>{{ $cert->ajb_date }}</td>
                             <td>
 
                             <form class="delete" action="{{ url('/certificates/deletecert', $cert->id) }}" method="POST">
@@ -44,7 +67,7 @@
 
                                       <button type="submit" class="btn btn-xs btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;&nbsp;Delete</button>
 
-                                    </form>
+                            </form>
                             </td>
                         </tr>
                     @endforeach
@@ -52,14 +75,27 @@
                 <tfoot>
                     <tr>
                         <th>Nama Sertifikat</th>
+                        <th>Kepemilikan</th>
                         <th>No HM / HGB</th>
                         <th>Type</th>
+                        <th>Kepemilikan</th>
+                        <th>Keterangan</th>
+                        <th>Archive</th>
+                        <th>Kota</th>
+                        <th>Alamat</th>
+                        <th>Purposes</th>
+                        <th>Kelurahan</th>
+                        <th>Kecamatan</th>
                         <th>Publish Date</th>
                         <th>Expired Date</th>
+                        <th>Ajb Nominal</th>
+                        <th>Ajb Date</th>
                         <th>Actions</th>
                     </tr>
                 </tfoot>
             </table>
+        </div>
+        </div>
         </div>
     </div>
 @stop

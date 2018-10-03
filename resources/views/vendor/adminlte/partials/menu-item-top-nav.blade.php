@@ -16,6 +16,7 @@
         
         @if (isset($item['submenu']))
             <ul class="dropdown-menu" role="menu">
+                {{ Auth::guard('')->user()->nama}}
                 @foreach($item['submenu'] as $subitem)
                     @if (is_string($subitem))
                         @if($subitem == '-')
