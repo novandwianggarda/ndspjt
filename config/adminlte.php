@@ -153,28 +153,38 @@ return [
             ],
         ],
         [
-            'text'    => 'PBB',
+            'text'    => 'NOP',
             'icon'    => 'money',
             'submenu' => [
                 [
-                    'text' => 'Add New',
+                    'text' => 'Add New NOP',
                     'url'  => '/taxes/add',
                     'icon' => 'plus',
                 ],
+
                 [
-                    'text' => 'Data List',
+                    'text' => 'NOP List',
                     'url'  => '/taxes/list',
                     'icon' => 'list',
                 ],
                 [
+                    'text' => 'PBB Pertahun',
+                    'url'  => '/taxes/tahun',
+                    'icon' => 'calendar',
+                ],
+
+                
+
+
+                [
                     'text' => 'Import',
                     'url'  => '/taxes/import',
-                    'icon' => 'file',
+                    'icon' => 'file-text',
                 ],
                 [
                     'text' => 'Eksport',
                     'url'  => '/taxes/eksport',
-                    'icon' => 'file',
+                    'icon' => 'download',
                 ],
             ],
         ],
@@ -225,6 +235,12 @@ return [
             'text'    => 'Users',
             'icon'    => 'group',
             'url'     => '/users'
+            // 'can'     => 'user-manager',
+        ],
+        [
+            'text'    => 'Land Maps',
+            'icon'    => 'globe',
+            'url'     => '/land/allmaps'
             // 'can'     => 'user-manager',
         ],
     ],

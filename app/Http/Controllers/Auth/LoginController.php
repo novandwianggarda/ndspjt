@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Auth\AuthenticatesUsers;
 // use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Auth;
 
 class LoginController extends Controller
 {
@@ -39,6 +38,23 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    // public function __construct()
+    // {
+    //     $this->middleware('guest:superadmin', ['except'=> 'logout']);
+    // }
+
+    // protected function sendLoginResponse(Request $request)
+    // {
+    //     $request->session()->regenerate();
+    //     $this->clearLoginAttempts($request);
+    //     foreach ($this->guard()->users()->role as $role) {
+    //         if ($role->username == 'superadmin'){
+    //             return redirect('admin/home');
+    //         }elseif ($role->username == 'admin'){
+    //             return redirect('admin/dashboard');
+    //         }
+    //     }
+    // }
 
 
     // public function login(Request $request)

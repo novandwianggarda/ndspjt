@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Add Tax')
+@section('title', 'Add New Tax')
 
 @section('content_header')
-    <h1>Add Tax</h1>
+    <h1>Add New NOP</h1>
 @stop
 
 @section('content')

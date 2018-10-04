@@ -1,14 +1,33 @@
 <accordion name="collapse-taxdetail">
 
     <div slot="title" class="ll-head">
-        DETAIL INFORMATION
+        PBB INFORMATION
     </div>
 
+    <frgroup>
+        <label slot="label">
+            Folder PBB Kini
+        </label>
+        <input type="text" name="folder_pbb" value="{{ old('folder_pbb') }}" class="form-control" />
+    </frgroup>
+
+    <frgroup>
+        <label slot="label">
+            Rencana Group Folder PBB
+        </label>
+        <input type="text" name="rencana_group" value="{{ old('rencana_group') }}" class="form-control" />
+    </frgroup>
     <frgroup>
         <label slot="label">
             Penanggung PBB
         </label>
         <input type="text" name="pen_pbb" value="{{ old('pen_pbb') }}" class="form-control" />
+    </frgroup>
+    <frgroup>
+        <label slot="label">
+            NOP
+        </label>
+        <input type="text" name="nop" value="{{ old('nop') }}" class="form-control" />
     </frgroup>
 
      <frgroup>
@@ -31,18 +50,14 @@
         </label>
         <input type="text" name="kelurahan_pbb" value="{{ old('kelurahan_pbb') }}" class="form-control" />
     </frgroup>
+    
     <frgroup>
         <label slot="label">
             Kota PBB
         </label>
         <input type="text" name="kota_pbb" value="{{ old('kota_pbb') }}" class="form-control" />
     </frgroup>
-    <frgroup>
-        <label slot="label">
-            NOP
-        </label>
-        <input type="text" name="nop" value="{{ old('nop') }}" class="form-control" />
-    </frgroup>
+    
 
     <frgroup>
         <label slot="label">
@@ -58,34 +73,7 @@
         <input type="text" name="luas_bangun_pbb" value="{{ old('luas_bangun_pbb') }}" class="form-control" />
     </frgroup>
 
-    <frgroup>
-        <label slot="label">
-            NJOP T/m2
-        </label>
-        <input type="number" name="njopland" value="{{ old('njopland') }}" class="form-control" />
-    </frgroup>
-
-    <frgroup>
-        <label slot="label">
-            NJOP B/m2
-        </label>
-        <input type="number" name="njop_building" value="{{ old('njop_building') }}" class="form-control" />
-    </frgroup>
-
-    <frgroup>
-        <label slot="label">
-            Due Date
-        </label>
-        <indate name="due_date" value="{{ old('due_date') }}"></indate>
-    </frgroup>
-
-    <frgroup>
-        <label slot="label">
-            Payment PBB 
-        </label>
-        <indate name="due_date_ly" value="{{ old('due_date_ly') }}"></indate>
-    </frgroup>
-
+    
     
 </accordion>
 

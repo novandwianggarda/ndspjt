@@ -17,6 +17,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Sertifikat</th>
+                                <th>NOP</th>
                                 <th>Folder PBB</th>
                                 <th>No HM / HGB</th>
                                 <th>Rencana Group</th>
@@ -27,7 +28,6 @@
                                 <th>Kelurahan PBB</th>
                                 <th>Kota PBB</th>
                                 <th>Penanggung PBB</th>
-                                <th>NOP</th>
                                 <th>Luas Tanah PBB</th>
                                 <th>Luas Bangun PBB</th>
                                 <th>Due Date</th>
@@ -47,6 +47,7 @@
                                             @endforeach
                                         </a>
                                     </td>
+                                    <td>{{ $tax->nop }}</td>
                                     <td>{{ $tax->folder_pbb }}</td>
 
                                     <td>
@@ -66,7 +67,6 @@
                                     <td>{{ $tax->kelurahan_pbb }}</td>
                                     <td>{{ $tax->kota_pbb }}</td>
                                     <td>{{ $tax->pen_pbb }}</td>
-                                    <td>{{ $tax->nop }}</td>
                                     <td>{{ $tax->luas_tanah_pbb }}</td>
                                     <td>{{ $tax->luas_bangun_pbb }}</td>
                                     <td>{{ $tax->due_date }}</td>
