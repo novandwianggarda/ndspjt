@@ -18,10 +18,6 @@ class CreateCertiTaxsTable extends Migration
             $table->unsignedInteger('tax_id');
             $table->unsignedInteger('certificate_id');
             $table->timestamps();
-
-            $table->unique(['tax_id','certificate_id']);
-            $table->foreign('tax_id')->references('id')->on('taxs')->onDelete('cascade');
-            $table->foreign('certificate_id')->references('id')->on('certificates')->onDelete('cascade');
         });
     }
 

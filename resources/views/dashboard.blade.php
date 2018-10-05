@@ -8,6 +8,11 @@
 
 @section('content')
     <div class="row">
+    	<pre>
+    	<?php print_r(Auth::user()->roles);
+
+        ?>
+        </pre>
 
         @foreach ($leases as $le)
         <div class="col-md-4">

@@ -28,12 +28,19 @@ Route::namespace('Auth')->group(function () {
 
 });
 
-// Route::get('/login', function () {
-//     return view('auth.login');
-// });
+Route::get('/login', function () {
+    return view('auth.login');
+});
 
 // Auth::routes();
 // Route::post('exit', 'Auth\LoginController@logout')->name('logout');
+
+//     Route::prefix('superadmin')->group(function() {
+//         Route::get('/profil', 'SuperController@index')->name('Super');
+//     });
+//     Route::prefix('admin')->group(function() {
+//         Route::get('/profil', 'AdminController@index')->name('Admin');
+//     });
 
 
 
@@ -92,6 +99,7 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::post('storeimport', 'TaxesController@storeimport')->name('tax.import');
         Route::post('storeimport/save', 'TaxesController@tes');
 
+        Route::get('tahun', 'TaxesController@tahun');
         Route::get('eksport', 'TaxesController@eksport');
         Route::get('eksported', 'TaxesController@eksported')->name('exporttax.excel');
     });

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Auth;
 
-class CheckRole
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -14,18 +14,14 @@ class CheckRole
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $role)
+    public function handle($request, Closure $next)
     {
         foreach (Auth::user()->role as $role) {
-            if ($role->name == 'super') {
+            if ($role->name == 'admin') {
                 return $next($request);
             }
         }
 
         return redirect('');
     }
-
-
-
-
 }

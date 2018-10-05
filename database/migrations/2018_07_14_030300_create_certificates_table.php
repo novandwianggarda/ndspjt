@@ -31,6 +31,7 @@ class CreateCertificatesTable extends Migration
 
             $table->text('kecamatan')->nullable(); 
             $table->text('kelurahann')->nullable(); 
+            $table->text('purposes')->nullable(); 
 
 
             $table->text('addrees')->nullable(); 
@@ -42,7 +43,7 @@ class CreateCertificatesTable extends Migration
             $table->string('ajb_date')->nullable(); // tanggal ajb di tanda tangani
             
             // MAPS
-            $table->text('map_coordinate')->nullable(); // JSON {lat:xxx, lng:xxx}
+            $table->text('boundary_coordinates')->nullable(); // JSON {lat:xxx, lng:xxx}
 
             $table->timestamps();
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tax;
+use App\Year;
 use App\Certificate;
 use App\Http\Requests\TaxRequest;
 use Maatwebsite\Excel\Facades\Excel;
@@ -20,6 +21,15 @@ class TaxesController extends Controller
         $i=1;
         $taxes = Tax::all();
         return view('tax.table', compact('taxes', 'i'));
+    }
+
+    public function tahun()
+    {
+        $i=1;
+        $years = Year::all();
+        $certificates = Certificate::all()->pluck('no_hm_hgb', 'id');
+        $taxs = Tax::all()->pluck('nop', 'id');
+        return view('tax.year', compact('years', 'certificates', 'taxs', 'i'));
     }
 
     public function edittax($id)
