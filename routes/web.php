@@ -100,6 +100,9 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::post('storeimport/save', 'TaxesController@tes');
 
         Route::get('tahun', 'TaxesController@tahun');
+        Route::get('tahunadd', 'TaxesController@tahunadd');
+        Route::post('tahunadd', 'TaxesController@storeyearadd');
+
         Route::get('eksport', 'TaxesController@eksport');
         Route::get('eksported', 'TaxesController@eksported')->name('exporttax.excel');
     });

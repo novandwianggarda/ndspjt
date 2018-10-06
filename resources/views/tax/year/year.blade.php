@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Add New Tax')
+@section('title', 'Year Tax')
 
 @section('content_header')
-    <h1>Add New NOP</h1>
+    <h1>Year NOP</h1>
 @stop
 
 @section('content')
@@ -20,7 +20,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" id="form-tax" action="/taxes/add" method="POST">
+                    <form class="form-horizontal" id="form-tax" action="/taxes/tahunadd" method="POST">
                         @csrf
                         <div class="box-group" id="accordion">
                             <div class="panel box">

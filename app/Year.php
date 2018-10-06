@@ -8,7 +8,7 @@ class Year extends Model
 {
     protected $table = 'years';
     protected $fillable = [
-        'year',
+        'year', 'ptkp',
         //njop
         'njop_land', 'njop_building', 'njop_total',
         // TAX BASE

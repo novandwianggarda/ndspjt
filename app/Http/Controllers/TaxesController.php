@@ -27,10 +27,43 @@ class TaxesController extends Controller
     {
         $i=1;
         $years = Year::all();
+        return view('tax.year.table', compact('years', 'i'));
+    }
+    public function tahunadd()
+    {
+        $i=1;
+        $years = Year::all();
         $certificates = Certificate::all()->pluck('no_hm_hgb', 'id');
         $taxs = Tax::all()->pluck('nop', 'id');
-        return view('tax.year', compact('years', 'certificates', 'taxs', 'i'));
+        return view('tax.year.year', compact('years', 'certificates', 'taxs', 'i'));
     }
+
+
+    public function storeyearadd(TaxRequest $request)
+    {
+
+        //dd($request->all());
+        $t = new Year();
+        
+        $t->year = $request->input('year');
+        $t->njop_land = $request->input('njop_land');
+        $t->njop_building = $request->input('njop_building');
+        $t->njop_total = $request->input('njop_total');
+
+        $t->ptkp = $request->input('ptkp');
+        $t->stimulus = $request->input('stimulus');
+        $t->pbbygdbyr = $request->input('pbbygdbyr');
+        $t->certificate_id=$request->input('certificate_id');
+        $t->tax_id=$request->input('tax_id');
+
+        $t->save();
+        
+        
+        return redirect(url('dashboard'));
+    }
+
+
+
 
     public function edittax($id)
     {
