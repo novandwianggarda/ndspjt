@@ -8,6 +8,7 @@ use App\Certificate;
 use App\Http\Requests\LeaseRequet;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
+use DB;
 
 class LeasesController extends Controller
 {
@@ -106,6 +107,37 @@ class LeasesController extends Controller
         }   
         return back();
     }
+    public function eksport(){
+        $leases = Lease::all();
+        return view('lease.eksport')->with('leases', $leases);
+    }
+
+    public function eksported(){
+        //dd($request->all());
+        $lease_data = DB::table('leases')->get()->toArray();  
+        $lease_array[] = array('Leassor', 'Lessor PKP', 'Purposes', 'Start', 'End', 'Note', 'Lease Deed', 'Lease Deed Date', 'Payment Terms', 'Payment History', 'Payment Invoices', 'Sell Monthly', 'Sell Yearly', 'Rent m2 Monthly', 'Rent m2 Monthly Type', 'Rent Price', 'Rent price Type', 'Rent Assurance', 'Brok Name', 'Brok Fee Yearly', 'Brok Fee Paid', 'Grace Start', 'Grace End',);
+
+        foreach ($lease_data as $leasess) 
+        {
+            $lease_array[] = array(
+                'Lessor' => $leasess->lessor, 
+                'Lessor PKP' => $leasess->lessor_pkp, 
+                'Tenan' => $leasess->tenant, 'Purposes' => $leasess->tenant, 'Start' => $leasess->start, 'End' => $leasess->end, 'Note' => $leasess->note, 'Lease Deed' => $leasess->lease_deed, 'Lease Deed Date' => $leasess->lease_deed_date, 'Payment Terms' => $leasess->payment_terms, 'Payment History' => $leasess->payment_history, 'Payment Invoices' => $leasess->payment_invoices, 'Sell Monthly' => $leasess->sell_monthly, 'Sell Yearly' => $leasess->sell_yearly, 'Rent m2 Monthly' => $leasess->rent_m2_monthly, 'Rent m2 Monthly Type' => $leasess->rent_m2_monthly_type, 'Rent Price' => $leasess->rent_price, 'Rent price Type' => $leasess->rent_price_type, 'Rent Assurance' => $leasess->rent_assurance, 'Brok Name' => $leasess->brok_name, 'Brok Fee Yearly' => $leasess->brok_fee_yearly, 'Brok Fee Paid' => $leasess->brok_fee_paid, 'Grace Start' => $leasess->grace_start, 'Grace End' => $leasess->grace_end,
+            );
+        }
+
+
+        Excel::create('Lease', function($excel) use (
+            $lease_array){
+            $excel->setTitle('Lease');
+            $excel->sheet('Lease', function($sheet)
+                use($lease_array){
+                    $sheet->fromArray($lease_array, null, 'A1', false, false);
+                });
+        })->download('xlsx');
+    }
+
+
 
 
 

@@ -55,10 +55,7 @@ class TaxesController extends Controller
         $t->pbbygdbyr = $request->input('pbbygdbyr');
         $t->certificate_id=$request->input('certificate_id');
         $t->tax_id=$request->input('tax_id');
-
         $t->save();
-        
-        
         return redirect(url('dashboard'));
     }
 

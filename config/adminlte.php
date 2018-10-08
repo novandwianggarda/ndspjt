@@ -212,6 +212,7 @@ return [
         [
             'text'    => 'Lease',
             'icon'    => 'dollar',
+            'can'     => 'userall',
             'submenu' => [
                 [
                     'text' => 'Add New',
@@ -228,14 +229,19 @@ return [
                     'url'  => '/leases/import',
                     'icon' => 'file',
                 ],
+                [
+                    'text' => 'Eksport',
+                    'url'  => '/leases/eksport',
+                    'icon' => 'download',
+                ],
             ],
         ],
         
         [
             'text'    => 'Users',
             'icon'    => 'group',
-            'url'     => '/users'
-            // 'can'     => 'user-manager',
+            'url'     => '/users',
+            'can'     => 'userman',
         ],
         [
             'text'    => 'Land Maps',

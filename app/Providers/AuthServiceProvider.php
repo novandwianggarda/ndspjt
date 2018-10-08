@@ -21,15 +21,20 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+     public function boot()
     {
+        // Authorization
         $this->registerPolicies();
         $this->registerLandLordPolicies();
+
+        // Gate::define('userman', 'App\Policies\LandLordPolicy@userman');
+        // Gate::define('user-manager', 'App\Policies\LandLordPolicy@superadm');;
     }
+
+
 
     public function registerLandLordPolicies()
     {
-        /** LandLord Gate Here */
         // Gate::define('create-post', function($user){
         //     $user->hasAccess(['create-post']);
         // });
@@ -44,6 +49,17 @@ class AuthServiceProvider extends ServiceProvider
 
         // Gate::define('see-all-drafts', function($user){
         //     return $user->inRole(['administrator']);
+        // });
+
+        /** LandLord Gate Here */
+        Gate::define('userman', function($user) {
+            return $user->inRoles(['superadmin']);
+        });
+        Gate::define('userall', function($user) {
+            return $user->inRoles(['superadmin', 'administrator']);
+        });
+        // Gate::define('userman', function($user) {
+        //     return $user->inRoles(['superadmin', 'administrator']);
         // });
     }
 }

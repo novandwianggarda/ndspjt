@@ -77,4 +77,15 @@ class User extends Authenticatable
     {
         return $this->roles()->where('slug', $roleSlug)->count() == 1;
     }
+
+    /**
+     * checks if the user belongs to role
+     *
+     * @param string $roleSlugs
+     * @return boolean
+     */
+    public function inRoles(array $roleSlugs)
+    {
+        return $this->roles()->whereIn('slug', $roleSlugs)->count() == 1;
+    }
 }

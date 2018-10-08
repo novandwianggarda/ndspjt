@@ -53,25 +53,4 @@ class LoginController extends Controller
     //     }
     // }
 
-
-    // public function login(Request $request)
-    // {
-    //     $credentials = $request->only('username', 'password');
-
-    //     if (auth()->attempt($credentials)) {
-    //         if (Auth::role_user()->users->slug =='superadmin') {
-    //             return redirect('/dashboard');
-    //         }elseif (Auth::role_user()->users->slug =='administrator'){
-    //             return redirect('/admin');
-    //         }else{
-    //             return redirect('/home');
-    //         }
-    //     }else{
-            
-    //         return redirect('/login');
-    //     }
-    // }
-
-
-
 }

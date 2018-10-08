@@ -33,7 +33,7 @@ class CertificatesController extends Controller
         $certificate = Certificate::find($id);
         return view('certificate.show', compact('certificate'));
     }
-
+    //filtershow
     public function filter()    
     {
         $certificates = Certificate::all();
@@ -51,8 +51,6 @@ class CertificatesController extends Controller
     {
         return view('certificate.add');
     }
-
-
     //ini buat add nya :)   
     public function store(CertificateRequest $request)
     {
@@ -83,9 +81,6 @@ class CertificatesController extends Controller
         // exit;
         return 'success';
     }
-
-
-
     public function editcert($id)
     {
         $cert=Certificate::find($id);
@@ -93,7 +88,6 @@ class CertificatesController extends Controller
         return view('certificate.edit', compact('cert', 'certype'));
     }
 
-    
     public function updatecert(Request $request, $id)
     {
         //dd($request->all());
@@ -111,7 +105,6 @@ class CertificatesController extends Controller
         $cert->kota = $request->input('kota');
         $cert->published_date = $request->input('published_date');
         $cert->expired_date = $request->input('expired_date');
-
         $cert->ajb_nominal = $request->input('ajb_nominal');
         $cert->ajb_date = $request->input('ajb_date');
             $file=$request->file('images');
@@ -132,8 +125,6 @@ class CertificatesController extends Controller
                     $certificate_docs->image=$name;
                     Storage::delete($oldPhoto);
                 }
-
-
         $cert->boundary_coordinates = $request->input('boundary_coordinates');
         $cert->addrees = $request->input('addrees');
 
@@ -151,9 +142,6 @@ class CertificatesController extends Controller
         $cert->delete();
         return redirect('dashboard');
     }
-
-
-
 
     // import certificate
     public function import(){
@@ -203,8 +191,6 @@ class CertificatesController extends Controller
                 $ce->ajb_nominal= $value->ajb_nominal;
                 $ce->ajb_date = date('Y-m-d', strtotime($ce->ajb_date));
                 $ce->boundary_coordinates= $value->boundary_coordinates;
-
-               
                 $ce->save();
             }
             // else(
@@ -241,25 +227,17 @@ class CertificatesController extends Controller
                
             //     $ce->save();
             // )
-
-            
         }
         return redirect()->route('dashboard');
-
     }
 
-
-
     //eksport data
-
     public function eksport(){
         $certificates = Certificate::all();
         return view('certificate.eksport')->with('certificates', $certificates);
     }
 
    public function eksported(){
-        //dd($request->all());
-
         $certificate_data = DB::table('certificates')->get()->toArray();  
         $certificate_array[] = array('Folder Serifikat', 'No Folder', 'Kepemilikan', 'Nama Setifikat', 'Keterangan', 'Archive', 'Type Sertifikat', 'No HM / HGB', 'Kelurahan', 'Kecamatan', 'Kota', 'Tgl Terbit', 'Tgl Akhir', 'Luas Sertifikat', 'Alamat', 'AJB Nominal', 'AJB Tanggal', 'Map Coordinate', 'Purpose', 'Penanggung PBB', 'Wajib Pajak', 'Letak Objek Pajak', 'Kelurahan PBB', 'Kota PBB', 'NOP', 'Luas Tanah PBB', 'Luas Bangun PBB');
 
@@ -295,8 +273,6 @@ class CertificatesController extends Controller
             );
         }
         // dd($certificate_data);
-
-
         Excel::create('Certificate Data', function($excel) use (
             $certificate_array){
             $excel->setTitle('Certificate Data');

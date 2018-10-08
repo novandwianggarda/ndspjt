@@ -32,18 +32,6 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
-// Auth::routes();
-// Route::post('exit', 'Auth\LoginController@logout')->name('logout');
-
-//     Route::prefix('superadmin')->group(function() {
-//         Route::get('/profil', 'SuperController@index')->name('Super');
-//     });
-//     Route::prefix('admin')->group(function() {
-//         Route::get('/profil', 'AdminController@index')->name('Admin');
-//     });
-
-
-
 /**
  * routes with auth middleware
  * which mean only logged user can access
@@ -94,18 +82,20 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('/edit/{id}', 'TaxesController@edittax' );
         Route::patch('/updatetax/{edit}', 'TaxesController@updatetax');
         Route::delete('/delete/{id}', 'TaxesController@destroy' );
-
+        //import
         Route::get('import', 'TaxesController@import');
         Route::post('storeimport', 'TaxesController@storeimport')->name('tax.import');
         Route::post('storeimport/save', 'TaxesController@tes');
-
+        //yearsPBB
         Route::get('tahun', 'TaxesController@tahun');
         Route::get('tahunadd', 'TaxesController@tahunadd');
         Route::post('tahunadd', 'TaxesController@storeyearadd');
-
+        //eksport
         Route::get('eksport', 'TaxesController@eksport');
         Route::get('eksported', 'TaxesController@eksported')->name('exporttax.excel');
     });
+
+    
     // Lease
     Route::prefix('leases')->group(function() {
 
@@ -116,10 +106,13 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('show/{id}', 'LeasesController@show');
         Route::get('add', 'LeasesController@showAddForm');
         Route::post('add', 'LeasesController@store');
-
+        //import
         Route::get('import', 'LeasesController@import');
         Route::post('storeimport', 'LeasesController@storeimport')->name('leases.import');
         Route::post('storeimport/save', 'LeasesController@leaseimport');
+        //eksport
+        Route::get('eksport', 'LeasesController@eksport');
+        Route::get('eksported', 'LeasesController@eksported')->name('exportlease.excel');
     });
 
     // Property
