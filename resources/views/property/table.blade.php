@@ -15,6 +15,8 @@
 						<th>Name</th>
 						<th>Type Property</th>
 						<th>Address</th>
+						<th>Action</th>
+
 					</tr>
 				</thead>
 				<tbody>
@@ -26,6 +28,15 @@
 
 						<td>{{$property->type->name}}</td>
 						<td>{{$property->address}}</td>
+						<td>
+                            {!! Form::open(['method'=>'delete', 'route'=>['property.destroy', $property->id], 'style' => 'display: inline-block;']) !!} 
+                            	{{ csrf_field() }}
+                                <a href="/properties/editprop/{{ $property->id }}" class="btn btn-success btn-xs"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
+
+                  			{!! Form::button('<i class="fa fa-trash"></i>&nbsp;Delete', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("Do you want to delete this Property List ?")']) !!}
+
+                  			{!! Form::close() !!}
+                            </td>
 					</tr>
 					@endforeach
 				</tbody>
@@ -34,6 +45,7 @@
 						<th>Name</th>
 						<th>Type Property</th>
 						<th>Address</th>
+						<th>Action</th>
 					</tr>
 				</tfoot>
 			</table>

@@ -21,8 +21,9 @@ class CertificatesController extends Controller
      */
     public function index()
     {
+        $i=1;
         $certificates = Certificate::all();
-        return view('certificate.table')->with('certificates', $certificates);
+        return view('certificate.table', compact('certificates', 'i'));
     }
 
     /**
@@ -140,7 +141,7 @@ class CertificatesController extends Controller
     {
         $cert=Certificate::find($id);
         $cert->delete();
-        return redirect('dashboard');
+        return redirect()->route('certificates');
     }
 
     // import certificate
@@ -156,7 +157,7 @@ class CertificatesController extends Controller
             //dd($data);
             return view('certificate.showdata')->with('data', $data);
         }  
-        return back();
+        return redirect()->route('certificates');
     }
 
 
@@ -228,7 +229,7 @@ class CertificatesController extends Controller
             //     $ce->save();
             // )
         }
-        return redirect()->route('dashboard');
+        return redirect()->route('certificates');
     }
 
     //eksport data

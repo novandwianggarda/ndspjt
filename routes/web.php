@@ -48,7 +48,7 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('/', function () {
             return redirect('/' . $this->current->uri . '/list');
         });
-        Route::get('list', 'CertificatesController@index');
+        Route::get('list', 'CertificatesController@index')->name('certificates');
         Route::get('filter', 'CertificatesController@filter');
         Route::get('show/{id}', 'CertificatesController@show');
         Route::get('shows/', 'CertificatesController@certid');
@@ -58,7 +58,7 @@ Route::middleware(['web', 'auth'])->group(function () {
         //edit
         Route::get('/editcert/{id}', 'CertificatesController@editcert' );
         Route::patch('/updatecert/{edit}', 'CertificatesController@updatecert');
-        Route::delete('/deletecert/{id}', 'CertificatesController@destroycert' );
+        Route::delete('/deletecert/{id}', 'CertificatesController@destroycert')->name('certificates.destroy');
         //import
         Route::get('import', 'CertificatesController@import');
         Route::post('storeimport', 'CertificatesController@storeimport')->name('certificate.import');
@@ -74,14 +74,14 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('/', function () {
             return redirect('/' . $this->current->uri . '/list');
         });
-        Route::get('list', 'TaxesController@index');
+        Route::get('list', 'TaxesController@index')->name('taxes');
         Route::get('show/{id}', 'TaxesController@show');
+        //crud pbb
         Route::get('add', 'TaxesController@showAddForm');
         Route::post('add', 'TaxesController@store');
-
-        Route::get('/edit/{id}', 'TaxesController@edittax' );
+        Route::get('/edit/{id}', 'TaxesController@edittax');
         Route::patch('/updatetax/{edit}', 'TaxesController@updatetax');
-        Route::delete('/delete/{id}', 'TaxesController@destroy' );
+        Route::delete('/delete/{id}', 'TaxesController@destroy')->name('taxes.destroy');
         //import
         Route::get('import', 'TaxesController@import');
         Route::post('storeimport', 'TaxesController@storeimport')->name('tax.import');
@@ -104,6 +104,7 @@ Route::middleware(['web', 'auth'])->group(function () {
         });
         Route::get('list', 'LeasesController@index');
         Route::get('show/{id}', 'LeasesController@show');
+        //crud lease
         Route::get('add', 'LeasesController@showAddForm');
         Route::post('add', 'LeasesController@store');
         //import
@@ -121,14 +122,21 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('/', function () {
             return redirect('/' . $this->current->uri . '/list');
         });
-        Route::get('list', 'PropertiesController@index');
+        Route::get('list', 'PropertiesController@index')->name('properties');
         Route::get('show/{id}', 'PropertiesController@show');
+        //crud Property
         Route::get('add', 'PropertiesController@showAddForm');
         Route::post('add', 'PropertiesController@store');
+        Route::get('/editprop/{id}', 'PropertiesController@editprop' );
+        Route::patch('/updateprop/{edit}', 'PropertiesController@updateprop');
+        Route::delete('/deleteprop/{id}', 'PropertiesController@destroyprop' )->name('property.destroy');
+        //import
         Route::get('import', 'PropertiesController@import')->name('import');
-
         Route::post('storeimport', 'PropertiesController@storeimport')->name('properti.import');
         Route::post('storeimport/save', 'PropertiesController@tes');
+        //eksport
+        Route::get('eksport', 'PropertiesController@eksport');
+        Route::get('eksported', 'PropertiesController@eksported')->name('exportprop.excel');
     });
 
     // Route::prefix('user')->group(function() {
@@ -141,9 +149,6 @@ Route::middleware(['web', 'auth'])->group(function () {
     //     Route::get('add', 'PropertiesController@showAddForm');
     //     Route::post('add', 'PropertiesController@store');
     // });
-
-
-
     // User Manager
     // Route::get('users', 'UserManagerController@index');
     // Route::get('add_user', array('uses' => 'UserManagerController@ShowAddUser', 'as' => 'add_user' ));
@@ -155,7 +160,7 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     Route::get('/edituser/{id}', 'UserManagerController@edit' );
     Route::patch('/updateuser/{edit}', 'UserManagerController@update');
-    Route::delete('/deleteuser/{id}', 'UserManagerController@destroy' );
+    Route::delete('/deleteuser/{id}', 'UserManagerController@destroy');
 
 });
 

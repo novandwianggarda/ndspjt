@@ -16,6 +16,7 @@
             <table class="table table-hover bordered table-bordered">
                 <thead>
                     <tr>
+                        <th>No</th>
                         <th>Nama Sertifikat</th>
                         <th>Kepemilikan</th>
                         <th>No HM / HGB</th>
@@ -38,6 +39,7 @@
                 <tbody>
                     @foreach ($certificates as $cert)
                         <tr>
+                            <td>{{ $i++}}</td>
                             <td>
                                 <a href="/certificates/show/{{ $cert->id }}">{{ $cert->nama_sertifikat }}</a>
                             </td>
@@ -57,42 +59,17 @@
                             <td>{{ $cert->ajb_nominal }}</td>
                             <td>{{ $cert->ajb_date }}</td>
                             <td>
-
-                            <form class="delete" action="{{ url('/certificates/deletecert', $cert->id) }}" method="POST">
-
-                                      {{ csrf_field() }}
+                                {!! Form::open(['method'=>'delete', 'route'=>['certificates.destroy', $cert->id], 'style' => 'display: inline-block;']) !!} 
+                                {{ csrf_field() }}
                                 <a href="/certificates/editcert/{{ $cert->id }}" class="btn btn-success btn-xs"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
 
-                                      <input name="_method" type="hidden" value="DELETE">
+                                {!! Form::button('<i class="fa fa-trash"></i>&nbsp;Delete', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("Do you want to delete this Certificates List ?")']) !!}
 
-                                      <button type="submit" class="btn btn-xs btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;&nbsp;Delete</button>
-
-                            </form>
+                                {!! Form::close() !!}
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Nama Sertifikat</th>
-                        <th>Kepemilikan</th>
-                        <th>No HM / HGB</th>
-                        <th>Type</th>
-                        <th>Kepemilikan</th>
-                        <th>Keterangan</th>
-                        <th>Archive</th>
-                        <th>Kota</th>
-                        <th>Alamat</th>
-                        <th>Purposes</th>
-                        <th>Kelurahan</th>
-                        <th>Kecamatan</th>
-                        <th>Publish Date</th>
-                        <th>Expired Date</th>
-                        <th>Ajb Nominal</th>
-                        <th>Ajb Date</th>
-                        <th>Actions</th>
-                    </tr>
-                </tfoot>
             </table>
         </div>
         </div>

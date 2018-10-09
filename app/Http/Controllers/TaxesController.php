@@ -56,7 +56,7 @@ class TaxesController extends Controller
         $t->certificate_id=$request->input('certificate_id');
         $t->tax_id=$request->input('tax_id');
         $t->save();
-        return redirect(url('dashboard'));
+        return redirect()->route('taxes');
     }
 
 
@@ -100,14 +100,13 @@ class TaxesController extends Controller
 
         $updatecertax = DB::table('certi_taxs')->where('tax_id', $id)->update(['certificate_id' => $request->input('certificate_id')]);
         $t->update($tUpdate);
-
-        return redirect(url('dashboard'));
+        return redirect()->route('taxes');
     }
     public function destroy($id)
     {
         $t=Tax::find($id);
         $t->delete();
-        return redirect()->back()->with('success', ['Delete Success']);
+        return redirect()->route('taxes');
     }
 
 
@@ -174,7 +173,7 @@ class TaxesController extends Controller
                 $taxes->certax()->attach($request->certificate_id= $no_hm);
             }
         }
-        return redirect()->route('dashboard');
+        return redirect()->route('taxes');
     }
 
 
@@ -220,7 +219,7 @@ class TaxesController extends Controller
 
         $t->save();
         $t->certax()->attach($request->input('certificate_id'));
-        return redirect(url('dashboard'));
+        return redirect()->route('taxes');
     }
 
 

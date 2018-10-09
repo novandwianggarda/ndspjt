@@ -72,28 +72,18 @@
                                     <td>{{ $tax->due_date }}</td>
                                     <td>{{ $tax->due_date_ly }}</td>
                                     <td>
-
-                                    <form class="delete" action="{{ url('/taxes/delete', $tax->id) }}" method="POST">
-
-                                              {{ csrf_field() }}
+                                        {!! Form::open(['method'=>'delete', 'route'=>['taxes.destroy', $tax->id], 'style' => 'display: inline-block;']) !!} 
+                                        {{ csrf_field() }}
                                         <a href="/taxes/edit/{{ $tax->id }}" class="btn btn-success btn-xs"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
 
-                                              <input name="_method" type="hidden" value="DELETE">
+                                        {!! Form::button('<i class="fa fa-trash"></i>&nbsp;Delete', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("Do you want to delete this PBB List ?")']) !!}
 
-                                              <button type="submit" class="btn btn-xs btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;&nbsp;Delete</button>
-
-
-                                               
-                                              
-                                    </form>
-
-                                                
-
+                                        {!! Form::close() !!}
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
-                    <tfoot>
+                    <!-- <tfoot>
                         <tr>
                             <th>No</th>
                             <th>Nama Sertifikat</th>
@@ -114,7 +104,7 @@
                             <th>Payment PBB</th>
                             <th>Actions</th>
                         </tr>
-                    </tfoot>
+                    </tfoot> -->
                     </table>
                 </div>
             </div>

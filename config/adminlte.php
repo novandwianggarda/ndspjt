@@ -207,6 +207,11 @@ return [
                     'url'  => '/properties/import',
                     'icon' => 'file',
                 ],
+                [
+                    'text' => 'Eksport',
+                    'url'  => '/properties/eksport',
+                    'icon' => 'download',
+                ],
             ],
         ],
         [
