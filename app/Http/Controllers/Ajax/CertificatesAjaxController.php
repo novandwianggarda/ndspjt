@@ -42,15 +42,9 @@ class CertificatesAjaxController extends AjaxController
         $result = (object)[];
         foreach ($certificates as $certificates) {
             @$result->no_hm_hgb .='|| ' . $certificates->no_hm_hgb. ' ';
-            @$result->nama_sertifikat .='|| <span title="' .$certificates->keterangan. ' m2">'. $certificates->nama_sertifikat. ' </span> ';
+            @$result->nama_sertifikat .='|| <span title="' .$certificates->keterangan. ' m2">'. $certificates->purposes. ' </span> ';
             @$result->type .='|| ' . $certificates->certificate_type. ' ';
-            @$result->owner .='|| ' . $certificates->owner. ' ';
-            @$result->city .='|| ' . $certificates->addr_city. ' ';
-            @$result->village .='|| ' . $certificates->addr_village. ' ';
-            @$result->area .='|| ' . $certificates->area. 'm<sup>2</sup> ';
-            @$result->total_area += $certificates->area;
         }
-        @$result->total_area = @$result->total_area . ' m<sup>2</sup>';
         return response()->json($result);
     }
 

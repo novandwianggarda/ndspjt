@@ -251,7 +251,7 @@ return [
         [
             'text'    => 'Land Maps',
             'icon'    => 'globe',
-            'url'     => '/land/allmaps'
+            'url'     => '/land/maps'
             // 'can'     => 'user-manager',
         ],
     ],

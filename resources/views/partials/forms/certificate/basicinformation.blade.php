@@ -32,7 +32,7 @@
             <label slot="label">
                 Kelurahan
             </label>
-            <input type="text" name="kelurahan" value="{{ old('kelurahan') }}" class="form-control" placeholder="Kelurahan" />
+            <input type="text" name="kelurahan"n value="{{ old('kelurahann') }}" class="form-control" placeholder="Kelurahan" />
         </frgroup>
 
         <frgroup wl="2" wi="2">
@@ -64,6 +64,18 @@
                     <input type="number" min="0" name="luas_sertifikat" value="{{ old('luas_sertifikat') }}" class="form-control" placeholder="Contoh: 1, 2, 3" />
                     <span class="input-group-addon">m<sup>2</sup></span>
                 </div>
+        </frgroup>
+        <frgroup>
+            <label slot="label">
+                Ajb Nominal
+            </label>
+            <input type="text" name="ajb_nominal" value="{{ old('ajb_nominal') }}" class="form-control" />
+        </frgroup>
+        <frgroup>
+            <label slot="label">
+                Ajb Date
+            </label>
+            <indate name="ajb_date" value="{{old('ajb_date') }}"></indate>
         </frgroup>
 
 

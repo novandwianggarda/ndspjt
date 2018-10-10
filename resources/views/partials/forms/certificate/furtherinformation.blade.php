@@ -37,12 +37,9 @@
         </frgroup>
         <frgroup>
             <label slot="label">
-                Expired Date HGB
+                Expired Date
             </label>
             <indate name="expired_date" value="{{old('expired_date') }}"></indate>
         </frgroup>
-
-
-    
 
 </accordion>

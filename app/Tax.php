@@ -62,6 +62,12 @@ class Tax extends Model implements Auditable
         return $this->belongsToMany('App\Certificate','certi_taxs');
     }
 
+    public function taxye()
+    {
+        return $this->hasMany('App\Year', 'id');
+    }
+
+
 
     /** ATTRIBUTES */
 

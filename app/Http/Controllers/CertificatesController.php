@@ -110,7 +110,6 @@ class CertificatesController extends Controller
         $cert->ajb_date = $request->input('ajb_date');
             $file=$request->file('images');
             $titleIndex = 0;
-                
                 foreach ($file as $img) {
                     $name =time().'.'.$img->getClientOriginalName();
                     $img->move('file/certifate', $name);

@@ -7,9 +7,9 @@
             </label>
             <div>
                 <select id="lease-certificates" class="form-control" multiple="multiple" v-model="select_certificate_ids" :options="options">
-                    <option value="0">➕ Add New Certificate</option>
+                    <option value="0">➕ New Certificate</option>
                     <option v-for="option in options" :value="option.id" :key="option.id">
-                        {{ option.number }} - {{ option.name }}
+                        {{ option.no_hm_hgb }} - {{ option.nama_sertifikat }}
                     </option>
                 </select>
             </div>
@@ -18,21 +18,14 @@
         <div v-show="select_certificate_ids.length !== 0">
             <dl class="dl-horizontal">
                 <dt class="text-muted">Number</dt>
-                <dd v-html="certificate.number"></dd>
+                <dd v-html="certificate.no_hm_hgb"></dd>
                 <dt class="text-muted">Name</dt>
-                <dd v-html="certificate.name"></dd>
+                <dd v-html="certificate.nama_sertifikat"></dd>
                 <dt class="text-muted">Type</dt>
                 <dd v-html="certificate.type"></dd>
-                <dt class="text-muted">Owner</dt>
-                <dd v-html="certificate.owner"></dd>
-                <dt class="text-muted">City</dt>
-                <dd v-html="certificate.city"></dd>
-                <dt class="text-muted">Village</dt>
-                <dd v-html="certificate.village"></dd>
-                <dt class="text-muted">Area</dt>
-                <dd v-html="certificate.area"></dd>
-                <dt class="text-muted">Total Area</dt>
-                <dd v-html="certificate.total_area"></dd>
+                <dt class="text-muted">Purposes</dt>
+                <dd v-html="certificate.purposes"></dd>
+                
             </dl>
         </div>
 

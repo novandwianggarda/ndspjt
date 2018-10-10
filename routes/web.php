@@ -139,6 +139,18 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('eksported', 'PropertiesController@eksported')->name('exportprop.excel');
     });
 
+    // Lease
+    Route::prefix('land')->group(function() {
+
+        Route::get('/', function () {
+            return redirect('/' . $this->current->uri . '/maps');
+        });
+        Route::get('maps', 'LandController@index');
+        Route::get('show/{id}', 'LandController@show');
+    });
+
+
+
     // Route::prefix('user')->group(function() {
 
     //     Route::get('/', function () {
