@@ -88,7 +88,7 @@ class Tax extends Model implements Auditable
      */
     public function getCertificatesAttribute()
     {
-        $certificateIds = explode(',', $this->certificate_ids);
+        $certificateIds = explode(',', $this->certificate_id);
         return Certificate::whereIn('id', $certificateIds)->get();
     }
 
@@ -102,7 +102,7 @@ class Tax extends Model implements Auditable
      */
     public static function taxWithCertificateIds()
     {
-        $taxes = Lease::select('id', 'certificate_ids')->get()->toArray();
+        $taxes = Tax::select('id', 'certificate_id')->get()->toArray();
         $allIds = [];
         foreach ($taxes as $tax) {
             $certificateIds = explode(',', $tax['certificate_ids']);

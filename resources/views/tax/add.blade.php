@@ -21,11 +21,12 @@
                         </div>
                     @endif
                     <form class="form-horizontal" id="form-tax" action="/taxes/add" method="POST">
+                    <!-- <form class="form-horizontal" id="form-tax" action="/taxes/add" method="POST" v-on:submit.prevent="submitForm"> -->
                         @csrf
                         <div class="box-group" id="accordion">
                             <div class="panel box">
                                 <!-- BASIC INFORMATION -->
-                                @include('partials.forms.tax.basicinformation')
+                                @include('partials.forms.tax.information')
                                 @include('partials.forms.tax.detailinformation')
                                 <!-- DETAILS INFORMATION-->
                                 
@@ -57,10 +58,40 @@
     </style> --}}
 @stop
 
+
+
 @section('js')
-        <script type="text/javascript">
-            var fvue = new Vue({
-                el: '#form-tax',
-            });
-        </script>
+    <script>
+
+        var form = $('#form-add-tax');
+        var fvue = new Vue({
+            el: '#form-tax',
+            data: {
+                // shared
+                shared: vueShared,
+
+                // land
+                certificateIds: '',
+            },
+            methods: {
+                submitForm() {
+                    console.log(form.serialize());
+                },
+            },
+            created() {
+                var vm = this;
+                vueEvent.$on('TC-certificateSelected', function() {
+                    vm.certificateIds = $('#lease-certificates').val().toString();
+                });
+            },
+        });
+
+    </script>
+
+
+
+
+
+
+
 @stop

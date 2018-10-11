@@ -3,13 +3,19 @@
     <div slot="title" class="ll-head">
         PBB Tahun
     </div>
-
     <frgroup>
         <label slot="label">
-            Tahun
+            PBB Year
         </label>
-        <input type="text" name="year" value="{{ old('year') }}" class="form-control" />
+        <select id="year" class="form-control" name="year">
+            <option value="2018">2018</option>
+            <option value="2017">2017</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+            <option value="2014">2014</option>
+        </select>
     </frgroup>
+
     <frgroup>
         <label slot="label">
             NJOP Tanah

@@ -6,7 +6,7 @@
                 Certificate(s)
             </label>
             <div>
-                <select id="lease-certificates" class="form-control" multiple="multiple" v-model="select_certificate_ids" :options="options">
+                <select id="tax-certificates" class="form-control" multiple="multiple" v-model="select_certificate_ids" :options="options">
                     <option value="0">➕ Add New Certificate</option>
                     <option v-for="option in options" :value="option.id" :key="option.id">
                         {{ option.no_hm_hgb }} - {{ option.nama_sertifikat }}
@@ -50,9 +50,9 @@
             }
         },
         mounted() {
-            let select = $('#lease-certificates');
+            let select = $('#pbbcertificates');
 
-            axios.get('/ajax/certificate/available?for=lease').then(response => {
+            axios.get('/ajax/pbb/available?for=tax').then(response => {
                 this.options = response.data;
             });
 
@@ -64,7 +64,7 @@
                     axios.get('/ajax/certificate/result?ids=' + select.val().toString())
                          .then(response => {
                             this.certificate = response.data;
-                            vueEvent.$emit('LC-certificateSelected');
+                            vueEvent.$emit('TC-certificateSelected');
                     });
                 }
             });

@@ -19,6 +19,7 @@ Vue.component('lease-payment-terms', require('./components/forms/lease_payment_t
 Vue.component('lease-payment-history', require('./components/forms/lease_payment_history.vue'));
 Vue.component('lease-payment-invoices', require('./components/forms/lease_payment_invoices.vue'));
 Vue.component('certificate-types', require('./components/forms/certificate_types.vue'));
+Vue.component('pbbcertificates', require('./components/forms/pbbcertificates.vue'));
 
 Vue.use(money, {
     decimal: ',',
