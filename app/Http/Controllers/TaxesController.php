@@ -177,6 +177,73 @@ class TaxesController extends Controller
     }
 
 
+    //import 1 pbb banyak sertifikat
+    public function importsert(){
+        return view('tax.1pbb.uploadsert');
+    }
+
+    public function storeimportsert(Request $request){
+        //dd($request->all());
+        if ($request->hasFile('upload-file')){
+            $path = $request->file('upload-file')->getRealPath();
+            $data = Excel::load($path, function($reader){})->get();
+            return view('tax.1pbb.showdatasert')->with('data', $data);
+        }   
+        return back();
+    }
+
+    public function tessert(Request $request){
+        $x = json_decode($request->data);
+
+        
+        foreach ($x as $d => $value) {
+            $nop = $value->nop;
+            if($nop){
+                $nop = \App\Certificate::where('nop', $nop)->get()->first()->id;
+
+                $taxes = new Tax();
+
+                $taxes->luas_sertifikat= $value->luas_sertifikat;
+                $taxes->folder_pbb= $value->folder_pbb;
+                $taxes->rencana_group= $value->rencana_group;
+                
+                $taxes->pen_pbb= $value->pen_pbb;
+
+                $taxes->wajib_pajak= $value->wajib_pajak;
+                $taxes->letak_objek_pajak= $value->letak_objek_pajak;
+
+                $taxes->kelurahan_pbb= $value->kelurahan_pbb;
+                $taxes->kota_pbb= $value->kota_pbb;
+
+                $taxes->luas_tanah_pbb= $value->luas_tanah_pbb;
+                $taxes->luas_bangun_pbb= $value->luas_bangun_pbb;
+
+                
+                $taxes->njop_land= $value->njop_land;  
+                $taxes->njop_building= $value->njop_building;
+                $taxes->njop_total= $value->njop_total;
+                $taxes->pbbly= $value->pbbly;
+                
+
+                $taxes->due_date = date('Y-m-d', strtotime($taxes->due_date));
+                $taxes->due_date_ly = date('Y-m-d', strtotime($taxes->due_date_ly));
+                $taxes->selisih= $value->selisih;
+                $taxes->save();
+
+                //ambil NOP yg sama
+                $nocert = $x[0]->nop;
+                $certificates = Certificate::where('nop', $nocert)->get();
+                foreach ($certificates as $cert) {
+                    DB::table('certi_taxs')
+                    ->insert(['tax_id'=>$taxes->id, 'certificate_id'=>$cert->id]);
+                }
+                // $taxes->certax()->attach($request->certificate_id= $nop);
+            }
+        }
+        return redirect()->route('taxes');
+    }
+
+
     /**
      * show add new tax form
      */

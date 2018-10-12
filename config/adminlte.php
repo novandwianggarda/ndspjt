@@ -173,12 +173,14 @@ return [
                     'icon' => 'calendar',
                 ],
 
-                
-
-
                 [
-                    'text' => 'Import',
+                    'text' => 'Import 1 Sert',
                     'url'  => '/taxes/import',
+                    'icon' => 'file-text',
+                ],
+                [
+                    'text' => 'Import 1 PBB',
+                    'url'  => '/taxes/importsert',
                     'icon' => 'file-text',
                 ],
                 [

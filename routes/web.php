@@ -86,6 +86,12 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('import', 'TaxesController@import');
         Route::post('storeimport', 'TaxesController@storeimport')->name('tax.import');
         Route::post('storeimport/save', 'TaxesController@tes');
+
+        //import
+        Route::get('importsert', 'TaxesController@importsert');
+        Route::post('storeimportsert', 'TaxesController@storeimportsert')->name('tax.importsert');
+        Route::post('storeimportsert/save', 'TaxesController@tessert');
+
         //yearsPBB
         Route::get('tahun', 'TaxesController@tahun');
         Route::get('tahunadd', 'TaxesController@tahunadd');

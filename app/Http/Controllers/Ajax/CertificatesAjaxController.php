@@ -19,9 +19,11 @@ class CertificatesAjaxController extends AjaxController
     {
         $for = $request->get('for');
         if ($for == 'tax') {
-            $builder = Certificate::availableForTax();
+            $builder = Certificate::availableForTaxx();
         } else if ($for == 'lease') {
             $builder = Certificate::availableForLease();
+        } else if ($for == 'taxes') {
+            $builder = Certificate::availableForTax();
         }
 
         $certificates = $builder->select('id', 'nama_sertifikat', 'no_hm_hgb')->get();

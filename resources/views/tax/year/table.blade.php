@@ -30,7 +30,7 @@
                                 <tr>
                                     <td> {{$i++}}</td>
                                     
-                                    <td>{{ $tax->taxye->nop }}</td>
+                                    <td>{{ $tax->taxye['nop'] }}</td>
                                     <td>{{ $tax->certye->nama_sertifikat }}</td>
                                     <td>{{ $tax->year}}</td>
                                     <td>

@@ -35,6 +35,7 @@ class CertificateRequest extends FormRequest
             'kepemilikan' => 'nullable',
             'nama_sertifikat' => 'nullable',
             'folder_sert' => 'nullable',
+            'nop' => 'nullable',
             'keterangan' => 'nullable',
             'archive' => 'nullable',
             'kota' => 'nullable',

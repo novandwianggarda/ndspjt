@@ -28,6 +28,7 @@ class CreateCertificatesTable extends Migration
             $table->text('keterangan')->nullable(); 
             $table->text('archive')->nullable(); 
             $table->text('kota')->nullable(); 
+            $table->text('nop')->nullable(); 
 
             $table->text('kecamatan')->nullable(); 
             $table->text('kelurahann')->nullable(); 

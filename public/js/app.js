@@ -745,7 +745,7 @@ Vue.component('lease-payment-terms', __webpack_require__(44));
 Vue.component('lease-payment-history', __webpack_require__(49));
 Vue.component('lease-payment-invoices', __webpack_require__(54));
 Vue.component('certificate-types', __webpack_require__(59));
-Vue.component('pbbcertificates', __webpack_require__(62));
+Vue.component('taxes-certificates', __webpack_require__(62));
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_v_money___default.a, {
     decimal: ',',
@@ -14360,7 +14360,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\forms\\pbbcertificates.vue"
+Component.options.__file = "resources\\assets\\js\\components\\forms\\taxes_certificates.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -14369,9 +14369,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-65ebe310", Component.options)
+    hotAPI.createRecord("data-v-2fb1f774", Component.options)
   } else {
-    hotAPI.reload("data-v-65ebe310", Component.options)
+    hotAPI.reload("data-v-2fb1f774", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -14442,9 +14442,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
-        var select = $('#pbbcertificates');
+        var select = $('#taxes-certificates');
 
-        axios.get('/ajax/pbb/available?for=tax').then(function (response) {
+        axios.get('/ajax/taxes/available?for=taxes').then(function (response) {
             _this.options = response.data;
         });
 
@@ -14453,7 +14453,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (_this.select_certificate_ids.includes('0')) {
                 _this.redirect();
             } else {
-                axios.get('/ajax/certificate/result?ids=' + select.val().toString()).then(function (response) {
+                axios.get('/ajax/taxes/result?ids=' + select.val().toString()).then(function (response) {
                     _this.certificate = response.data;
                     vueEvent.$emit('TC-certificateSelected');
                 });
@@ -14492,7 +14492,7 @@ var render = function() {
               ],
               staticClass: "form-control",
               attrs: {
-                id: "tax-certificates",
+                id: "taxes-certificates",
                 multiple: "multiple",
                 options: _vm.options
               },
@@ -14592,7 +14592,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-65ebe310", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2fb1f774", module.exports)
   }
 }
 

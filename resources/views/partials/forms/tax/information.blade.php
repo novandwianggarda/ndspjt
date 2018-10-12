@@ -4,7 +4,7 @@
         LAND INFORMATION
     </div>
 
-    <pbbcertificates></pbbcertificates>
+    <taxes-certificates></taxes-certificates>
     <input type="hidden" name="certificate_ids" v-model:value="certificateIds">
 
 </accordion>

@@ -174,6 +174,7 @@ class CertificatesController extends Controller
                 $ce->certificate_type_id= $certTypeId;
                 $ce->folder_sert= $value->folder_sert;
                 $ce->no_folder= $value->no_folder;
+                $ce->nop= $value->nop;
                 $ce->kepemilikan= $value->kepemilikan;
                 $ce->nama_sertifikat= $value->nama_sertifikat;
                 $ce->keterangan= $value->keterangan;

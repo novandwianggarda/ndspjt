@@ -81,7 +81,7 @@
             created() {
                 var vm = this;
                 vueEvent.$on('TC-certificateSelected', function() {
-                    vm.certificateIds = $('#lease-certificates').val().toString();
+                    vm.certificateIds = $('#taxes-certificates').val().toString();
                 });
             },
         });
