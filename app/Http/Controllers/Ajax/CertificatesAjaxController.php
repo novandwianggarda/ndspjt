@@ -6,6 +6,8 @@ use App\Http\Controllers\Ajax\AjaxController;
 use Illuminate\Http\Request;
 use App\CertificateType;
 use App\Certificate;
+use App\Tax;
+use App\Year;
 
 class CertificatesAjaxController extends AjaxController
 {
@@ -18,14 +20,11 @@ class CertificatesAjaxController extends AjaxController
     public function availableCertificates(Request $request)
     {
         $for = $request->get('for');
-        if ($for == 'tax') {
-            $builder = Certificate::availableForTaxx();
-        } else if ($for == 'lease') {
+        if ($for == 'lease') {
             $builder = Certificate::availableForLease();
-        } else if ($for == 'taxes') {
+        } else if ($for == 'years') {
             $builder = Certificate::availableForTax();
         }
-
         $certificates = $builder->select('id', 'nama_sertifikat', 'no_hm_hgb')->get();
         return response()->json($certificates);
     }

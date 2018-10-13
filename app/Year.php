@@ -16,13 +16,33 @@ class Year extends Model
     ];
 
 
-    public function taxye()
+    // public function taxye()
+    // {
+    //     return $this->belongsTo('App\Tax', 'tax_id', 'id');
+    // }
+
+    // public function certye()
+    // {
+    //     return $this->belongsTo('App\Certificate', 'certificate_id', 'id');
+    // }
+
+     public function getCertificatesAttribute()
     {
-        return $this->belongsTo('App\Tax', 'tax_id', 'id');
+        $certificateIds = explode(',', $this->certificate_ids);
+        return Certificate::whereIn('id', $certificateIds)->get();
     }
 
-    public function certye()
+
+    public static function yearWithCertificateIds()
     {
-        return $this->belongsTo('App\Certificate', 'certificate_id', 'id');
+        $years = Year::select('id', 'certificate_ids')->get()->toArray();
+        $allIds = [];
+        foreach ($years as $year) {
+            $certificateIds = explode(',', $year['certificate_ids']);
+            foreach ($certificateIds as $certificateId) {
+                array_push($allIds, ['year_id' => $year['id'], 'certificate_id' => $certificateId]);
+            }
+        }
+        return $allIds;
     }
 }

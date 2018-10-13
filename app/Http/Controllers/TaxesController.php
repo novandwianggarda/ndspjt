@@ -29,13 +29,20 @@ class TaxesController extends Controller
         $years = Year::all();
         return view('tax.year.table', compact('years', 'i'));
     }
+
+    // public function tahunadd()
+    // {
+    //     $years = Year::all();
+    //     $certificates = Certificate::all()->pluck('no_hm_hgb', 'id');
+    //     $taxs = Tax::all()->pluck('nop', 'id');
+    //     return view('tax.year.year', compact('years', 'taxs'));
+    // }
+
     public function tahunadd()
     {
-        $i=1;
-        $years = Year::all();
-        $certificates = Certificate::all()->pluck('no_hm_hgb', 'id');
+        $certificates = Certificate::all();
         $taxs = Tax::all()->pluck('nop', 'id');
-        return view('tax.year.year', compact('years', 'certificates', 'taxs', 'i'));
+        return view('tax.year.year', compact('taxs', 'certificates'));
     }
 
 
@@ -223,6 +230,7 @@ class TaxesController extends Controller
                 $taxes->njop_building= $value->njop_building;
                 $taxes->njop_total= $value->njop_total;
                 $taxes->pbbly= $value->pbbly;
+                $taxes->nop= $value->nop;
                 
 
                 $taxes->due_date = date('Y-m-d', strtotime($taxes->due_date));

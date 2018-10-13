@@ -92,17 +92,9 @@ class Tax extends Model implements Auditable
         return Certificate::whereIn('id', $certificateIds)->get();
     }
 
-
-    /** STATIC */
-
-    /**
-     * get all tax with certificate id
-     *
-     * @return array
-     */
     public static function taxWithCertificateIds()
     {
-        $taxes = Tax::select('id', 'certificate_id')->get()->toArray();
+        $taxes = \Tax::select('id', 'certificate_id')->get()->toArray();
         $allIds = [];
         foreach ($taxes as $tax) {
             $certificateIds = explode(',', $tax['certificate_ids']);

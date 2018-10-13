@@ -54,12 +54,14 @@ class Certificate extends Model implements Auditable
     {
         return $this->hasMany('App\CertificateDoc', 'certificate_id', 'id');
     }
-    public function certye()
-    {
-        return $this->hasMany('App\Year', 'id');
-    }
 
+    // public function certye()
+    // {
+    //     return $this->hasMany('App\Year', 'id');
+    // }
     
+
+
     //  public function certif()
     // {
     //     return $this->hasMany('App\Tax', 'certificate_id');
@@ -93,6 +95,19 @@ class Certificate extends Model implements Auditable
         return Lease::find($leaseId);
     }
 
+    /**
+     * get year
+     */
+    public function getYearAttribute()
+    {
+        $yearIds = Year::yearIds();
+        $inArrayNumber = array_search($this->id, array_column($yearIds, 'certificate_id'));
+        $yearId = $yearIds[$inArrayNumber]['year_id'];
+        return Year::find($yearId);
+    }
+
+
+
 
     /** STATIC */
 
@@ -104,6 +119,11 @@ class Certificate extends Model implements Auditable
      */
     public static function availableForLease() {
         $notAvailable = array_column(Lease::leaseWithCertificateIds(), 'certificate_id');
+        return Certificate::whereNotIn('id', $notAvailable);
+    }
+
+    public static function availableForYear() {
+        $notAvailable = array_column(Year::yearWithCertificateIds(), 'certificate_ids');
         return Certificate::whereNotIn('id', $notAvailable);
     }
 
