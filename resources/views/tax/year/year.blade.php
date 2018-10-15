@@ -34,8 +34,7 @@
                                 
                                 <div class="form-groxup">
                                     <div class="col-sm-12" style="padding:0px 25px">
-                                        <button type="submit" class="btn form-control ll-bgcolor ll-white" style="margin-top: 10px;">
-                                            <i class="fa fa-plus"></i>
+                                        <button type="submit" class="btn btn-success" @click="create">
                                             Submit
                                         </button>
                                     </div>

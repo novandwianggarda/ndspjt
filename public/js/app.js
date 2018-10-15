@@ -14445,7 +14445,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         var select = $('#taxes-certificates');
 
-        axios.get('/ajax/taxes/available?for=taxes').then(function (response) {
+        axios.get('/ajax/certificate/available?for=lease').then(function (response) {
             _this.options = response.data;
         });
 
@@ -14454,7 +14454,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (_this.select_certificate_ids.includes('0')) {
                 _this.redirect();
             } else {
-                axios.get('/ajax/taxes/result?ids=' + select.val().toString()).then(function (response) {
+                axios.get('/ajax/certificate/result?ids=' + select.val().toString()).then(function (response) {
                     _this.certificate = response.data;
                     vueEvent.$emit('TC-certificateSelected');
                 });
@@ -14698,26 +14698,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        redirect: function redirect() {
-            window.location = '/certificates/add';
+        fetchData: function fetchData() {
+            var _this = this;
+
+            axios.get('/ajax/year').then(function (res) {
+                _this.year = res.data;
+            }).catch(function (err) {
+                console.log(err);
+            });
         }
     },
     mounted: function mounted() {
-        var _this = this;
+        var _this2 = this;
 
         var select = $('#year-certificates');
 
-        axios.get('/ajax/certificate/available?for=years').then(function (response) {
-            _this.options = response.data;
+        axios.get('/ajax/year/available?for=year').then(function (response) {
+            _this2.options = response.data;
         });
 
         select.select2().change(function () {
-            _this.select_certificate_ids = select.val();
-            if (_this.select_certificate_ids.includes('0')) {
-                _this.redirect();
+            _this2.select_certificate_ids = select.val();
+            if (_this2.select_certificate_ids.includes('0')) {
+                _this2.redirect();
             } else {
-                axios.get('/ajax/certificate/result?ids=' + select.val().toString()).then(function (response) {
-                    _this.certificate = response.data;
+                axios.get('/ajax/year/result?ids=' + select.val().toString()).then(function (response) {
+                    _this2.year = response.data;
                     vueEvent.$emit('YC-certificateSelected');
                 });
             }
@@ -14754,11 +14760,7 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              attrs: {
-                id: "year-certificates",
-                multiple: "multiple",
-                options: _vm.options
-              },
+              attrs: { id: "year-certificates", options: _vm.options },
               on: {
                 change: function($event) {
                   var $$selectedVal = Array.prototype.filter

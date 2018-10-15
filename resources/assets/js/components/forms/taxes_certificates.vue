@@ -52,7 +52,7 @@
         mounted() {
             let select = $('#taxes-certificates');
 
-            axios.get('/ajax/taxes/available?for=taxes').then(response => {
+            axios.get('/ajax/certificate/available?for=lease').then(response => {
                 this.options = response.data;
             });
 
@@ -61,7 +61,7 @@
                 if (this.select_certificate_ids.includes('0')) {
                     this.redirect();
                 } else {
-                    axios.get('/ajax/taxes/result?ids=' + select.val().toString())
+                    axios.get('/ajax/certificate/result?ids=' + select.val().toString())
                          .then(response => {
                             this.certificate = response.data;
                             vueEvent.$emit('TC-certificateSelected');

@@ -6,7 +6,7 @@
                 Certificate(s)
             </label>
             <div>
-                <select id="year-certificates" class="form-control" multiple="multiple" v-model="select_certificate_ids" :options="options">
+                <select id="year-certificates" class="form-control" v-model="select_certificate_ids" :options="options">
                     <option value="0">➕ Add New Certificate</option>
                     <option v-for="option in options" :value="option.id" :key="option.id">
                         {{ option.no_hm_hgb }} - {{ option.nama_sertifikat }}
@@ -45,14 +45,20 @@
             };
         },
         methods: {
-            redirect() {
-                window.location = '/certificates/add';
+            fetchData (){
+                axios.get('/ajax/year')
+                     .then((res) =>{
+                        this.year = res.data
+                     })
+                     .catch((err) => {
+                        console.log(err)
+                     })
             }
         },
         mounted() {
             let select = $('#year-certificates');
 
-            axios.get('/ajax/certificate/available?for=years').then(response => {
+            axios.get('/ajax/year/available?for=year').then(response => {
                 this.options = response.data;
             });
 
@@ -61,9 +67,9 @@
                 if (this.select_certificate_ids.includes('0')) {
                     this.redirect();
                 } else {
-                    axios.get('/ajax/certificate/result?ids=' + select.val().toString())
+                    axios.get('/ajax/year/result?ids=' + select.val().toString())
                          .then(response => {
-                            this.certificate = response.data;
+                            this.year = response.data;
                             vueEvent.$emit('YC-certificateSelected');
                     });
                 }

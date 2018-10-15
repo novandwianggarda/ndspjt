@@ -53,11 +53,11 @@ class TaxRequest extends FormRequest
         ];
     }
 
-    // public function messages()
-    // {
-    //     return [
-    //         'certificate_id.required' => 'The certificate(s) field is required.'
-    //     ];
-    // }
+    public function messages()
+    {
+        return [
+            'certificate_id.required' => 'The certificate(s) field is required.'
+        ];
+    }
 
 }
