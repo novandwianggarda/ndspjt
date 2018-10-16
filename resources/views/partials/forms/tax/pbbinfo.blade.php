@@ -1,11 +1,12 @@
- <accordion name="collapse-land" collapse="in" >
+<accordion name="collapse-pbbinfo">
 
     <div slot="title" class="ll-head">
-        LAND
+        PBB INFORMATION
     </div>
 
-    <years-certificates></years-certificates>
+    <yearspbb-certificates></yearspbb-certificates>
     <input type="hidden" name="certificate_ids" v-model:value="certificateIds">
+
 
 </accordion>
 

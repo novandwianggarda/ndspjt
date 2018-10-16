@@ -16,7 +16,7 @@ class CreateCertiTaxsTable extends Migration
         Schema::create('certi_taxs', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('tax_id');
-            $table->unsignedInteger('certificate_id');
+            $table->unsignedInteger('certificate_ids');
             $table->timestamps();
         });
     }

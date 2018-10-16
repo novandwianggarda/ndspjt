@@ -59,7 +59,8 @@ class Tax extends Model implements Auditable
     // }
 
     public function certax(){
-        return $this->belongsToMany('App\Certificate','certi_taxs');
+        return $this->belongsToMany('App\Certificate', 'certi_taxs', 'tax_id', 'certificate_ids');
+
     }
 
     public function taxye()
@@ -92,16 +93,22 @@ class Tax extends Model implements Auditable
         return Certificate::whereIn('id', $certificateIds)->get();
     }
 
-    public static function taxWithCertificateIds()
+    public static function yearWithTaxIds()
     {
-        $taxes = \Tax::select('id', 'certificate_id')->get()->toArray();
+        $years = Year::select('id', 'tax_id')->get()->toArray();
         $allIds = [];
-        foreach ($taxes as $tax) {
-            $certificateIds = explode(',', $tax['certificate_ids']);
-            foreach ($certificateIds as $certificateId) {
-                array_push($allIds, ['tax_id' => $tax['id'], 'certificate_id' => $certificateId]);
+        foreach ($years as $ye) {
+            $yearIds = explode(',', $ye['tax_id']);
+            foreach ($yearIds as $yearId) {
+                array_push($allIds, ['tax_id' => $ye['id'], 'tax_id' => $yearId]);
             }
         }
         return $allIds;
+    }
+
+
+    public static function availableForYear() {
+        $notAvailable = array_column(Tax::yearWithTaxIds(), 'tax_id');
+        return Tax::whereNotIn('id', $notAvailable);
     }
 }

@@ -6,7 +6,7 @@
                 Certificate(s)
             </label>
             <div>
-                <select id="year-certificates" class="form-control" v-model="select_certificate_ids" :options="options">
+                <select id="years-certificates" class="form-control" v-model="select_certificate_ids" :options="options">
                     <option value="0">➕ Add New Certificate</option>
                     <option v-for="option in options" :value="option.id" :key="option.id">
                         {{ option.no_hm_hgb }} - {{ option.nama_sertifikat }}
@@ -17,9 +17,9 @@
 
         <div v-show="select_certificate_ids.length !== 0">
             <dl class="dl-horizontal">
-                <dt class="text-muted">Number</dt>
+                <dt class="text-muted">No Hm / Hgb</dt>
                 <dd v-html="certificate.no_hm_hgb"></dd>
-                <dt class="text-muted">Name</dt>
+                <dt class="text-muted">Nama Sertifikat</dt>
                 <dd v-html="certificate.nama_sertifikat"></dd>
                 <dt class="text-muted">Type</dt>
                 <dd v-html="certificate.type"></dd>
@@ -45,20 +45,14 @@
             };
         },
         methods: {
-            fetchData (){
-                axios.get('/ajax/year')
-                     .then((res) =>{
-                        this.year = res.data
-                     })
-                     .catch((err) => {
-                        console.log(err)
-                     })
+            redirect() {
+                window.location = '/certificates/add';
             }
         },
         mounted() {
-            let select = $('#year-certificates');
+            let select = $('#years-certificates');
 
-            axios.get('/ajax/year/available?for=year').then(response => {
+            axios.get('/ajax/year/available?for=certificate').then(response => {
                 this.options = response.data;
             });
 
@@ -69,8 +63,8 @@
                 } else {
                     axios.get('/ajax/year/result?ids=' + select.val().toString())
                          .then(response => {
-                            this.year = response.data;
-                            vueEvent.$emit('YC-certificateSelected');
+                            this.certificate = response.data;
+                            vueEvent.$emit('LC-certificateSelected');
                     });
                 }
             });

@@ -40,10 +40,13 @@ Route::middleware('auth')->group(function() {
         Route::get('/available', 'TaxesAjaxController@availableTaxes');
         Route::get('/result', 'TaxesAjaxController@result');
     });
+
     // year
     Route::prefix('/year')->group(function() {
         Route::get('/available', 'YearsAjaxController@availableYear');
         Route::get('/result', 'YearsAjaxController@result');
+        Route::get('/availabletax', 'YearsAjaxController@availableYearpbb');
+        Route::get('/resulttax', 'YearsAjaxController@resultpbb');
     });
 
     // Global

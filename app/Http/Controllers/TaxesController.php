@@ -46,10 +46,10 @@ class TaxesController extends Controller
     }
 
 
-    public function storeyearadd(TaxRequest $request)
+    public function storeyearadd(Request $request)
     {
 
-        //dd($request->all());
+        dd($request->all());
         $t = new Year();
         
         $t->year = $request->input('year');
@@ -60,7 +60,7 @@ class TaxesController extends Controller
         $t->ptkp = $request->input('ptkp');
         $t->stimulus = $request->input('stimulus');
         $t->pbbygdbyr = $request->input('pbbygdbyr');
-        $t->certificate_id=$request->input('certificate_id');
+        $t->certificate_ids=$request->input('certificate_ids');
         $t->tax_id=$request->input('tax_id');
         $t->save();
         return redirect()->route('taxes');
@@ -105,7 +105,7 @@ class TaxesController extends Controller
         'pen_pbb', 'wajib_pajak', 'letak_objek_pajak', 'kelurahan_pbb', 'kota_pbb', 'nop', 'luas_tanah_pbb',
         'luas_bangun_pbb', 'year', 'njop_land', 'njop_building', 'njop_total', 'nominal_ly', 'due_date', 'selisih', 'due_date_ly']);
 
-        $updatecertax = DB::table('certi_taxs')->where('tax_id', $id)->update(['certificate_id' => $request->input('certificate_id')]);
+        $updatecertax = DB::table('certi_taxs')->where('tax_id', $id)->update(['certificate_ids' => $request->input('certificate_ids')]);
         $t->update($tUpdate);
         return redirect()->route('taxes');
     }
@@ -177,7 +177,7 @@ class TaxesController extends Controller
                 $taxes->due_date_ly = date('Y-m-d', strtotime($taxes->due_date_ly));
                 $taxes->selisih= $value->selisih;
                 $taxes->save();
-                $taxes->certax()->attach($request->certificate_id= $no_hm);
+                $taxes->certax()->attach($request->certificate_ids= $no_hm);
             }
         }
         return redirect()->route('taxes');
@@ -243,7 +243,7 @@ class TaxesController extends Controller
                 $certificates = Certificate::where('nop', $nocert)->get();
                 foreach ($certificates as $cert) {
                     DB::table('certi_taxs')
-                    ->insert(['tax_id'=>$taxes->id, 'certificate_id'=>$cert->id]);
+                    ->insert(['tax_id'=>$taxes->id, 'certificate_ids'=>$cert->id]);
                 }
                 // $taxes->certax()->attach($request->certificate_id= $nop);
             }
@@ -293,7 +293,7 @@ class TaxesController extends Controller
         $t->selisih = $request->input('selisih');
 
         $t->save();
-        $t->certax()->attach($request->input('certificate_id'));
+        $t->certax()->attach($request->input('certificate_ids'));
         return redirect()->route('taxes');
     }
 
@@ -312,8 +312,8 @@ class TaxesController extends Controller
         foreach ($tax_data as $taxess) 
         {
             $tax_array[] = array(
-                'Nama Sertifikat' => \App\Certificate::find($taxess->certificate_id)->nama_sertifikat,
-                'Jenis Sertifikat' => @ Certificate::find($taxess->certificate_id)->type->first()->short_name,
+                'Nama Sertifikat' => \App\Certificate::find($taxess->certificate_ids)->nama_sertifikat,
+                'Jenis Sertifikat' => @ Certificate::find($taxess->certificate_ids)->type->first()->short_name,
                 'Folder PBB' => $taxess->folder_pbb,
                 'Rencana Group' => $taxess->rencana_group,
                 'Luas Sertifikat' => $taxess->luas_sertifikat,

@@ -6,7 +6,7 @@
                 Certificate(s)
             </label>
             <div>
-                <select id="taxes-certificates" class="form-control" multiple="multiple" v-model="select_certificate_ids" :options="options">
+                <select id="taxes-certificates" class="form-control" v-model="select_certificate_ids" :options="options">
                     <option value="0">➕ Add New Certificate</option>
                     <option v-for="option in options" :value="option.id" :key="option.id">
                         {{ option.no_hm_hgb }} - {{ option.nama_sertifikat }}
@@ -52,7 +52,7 @@
         mounted() {
             let select = $('#taxes-certificates');
 
-            axios.get('/ajax/certificate/available?for=lease').then(response => {
+            axios.get('/ajax/taxes/available?for=certificate').then(response => {
                 this.options = response.data;
             });
 
@@ -61,7 +61,7 @@
                 if (this.select_certificate_ids.includes('0')) {
                     this.redirect();
                 } else {
-                    axios.get('/ajax/certificate/result?ids=' + select.val().toString())
+                    axios.get('/ajax/taxes/result?ids=' + select.val().toString())
                          .then(response => {
                             this.certificate = response.data;
                             vueEvent.$emit('TC-certificateSelected');

@@ -6,6 +6,8 @@ use App\Http\Controllers\Ajax\AjaxController;
 use Illuminate\Http\Request;
 use App\CertificateType;
 use App\Certificate;
+use App\Tax;
+use App\Year;
 
 class TaxesAjaxController extends AjaxController
 {
@@ -19,8 +21,10 @@ class TaxesAjaxController extends AjaxController
     {
         $for = $request->get('for');
         if ($for == 'certificate') {
-            $builder = Certificate::availableForTaxes();
-        } 
+            $builder = Certificate::availableForLease();
+        } else if ($for == 'years') {
+            $builder = Certificate::availableForTax();
+        }
         $certificates = $builder->select('id', 'nama_sertifikat', 'no_hm_hgb')->get();
         return response()->json($certificates);
     }
@@ -39,7 +43,7 @@ class TaxesAjaxController extends AjaxController
         $result = (object)[];
         foreach ($certificates as $certificates) {
             @$result->no_hm_hgb .='|| ' . $certificates->no_hm_hgb. ' ';
-            @$result->nama_sertifikat .='|| <span title="' .$certificates->keterangan. ' m2">'. $certificates->archive. ' </span> ';
+            @$result->nama_sertifikat .='|| <span title="' .$certificates->keterangan. ' m2">'. $certificates->nama_sertifikat. ' </span> ';
             @$result->type .='|| ' . $certificates->certificate_type. ' ';
             @$result->kepemilikan .='|| ' . $certificates->kepemilikan. ' ';
             @$result->kota .='|| ' . $certificates->kota. ' ';

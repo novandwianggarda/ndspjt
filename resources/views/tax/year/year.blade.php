@@ -26,15 +26,15 @@
                             <div class="panel box">
                                 <!-- BASIC INFORMATION -->
                                 @include('partials.forms.tax.certinformation')
-
-
-                                @include('partials.forms.tax.pbbinformation')
+                                <!-- @include('partials.forms.tax.pbbinformation') -->
+                                @include('partials.forms.tax.pbbinfo')
                                 @include('partials.forms.tax.tahun')
                                 <!-- DETAILS INFORMATION-->
                                 
                                 <div class="form-groxup">
                                     <div class="col-sm-12" style="padding:0px 25px">
-                                        <button type="submit" class="btn btn-success" @click="create">
+                                        <button type="submit" class="btn form-control ll-bgcolor ll-white" style="margin-top: 10px;">
+                                            <i class="fa fa-plus"></i>
                                             Submit
                                         </button>
                                     </div>

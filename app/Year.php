@@ -16,15 +16,20 @@ class Year extends Model
     ];
 
 
-    // public function taxye()
-    // {
-    //     return $this->belongsTo('App\Tax', 'tax_id', 'id');
-    // }
+    public function taxye()
+    {
+        return $this->belongsTo('App\Tax', 'tax_id', 'id');
+    }
 
-    // public function certye()
-    // {
-    //     return $this->belongsTo('App\Certificate', 'certificate_id', 'id');
-    // }
+    public function certye()
+    {
+        return $this->belongsTo('App\Certificate', 'certificate_id', 'id');
+    }
+
+
+
+
+    //ajax
 
      public function getCertificatesAttribute()
     {
@@ -32,15 +37,14 @@ class Year extends Model
         return Certificate::whereIn('id', $certificateIds)->get();
     }
 
-
     public static function yearWithCertificateIds()
     {
         $years = Year::select('id', 'certificate_ids')->get()->toArray();
         $allIds = [];
-        foreach ($years as $year) {
-            $certificateIds = explode(',', $year['certificate_ids']);
+        foreach ($years as $ye) {
+            $certificateIds = explode(',', $ye['certificate_ids']);
             foreach ($certificateIds as $certificateId) {
-                array_push($allIds, ['year_id' => $year['id'], 'certificate_id' => $certificateId]);
+                array_push($allIds, ['lease_id' => $ye['id'], 'certificate_id' => $certificateId]);
             }
         }
         return $allIds;

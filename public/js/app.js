@@ -712,8 +712,8 @@ process.umask = function() { return 0; };
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(14);
-__webpack_require__(68);
-module.exports = __webpack_require__(69);
+__webpack_require__(71);
+module.exports = __webpack_require__(72);
 
 
 /***/ }),
@@ -746,7 +746,8 @@ Vue.component('lease-payment-history', __webpack_require__(49));
 Vue.component('lease-payment-invoices', __webpack_require__(54));
 Vue.component('certificate-types', __webpack_require__(59));
 Vue.component('taxes-certificates', __webpack_require__(62));
-Vue.component('year-certificates', __webpack_require__(65));
+Vue.component('years-certificates', __webpack_require__(65));
+Vue.component('yearspbb-certificates', __webpack_require__(68));
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_v_money___default.a, {
     decimal: ',',
@@ -14445,7 +14446,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         var select = $('#taxes-certificates');
 
-        axios.get('/ajax/certificate/available?for=lease').then(function (response) {
+        axios.get('/ajax/taxes/available?for=certificate').then(function (response) {
             _this.options = response.data;
         });
 
@@ -14454,7 +14455,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (_this.select_certificate_ids.includes('0')) {
                 _this.redirect();
             } else {
-                axios.get('/ajax/certificate/result?ids=' + select.val().toString()).then(function (response) {
+                axios.get('/ajax/taxes/result?ids=' + select.val().toString()).then(function (response) {
                     _this.certificate = response.data;
                     vueEvent.$emit('TC-certificateSelected');
                 });
@@ -14492,11 +14493,7 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              attrs: {
-                id: "taxes-certificates",
-                multiple: "multiple",
-                options: _vm.options
-              },
+              attrs: { id: "taxes-certificates", options: _vm.options },
               on: {
                 change: function($event) {
                   var $$selectedVal = Array.prototype.filter
@@ -14623,7 +14620,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\forms\\year_certificates.vue"
+Component.options.__file = "resources\\assets\\js\\components\\forms\\years_certificates.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -14632,9 +14629,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ac4726ec", Component.options)
+    hotAPI.createRecord("data-v-5d4433a9", Component.options)
   } else {
-    hotAPI.reload("data-v-ac4726ec", Component.options)
+    hotAPI.reload("data-v-5d4433a9", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -14698,33 +14695,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        fetchData: function fetchData() {
-            var _this = this;
-
-            axios.get('/ajax/year').then(function (res) {
-                _this.year = res.data;
-            }).catch(function (err) {
-                console.log(err);
-            });
+        redirect: function redirect() {
+            window.location = '/certificates/add';
         }
     },
     mounted: function mounted() {
-        var _this2 = this;
+        var _this = this;
 
-        var select = $('#year-certificates');
+        var select = $('#years-certificates');
 
-        axios.get('/ajax/year/available?for=year').then(function (response) {
-            _this2.options = response.data;
+        axios.get('/ajax/year/available?for=certificate').then(function (response) {
+            _this.options = response.data;
         });
 
         select.select2().change(function () {
-            _this2.select_certificate_ids = select.val();
-            if (_this2.select_certificate_ids.includes('0')) {
-                _this2.redirect();
+            _this.select_certificate_ids = select.val();
+            if (_this.select_certificate_ids.includes('0')) {
+                _this.redirect();
             } else {
                 axios.get('/ajax/year/result?ids=' + select.val().toString()).then(function (response) {
-                    _this2.year = response.data;
-                    vueEvent.$emit('YC-certificateSelected');
+                    _this.certificate = response.data;
+                    vueEvent.$emit('LC-certificateSelected');
                 });
             }
         });
@@ -14760,7 +14751,7 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              attrs: { id: "year-certificates", options: _vm.options },
+              attrs: { id: "years-certificates", options: _vm.options },
               on: {
                 change: function($event) {
                   var $$selectedVal = Array.prototype.filter
@@ -14817,13 +14808,15 @@ var render = function() {
         },
         [
           _c("dl", { staticClass: "dl-horizontal" }, [
-            _c("dt", { staticClass: "text-muted" }, [_vm._v("Number")]),
+            _c("dt", { staticClass: "text-muted" }, [_vm._v("No Hm / Hgb")]),
             _vm._v(" "),
             _c("dd", {
               domProps: { innerHTML: _vm._s(_vm.certificate.no_hm_hgb) }
             }),
             _vm._v(" "),
-            _c("dt", { staticClass: "text-muted" }, [_vm._v("Name")]),
+            _c("dt", { staticClass: "text-muted" }, [
+              _vm._v("Nama Sertifikat")
+            ]),
             _vm._v(" "),
             _c("dd", {
               domProps: { innerHTML: _vm._s(_vm.certificate.nama_sertifikat) }
@@ -14857,18 +14850,259 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-ac4726ec", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-5d4433a9", module.exports)
   }
 }
 
 /***/ }),
 /* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(69)
+/* template */
+var __vue_template__ = __webpack_require__(70)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\forms\\yearspbb_certificates.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-87829166", Component.options)
+  } else {
+    hotAPI.reload("data-v-87829166", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 69 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            options: [],
+            select_tax_id: [],
+            tax: [],
+            x: ''
+        };
+    },
+
+    methods: {
+        redirect: function redirect() {
+            window.location = '/taxes/add';
+        }
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        var select = $('#years-tax');
+
+        axios.get('/ajax/year/availabletax?for=tax').then(function (response) {
+            _this.options = response.data;
+        });
+
+        select.select2().change(function () {
+            _this.select_tax_id = select.val();
+            if (_this.select_tax_id.includes('0')) {
+                _this.redirect();
+            } else {
+                axios.get('/ajax/year/resulttax?id=' + select.val().toString()).then(function (response) {
+                    _this.tax = response.data;
+                    vueEvent.$emit('LC-taxSelected');
+                });
+            }
+        });
+    }
+});
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("frgroup", [
+        _c("label", { attrs: { slot: "label" }, slot: "label" }, [
+          _vm._v("\n            NOP\n        ")
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.select_tax_id,
+                  expression: "select_tax_id"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "years-tax", options: _vm.options },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.select_tax_id = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "0" } }, [
+                _vm._v("➕ Add New Tax")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.options, function(option) {
+                return _c(
+                  "option",
+                  { key: option.id, domProps: { value: option.id } },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(option.nop) +
+                        " - " +
+                        _vm._s(option.pen_pbb) +
+                        "\n                "
+                    )
+                  ]
+                )
+              })
+            ],
+            2
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.tax.length !== 0,
+              expression: "tax.length !== 0"
+            }
+          ]
+        },
+        [
+          _c("dl", { staticClass: "dl-horizontal" }, [
+            _c("dt", { staticClass: "text-muted" }, [_vm._v("NOP")]),
+            _vm._v(" "),
+            _c("dd", { domProps: { innerHTML: _vm._s(_vm.tax.nop) } }),
+            _vm._v(" "),
+            _c("dt", { staticClass: "text-muted" }, [_vm._v("Penanggung PBB")]),
+            _vm._v(" "),
+            _c("dd", { domProps: { innerHTML: _vm._s(_vm.tax.pen_pbb) } }),
+            _vm._v(" "),
+            _c("dt", { staticClass: "text-muted" }, [
+              _vm._v("Letak Objek Pajak")
+            ]),
+            _vm._v(" "),
+            _c("dd", {
+              domProps: { innerHTML: _vm._s(_vm.tax.letak_objek_pajak) }
+            })
+          ])
+        ]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-87829166", module.exports)
+  }
+}
+
+/***/ }),
+/* 71 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 69 */
+/* 72 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
