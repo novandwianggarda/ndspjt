@@ -91,14 +91,18 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('importsert', 'TaxesController@importsert');
         Route::post('storeimportsert', 'TaxesController@storeimportsert')->name('tax.importsert');
         Route::post('storeimportsert/save', 'TaxesController@tessert');
-
-        //yearsPBB
-        Route::get('tahun', 'TaxesController@tahun');
-        Route::get('tahunadd', 'TaxesController@tahunadd');
-        Route::post('tahunadd', 'TaxesController@storeyearadd');
         //eksport
         Route::get('eksport', 'TaxesController@eksport');
         Route::get('eksported', 'TaxesController@eksported')->name('exporttax.excel');
+
+        //yearsPBB
+        Route::get('tahun', 'TaxesController@tahun')->name('year');
+        Route::get('tahunadd', 'TaxesController@tahunadd');
+        Route::post('tahunadd', 'TaxesController@storeyearadd');
+        Route::get('showyear/{id}', 'TaxesController@showyear');
+
+        Route::patch('/updatyear/{edit}', 'TaxesController@updatetax');
+        Route::delete('/deleteyear/{id}', 'TaxesController@destroyyear')->name('taxyears.destroy');
     });
 
     

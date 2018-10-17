@@ -15,8 +15,8 @@ class CreateYearsTable extends Migration
     {
         Schema::create('years', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('certificate_id')->default(0);
-            $table->integer('tax_id')->default(0);
+            $table->integer('certificate_ids')->default(0);
+            $table->integer('tax_ids')->default(0);
             $table->year('year')->nullable(); // tahun pajak
             
              // NJOP

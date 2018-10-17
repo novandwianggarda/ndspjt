@@ -5,7 +5,7 @@
     </div>
 
     <yearspbb-certificates></yearspbb-certificates>
-    <input type="hidden" name="certificate_ids" v-model:value="certificateIds">
+    <input type="hidden" name="tax_ids" v-model:value="taxIds">
 
 
 </accordion>

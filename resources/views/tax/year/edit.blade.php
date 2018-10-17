@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Year Tax')
+@section('title', 'Land Lord')
 
 @section('content_header')
-    <h1>Year NOP</h1>
+    <h1>Edit Year NOP</h1>
 @stop
 
 @section('content')
@@ -20,7 +20,9 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" id="form-year" action="/taxes/tahunadd" method="POST">
+                    
+                    {!! Form::model($y,  ['url'=>array( '/taxes/updateyear', $y->id), 'method' => 'patch','enctype' => 'multipart/form-data', 'files' => true]) !!}
+
                         @csrf
                         <div class="box-group" id="accordion">
                             <div class="panel box">
@@ -40,7 +42,8 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                  {!! Form::close() !!}
+                    
                 </div>
             </div>
         </div>

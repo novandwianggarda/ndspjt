@@ -14682,7 +14682,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -14715,7 +14714,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else {
                 axios.get('/ajax/year/result?ids=' + select.val().toString()).then(function (response) {
                     _this.certificate = response.data;
-                    vueEvent.$emit('LC-certificateSelected');
+                    vueEvent.$emit('YC-certificateSelected');
                 });
             }
         });
@@ -14832,10 +14831,10 @@ var render = function() {
               domProps: { innerHTML: _vm._s(_vm.certificate.kepemilikan) }
             }),
             _vm._v(" "),
-            _c("dt", { staticClass: "text-muted" }, [_vm._v("Alamat")]),
+            _c("dt", { staticClass: "text-muted" }, [_vm._v("Kecamatan")]),
             _vm._v(" "),
             _c("dd", {
-              domProps: { innerHTML: _vm._s(_vm.certificate.addrees) }
+              domProps: { innerHTML: _vm._s(_vm.certificate.kecamatan) }
             })
           ])
         ]
@@ -14938,21 +14937,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             options: [],
-            select_tax_id: [],
+            select_tax_ids: [],
             tax: [],
             x: ''
         };
-    },
-
-    methods: {
-        redirect: function redirect() {
-            window.location = '/taxes/add';
-        }
     },
     mounted: function mounted() {
         var _this = this;
@@ -14964,13 +14959,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
 
         select.select2().change(function () {
-            _this.select_tax_id = select.val();
-            if (_this.select_tax_id.includes('0')) {
+            _this.select_tax_ids = select.val();
+            if (_this.select_tax_ids.includes('0')) {
                 _this.redirect();
             } else {
                 axios.get('/ajax/year/resulttax?id=' + select.val().toString()).then(function (response) {
                     _this.tax = response.data;
-                    vueEvent.$emit('LC-taxSelected');
+                    vueEvent.$emit('YT-taxSelected');
                 });
             }
         });
@@ -15001,8 +14996,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.select_tax_id,
-                  expression: "select_tax_id"
+                  value: _vm.select_tax_ids,
+                  expression: "select_tax_ids"
                 }
               ],
               staticClass: "form-control",
@@ -15017,34 +15012,27 @@ var render = function() {
                       var val = "_value" in o ? o._value : o.value
                       return val
                     })
-                  _vm.select_tax_id = $event.target.multiple
+                  _vm.select_tax_ids = $event.target.multiple
                     ? $$selectedVal
                     : $$selectedVal[0]
                 }
               }
             },
-            [
-              _c("option", { attrs: { value: "0" } }, [
-                _vm._v("➕ Add New Tax")
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.options, function(option) {
-                return _c(
-                  "option",
-                  { key: option.id, domProps: { value: option.id } },
-                  [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(option.nop) +
-                        " - " +
-                        _vm._s(option.pen_pbb) +
-                        "\n                "
-                    )
-                  ]
-                )
-              })
-            ],
-            2
+            _vm._l(_vm.options, function(option) {
+              return _c(
+                "option",
+                { key: option.id, domProps: { value: option.id } },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(option.nop) +
+                      " - " +
+                      _vm._s(option.pen_pbb) +
+                      "\n                "
+                  )
+                ]
+              )
+            })
           )
         ])
       ]),
@@ -15056,28 +15044,36 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
-              value: _vm.tax.length !== 0,
-              expression: "tax.length !== 0"
+              value: _vm.select_tax_ids.length !== 0,
+              expression: "select_tax_ids.length !== 0"
             }
           ]
         },
         [
           _c("dl", { staticClass: "dl-horizontal" }, [
-            _c("dt", { staticClass: "text-muted" }, [_vm._v("NOP")]),
-            _vm._v(" "),
-            _c("dd", { domProps: { innerHTML: _vm._s(_vm.tax.nop) } }),
-            _vm._v(" "),
-            _c("dt", { staticClass: "text-muted" }, [_vm._v("Penanggung PBB")]),
-            _vm._v(" "),
-            _c("dd", { domProps: { innerHTML: _vm._s(_vm.tax.pen_pbb) } }),
-            _vm._v(" "),
             _c("dt", { staticClass: "text-muted" }, [
               _vm._v("Letak Objek Pajak")
             ]),
             _vm._v(" "),
             _c("dd", {
               domProps: { innerHTML: _vm._s(_vm.tax.letak_objek_pajak) }
-            })
+            }),
+            _vm._v(" "),
+            _c("dt", { staticClass: "text-muted" }, [
+              _vm._v("Luas Sertifikat")
+            ]),
+            _vm._v(" "),
+            _c("dd", {
+              domProps: { innerHTML: _vm._s(_vm.tax.luas_sertifikat) }
+            }),
+            _vm._v(" "),
+            _c("dt", { staticClass: "text-muted" }, [_vm._v("NJOP Tanah")]),
+            _vm._v(" "),
+            _c("dd", { domProps: { innerHTML: _vm._s(_vm.tax.njop_land) } }),
+            _vm._v(" "),
+            _c("dt", { staticClass: "text-muted" }, [_vm._v("NJOP Bangunan")]),
+            _vm._v(" "),
+            _c("dd", { domProps: { innerHTML: _vm._s(_vm.tax.njop_building) } })
           ])
         ]
       )

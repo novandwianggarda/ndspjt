@@ -26,32 +26,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($years as $tax)
+                            @foreach ($years as $year)
                                 <tr>
                                     <td> {{$i++}}</td>
                                     
-                                    <td>{{ $tax->taxye['nop'] }}</td>
-                                    <td>{{ $tax->certye->nama_sertifikat }}</td>
-                                    <td>{{ $tax->year}}</td>
                                     <td>
-
-                                    <form class="delete" action="{{ url('/taxes/delete', $tax->id) }}" method="POST">
-
-                                              {{ csrf_field() }}
-                                        <a href="/taxes/edit/{{ $tax->id }}" class="btn btn-success btn-xs"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
-
-                                              <input name="_method" type="hidden" value="DELETE">
-
-                                              <button type="submit" class="btn btn-xs btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;&nbsp;Delete</button>
-
-
-                                               
-                                              
-                                    </form>
-
-                                                
-
+                                        <a href="/taxes/showyear/{{ $year->id }}">
+                                        {{ $year->taxye['nop'] }}</a>
                                     </td>
+                                    <td>{{ $year->certye->nama_sertifikat }}</td>
+                                    <td>{{ $year->year}}</td>
+
+
+                                    <td>
+                                        {!! Form::open(['method'=>'delete', 'route'=>['taxyears.destroy', $year->id], 'style' => 'display: inline-block;']) !!} 
+                                        {{ csrf_field() }}
+
+                                        {!! Form::button('<i class="fa fa-trash"></i>&nbsp;Delete', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("Do you want to delete this Tax Year ?")']) !!}
+
+                                        {!! Form::close() !!}
+                                    </td>
+
+
+
                                 </tr>
                             @endforeach
                         </tbody>

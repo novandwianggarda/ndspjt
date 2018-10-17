@@ -71,6 +71,11 @@ class Certificate extends Model implements Auditable
         return $this->belongsToMany('App\Tax', 'certi_taxs', 'tax_id', 'certificate_ids');
     }
 
+    public function certye()
+    {
+        return $this->belongsTo('App\Year', 'id');
+    }
+
 
     /** ATTRIBUTES */
 

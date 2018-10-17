@@ -1,7 +1,7 @@
  <accordion name="collapse-land" collapse="in" >
 
     <div slot="title" class="ll-head">
-        LAND
+        LAND INFORMATION
     </div>
 
     <years-certificates></years-certificates>

@@ -92,15 +92,16 @@ class Tax extends Model implements Auditable
         $certificateIds = explode(',', $this->certificate_id);
         return Certificate::whereIn('id', $certificateIds)->get();
     }
+    //year taxid
 
     public static function yearWithTaxIds()
     {
-        $years = Year::select('id', 'tax_id')->get()->toArray();
+        $years = Year::select('id', 'tax_ids')->get()->toArray();
         $allIds = [];
         foreach ($years as $ye) {
-            $yearIds = explode(',', $ye['tax_id']);
+            $yearIds = explode(',', $ye['tax_ids']);
             foreach ($yearIds as $yearId) {
-                array_push($allIds, ['tax_id' => $ye['id'], 'tax_id' => $yearId]);
+                array_push($allIds, ['tax_ids' => $ye['id'], 'tax_ids' => $yearId]);
             }
         }
         return $allIds;
@@ -108,7 +109,7 @@ class Tax extends Model implements Auditable
 
 
     public static function availableForYear() {
-        $notAvailable = array_column(Tax::yearWithTaxIds(), 'tax_id');
+        $notAvailable = array_column(Tax::yearWithTaxIds(), 'tax_ids');
         return Tax::whereNotIn('id', $notAvailable);
     }
 }

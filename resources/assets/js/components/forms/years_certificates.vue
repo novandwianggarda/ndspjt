@@ -25,9 +25,8 @@
                 <dd v-html="certificate.type"></dd>
                 <dt class="text-muted">Kepemilikan</dt>
                 <dd v-html="certificate.kepemilikan"></dd>
-                <dt class="text-muted">Alamat</dt>
-                <dd v-html="certificate.addrees"></dd>
-                
+                <dt class="text-muted">Kecamatan</dt>
+                <dd v-html="certificate.kecamatan"></dd>
             </dl>
         </div>
 
@@ -64,7 +63,7 @@
                     axios.get('/ajax/year/result?ids=' + select.val().toString())
                          .then(response => {
                             this.certificate = response.data;
-                            vueEvent.$emit('LC-certificateSelected');
+                            vueEvent.$emit('YC-certificateSelected');
                     });
                 }
             });

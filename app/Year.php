@@ -18,12 +18,12 @@ class Year extends Model
 
     public function taxye()
     {
-        return $this->belongsTo('App\Tax', 'tax_id', 'id');
+        return $this->belongsTo('App\Tax', 'tax_ids', 'id');
     }
 
     public function certye()
     {
-        return $this->belongsTo('App\Certificate', 'certificate_id', 'id');
+        return $this->belongsTo('App\Certificate', 'certificate_ids', 'id');
     }
 
 
@@ -37,14 +37,14 @@ class Year extends Model
         return Certificate::whereIn('id', $certificateIds)->get();
     }
 
-    public static function yearWithCertificateIds()
+    public static function yearWithTaxIds()
     {
-        $years = Year::select('id', 'certificate_ids')->get()->toArray();
+        $years = Year::select('id', 'tax_ids')->get()->toArray();
         $allIds = [];
-        foreach ($years as $ye) {
-            $certificateIds = explode(',', $ye['certificate_ids']);
-            foreach ($certificateIds as $certificateId) {
-                array_push($allIds, ['lease_id' => $ye['id'], 'certificate_id' => $certificateId]);
+        foreach ($years as $year) {
+            $taxIds = explode(',', $year['taxIds']);
+            foreach ($taxIds as $taxId) {
+                array_push($allIds, ['year_id' => $ye['id'], 'tax_id' => $taxId]);
             }
         }
         return $allIds;

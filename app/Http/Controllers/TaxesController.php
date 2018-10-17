@@ -44,12 +44,10 @@ class TaxesController extends Controller
         $taxs = Tax::all()->pluck('nop', 'id');
         return view('tax.year.year', compact('taxs', 'certificates'));
     }
-
-
     public function storeyearadd(Request $request)
     {
 
-        dd($request->all());
+        //dd($request->all());
         $t = new Year();
         
         $t->year = $request->input('year');
@@ -61,9 +59,28 @@ class TaxesController extends Controller
         $t->stimulus = $request->input('stimulus');
         $t->pbbygdbyr = $request->input('pbbygdbyr');
         $t->certificate_ids=$request->input('certificate_ids');
-        $t->tax_id=$request->input('tax_id');
+        $t->tax_ids=$request->input('tax_ids');
         $t->save();
-        return redirect()->route('taxes');
+        return redirect()->route('year');
+    }
+
+    public function edityear($id)
+    {
+        $y = Year::find($id);
+        return view('tax.year.edit', compact('y'));
+    }
+
+    public function destroyyear($id)
+    {
+        $year = Year::find($id);
+        $year->delete();
+        return redirect()->route('year');
+    }
+
+    public function showyear($id)
+    {
+        $year = Year::find($id);
+        return view('tax.year.show', compact('year'));
     }
 
 

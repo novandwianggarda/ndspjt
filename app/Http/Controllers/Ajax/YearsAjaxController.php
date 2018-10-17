@@ -43,20 +43,21 @@ class YearsAjaxController extends AjaxController
         $result = (object)[];
         foreach ($certificates as $certificates) {
             @$result->no_hm_hgb .='|| ' . $certificates->no_hm_hgb. ' ';
-            @$result->nama_sertifikat .='|| <span title="' .$certificates->keterangan. ' m2">'. $certificates->nama_sertifikat. ' </span> ';
-            @$result->type .='|| ' . $certificates->certificate_type. ' ';
-            @$result->kepemilikan .='|| ' . $certificates->kepemilikan. ' ';
-            @$result->kota .='|| ' . $certificates->kota. ' ';
-            @$result->addrees .='|| ' . $certificates->addrees. ' ';
-            // @$result->area .='|| ' . $certificates->area. 'm<sup>2</sup> ';
-            // @$result->total_area += $certificates->area;
+            @$result->nama_sertifikat .='|| ' . $certificates->nama_sertifikat. ' ';
+            @$result->type .='|| ' . $certificates->certificate_type. ' '; 
+            @$result->kepemilikan .='|| ' . $certificates->kepemilikan. ' '; 
+            @$result->kecamatan .='|| ' . $certificates->kecamatan. ' '; 
         }
-        // @$result->total_area = @$result->total_area . ' m<sup>2</sup>';
         return response()->json($result);
     }
 
 
 
+
+
+
+
+//avalable year-tax
 
     public function availableYearpbb(Request $request)
     {
@@ -85,8 +86,10 @@ class YearsAjaxController extends AjaxController
         foreach ($taxes as $taxes) {
 
             @$result->nop .='|| ' . $taxes->nop. ' ';
-            @$result->pen_pbb .='|| <span title="' .$taxes->kota_pbb. ' m2">'. $taxes->pen_pbb. ' </span> ';
             @$result->letak_objek_pajak .='|| ' . $taxes->letak_objek_pajak. ' ';
+            @$result->luas_sertifikat .='|| ' . $taxes->luas_sertifikat. ' ';
+            @$result->njop_land .='|| ' . $taxes->njop_land. ' ';
+            @$result->njop_building .='|| ' . $taxes->njop_building. ' ';
         }
         return response()->json($result);
     }
