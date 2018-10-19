@@ -95,7 +95,7 @@
                                 <td>{{ $tax->luas_bangun_pbb }}</td>
                             </tr>
 
-                            <tr>
+                           <!--  <tr>
                                 <td>Year </td>
                                 <td>{{ $tax->year }}</td>
                             </tr>
@@ -132,7 +132,7 @@
                             <tr>
                                 <td>Selisih</td>
                                 <td>{{ $tax->selisih }}</td>
-                            </tr>
+                            </tr> -->
                            
                             
 

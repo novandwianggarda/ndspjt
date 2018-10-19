@@ -94,17 +94,19 @@ Route::middleware(['web', 'auth'])->group(function () {
         //eksport
         Route::get('eksport', 'TaxesController@eksport');
         Route::get('eksported', 'TaxesController@eksported')->name('exporttax.excel');
-
-        //yearsPBB
-        Route::get('tahun', 'TaxesController@tahun')->name('year');
-        Route::get('tahunadd', 'TaxesController@tahunadd');
-        Route::post('tahunadd', 'TaxesController@storeyearadd');
-        Route::get('showyear/{id}', 'TaxesController@showyear');
-
-        Route::patch('/updatyear/{edit}', 'TaxesController@updatetax');
-        Route::delete('/deleteyear/{id}', 'TaxesController@destroyyear')->name('taxyears.destroy');
     });
 
+
+    Route::prefix('pbb')->group(function () {
+        
+        //crud pbb
+        Route::get('2018', 'YearController@index')->name('2018');
+        Route::get('2018add', 'YearController@add2018');
+        Route::post('2018add', 'YearController@store2018');
+        Route::delete('/delete2018/{id}', 'YearController@destroy2018')->name('pbb2018.destroy');
+        Route::get('show2018/{id}', 'YearController@show2018');
+        
+    });
     
     // Lease
     Route::prefix('leases')->group(function() {

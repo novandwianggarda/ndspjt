@@ -323,33 +323,44 @@ class TaxesController extends Controller
    public function eksported(){
         //dd($request->all());
 
-        $tax_data = DB::table('taxes')->get()->toArray();  
+        $tax_data = DB::table('taxes')->get();  
         $tax_array[] = array('Nama Sertifikat', 'Jenis Sertifikat', 'Folder PBB', 'Rencana Group', 'Luas Sertifikat', 'Wajib Pajak', 'Letak Objek Pajak', 'Kelurahan', 'Kota', 'Penanggung PBB', 'NOP', 'Luas Tanah PBB', 'Luas Bangun PBB', 'Tahun', 'NJOP Tanah', 'NJOP Bangunan', 'NJOP Total', 'Nominal', 'Tanggal Awal', 'Tanggal Akhir', 'Selisih');
 
-        foreach ($tax_data as $taxess) 
+        foreach ($tax_data as $taxess)
         {
+            $tax = Tax::find($taxess->id); 
+
+
+                $nama_sertifikats = null;
+                $short_names = null;
+                foreach ($tax->certax as $t) {
+                    $nama_sertifikats.=$t->nama_sertifikat;
+                    $short_names.= $t->first()->type->short_name;
+                }
             $tax_array[] = array(
-                'Nama Sertifikat' => \App\Certificate::find($taxess->certificate_ids)->nama_sertifikat,
-                'Jenis Sertifikat' => @ Certificate::find($taxess->certificate_ids)->type->first()->short_name,
-                'Folder PBB' => $taxess->folder_pbb,
-                'Rencana Group' => $taxess->rencana_group,
-                'Luas Sertifikat' => $taxess->luas_sertifikat,
-                'Wajib Pajak' => $taxess->wajib_pajak,
-                'Letak Objek Pajak' => $taxess->letak_objek_pajak,
-                'Kelurahan' => $taxess->kelurahan_pbb,
-                'Kota' => $taxess->kota_pbb,
-                'Penanggung PBB' => $taxess->pen_pbb,
-                'NOP' => $taxess->nop,
-                'Luas Tanah PBB' => $taxess->luas_tanah_pbb,
-                'Luas Bangun PBB' => $taxess->luas_bangun_pbb,
-                'Tahun' => $taxess->year,
-                'NJOP Tanah' => $taxess->njop_land,
-                'NJOP Bangunan' => $taxess->njop_building,
-                'NJOP Total' => $taxess->njop_total,
-                'Nominal' => $taxess->nominal_ly,
-                'Tanggal Awal' => $taxess->due_date,
-                'Tanggal Akhir' => $taxess->due_date_ly,
-                'Selisih' => $taxess->selisih,
+
+
+                'Nama Sertifikat' => $nama_sertifikats,
+                'Jenis Sertifikat' => $short_names,
+                'Folder PBB' => $tax->folder_pbb,
+                'Rencana Group' => $tax->rencana_group,
+                'Luas Sertifikat' => $tax->luas_sertifikat,
+                'Wajib Pajak' => $tax->wajib_pajak,
+                'Letak Objek Pajak' => $tax->letak_objek_pajak,
+                'Kelurahan' => $tax->kelurahan_pbb,
+                'Kota' => $tax->kota_pbb,
+                'Penanggung PBB' => $tax->pen_pbb,
+                'NOP' => $tax->nop,
+                'Luas Tanah PBB' => $tax->luas_tanah_pbb,
+                'Luas Bangun PBB' => $tax->luas_bangun_pbb,
+                'Tahun' => $tax->year,
+                'NJOP Tanah' => $tax->njop_land,
+                'NJOP Bangunan' => $tax->njop_building,
+                'NJOP Total' => $tax->njop_total,
+                'Nominal' => $tax->nominal_ly,
+                'Tanggal Awal' => $tax->due_date,
+                'Tanggal Akhir' => $tax->due_date_ly,
+                'Selisih' => $tax->selisih,
             );
         }
 

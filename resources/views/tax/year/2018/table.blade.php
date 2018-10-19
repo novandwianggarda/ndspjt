@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-<a href="{{url('/taxes/tahunadd')}}" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Add New </a>
+<a href="{{url('/pbb/2018add')}}" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Add New </a>
     <div class="row">
         <div class="col-md-12">
             <!-- <table id="tbl-taxes" class="table table-bordered" style="width:100%"> -->
@@ -31,7 +31,7 @@
                                     <td> {{$i++}}</td>
                                     
                                     <td>
-                                        <a href="/taxes/showyear/{{ $year->id }}">
+                                        <a href="/pbb/show2018/{{ $year->id }}">
                                         {{ $year->taxye['nop'] }}</a>
                                     </td>
                                     <td>{{ $year->certye->nama_sertifikat }}</td>
@@ -39,7 +39,7 @@
 
 
                                     <td>
-                                        {!! Form::open(['method'=>'delete', 'route'=>['taxyears.destroy', $year->id], 'style' => 'display: inline-block;']) !!} 
+                                        {!! Form::open(['method'=>'delete', 'route'=>['pbb2018.destroy', $year->id], 'style' => 'display: inline-block;']) !!} 
                                         {{ csrf_field() }}
 
                                         {!! Form::button('<i class="fa fa-trash"></i>&nbsp;Delete', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("Do you want to delete this Tax Year ?")']) !!}

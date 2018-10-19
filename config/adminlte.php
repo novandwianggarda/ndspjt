@@ -167,11 +167,6 @@ return [
                     'url'  => '/taxes/list',
                     'icon' => 'list',
                 ],
-                [
-                    'text' => 'PBB Pertahun',
-                    'url'  => '/taxes/tahun',
-                    'icon' => 'calendar',
-                ],
 
                 [
                     'text' => 'Import 1 Sert',
@@ -188,6 +183,28 @@ return [
                     'url'  => '/taxes/eksport',
                     'icon' => 'download',
                 ],
+            ],
+        ],
+        [
+            'text'    => 'PBB',
+            'icon'    => 'money',
+            'submenu' => [
+                [
+                    'text' => '2017',
+                    'url'  => '/pbb/2017',
+                    'icon' => 'plus',
+                ],
+                [
+                    'text' => '2018',
+                    'url'  => '/pbb/2018',
+                    'icon' => 'plus',
+                ],
+                [
+                    'text' => '2019',
+                    'url'  => '/pbb/2019',
+                    'icon' => 'plus',
+                ],
+                
             ],
         ],
         [

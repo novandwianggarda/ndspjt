@@ -20,7 +20,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" id="form-year" action="/taxes/tahunadd" method="POST">
+                    <form class="form-horizontal" id="form-year" action="/pbb/2018add" method="POST">
                         @csrf
                         <div class="box-group" id="accordion">
                             <div class="panel box">
