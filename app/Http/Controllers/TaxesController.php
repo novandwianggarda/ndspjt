@@ -20,7 +20,8 @@ class TaxesController extends Controller
     {
         $i=1;
         $taxes = Tax::all();
-        return view('tax.table', compact('taxes', 'i'));
+        $certificates = Certificate::all();
+        return view('tax.table', compact('taxes', 'certificates', 'i'));
     }
 
     public function tahun()
@@ -140,7 +141,7 @@ class TaxesController extends Controller
     public function show($id)
     {
         $tax = Tax::find($id);
-        return view('tax.show')->with('tax', $tax);
+        return view('tax.shows')->with('tax', $tax);
     }
 
     //import taxes

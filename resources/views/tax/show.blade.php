@@ -20,10 +20,8 @@
                             <tr>
                                 <td>Nama Sertifikat</td>
                                 <td>@foreach ($tax->certax as $b)
-                                        
-                            <?php 
-                                print_r($b->nama_sertifikat)
-                            ?>
+
+                                    {{ $b->nama_sertifikat }}
                                     @endforeach
                                 </td>
 

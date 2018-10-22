@@ -55,37 +55,21 @@
 @stop
 
 @section('js')
-    <script>
-        var boundary_coordinates = {!!$mp->boundary_coordinates !!}
-        var map = new google.maps.Map(document.getElementById('map'),{
-
-            position:{
-                boundary_coordinates: boundary_coordinates,
-            },
-            zoom: 15
-        });
-        var marker = new google.maps.Marker({
-            center:{
-               boundary_coordinates: boundary_coordinates, 
-            },
-            map:map
-        });
-    </script>
+    
 
 
 
 
     <script type="text/javascript">
-        var fvue = new Vue({
-            el: '#form-certificate',
-        });
+        
 
         initMap();
 
         function initMap(){
             //Map Option
+            var myLatlng ={lat: -6.984102, lng:110.409293}
             var options = {
-                center: {lat: -6.984102, lng:110.409293},
+                center: myLatlng,
                 zoom: 17,
                 mapTypeId: 'satellite',
             }
@@ -94,10 +78,27 @@
             var map = new google.maps.Map(document.getElementById('map'), options);
 
             //add marker
+           
             var marker = new google.maps.Marker({
-                position:{lat: -6.966667, lng:110.409293},
-                map:map
-            })
+                position: myLatlng,
+                map:map,
+                title: 'Land-Lord'
+            });
+
+            var request = {
+                location: myLatlng,
+                raddius: '2500',
+                types: ['store']
+            };
+
+            service = new google.maps.places.PlacesService(map);
+            service.nearbySearch(request, callback);
+            function callback(results, status){
+                console.log(results);
+            }
+
+
+            
         }
     </script> 
 @stop

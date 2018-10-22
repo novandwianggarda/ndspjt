@@ -42,7 +42,11 @@ class CertificatesController extends Controller
     }
     public function certid(Request $request)    
     {
-        $certificate = Certificate::where('no_hm_hgb', $request->no_hm_hgb)->first();
+        $certificate = Certificate::where('no_hm_hgb', $request->no_hm_hgb)->get()->first();
+
+        // print_r($certificate->count());exit;
+
+
         return view('certificate.shows', compact('certificate'));
     }
     /**

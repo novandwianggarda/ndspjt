@@ -20,6 +20,7 @@ Vue.component('lease-payment-history', require('./components/forms/lease_payment
 Vue.component('lease-payment-invoices', require('./components/forms/lease_payment_invoices.vue'));
 Vue.component('certificate-types', require('./components/forms/certificate_types.vue'));
 Vue.component('taxes-certificates', require('./components/forms/taxes_certificates.vue'));
+
 Vue.component('years-certificates', require('./components/forms/years_certificates.vue'));
 Vue.component('yearspbb-certificates', require('./components/forms/yearspbb_certificates.vue'));
 

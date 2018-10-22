@@ -18,6 +18,7 @@
                             
                             <tr>
                                 <td>NOP</td>
+                                
                                 @foreach($certificate->certax as $cer)
                                     <td>{{ $cer->nop }}</td>
                                 @endforeach

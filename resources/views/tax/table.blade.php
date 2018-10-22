@@ -16,8 +16,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Sertifikat</th>
                                 <th>NOP</th>
+                                <th>Nama Sertifikat</th>
                                 <th>Folder PBB</th>
                                 <th>No HM / HGB</th>
                                 <th>Rencana Group</th>
@@ -41,13 +41,14 @@
                                     <td> {{$i++}}</td>
                                     <td>
                                         <a href="/taxes/show/{{ $tax->id }}">
+                                        {{ $tax->nop }}</a>
+                                    </td>
+                                    <td>
                                             
                                             @foreach ($tax->certax as $b)
                                                 {{$b->nama_sertifikat}}
                                             @endforeach
-                                        </a>
                                     </td>
-                                    <td>{{ $tax->nop }}</td>
                                     <td>{{ $tax->folder_pbb }}</td>
 
                                     <td>

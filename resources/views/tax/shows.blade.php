@@ -1,9 +1,8 @@
 @extends('adminlte::page')
 
-@section('title', 'Add New Tax')
+@section('title', 'Land-Lord')
 
 @section('content_header')
-    <h1>Add New NOP</h1>
 @stop
 
 @section('content')
@@ -11,6 +10,9 @@
         <div class="col-md-12">
             <div class="box box-solid">
                 <div class="box-body">
+                	<h1 style="text-align: center;">DS ESTATES</h1>
+                	<h3 style="text-align: center;">Detail Data Tax</h3>  
+
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -20,24 +22,17 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" id="form-tax" action="/taxes/add" method="POST">
+                    <form class="form-horizontal" id="formshow-tax" action="" method="">
                     <!-- <form class="form-horizontal" id="form-tax" action="/taxes/add" method="POST" v-on:submit.prevent="submitForm"> -->
                         @csrf
                         <div class="box-group" id="accordion">
                             <div class="panel box">
                                 <!-- BASIC INFORMATION -->
-                                @include('partials.forms.tax.information')
+                                @include('partials.forms.show.tax.information')
                                 <!-- TAX DETAILS INFORMATION-->
-                                @include('partials.forms.tax.detailinformation')
+                                @include('partials.forms.show.tax.detailinformation')
                                 
-                                <div class="form-groxup">
-                                    <div class="col-sm-12" style="padding:0px 25px">
-                                        <button type="submit" class="btn form-control ll-bgcolor ll-white" style="margin-top: 10px;">
-                                            <i class="fa fa-plus"></i>
-                                            Submit
-                                        </button>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </form>
@@ -46,32 +41,14 @@
         </div>
     </div>
 @stop
-
-@section('css')
-   {{-- <style>
-        h4.box-title {
-            display: block !important;
-            background-color: #a60099;
-            padding: 10px;
-            color: white;
-        }
-    </style> --}}
-@stop
-
-
-
 @section('js')
     <script>
 
-        var form = $('#form-add-tax');
-        var fvue = new Vue({
-            el: '#form-tax',
-            data: {
-                // shared
-                shared: vueShared,
 
-                // land
-                certificateIds: '',
+        var form = $('#form-show-tax');
+        var fvue = new Vue({
+            el: '#formshow-tax',
+            data: {
             },
             methods: {
                 submitForm() {
