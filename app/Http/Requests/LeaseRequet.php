@@ -38,7 +38,7 @@ class LeaseRequet extends FormRequest
 
             // LEASE DEED aka Akta Sewa
             'lease_deed' => 'nullable',
-            'lease_deed_date' => 'nullable',
+            'lease_deed_date' => 'nullable|date',
 
             // PAYMENT TERMS
             'payment_terms' => 'nullable',

@@ -10,7 +10,8 @@
     <row-box>
         <!--ERRORS-->
         @include('partials.errors')
-        <form class="form-horizontal" id="form-lease" action="/leases/add" method="POST" v-on:submit.prevent="submitForm">
+        <form class="form-horizontal" id="form-lease" action="/leases/add" method="POST" v-on:submit.prevent="submitForm" enctype="multipart/form-data">
+
             @csrf
             <div class="box-group" id="accordion">
                 <div class="panel box">

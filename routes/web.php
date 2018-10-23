@@ -122,7 +122,10 @@ Route::middleware(['web', 'auth'])->group(function () {
         //import
         Route::get('import', 'LeasesController@import');
         Route::post('storeimport', 'LeasesController@storeimport')->name('leases.import');
-        Route::post('storeimport/save', 'LeasesController@leaseimport');
+        Route::post('storeimport/save', 'LeasesController@tes');
+
+
+
         //eksport
         Route::get('eksport', 'LeasesController@eksport');
         Route::get('eksported', 'LeasesController@eksported')->name('exportlease.excel');

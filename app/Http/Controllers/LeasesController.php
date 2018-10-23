@@ -70,6 +70,63 @@ class LeasesController extends Controller
         if ($request->hasFile('upload-file')){
             $path = $request->file('upload-file')->getRealPath();
             $data = Excel::load($path, function($reader){})->get();
+            return view('lease.showdata')->with('data', $data);
+        }   
+        return back();
+    }
+
+    
+
+
+    public function tes(Request $request)
+    {
+        $x = json_decode($request->data);
+        foreach ($x as $d => $value) {
+            $leas = new Lease();
+                
+                $leas->tenant= $value->tenant;
+                $leas->start = date('Y-m-d', strtotime($leas->start));
+                $leas->end = date('Y-m-d', strtotime($leas->end));
+                $leas->note= $value->note;
+                $leas->brok_name= $value->brok_name;
+                $leas->rent_assurance= $value->rent_assurance;
+
+                $leas->purpose= $value->purpose;
+                $leas->lease_deed= $value->lease_deed;
+                $leas->lease_deed_date= $value->lease_deed_date;
+                $leas->payment_terms= $value->payment_terms;
+                $leas->payment_histoty= $value->payment_histoty;
+                $leas->payment_invoice= $value->payment_invoice;
+                $leas->sell_monthly= $value->sell_monthly;
+                $leas->sell_yearly= $value->sell_yearly;
+
+                //rent
+                $leas->rent_m2_monthly= $value->rent_m2_monthly;
+                $leas->rent_m2_monthly_type= $value->rent_m2_monthly_type;
+                $leas->rent_price= $value->rent_price;
+                $leas->rent_price_type= $value->rent_price_type;
+                //perantara
+                $leas->brok_name= $value->brok_name;
+                $leas->brok_fee_yearly= $value->brok_fee_yearly;
+                $leas->brok_fee_paid= $value->brok_fee_paid;
+                //
+                $leas->grace_start= $value->grace_start;
+                $leas->grace_end= $value->grace_end;
+                $leas->save();
+        }
+        return redirect()->route('dashboard');
+    }
+
+
+
+
+
+
+    public function storeimport1(Request $request){
+        //dd($request->all());
+        if ($request->hasFile('upload-file')){
+            $path = $request->file('upload-file')->getRealPath();
+            $data = Excel::load($path, function($reader){})->get();
             
             if (!empty($data) && $data->count()) {
                 foreach ($data as $key => $value) {
