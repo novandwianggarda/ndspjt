@@ -37,8 +37,25 @@
                                 </td>
                                 <td>{{ $cert->kepemilikan }}</td>
                                 <td>{{ $cert->certificate_type }}</td>
-                                <td>{{ $cert->published_date }}</td>
-                                <td>{{ $cert->expired_date }}</td>
+                                
+                                <td>
+                                    <?php 
+                                        $tgl=strtotime($cert->published_date);
+                                        $published=date("d F Y", $tgl); 
+                                    ?>
+                                    {{ $published }}
+                                </td>
+                                <td>
+                                    <?php 
+                                        if($cert->expired_date==null){
+                                            $expired='';
+                                        }else{ 
+                                            $tgl=strtotime($cert->expired_date);
+                                            $expired=date("d F Y", $tgl);
+                                        }
+                                    ?>
+                                    {{$expired}}
+                                </td>
                             </tr>
                         <?php endif;?>
                         @endforeach

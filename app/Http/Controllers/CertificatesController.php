@@ -165,6 +165,8 @@ class CertificatesController extends Controller
     {
         $x = json_decode($request->data);
         foreach ($x as $d => $value) {
+            
+
             $certificate_type= $value->certificate_type;
 
             if($certificate_type){
@@ -183,15 +185,16 @@ class CertificatesController extends Controller
                 $ce->no_hm_hgb= $value->no_hm_hgb;
 
                 $ce->kota= $value->kota;
-                $ce->published_date = date('Y-m-d', strtotime($ce->published_date));
-                $ce->expired_date = date('Y-m-d', strtotime($ce->expired_date));
+                $ce->published_date= $value->published_date->date;
+                $ce->expired_date= @$value->expired_date->date;
+
                 $ce->addrees  = $value->addrees ;
                 $ce->kelurahann = $value->kelurahann;
                 $ce->kecamatan = $value->kecamatan;
                 $ce->purposes = $value->purposes;
                 
                 $ce->ajb_nominal= $value->ajb_nominal;
-                $ce->ajb_date = date('Y-m-d', strtotime($ce->ajb_date));
+                $ce->ajb_date= @$value->ajb_date->date;
                 $ce->boundary_coordinates= $value->boundary_coordinates;
                 $ce->save();
             }

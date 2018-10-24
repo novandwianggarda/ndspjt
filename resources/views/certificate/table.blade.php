@@ -31,8 +31,8 @@
                         <th>Kecamatan</th>
                         <th>Publish Date</th>
                         <th>Expired Date</th>
-                        <th>Ajb Nominal</th>
                         <th>Ajb Date</th>
+                        <th>Ajb Nominal</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -54,10 +54,28 @@
                             <td>{{ $cert->purposes }}</td>
                             <td>{{ $cert->kelurahann }}</td>
                             <td>{{ $cert->kecamatan }}</td>
-                            <td>{{ $cert->published_date }}</td>
-                            <td>{{ $cert->expired_date }}</td>
+                            <?php 
+                                $tgl=strtotime($cert->published_date);
+                                $published=date("d F Y", $tgl); 
+                            ?>
+                            <td>{{ $published }}</td>
+                            <td>
+                                <?php 
+                                    if($cert->expired_date==null){
+                                        $expired='';
+                                    }else{ 
+                                        $tgl=strtotime($cert->expired_date);
+                                        $expired=date("d F Y", $tgl);
+                                    }
+                                ?>
+                                {{$expired}}
+                            </td>
                             <td>{{ $cert->ajb_nominal }}</td>
-                            <td>{{ $cert->ajb_date }}</td>
+                            <?php 
+                                $tgl=strtotime($cert->ajb_date);
+                                $ajb=date("d F Y", $tgl); 
+                            ?>
+                            <td>{{ $ajb }}</td>
                             <td>
                                 {!! Form::open(['method'=>'delete', 'route'=>['certificates.destroy', $cert->id], 'style' => 'display: inline-block;']) !!} 
                                 {{ csrf_field() }}

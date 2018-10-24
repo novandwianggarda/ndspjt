@@ -4,7 +4,7 @@
 @section('title', 'Import Taxes')
 
 @section('content_header')
-    <h1>Import Taxes</h1>
+    <h1>Import 1 Sertifikat banyak PBB</h1>
 @stop
 
 @section('content')
