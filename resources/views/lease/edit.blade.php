@@ -10,30 +10,30 @@
     <row-box>
         <!--ERRORS-->
         @include('partials.errors')
-            <form class="form-horizontal" id="form-lease" action="/leases/add" method="POST" enctype="multipart/form-data">
+            {!! Form::model($lease,  ['url'=>array( '/leases/updatelease', $lease->id), 'method' => 'post','enctype' => 'multipart/form-data', 'files' => true]) !!}
 
             @csrf
             <div class="box-group" id="accordion">
                 <div class="panel box">
                     <!-- LAND -->
-                    @include('partials.forms.lease.land')
+                    @include('partials.forms.lease.edit.land')
                     <!-- PROPERTY -->
-                    @include('partials.forms.lease.property')
+                    @include('partials.forms.lease.edit.property')
                     <!-- LEASE -->
-                    @include('partials.forms.lease.lease')
+                    @include('partials.forms.lease.edit.lease')
                     <!-- SUBMIT BTN -->
                     <div class="form-group" style="margin-top:15px;">
                         <div class="col-sm-12" style="padding:0px 25px">
                             
                             <button type="submit" class="btn form-control ll-bgcolor ll-white">
                                 <i class="fa fa-plus"></i>
-                                Submit
+                                Update
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
+            {!! Form::close() !!}
     </row-box>
 @stop
 

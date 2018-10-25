@@ -17,6 +17,7 @@
                         <th>Length</th>
                         <th>Start</th>
                         <th>End</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +30,15 @@
                             <td>{{ $lease->duration }} Year</td>
                             <td>{{ $lease->start }}</td>
                             <td>{{ $lease->end }}</td>
+                            <td>
+                                {!! Form::open(['method'=>'delete', 'route'=>['lease.destroy', $lease->id], 'style' => 'display: inline-block;']) !!} 
+                                {{ csrf_field() }}
+                                <!-- <a href="/leases/edit/{{ $lease->id }}" class="btn btn-success btn-xs"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a> -->
+
+                                {!! Form::button('<i class="fa fa-trash"></i>&nbsp;Delete', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("Do you want to delete this Lease List ?")']) !!}
+
+                                {!! Form::close() !!}
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -39,6 +49,7 @@
                         <th>Length</th>
                         <th>Start</th>
                         <th>End</th>
+                        <th>Actions</th>
                     </tr>
                 </tfoot>
             </table>

@@ -114,18 +114,19 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('/', function () {
             return redirect('/' . $this->current->uri . '/list');
         });
-        Route::get('list', 'LeasesController@index');
+        Route::get('list', 'LeasesController@index')->name('lease');
         Route::get('show/{id}', 'LeasesController@show');
         //crud lease
         Route::get('add', 'LeasesController@showAddForm');
         Route::post('add', 'LeasesController@store');
+        Route::get('/edit/{id}', 'LeasesController@edit');
+        Route::post('/updatelease', 'LeasesController@updatelease');
+
+        Route::delete('/deletelease/{id}', 'LeasesController@destroy' )->name('lease.destroy');
         //import
         Route::get('import', 'LeasesController@import');
         Route::post('storeimport', 'LeasesController@storeimport')->name('leases.import');
         Route::post('storeimport/save', 'LeasesController@tes');
-
-
-
         //eksport
         Route::get('eksport', 'LeasesController@eksport');
         Route::get('eksported', 'LeasesController@eksported')->name('exportlease.excel');
