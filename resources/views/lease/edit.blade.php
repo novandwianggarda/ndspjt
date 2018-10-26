@@ -7,34 +7,47 @@
 @stop
 
 @section('content')
-    <row-box>
-        <!--ERRORS-->
-        @include('partials.errors')
-            {!! Form::model($lease,  ['url'=>array( '/leases/updatelease', $lease->id), 'method' => 'post','enctype' => 'multipart/form-data', 'files' => true]) !!}
+<div class="row">
+        <div class="col-md-12">
+            <div class="box box-solid">
+                <div class="box-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    {!! Form::model($lease,  ['url'=>array( '/leases/updatelease', $lease->id), 'method' => 'patch', 'id' => 'form-lease', 'enctype' => 'multipart/form-data', 'files' => true]) !!}
 
-            @csrf
-            <div class="box-group" id="accordion">
-                <div class="panel box">
-                    <!-- LAND -->
-                    @include('partials.forms.lease.edit.land')
-                    <!-- PROPERTY -->
-                    @include('partials.forms.lease.edit.property')
-                    <!-- LEASE -->
-                    @include('partials.forms.lease.edit.lease')
-                    <!-- SUBMIT BTN -->
-                    <div class="form-group" style="margin-top:15px;">
-                        <div class="col-sm-12" style="padding:0px 25px">
-                            
-                            <button type="submit" class="btn form-control ll-bgcolor ll-white">
-                                <i class="fa fa-plus"></i>
-                                Update
-                            </button>
+                    @csrf
+                    <div class="box-group" id="accordion">
+                        <div class="panel box">
+                            <!-- LAND -->
+                            @include('partials.forms.lease.edit.land')
+                            <!-- PROPERTY -->
+                            @include('partials.forms.lease.edit.property')
+                            <!-- LEASE -->
+                            @include('partials.forms.lease.edit.lease')
+                            <!-- SUBMIT BTN -->
+                            <div class="form-group" style="margin-top:15px;">
+                                <div class="col-sm-12" style="padding:0px 25px">
+                                    
+                                    <button type="submit" class="btn form-control ll-bgcolor ll-white">
+                                        <i class="fa fa-plus"></i>
+                                        Update
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
-            {!! Form::close() !!}
-    </row-box>
+        </div>
+    </div>
 @stop
 
 @section('css')

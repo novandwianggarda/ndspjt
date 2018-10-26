@@ -120,7 +120,9 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('add', 'LeasesController@showAddForm');
         Route::post('add', 'LeasesController@store');
         Route::get('/edit/{id}', 'LeasesController@edit');
-        Route::post('/updatelease', 'LeasesController@updatelease');
+        Route::patch('/updatelease/{edit}', 'LeasesController@updatelease');
+
+
 
         Route::delete('/deletelease/{id}', 'LeasesController@destroy' )->name('lease.destroy');
         //import

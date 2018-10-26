@@ -68,15 +68,18 @@ class LeasesController extends Controller
 
     public function updatelease(Request $request, $id)
     {
+        // dd($request->all());
         $data = Lease::find($id);
         $data->lessor = $request->input('lessor');
         $data->lessor_pkp = $request->input('lessor_pkp');
         $data->tenant = $request->input('tenant');
         $data->purpose = $request->input('purpose');
         $data->start = $request->input('start');
+
         $data->end = $request->input('end');
         $data->note = $request->input('note');
         $data->lease_deed = $request->input('lease_deed');
+        $data->lease_deed_notary = $request->input('lease_deed_notary');
         $data->lease_deed_date = $request->input('lease_deed_date');
         $data->payment_terms = $request->input('payment_terms');
         $data->payment_history = $request->input('payment_history');
