@@ -43,7 +43,7 @@ class LeasesController extends Controller
     public function store(LeaseRequet $request)
     {
         $data = $request->all();
-        //dd($data);
+        dd($data);
         // parse to int
         $data['brok_fee_yearly'] = (int)$data['brok_fee_yearly'];
         // $data['brok_fee_paid'] = (int)$data['brok_fee_paid'];
@@ -68,15 +68,18 @@ class LeasesController extends Controller
 
     public function updatelease(Request $request, $id)
     {
+        // dd($request->all());
         $data = Lease::find($id);
         $data->lessor = $request->input('lessor');
         $data->lessor_pkp = $request->input('lessor_pkp');
         $data->tenant = $request->input('tenant');
         $data->purpose = $request->input('purpose');
         $data->start = $request->input('start');
+
         $data->end = $request->input('end');
         $data->note = $request->input('note');
         $data->lease_deed = $request->input('lease_deed');
+        $data->lease_deed_notary = $request->input('lease_deed_notary');
         $data->lease_deed_date = $request->input('lease_deed_date');
         $data->payment_terms = $request->input('payment_terms');
         $data->payment_history = $request->input('payment_history');
@@ -125,12 +128,23 @@ class LeasesController extends Controller
         }   
         return back();
     }
-
-     public function tes(Request $request)
+    
+    public function tes(Request $request)
     {
+        // dd($request->all());
         $x = json_decode($request->data);
         foreach ($x as $d => $value) {
-            $leas = new Lease();
+            $alamat = $value->alamat;
+            $no_hm = $value->no_hm;
+
+            if($alamat){
+
+                $propId = \App\Property::where('address', $alamat)->get()->first()->id;
+                $no_hm = \App\Certificate::where('no_hm_hgb', $no_hm)->get()->first()->id;
+                
+                $leas = new Lease();
+                $leas->property_ids= $propId;
+                $leas->certificate_ids= $no_hm;
                 $leas->tenant= $value->tenant;
                 $leas->start= $value->start->date;
                 $leas->end= $value->end->date;
@@ -139,11 +153,14 @@ class LeasesController extends Controller
                 $leas->brok_name= $value->brok_name;
                 $leas->rent_assurance= $value->rent_assurance;
                 $leas->brok_fee_yearly= $value->brok_fee_yearly;
-                $leas->payment_history= $value->payment_history;
+                $leas->sell_yearly= $value->sell_yearly;
+                $leas->lease_deed= $value->lease_deed;
                 $leas->save();
+            }
         }
-        return redirect()->route('dashboard');
+        return redirect()->route('lease');
     }
+
 
 
     

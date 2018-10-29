@@ -33,6 +33,13 @@
         <input type="text" name="tenant" value="{{ old('tenant') }}" class="form-control" />
     </frgroup>
 
+    <frgroup>
+        <label slot="label">
+            Asuransi
+        </label>
+        <input type="text" name="rent_assurance" value="{{ old('rent_assurance') }}" class="form-control" />
+    </frgroup>
+
     <frgroup wl="2">
         <label slot="label">
             Tipe Penyewa

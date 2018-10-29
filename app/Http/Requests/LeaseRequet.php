@@ -26,39 +26,43 @@ class LeaseRequet extends FormRequest
         return [
             'certificate_ids' => 'nullable',
             'property_ids' => 'nullable',
-
-            // LEASE BASE
-            'lessor' => 'nullable',
-            'lessor_pkp' => 'nullable',
-            'tenant' => 'nullable',
-            'purpose' => 'nullable',
-            'start' => 'nullable|date',
-            'end' => 'nullable|date',
-            'note' => 'nullable',
-
-            // LEASE DEED aka Akta Sewa
-            'lease_deed' => 'nullable',
-            'lease_deed_date' => 'nullable|date',
-
-            // PAYMENT TERMS
-            'payment_terms' => 'nullable',
-
-            // PAYMENT HISTORY
-            'payment_history' => 'nullable',
-
-            // PAYMENT INVOICES
-            'payment_invoices' => 'nullable',
-
-            // PRICE
-
             // -- Offer Price
             'sell_monthly' => 'nullable',
             'sell_yearly' => 'nullable',
 
-            // -- Lease Price
+            // LEASE BASE
+            'lessor' => 'nullable',
+            'lessor_pkp' => 'nullable',
+            //tenant
+            'tenant' => 'nullable',
+            'tenant_type' => 'nullable',
+            'purpose' => 'nullable',
+            'pic' => 'nullable',
+            // LEASE DEED aka Akta Sewa
+            'lease_deed' => 'nullable',
+            'lease_deed_number' => 'nullable',
+            'lease_deed_date' => 'nullable|date',
+            // GRACE
+            'grace_start' => 'nullable|date',
+            'grace_end' => 'nullable|date',
+            
+            'start' => 'nullable|date',
+            'end' => 'nullable|date',
+            'note' => 'nullable',
+
+
+
+            // PAYMENT HISTORY
+
+            // PAYMENT INVOICES
             'rent_m2_monthly' => 'nullable',
             'rent_m2_monthly_type' => 'nullable',
             'rent_price' => 'nullable',
+            // PAYMENT TERMS
+            'payment_invoices' => 'nullable',
+            'payment_terms' => 'nullable',
+            'payment_history' => 'nullable',
+
             'rent_price_type' => 'nullable',
             'rent_assurance' => 'nullable',
 
@@ -67,9 +71,6 @@ class LeaseRequet extends FormRequest
             'brok_fee_yearly' => 'nullable',
             'brok_fee_paid' => 'nullable',
 
-            // GRACE
-            'grace_start' => 'nullable|date',
-            'grace_end' => 'nullable|date',
 
         ];
     }

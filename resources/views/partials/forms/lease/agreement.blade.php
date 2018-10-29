@@ -8,7 +8,7 @@
         <label slot="label">
             Nama Notaris
         </label>
-        <input type="text" name="lease_deed_notary" value="{{ old('lease_deed') }}" class="form-control" />
+        <input type="text" name="lease_deed" value="{{ old('lease_deed') }}" class="form-control" />
     </frgroup>
 
     <frgroup>

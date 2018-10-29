@@ -92,32 +92,32 @@ class PropertiesController extends Controller
     }
 
 
-
     public function tes(Request $request)
     {
-        // $x = json_decode($request->data);
-        // foreach ($x as $d) {
-        //     echo $d->property_type;
-        // }
+        // dd($request->all());
         $x = json_decode($request->data);
         foreach ($x as $d => $value) {
-            $propertyTypeId = \App\PropertyType::where('name', strtolower($value->property_type))->first()->id;
-            $properties = new Property();
-            $properties->property_type_id= $propertyTypeId;
-            $properties->name= $value->name;
-            $properties->address= $value->address;
-            $properties->land_area= $value->land_area;
-            $properties->building_area= $value->building_area;
-            $properties->block= $value->block;
-            $properties->floor= $value->floor;
-            $properties->unit= $value->unit;
-            $properties->electricity= $value->electricity;
-            $properties->water= $value->water;
-            $properties->telephone= $value->telephone;
-            $properties->save();
+            $property_type = $value->property_type;
+
+            if($property_type){
+
+                $propTypeId = \App\PropertyType::where('name', $property_type)->get()->first()->id;
+                
+                $properties = new Property();
+                $properties->property_type_id= $propTypeId;
+                $properties->name= $value->name;
+                $properties->address= $value->address;
+                $properties->land_area= $value->land_area;
+                $properties->block= $value->block;
+                $properties->electricity= $value->electricity;
+                $properties->water= $value->water;
+                $properties->telephone= $value->telephone;
+                $properties->save();
+            }
         }
         return redirect()->route('properties');
     }
+
 
 
     public function eksport(){

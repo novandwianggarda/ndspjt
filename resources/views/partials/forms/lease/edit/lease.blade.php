@@ -5,10 +5,9 @@
     </div>
 
     <frgroup>
-        <label slot="label">
-            Yang Menyewakan
-        </label>
-        <input type="text" name="lessor" value="{{ old('lessor') }}" class="form-control" />
+        {!! Form::label('lessor', 'Yang Menyewakan', ['slot'=>'label']) !!}
+        {!! Form::text('lessor', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('lessor')?$errors->first('lessor'):'' !!}
     </frgroup>
 
     <frgroup>
@@ -27,12 +26,10 @@
     </frgroup>
 
     <frgroup>
-        <label slot="label">
-            Nama Penyewa
-        </label>
-        <input type="text" name="tenant" value="{{ old('tenant') }}" class="form-control" />
+        {!! Form::label('tenant', 'Nama Penyewa', ['slot'=>'label']) !!}
+        {!! Form::text('tenant', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('tenant')?$errors->first('tenant'):'' !!}
     </frgroup>
-
     <frgroup wl="2">
         <label slot="label">
             Tipe Penyewa
@@ -55,17 +52,15 @@
     </frgroup>
 
     <frgroup>
-        <label slot="label">
-            Keperluan Sewa
-        </label>
-        <input type="text" name="purpose" value="{{ old('purpose') }}" class="form-control" />
+        {!! Form::label('purpose', 'Keperluan Sewa', ['slot'=>'label']) !!}
+        {!! Form::text('purpose', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('purpose')?$errors->first('purpose'):'' !!}
     </frgroup>
 
     <frgroup>
-        <label slot="label">
-            PIC
-        </label>
-        <input type="text" name="pic" value="{{ old('pic') }}" class="form-control" />
+        {!! Form::label('pic', 'PIC', ['slot'=>'label']) !!}
+        {!! Form::text('pic', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('pic')?$errors->first('pic'):'' !!}
     </frgroup>
 
     <!-- AGREEMENT -->

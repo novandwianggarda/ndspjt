@@ -28,7 +28,7 @@ class PropertyRequest extends FormRequest
             'name' => 'nullable|string',
             'address' => 'nullable',
             'land_area' => 'nullable',
-            'building_ara' => 'nullable',
+            'building_area' => 'nullable',
             'block' => 'nullable',
             'floor' => 'nullable',
             'unit' => 'nullable',

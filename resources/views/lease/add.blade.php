@@ -56,7 +56,6 @@
 
         // lease deed
         var oldLeaseDeedDate = "{{ old('lease_deed_date') }}";
-
         // lease period
         var oldStart = "{{ old('start') }}";
         var oldEnd = "{{ old('end') }}";

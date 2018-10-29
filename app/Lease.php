@@ -79,6 +79,16 @@ class Lease extends Model implements Auditable
         return $this->hasMany('App\LeasePayment', 'lease_id', 'id');
     }
 
+    public function prop()
+    {
+        return $this->belongsTo('App\Property', 'property_ids', 'id');
+    }
+
+    public function cert()
+    {
+        return $this->belongsTo('App\Certificate', 'certificate_ids', 'id');
+    }
+
 
     /** ATTRIBUTES */
 

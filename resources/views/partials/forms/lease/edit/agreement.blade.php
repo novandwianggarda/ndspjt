@@ -5,17 +5,15 @@
     </div>
 
     <frgroup>
-        <label slot="label">
-            Nama Notaris
-        </label>
-        <input type="text" name="lease_deed_notary" value="{{ old('lease_deed') }}" class="form-control" />
+        {!! Form::label('lease_deed_notary', 'Nama Notaris', ['slot'=>'label']) !!}
+        {!! Form::text('lease_deed_notary', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('lease_deed_notary')?$errors->first('lease_deed_notary'):'' !!}
     </frgroup>
 
     <frgroup>
-        <label slot="label">
-            No Akta Sewa
-        </label>
-        <input type="text" name="lease_deed_number" value="{{ old('lease_deed_number') }}" class="form-control" />
+        {!! Form::label('lease_deed_number', 'No Akta Sewa', ['slot'=>'label']) !!}
+        {!! Form::text('lease_deed_number', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('lease_deed_number')?$errors->first('lease_deed_number'):'' !!}
     </frgroup>
 
     <frgroup>
