@@ -58,7 +58,7 @@ class CertificatesController extends Controller
     {
         
         // dd($request->input('title'));
-        //dd($request->all());
+        dd($request->all());
         $data = $request->all();
         $add = Certificate::create($data);
         if (!$add) { 

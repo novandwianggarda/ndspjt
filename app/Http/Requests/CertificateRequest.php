@@ -47,6 +47,7 @@ class CertificateRequest extends FormRequest
 
             'ajb_nominal' => 'nullable',
             'ajb_date' => 'nullable|date',
+            'map_coordinate' => 'nullable|json',
             'boundary_coordinates' => 'nullable|json',
             'no_hm_hgb' => 'nullable',
 
