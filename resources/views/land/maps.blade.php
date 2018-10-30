@@ -25,9 +25,6 @@
                         @csrf
                         <div class="box-group" id="accordion">
                             <div class="panel box">
-                                @foreach ($map as $mp)
-                                    <h2>{{ $mp->boundary_coordinates}}</h2>
-                                @endforeach
                                 <div id="map"></div>
                             </div>
                         </div>

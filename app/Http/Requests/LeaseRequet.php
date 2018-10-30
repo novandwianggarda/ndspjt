@@ -36,11 +36,12 @@ class LeaseRequet extends FormRequest
             //tenant
             'tenant' => 'nullable',
             'tenant_type' => 'nullable',
+
             'purpose' => 'nullable',
             'pic' => 'nullable',
             // LEASE DEED aka Akta Sewa
-            'lease_deed' => 'nullable',
-            'lease_deed_number' => 'nullable',
+            'lease_deed' => 'nullable', 
+            'lease_number' => 'nullable',
             'lease_deed_date' => 'nullable|date',
             // GRACE
             'grace_start' => 'nullable|date',
@@ -49,18 +50,6 @@ class LeaseRequet extends FormRequest
             'start' => 'nullable|date',
             'end' => 'nullable|date',
             'note' => 'nullable',
-
-<<<<<<< HEAD
-=======
-            // LEASE DEED aka Akta Sewa
-            
-            'lease_deed' => 'nullable',
-            'lease_deed_notary' => 'nullable',
-            'lease_deed_date' => 'nullable|date',
->>>>>>> 717794b48f0314e4e666a0c2cd72502b72638a40
-
-
-            // PAYMENT HISTORY
 
             // PAYMENT INVOICES
             'rent_m2_monthly' => 'nullable',

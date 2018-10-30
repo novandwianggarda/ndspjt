@@ -15,7 +15,7 @@
         <label slot="label">
             No Akta Sewa
         </label>
-        <input type="text" name="lease_deed_number" value="{{ old('lease_deed_number') }}" class="form-control" />
+        <input type="text" name="lease_number" value="{{ old('lease_number') }}" class="form-control" />
     </frgroup>
 
     <frgroup>

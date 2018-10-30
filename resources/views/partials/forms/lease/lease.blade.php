@@ -34,10 +34,10 @@
     </frgroup>
 
     <frgroup>
-        <label slot="label">
-            Asuransi
-        </label>
-        <input type="text" name="rent_assurance" value="{{ old('rent_assurance') }}" class="form-control" />
+            <label slot="label">
+                Jaminan Asuransi
+            </label>
+            <money name="rent_assurance" class="form-control" value="{{ old('rent_assurance') }}"></money>
     </frgroup>
 
     <frgroup wl="2">

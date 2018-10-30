@@ -16,10 +16,10 @@ class Lease extends Model implements Auditable
         'certificate_ids', 'property_ids',
 
         // LEASE BASE
-        'lessor', 'lessor_pkp', 'tenant', 'purpose', 'start', 'end', 'note',
+        'lessor', 'lessor_pkp', 'tenant', 'tenant_type', 'purpose', 'start', 'end', 'note',
 
         // LEASE DEED aka Akta Sewa
-        'lease_deed', 'lease_deed_date',
+        'lease_deed', 'lease_number', 'lease_deed_date', 'pic',
 
         // PAYMENT TERMS
         'payment_terms',

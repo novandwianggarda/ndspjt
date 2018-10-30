@@ -12,11 +12,11 @@
         </div>
     </frgroup>
 
-    <!-- <frgroup>
+    <frgroup>
         <label slot="label">
            No Akta Sewa
         </label>
-        <div>{{ $lease->lease_deed_number }}
+        <div>{{ $lease->lease_number }}
         </div>
     </frgroup>
 
@@ -26,7 +26,7 @@
         </label>
         <div>{{ $lease->lease_deed_date }}
         </div>
-    </frgroup> -->
+    </frgroup>
 
 
 

@@ -73,9 +73,8 @@
         // lease payment history
         oldPaymentHistory = '{!! old('payment_history') !!}' === '' ? [] : JSON.parse('{!! old('payment_history') !!}');
         vueShared.paymentHistory = oldPaymentHistory;
-
-        // lease invioces
-        oldPaymentInvoices = "{{ old('payment_invoices') }}" === '' ? [] : JSON.parse('{{ old('payment_invoices') }}');
+        // lease payment history
+        oldPaymentInvoices = '{!! old('payment_invoices') !!}' === '' ? [] : JSON.parse('{!! old('payment_invoices') !!}');
         vueShared.paymentInvoices = oldPaymentInvoices;
 
         var fvue = new Vue({
@@ -180,21 +179,6 @@
                 submitForm() {
                     console.log(form.serialize());
                 },
-                // submitForm: function (event) {
-                //   axios.post('add', {
-                //     lessor: '',
-                //     lessor_pkp: '',
-                //     tenant: '',
-                //     purpose: '',
-                //     start: '',
-                //     end: '',
-                //     note: '',
-                //     lease_deed: '',
-                //     lease_deed_date: '',
-                //     payment_terms: '',
-                //     payment_history: '',
-                //     lastName: ''
-                // }),
             },
             created() {
                 var vm = this;

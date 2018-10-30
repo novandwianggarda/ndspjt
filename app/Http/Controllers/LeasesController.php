@@ -43,9 +43,9 @@ class LeasesController extends Controller
     public function store(LeaseRequet $request)
     {
         $data = $request->all();
-        dd($data);
+        // dd($data);
         // parse to int
-        $data['brok_fee_yearly'] = (int)$data['brok_fee_yearly'];
+        // $data['brok_fee_yearly'] = (int)$data['brok_fee_yearly'];
         // $data['brok_fee_paid'] = (int)$data['brok_fee_paid'];
         // parse to date
         $data['start'] = empty($data['start']) ? null : $this->parseDate($data['start']);
@@ -79,7 +79,7 @@ class LeasesController extends Controller
         $data->end = $request->input('end');
         $data->note = $request->input('note');
         $data->lease_deed = $request->input('lease_deed');
-        $data->lease_deed_notary = $request->input('lease_deed_notary');
+        $data->lease_number = $request->input('lease_number');
         $data->lease_deed_date = $request->input('lease_deed_date');
         $data->payment_terms = $request->input('payment_terms');
         $data->payment_history = $request->input('payment_history');
@@ -99,7 +99,7 @@ class LeasesController extends Controller
 
         $dataUpdate = $request->only([
         'certificate_ids', 'property_ids', 'lessor', 'lessor_pkp',
-        'tenant', 'purpose', 'start', 'end', 'note', 'lease_deed_date', 'lease_deed',
+        'tenant', 'purpose', 'start', 'end', 'note', 'lease_deed_date', 'lease_number', 'lease_deed',
         'payment_terms', 'payment_history', 'payment_invoices', 'sell_monthly', 'sell_yearly', 'rent_m2_monthly', 'rent_m2_monthly_type', 'rent_price', 'rent_price_type', 'rent_assurance', 'brok_name', 'brok_fee_yearly', 'brok_fee_paid', 'grace_start', 'grace_end']);
         $data->update($dataUpdate);
         return redirect()->route('lease');

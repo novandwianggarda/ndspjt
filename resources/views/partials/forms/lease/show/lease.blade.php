@@ -75,6 +75,7 @@
     @include('partials.forms.lease.show.payment_term')
 
     <!-- INVOICE -->
+    @include('partials.forms.lease.show.payment_invoice')
     
 
     <!-- PAYMENT HISTORY -->

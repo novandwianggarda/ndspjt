@@ -5,10 +5,9 @@
     </div>
 
     <frgroup>
-        <label slot="label">
-            Nama Broker
-        </label>
-        <input type="text" name="brok_name" value="{{ old('brok_name') }}" class="form-control" />
+        {!! Form::label('brok_name', 'Nama Broker', ['slot'=>'label']) !!}
+        {!! Form::text('brok_name', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('brok_name')?$errors->first('brok_name'):'' !!}
     </frgroup>
 
     <frgroup>
@@ -29,7 +28,7 @@
         <label slot="label">
             Fee Payment
         </label>
-        {{-- <money name="brok_fee_paid" value="{{ old('brok_fee_paid') }}" class="form-control"></money> --}}
+        <money name="brok_fee_paid" value="{{ old('brok_fee_paid') }}" class="form-control"></money>
     </frgroup>
 
 </accordion>

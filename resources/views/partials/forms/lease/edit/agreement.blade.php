@@ -5,15 +5,15 @@
     </div>
 
     <frgroup>
-        {!! Form::label('lease_deed_notary', 'Nama Notaris', ['slot'=>'label']) !!}
-        {!! Form::text('lease_deed_notary', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('lease_deed_notary')?$errors->first('lease_deed_notary'):'' !!}
+        {!! Form::label('lease_deed', 'Nama Notaris', ['slot'=>'label']) !!}
+        {!! Form::text('lease_deed', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('lease_deed')?$errors->first('lease_deed'):'' !!}
     </frgroup>
 
     <frgroup>
-        {!! Form::label('lease_deed_number', 'No Akta Sewa', ['slot'=>'label']) !!}
-        {!! Form::text('lease_deed_number', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('lease_deed_number')?$errors->first('lease_deed_number'):'' !!}
+        {!! Form::label('lease_number', 'No Akta Sewa', ['slot'=>'label']) !!}
+        {!! Form::text('lease_number', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('lease_number')?$errors->first('lease_number'):'' !!}
     </frgroup>
 
     <frgroup>

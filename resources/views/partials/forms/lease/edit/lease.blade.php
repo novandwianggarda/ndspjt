@@ -64,31 +64,31 @@
     </frgroup>
 
     <!-- AGREEMENT -->
-    @include('partials.forms.lease.agreement')
+    @include('partials.forms.lease.edit.agreement')
 
     <!-- GRACE PERIOD -->
-    @include('partials.forms.lease.grace')
+    @include('partials.forms.lease.edit.grace')
 
     <!-- LEASE PERIOD -->
-    @include('partials.forms.lease.lease_period')
+    @include('partials.forms.lease.edit.lease_period')
 
     <!-- LEASE PRICE -->
-    @include('partials.forms.lease.lease_price')
+    @include('partials.forms.lease.edit.lease_price')
 
     <!-- PAYMENT TERMS-->
-    @include('partials.forms.lease.payment_term')
+    @include('partials.forms.lease.edit.payment_term')
 
     <!-- INVOICE -->
-    @include('partials.forms.lease.payment_invoice')
+    @include('partials.forms.lease.edit.payment_invoice')
 
     <!-- PAYMENT HISTORY -->
-    @include('partials.forms.lease.payment_history')
+    @include('partials.forms.lease.edit.payment_history')
 
     <!-- BROKER -->
-    @include('partials.forms.lease.broker')
+    @include('partials.forms.lease.edit.broker')
 
     <!-- OTHER -->
-    @include('partials.forms.lease.other')
+    @include('partials.forms.lease.edit.other')
 
 </div>
 

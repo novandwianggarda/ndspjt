@@ -4,6 +4,12 @@
         INVOICE: PBB, FINE, ETC
     </div>
 
-    <lease-payment-invoices></lease-payment-invoices>
+    <frgroup>
+        <label slot="label">
+            Payment INVOICE
+        </label>
+        <div>{{ $lease->payment_invoices }}
+        </div>
+    </frgroup>
 
 </accordion>

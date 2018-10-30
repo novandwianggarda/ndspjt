@@ -15,7 +15,7 @@
         <label slot="label">
             Fee per Tahun
         </label>
-        <money name="brok_fee_yearly" v-model="brokFeeYearly" class="form-control"></money>
+        <money name="brok_fee_yearly" value="{{ old('brok_fee_yearly') }}" v-model="brokFeeYearly" class="form-control"></money>
     </frgroup>
 
     <frgroup>
@@ -29,7 +29,7 @@
         <label slot="label">
             Fee Payment
         </label>
-        {{-- <money name="brok_fee_paid" value="{{ old('brok_fee_paid') }}" class="form-control"></money> --}}
+        <money name="brok_fee_paid" value="{{ old('brok_fee_paid') }}" class="form-control"></money>
     </frgroup>
 
 </accordion>
