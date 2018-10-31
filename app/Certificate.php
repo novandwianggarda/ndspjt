@@ -126,6 +126,7 @@ class Certificate extends Model implements Auditable
         $notAvailable = array_column(Lease::leaseWithCertificateIds(), 'certificate_id');
         return Certificate::whereNotIn('id', $notAvailable);
     }
+    
 
     public static function availableForYear() {
         $notAvailable = array_column(Year::yearWithCertificateIds(), 'certificate_ids');
@@ -141,6 +142,18 @@ class Certificate extends Model implements Auditable
     public static function availableForTax() {
         $notAvailable = array_column(Tax::taxWithCertificateIds(), 'certificate_id');
         return Certificate::whereNotIn('id', $notAvailable);
+    }
+
+    public function getCoordinateAttribute() 
+    {
+        if(empty($map_coordinate)) return "{}";
+
+        $map = json_decode($this->map_coordinate);
+
+        return json_encode([
+            'lat' => $map->latitude,
+            'lng' => $map->longitude,
+        ]);
     }
 
 }

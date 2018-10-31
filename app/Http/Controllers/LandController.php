@@ -10,7 +10,8 @@ class LandController extends Controller
 {
     public function index()
     {
-    	$map = Certificate::all();
+    	$map = Certificate::find(1);
+
         return view('land.maps', compact('map'));
     }
 }

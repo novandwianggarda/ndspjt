@@ -1,7 +1,7 @@
 <accordion name="collapse-invoice" v-bind:sub="true">
 
     <div slot="title" class="ll-head-2">
-        INVOICE: PBB, FINE, ETC
+        TAGIHAN LAINYA
     </div>
 
     <input type="hidden" name="payment_invoices" v-bind:value="paymentInvoicesText">

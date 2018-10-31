@@ -27,12 +27,13 @@
                 <dd v-html="property.land_area"></dd>
                 <dt class="text-muted">Building Area</dt>
                 <dd v-html="property.building_area"></dd>
+
                 <dt class="text-muted">Block/Tower</dt>
                 <dd v-html="property.block"></dd>
-                <dt class="text-muted">Floor</dt>
-                <dd v-html="property.floor"></dd>
                 <dt class="text-muted">Unit</dt>
                 <dd v-html="property.unit"></dd>
+                <dt class="text-muted">Floor</dt>
+                <dd v-html="property.floor"></dd>
                 <dt class="text-muted">Electricity</dt>
                 <dd v-html="property.electricity"></dd>
                 <dt class="text-muted">Water</dt>

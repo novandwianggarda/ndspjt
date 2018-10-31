@@ -135,14 +135,15 @@ class Lease extends Model implements Auditable
      */
     public static function leaseWithCertificateIds()
     {
-        $leases = Lease::select('id', 'certificate_ids')->get()->toArray();
-        $allIds = [];
-        foreach ($leases as $lease) {
-            $certificateIds = explode(',', $lease['certificate_ids']);
-            foreach ($certificateIds as $certificateId) {
-                array_push($allIds, ['lease_id' => $lease['id'], 'certificate_id' => $certificateId]);
-            }
-        }
+        // $leases = Lease::select('id', 'certificate_ids')->get()->toArray();
+        // $allIds = [];
+        // foreach ($leases as $lease) {
+        //     $certificateIds = explode(',', $lease['certificate_ids']);
+        //     foreach ($certificateIds as $certificateId) {
+        //         array_push($allIds, ['lease_id' => $lease['id'], 'certificate_id' => $certificateId]);
+        //     }
+        // }
+        $allIds = Lease::plucK('id')->toArray();
         return $allIds;
     }
 
@@ -162,5 +163,17 @@ class Lease extends Model implements Auditable
             }
         }
         return $allIds;
+    }
+
+    public function getpayterm() 
+    {
+        if(empty($map_coordinate)) return "{}";
+
+        $map = json_decode($this->map_coordinate);
+
+        return json_encode([
+            'lat' => $map->latitude,
+            'lng' => $map->longitude,
+        ]);
     }
 }

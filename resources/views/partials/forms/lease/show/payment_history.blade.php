@@ -8,7 +8,7 @@
         <label slot="label">
             Payment History
         </label>
-        <div>{{ $lease->payment_history }}
+        <div>{!! $lease->payment_history !!}
         </div>
     </frgroup>
 

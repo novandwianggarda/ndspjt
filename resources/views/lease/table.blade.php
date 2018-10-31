@@ -12,8 +12,9 @@
             <table id="tbl-leases" class="table table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Name Broker</th>
                         <th>Tenant</th>
+                        <th>Nama Lokasi</th>
+                        <th>Jenis</th>
                         <th>Length</th>
                         <th>Start</th>
                         <th>End</th>
@@ -24,9 +25,10 @@
                     @foreach ($leases as $lease)
                         <tr>
                             <td>
-                                <a href="/leases/show/{{ $lease->id }}">{{ $lease->brok_name }}</a>
+                                <a href="/leases/show/{{ $lease->id }}">{{ $lease->tenant }}</a>
                             </td>
-                            <td>{{ $lease->tenant }}</td>
+                            <td>{{ $lease->prop->name}}</td>
+                            <td>{{ $lease->prop->type->name}}</td>
                             <td>{{ $lease->duration }} Year</td>
                             <td>{{ $lease->start }}</td>
                             <td>{{ $lease->end }}</td>
@@ -42,16 +44,7 @@
                         </tr>
                     @endforeach
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Prop. Name</th>
-                        <th>Tenant</th>
-                        <th>Length</th>
-                        <th>Start</th>
-                        <th>End</th>
-                        <th>Actions</th>
-                    </tr>
-                </tfoot>
+                
             </table>
         </div>
     </div>

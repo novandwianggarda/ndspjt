@@ -11,7 +11,7 @@
         <div class="col-md-12">
             <div class="box box-solid">
                 <div class="box-body">
-                    @if ($errors->any())
+                    @if ($errors->any())-
                         <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -20,7 +20,9 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" id="form-certificate" action="/certificates/add" method="POST" enctype="multipart/form-data">
+                    <div>
+                    </div>
+                    <form class="form-horizontal" id="form-certificate" action="" method="" enctype="multipart/form-data">
 
                         @csrf
                         <div class="box-group" id="accordion">
@@ -52,6 +54,10 @@
 @stop
 
 @section('js')
+
+
+
+
     
 
 
@@ -67,20 +73,13 @@
             var myLatlng ={lat: -6.984102, lng:110.409293}
             var options = {
                 center: myLatlng,
-                zoom: 17,
+                zoom: 16,
                 mapTypeId: 'satellite',
             }
 
             //new map
             var map = new google.maps.Map(document.getElementById('map'), options);
 
-            //add marker
-           
-            var marker = new google.maps.Marker({
-                position: myLatlng,
-                map:map,
-                title: 'Land-Lord'
-            });
 
             var request = {
                 location: myLatlng,
@@ -88,14 +87,25 @@
                 types: ['store']
             };
 
-            service = new google.maps.places.PlacesService(map);
-            service.nearbySearch(request, callback);
-            function callback(results, status){
-                console.log(results);
-            }
 
+            //loping
 
-            
+                    // Define the LatLng coordinates for the polygon's path.
+
+                    var triangleCoords = {!! $map->boundary_coordinates !!};
+
+                    // Construct the polygon.
+                    var bermudaTriangle = new google.maps.Polygon({
+                      paths: triangleCoords,
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#FF0000',
+                      fillOpacity: 0.35
+                    });
+                    bermudaTriangle.setMap(map);
         }
-    </script> 
+    </script>
+
+
 @stop

@@ -13087,6 +13087,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -13243,13 +13244,13 @@ var render = function() {
             _vm._v(" "),
             _c("dd", { domProps: { innerHTML: _vm._s(_vm.property.block) } }),
             _vm._v(" "),
-            _c("dt", { staticClass: "text-muted" }, [_vm._v("Floor")]),
-            _vm._v(" "),
-            _c("dd", { domProps: { innerHTML: _vm._s(_vm.property.floor) } }),
-            _vm._v(" "),
             _c("dt", { staticClass: "text-muted" }, [_vm._v("Unit")]),
             _vm._v(" "),
             _c("dd", { domProps: { innerHTML: _vm._s(_vm.property.unit) } }),
+            _vm._v(" "),
+            _c("dt", { staticClass: "text-muted" }, [_vm._v("Floor")]),
+            _vm._v(" "),
+            _c("dd", { domProps: { innerHTML: _vm._s(_vm.property.floor) } }),
             _vm._v(" "),
             _c("dt", { staticClass: "text-muted" }, [_vm._v("Electricity")]),
             _vm._v(" "),
