@@ -1,14 +1,20 @@
 <accordion name="collapse-invoice" v-bind:sub="true">
 
     <div slot="title" class="ll-head-2">
-        INVOICE: PBB, FINE, ETC
+        TAGIHAN LAIN NYA
     </div>
 
     <frgroup>
         <label slot="label">
-            Payment INVOICE
+            Tagihan
         </label>
-        <div>{{ $lease->payment_invoices }}
+
+        <div class="col-md-12">
+            @foreach($payment_invoices as $mydata)
+                <div class="col-md-4">Total  &nbsp; : {{$mydata->total}}</div>
+                <div class="col-md-4">Paid Date  &nbsp; : {{$mydata->paid_date}}</div>
+                <div class="col-md-4">Note  &nbsp; : {{$mydata->note}}</div>
+            @endforeach
         </div>
     </frgroup>
 

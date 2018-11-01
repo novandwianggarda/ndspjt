@@ -45,16 +45,6 @@
 
 @section('js')
 
-<script>
-export default {
-    props: ['payment_terms'],
-    mounted () {
-        // Do something useful with the data in the template
-        console.dir(this.payment_terms)
-    }
-}
-</script>
-
 
     <script>
 

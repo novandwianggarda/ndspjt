@@ -28,8 +28,15 @@ class LeasesController extends Controller
     public function show($id)
     {
         $lease = Lease::find($id);
-        return view('lease.show')->with('lease', $lease);
+        $payment_history = json_decode($lease->payment_history);
+        $payment_invoices = json_decode($lease->payment_invoices);
+        $payment_terms = json_decode($lease->payment_terms);
+        
+        return view('lease.show', compact('lease', 'payment_history', 'payment_invoices', 'payment_terms'));
+        // view('your-view')->with('leads', json_decode($leads, true));
     }
+
+   
 
     /**
      * show add new lease form

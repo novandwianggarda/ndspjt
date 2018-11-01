@@ -165,15 +165,5 @@ class Lease extends Model implements Auditable
         return $allIds;
     }
 
-    public function getpayterm() 
-    {
-        if(empty($map_coordinate)) return "{}";
-
-        $map = json_decode($this->map_coordinate);
-
-        return json_encode([
-            'lat' => $map->latitude,
-            'lng' => $map->longitude,
-        ]);
-    }
+    
 }

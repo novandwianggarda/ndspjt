@@ -144,15 +144,16 @@ class Certificate extends Model implements Auditable
         return Certificate::whereNotIn('id', $notAvailable);
     }
 
-    public function getCoordinateAttribute() 
-    {
-        if(empty($map_coordinate)) return "{}";
+    
+    public static function availableLease() {
+        if(empty($lease)) return "{}";
 
-        $map = json_decode($this->map_coordinate);
+        $leases = json_decode($this->payment_history);
 
         return json_encode([
-            'lat' => $map->latitude,
-            'lng' => $map->longitude,
+            'total' => $leases->total,
+            'paid_date' => $leases->paid_date,
+            'note' => $leases->note,
         ]);
     }
 
