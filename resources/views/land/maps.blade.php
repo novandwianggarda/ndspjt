@@ -54,57 +54,81 @@
 @stop
 
 @section('js')
-
-
-
-
-    
-
-
-
-
     <script type="text/javascript">
-        
-
         initMap();
 
-        function initMap(){
-            //Map Option
-            var myLatlng ={lat: -6.984102, lng:110.409293}
-            var options = {
-                center: myLatlng,
-                zoom: 16,
-                mapTypeId: 'satellite',
-            }
+        var map;
+        var infoWindow;
 
-            //new map
-            var map = new google.maps.Map(document.getElementById('map'), options);
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 16,
+              center: {lat: -6.984102, lng:110.409293},
+              mapTypeId: 'satellite'
+            });
+
+        // Define the LatLng coordinates for the polygon.
+            var bound = {!! $boundaries !!}
+            ;
+
+            bound.forEach(function(el){
+                var viewbound = new google.maps.Polygon({
+                  paths: el,
+
+                  strokeColor: '#FF0000',
+                  strokeOpacity: 0.8,
+                  strokeWeight: 3,
+                  fillColor: '#FF0000',
+                  fillOpacity: 0.35
+                });
+                viewbound.setMap(map);
+            
+            });
 
 
-            var request = {
-                location: myLatlng,
-                raddius: '2500',
-                types: ['store']
-            };
+        // Construct the polygon.
+            // var viewbound = new google.maps.Polygon({
+            //   paths: bound,
+
+            //   strokeColor: '#FF0000',
+            //   strokeOpacity: 0.8,
+            //   strokeWeight: 3,
+            //   fillColor: '#FF0000',
+            //   fillOpacity: 0.35
+            // });
+            // viewbound.setMap(map);
+
+            // viewbound.addListener('click', showArrays);
+
+            // infoWindow = new google.maps.InfoWindow;
+        // Add a listener for the click event.
+      }
 
 
-            //loping
 
-                    // Define the LatLng coordinates for the polygon's path.
+      /** @this {google.maps.Polygon} */
+      function showArrays(event) {
+        // Since this polygon has only one path, we can call getPath() to return the
+        // MVCArray of LatLngs.
+        var vertices = this.getPath();
 
-                    var triangleCoords = {!! $map->boundary_coordinates !!};
+        var contentString = '<b>DS - LandLord</b><br>' +
+            'Certificate location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
+            '<br>';
 
-                    // Construct the polygon.
-                    var bermudaTriangle = new google.maps.Polygon({
-                      paths: triangleCoords,
-                      strokeColor: '#FF0000',
-                      strokeOpacity: 0.8,
-                      strokeWeight: 2,
-                      fillColor: '#FF0000',
-                      fillOpacity: 0.35
-                    });
-                    bermudaTriangle.setMap(map);
+        // Iterate over the vertices.
+        for (var i =1; i < vertices.getLength(); i++) {
+          var xy = vertices.getAt(i);
+          contentString += '<br>' + 'Coordinate ' + i + ':<br>' + xy.lat() + ',' +
+              xy.lng();
         }
+
+        // Replace the info window's content and position.
+        infoWindow.setContent(contentString);
+        infoWindow.setPosition(event.latLng);
+
+        infoWindow.open(map);
+      }
     </script>
 
 
