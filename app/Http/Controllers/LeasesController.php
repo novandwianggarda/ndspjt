@@ -141,27 +141,38 @@ class LeasesController extends Controller
         // dd($request->all());
         $x = json_decode($request->data);
         foreach ($x as $d => $value) {
-            $alamat = $value->alamat;
+            $address = $value->address;
             $no_hm = $value->no_hm;
 
-            if($alamat){
+            if($address){
 
-                $propId = \App\Property::where('address', $alamat)->get()->first()->id;
+                $propId = \App\Property::where('address', $address)->get()->first()->id;
                 $no_hm = \App\Certificate::where('no_hm_hgb', $no_hm)->get()->first()->id;
                 
                 $leas = new Lease();
                 $leas->property_ids= $propId;
                 $leas->certificate_ids= $no_hm;
+                $leas->lessor= $value->lessor;
+                $leas->lessor_pkp= $value->lessor_pkp;
+                $leas->pic= $value->pic;
                 $leas->tenant= $value->tenant;
+                $leas->purpose= $value->purpose;
+                $leas->grace_start= $value->grace_start;
+                $leas->grace_end= $value->grace_end;
                 $leas->start= $value->start->date;
                 $leas->end= $value->end->date;
 
-                $leas->note= $value->note;
-                $leas->brok_name= $value->brok_name;
                 $leas->rent_assurance= $value->rent_assurance;
-                $leas->brok_fee_yearly= $value->brok_fee_yearly;
-                $leas->sell_yearly= $value->sell_yearly;
+                $leas->payment_terms= $value->payment_terms;
+                $leas->payment_invoices= $value->payment_invoices;
+
+                $leas->note= $value->note;
+                $leas->lease_number= $value->lease_number;
+                $leas->lease_deed_date= $value->lease_deed_date;
                 $leas->lease_deed= $value->lease_deed;
+
+                $leas->brok_name= $value->brok_name;
+                $leas->brok_fee_yearly= $value->brok_fee_yearly;
                 $leas->save();
             }
         }

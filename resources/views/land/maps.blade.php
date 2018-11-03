@@ -68,13 +68,11 @@
             });
 
         // Define the LatLng coordinates for the polygon.
-            var bound = {!! $boundaries !!}
-            ;
+            window.bound = {!! $boundaries !!};
 
             bound.forEach(function(el){
                 var viewbound = new google.maps.Polygon({
                   paths: el,
-
                   strokeColor: '#FF0000',
                   strokeOpacity: 0.8,
                   strokeWeight: 3,
@@ -82,7 +80,10 @@
                   fillOpacity: 0.35
                 });
                 viewbound.setMap(map);
-            
+                viewbound.addListener('click', showArrays);
+
+                infoWindow = new google.maps.InfoWindow;                
+
             });
 
 

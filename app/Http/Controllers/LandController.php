@@ -14,10 +14,9 @@ class LandController extends Controller
 
     	$boundaries = [];
     	foreach ($map as $mapss) {
-    		$boundaries[] = $mapss->boundary_coordinates;
+    		$boundaries[] = json_decode($mapss->boundary_coordinates);
     	}
     	$boundaries = json_encode($boundaries);
-
 
         return view('land.maps', compact('map', 'boundaries', 'boundr'));
     }
