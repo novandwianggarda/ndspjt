@@ -163,16 +163,32 @@ class LeasesController extends Controller
                 $leas->end= $value->end->date;
 
                 $leas->rent_assurance= $value->rent_assurance;
-                $leas->payment_terms= $value->payment_terms;
-                $leas->payment_invoices= $value->payment_invoices;
-
                 $leas->note= $value->note;
                 $leas->lease_number= $value->lease_number;
-                $leas->lease_deed_date= $value->lease_deed_date;
-                $leas->lease_deed= $value->lease_deed;
 
                 $leas->brok_name= $value->brok_name;
                 $leas->brok_fee_yearly= $value->brok_fee_yearly;
+                $leas->lease_deed= $value->lease_deed;
+                $leas->brok_fee_paid= $value->brok_fee_paid;
+                $leas->lease_deed_date= @$value->lease_deed_date->date;
+
+                $leas->payment_terms= json_encode([Array(
+                                    "total" => $value->payment_terms,
+                                    "due_date" => $value->du_datepbb,
+                                    "note" => $value->notes,
+                                )]);
+
+                $leas->payment_invoices= json_encode([Array(
+                                    "total" => @$value->total_inv,
+                                    "paid_date" => $value->payment_invoices,
+                                    "note" => @$value->note_payinv,
+                                )]);
+                $leas->payment_history= json_encode([Array(
+                                    "total" => @$value->total_inv,
+                                    "paid_date" => $value->payment_invoices,
+                                    "note" => @$value->note_payinv,
+                                )]);
+
                 $leas->save();
             }
         }

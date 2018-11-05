@@ -190,9 +190,9 @@ class TaxesController extends Controller
                 $taxes->njop_building= $value->njop_building;
                 $taxes->njop_total= $value->njop_total;
                 
+                $taxes->due_date= $value->due_date->date;
+                $taxes->due_date_ly= $value->due_date_ly->date;
 
-                $taxes->due_date = date('Y-m-d', strtotime($taxes->due_date));
-                $taxes->due_date_ly = date('Y-m-d', strtotime($taxes->due_date_ly));
                 $taxes->selisih= $value->selisih;
                 $taxes->save();
                 $taxes->certax()->attach($request->certificate_ids= $no_hm);
@@ -251,8 +251,8 @@ class TaxesController extends Controller
                 $taxes->nop= $value->nop;
                 
 
-                $taxes->due_date = date('Y-m-d', strtotime($taxes->due_date));
-                $taxes->due_date_ly = date('Y-m-d', strtotime($taxes->due_date_ly));
+                $taxes->due_date= $value->due_date->date;
+                $taxes->due_date_ly= $value->due_date_ly->date;
                 $taxes->selisih= $value->selisih;
                 $taxes->save();
 
