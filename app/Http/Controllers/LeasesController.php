@@ -67,6 +67,12 @@ class LeasesController extends Controller
         return 'success';
     }
 
+    public function print($id)
+    {
+        $lease=Lease::find($id);
+        return view('lease.invoice', compact('lease'));
+    }
+
     public function edit($id)
     {
         $lease=Lease::find($id);
@@ -161,6 +167,8 @@ class LeasesController extends Controller
                 $leas->grace_end= $value->grace_end;
                 $leas->start= $value->start->date;
                 $leas->end= $value->end->date;
+                $leas->rent_price= $value->rent_price;
+
 
                 $leas->rent_assurance= $value->rent_assurance;
                 $leas->note= $value->note;
@@ -173,19 +181,19 @@ class LeasesController extends Controller
                 $leas->lease_deed_date= @$value->lease_deed_date->date;
 
                 $leas->payment_terms= json_encode([Array(
-                                    "total" => $value->payment_terms,
-                                    "due_date" => $value->du_datepbb,
-                                    "note" => $value->notes,
+                                    "total" => @$value->payment_terms,
+                                    "due_date" => @$value->du_datepbb->date,
+                                    "note" => @$value->notes,
                                 )]);
 
                 $leas->payment_invoices= json_encode([Array(
                                     "total" => @$value->total_inv,
-                                    "paid_date" => $value->payment_invoices,
+                                    "paid_date" => @$value->payment_invoices->date,
                                     "note" => @$value->note_payinv,
                                 )]);
                 $leas->payment_history= json_encode([Array(
                                     "total" => @$value->total_inv,
-                                    "paid_date" => $value->payment_invoices,
+                                    "paid_date" => @$value->payment_invoices->date,
                                     "note" => @$value->note_payinv,
                                 )]);
 
@@ -281,4 +289,5 @@ class LeasesController extends Controller
     private function parseDate($str, $format = 'Y-m-d'){
         return Carbon::parse($str)->format($format);
     }
+
 }

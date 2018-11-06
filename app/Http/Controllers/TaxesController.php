@@ -189,7 +189,7 @@ class TaxesController extends Controller
                 $taxes->njop_land= $value->njop_land;  
                 $taxes->njop_building= $value->njop_building;
                 $taxes->njop_total= $value->njop_total;
-                
+
                 $taxes->due_date= $value->due_date->date;
                 $taxes->due_date_ly= $value->due_date_ly->date;
 
@@ -249,10 +249,12 @@ class TaxesController extends Controller
                 $taxes->njop_total= $value->njop_total;
                 $taxes->pbbly= $value->pbbly;
                 $taxes->nop= $value->nop;
-                
 
                 $taxes->due_date= $value->due_date->date;
                 $taxes->due_date_ly= $value->due_date_ly->date;
+                
+
+                
                 $taxes->selisih= $value->selisih;
                 $taxes->save();
 

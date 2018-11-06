@@ -30,11 +30,27 @@
                             <td>{{ $lease->prop->name}}</td>
                             <td>{{ $lease->prop->type->name}}</td>
                             <td>{{ $lease->duration }} Year</td>
-                            <td>{{ $lease->start }}</td>
-                            <td>{{ $lease->end }}</td>
+                            
+                            <td>
+                                <?php 
+                                    $tgl=strtotime($lease->start);
+                                    $tanggal=date("j F Y", $tgl); 
+                                ?>
+                                {{ $tanggal }}
+                            </td>
+
+                            
+                            <td>
+                                <?php 
+                                    $tgl=strtotime($lease->end);
+                                    $tang=date("j F Y", $tgl); 
+                                ?>
+                                {{ $tang }}
+                            </td>
                             <td>
                                 {!! Form::open(['method'=>'delete', 'route'=>['lease.destroy', $lease->id], 'style' => 'display: inline-block;']) !!} 
                                 {{ csrf_field() }}
+                                <a href="/leases/print/{{ $lease->id }}" class="btn btn-info btn-xs"><i class="fa fa-print" aria-hidden="true"></i>Print</a>
                                 <a href="/leases/edit/{{ $lease->id }}" class="btn btn-success btn-xs"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
 
                                 {!! Form::button('<i class="fa fa-trash"></i>&nbsp;Delete', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("Do you want to delete this Lease List ?")']) !!}

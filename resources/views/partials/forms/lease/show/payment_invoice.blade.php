@@ -12,7 +12,13 @@
         <div class="col-md-12">
             @foreach($payment_invoices as $mydata)
                 <div class="col-md-4">Total  &nbsp; : {{$mydata->total}}</div>
-                <div class="col-md-4">Paid Date  &nbsp; : {{$mydata->paid_date}}</div>
+                <div class="col-md-4">Paid Date  &nbsp; :
+                    <?php 
+                        $tgl=strtotime($mydata->paid_date);
+                        $tang=date("j F Y", $tgl); 
+                    ?>
+                    {{ $tang }}
+                </div>
                 <div class="col-md-4">Note  &nbsp; : {{$mydata->note}}</div>
             @endforeach
         </div>

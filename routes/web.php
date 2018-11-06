@@ -120,6 +120,7 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('add', 'LeasesController@showAddForm');
         Route::post('add', 'LeasesController@store');
         Route::get('/edit/{id}', 'LeasesController@edit');
+        Route::get('/print/{id}', 'LeasesController@print');
         Route::patch('/updatelease/{edit}', 'LeasesController@updatelease');
 
 
