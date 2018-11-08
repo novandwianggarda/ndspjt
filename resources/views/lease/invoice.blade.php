@@ -18,7 +18,7 @@
     <div class="pad margin no-print">
       <div class="callout callout-info" style="margin-bottom: 0!important;">
         <h4><i class="fa fa-info"></i> Note:</h4>
-        This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.
+        This page has been enhanced for printing. Click the print button at the bottom of the invoice.
       </div>
     </div>
 
@@ -28,8 +28,8 @@
       <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
-            <i class="fa fa-globe"></i> AdminLTE, Inc.
-            <small class="pull-right">Date: 2/10/2014</small>
+            <img src="{{asset('img/log1.jpg')}}" height="25%" width="20%" />
+            <small class="pull-right">Date: {{$now}}</small>
           </h2>
         </div>
         <!-- /.col -->
@@ -37,33 +37,38 @@
       <!-- info row -->
       <div class="row invoice-info">
         <div class="col-sm-4 invoice-col">
-          From
+          Yang Menyewakan
           <address>
-            <strong>Admin, Inc.</strong><br>
-            795 Folsom Ave, Suite 600<br>
-            San Francisco, CA 94107<br>
-            Phone: (804) 123-5432<br>
-            Email: info@almasaeedstudio.com
+            <strong>{{$lease->lessor}}</strong><br>
+            Alamat : {{ $lease->cert->addrees }}<br>
           </address>
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
-          To
+          Property
           <address>
-            <strong>John Doe</strong><br>
-            795 Folsom Ave, Suite 600<br>
-            San Francisco, CA 94107<br>
-            Phone: (555) 539-1037<br>
-            Email: john.doe@example.com
+            <strong>{{ $lease->prop->name }}</strong><br>
+            {{ $lease->prop->address }}<br>
+            Land Area : {{ $lease->prop->land_area }}&nbsp;m<sup>2</sup><br>
           </address>
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
-          <b>Invoice {{ $lease->tenant }}</b><br>
-          <br>
-          <b>Order ID:</b> 4F3S8J<br>
-          <b>Payment Due:</b> 2/22/2014<br>
-          <b>Account:</b> 968-34567
+          <b>Invoice <br>An. {{ $lease->tenant }}</b><br>
+          
+          <b>Order ID:</b>{{$lease->id}}<br>
+
+          <b>Payment Due:</b>
+
+            @foreach($payment_invoices as $mydata)
+                    <?php 
+                      $tgl=strtotime($mydata->paid_date);
+                      $tang=date("j F Y", $tgl);
+                    ?>
+                    {{ $tang }}
+            @endforeach
+
+          
         </div>
         <!-- /.col -->
       </div>
@@ -75,42 +80,41 @@
           <table class="table table-striped">
             <thead>
             <tr>
-              <th>Qty</th>
-              <th>Product</th>
-              <th>Serial #</th>
+              <th>Paid Date</th>
               <th>Description</th>
-              <th>Subtotal</th>
+              <th>Total Sewa </th>
+            
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>1</td>
-              <td>Call of Duty</td>
-              <td>455-981-221</td>
-              <td>El snort testosterone trophy driving gloves handsome</td>
-              <td>$64.50</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Need for Speed IV</td>
-              <td>247-925-726</td>
-              <td>Wes Anderson umami biodiesel</td>
-              <td>$50.00</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Monsters DVD</td>
-              <td>735-845-642</td>
-              <td>Terry Richardson helvetica tousled street art master</td>
-              <td>$10.70</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Grown Ups Blue Ray</td>
-              <td>422-568-642</td>
-              <td>Tousled lomo letterpress</td>
-              <td>$25.99</td>
-            </tr>
+      
+              <?php  
+                $rent_price='';
+                $rentprice='';
+              ?>
+            @foreach($payment_invoices as $a)
+              
+
+              <?php 
+                $rentprice = $lease->rent_price;
+                $rent_price = $lease->rent_price * 0.1;
+              ?>
+
+                <tr>
+                  <td width="20%">
+                    <?php 
+                      $tgl=strtotime($a->paid_date);
+                      $tang=date("j F Y", $tgl); 
+                    ?>
+                    {{ $tang }}
+
+                  </td>
+                  <td width="60%">{{ $a->note}}</td>
+                  <td width="20%">Rp. {{ $a->total }}</td>
+                </tr>
+            @endforeach
+
+
             </tbody>
           </table>
         </div>
@@ -122,37 +126,38 @@
         <!-- accepted payments column -->
         <div class="col-xs-6">
           <p class="lead">Payment Methods:</p>
-          <img src="../../dist/img/credit/visa.png" alt="Visa">
-          <img src="../../dist/img/credit/mastercard.png" alt="Mastercard">
-          <img src="../../dist/img/credit/american-express.png" alt="American Express">
-          <img src="../../dist/img/credit/paypal2.png" alt="Paypal">
+          <img src="{{asset('img/credit/visa.png')}}" alt="Visa">
+          <img src="{{asset('img/credit/mastercard.png')}}" alt="Mastercard">
+          <img src="{{asset('img/credit/american-express.png')}}" alt="American Express">
+          <img src="{{asset('img/credit/paypal2.png')}}" alt="Paypal">
 
           <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg
-            dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+            Thank's for Lease In DS-ESTATES
           </p>
         </div>
         <!-- /.col -->
         <div class="col-xs-6">
-          <p class="lead">Amount Due 2/22/2014</p>
+          <p class="lead">Amount Due </p>
+
 
           <div class="table-responsive">
             <table class="table">
               <tr>
-                <th style="width:50%">Subtotal:</th>
-                <td>$250.30</td>
+                <th>Sewa</th>
+                <td><?php 
+                  echo"Rp. $rentprice";
+                  ?></td>
               </tr>
               <tr>
-                <th>Tax (9.3%)</th>
-                <td>$10.34</td>
+                <th style="width:50%">PPN:</th>
+                <td><?php 
+                  echo"Rp. $rent_price";
+                  ?>
+                </td>
               </tr>
               <tr>
-                <th>Shipping:</th>
-                <td>$5.80</td>
-              </tr>
-              <tr>
-                <th>Total:</th>
-                <td>$265.24</td>
+                <th>Total Sewa + PPN:</th>
+                <td>Rp. {{ $rentprice + $rent_price}}</td>
               </tr>
             </table>
           </div>
@@ -164,7 +169,7 @@
       <!-- this row will not appear when printing -->
       <div class="row no-print">
         <div class="col-xs-12">
-          <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+          <button onclick="myFunction()"><i class="fa fa-print"></i>Print </button>
           <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment
           </button>
           <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
@@ -173,4 +178,12 @@
         </div>
       </div>
     </section>
+@stop
+
+@section('js')
+<script>
+function myFunction() {
+    window.print();
+}
+</script>
 @stop

@@ -70,7 +70,9 @@ class LeasesController extends Controller
     public function print($id)
     {
         $lease=Lease::find($id);
-        return view('lease.invoice', compact('lease'));
+        $now = date_create()->format('d-m-Y');
+        $payment_invoices = json_decode($lease->payment_invoices);
+        return view('lease.invoice', compact('lease', 'now', 'payment_invoices'));
     }
 
     public function edit($id)
@@ -147,15 +149,27 @@ class LeasesController extends Controller
         // dd($request->all());
         $x = json_decode($request->data);
         foreach ($x as $d => $value) {
-            $address = $value->address;
+            
             $no_hm = $value->no_hm;
 
-            if($address){
+                if($no_hm=null){
+                    // $ket = "tidak ada Sertifikat";
+                    $cert = new Certificate();
+                    $cert->no_hm_hgb= $value->no_hm_hgb;
+                    $cert->save();
+                }else{
+                    // $ket = "ada Sertifikat";
+                    $no_hm = \App\Certificate::where('no_hm_hgb', $no_hm)->get();
+                    print_r($no_hm);exit;
+                    $leas->certificate_ids= $no_hm;
+                    $leas->save();
+                }
+                // print_r($ket);exit;
 
+
+            if($address){
                 $propId = \App\Property::where('address', $address)->get()->first()->id;
-                $no_hm = \App\Certificate::where('no_hm_hgb', $no_hm)->get()->first()->id;
                 
-                $leas = new Lease();
                 $leas->property_ids= $propId;
                 $leas->certificate_ids= $no_hm;
                 $leas->lessor= $value->lessor;
@@ -187,9 +201,9 @@ class LeasesController extends Controller
                                 )]);
 
                 $leas->payment_invoices= json_encode([Array(
-                                    "total" => @$value->total_inv,
+                                    "total" => @$value->totsew,
                                     "paid_date" => @$value->payment_invoices->date,
-                                    "note" => @$value->note_payinv,
+                                    "note" => @$value->note,
                                 )]);
                 $leas->payment_history= json_encode([Array(
                                     "total" => @$value->total_inv,
