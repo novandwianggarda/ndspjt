@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Lease;
 use App\Certificate;
+use App\Property;
 use App\Http\Requests\LeaseRequet;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
@@ -150,69 +151,75 @@ class LeasesController extends Controller
         $x = json_decode($request->data);
         foreach ($x as $d => $value) {
             
-            $no_hm = $value->no_hm;
 
-                if($no_hm=null){
-                    // $ket = "tidak ada Sertifikat";
-                    $cert = new Certificate();
-                    $cert->no_hm_hgb= $value->no_hm_hgb;
-                    $cert->save();
-                }else{
-                    // $ket = "ada Sertifikat";
-                    $no_hm = \App\Certificate::where('no_hm_hgb', $no_hm)->get();
-                    print_r($no_hm);exit;
-                    $leas->certificate_ids= $no_hm;
-                    $leas->save();
-                }
-                // print_r($ket);exit;
+            $leas = new Lease();
+            $leas->lessor= $value->lessor;
+            $leas->lessor_pkp= $value->lessor_pkp;
+            $leas->pic= $value->pic;
+            $leas->tenant= $value->tenant;
+            $leas->purpose= $value->purpose;
+            $leas->grace_start= $value->grace_start;
+            $leas->grace_end= $value->grace_end;
+            $leas->start= $value->start->date;
+            $leas->end= $value->end->date;
+            $leas->rent_price= $value->rent_price;
 
+            $leas->rent_assurance= $value->rent_assurance;
+            $leas->note= $value->note;
+            $leas->lease_number= $value->lease_number;
 
-            if($address){
-                $propId = \App\Property::where('address', $address)->get()->first()->id;
-                
-                $leas->property_ids= $propId;
-                $leas->certificate_ids= $no_hm;
-                $leas->lessor= $value->lessor;
-                $leas->lessor_pkp= $value->lessor_pkp;
-                $leas->pic= $value->pic;
-                $leas->tenant= $value->tenant;
-                $leas->purpose= $value->purpose;
-                $leas->grace_start= $value->grace_start;
-                $leas->grace_end= $value->grace_end;
-                $leas->start= $value->start->date;
-                $leas->end= $value->end->date;
-                $leas->rent_price= $value->rent_price;
+            $leas->brok_name= $value->brok_name;
+            $leas->brok_fee_yearly= $value->brok_fee_yearly;
+            $leas->lease_deed= $value->lease_deed;
+            $leas->brok_fee_paid= $value->brok_fee_paid;
+            $leas->lease_deed_date= @$value->lease_deed_date->date;
 
+            $leas->payment_terms= json_encode([Array(
+                "total" => @$value->payment_terms,
+                "due_date" => @$value->du_datepbb->date,
+                "note" => @$value->notes,
+            )]);
 
-                $leas->rent_assurance= $value->rent_assurance;
-                $leas->note= $value->note;
-                $leas->lease_number= $value->lease_number;
+            $leas->payment_invoices= json_encode([Array(
+                "total" => @$value->totsew,
+                "paid_date" => @$value->payment_invoices->date,
+                "note" => @$value->note,
+            )]);
+            $leas->payment_history= json_encode([Array(
+                "total" => @$value->total_inv,
+                "paid_date" => @$value->payment_invoices->date,
+                "note" => @$value->note_payinv,
+            )]);
+            $leas->save();
 
-                $leas->brok_name= $value->brok_name;
-                $leas->brok_fee_yearly= $value->brok_fee_yearly;
-                $leas->lease_deed= $value->lease_deed;
-                $leas->brok_fee_paid= $value->brok_fee_paid;
-                $leas->lease_deed_date= @$value->lease_deed_date->date;
+            $cert = new Certificate();
 
-                $leas->payment_terms= json_encode([Array(
-                                    "total" => @$value->payment_terms,
-                                    "due_date" => @$value->du_datepbb->date,
-                                    "note" => @$value->notes,
-                                )]);
+            $cert->no_hm_hgb= $value->no_hm_hgb;
+            $cert->kota= $value->kota;
+            $cert->kelurahann= $value->kelurahann;
 
-                $leas->payment_invoices= json_encode([Array(
-                                    "total" => @$value->totsew,
-                                    "paid_date" => @$value->payment_invoices->date,
-                                    "note" => @$value->note,
-                                )]);
-                $leas->payment_history= json_encode([Array(
-                                    "total" => @$value->total_inv,
-                                    "paid_date" => @$value->payment_invoices->date,
-                                    "note" => @$value->note_payinv,
-                                )]);
+            $no_hm_hgb = $value->no_hm_hgb;
+            if($no_hm_hgb){
+                $cert = Certificate::firstOrCreate(['no_hm_hgb' => $no_hm_hgb]);
+            }else{
 
-                $leas->save();
+            $cert->save();
             }
+
+
+            $prop = new Property();
+            $prop->name= $value->name;
+            $prop->address= $value->address;
+            $prop->land_area= $value->land_area;
+            $prop->building_area= $value->building_area;
+            $prop->save();
+
+            \DB::table('leases')
+                ->where('id', $leas->id)
+                ->update(['certificate_ids' => $cert->id, 'property_ids' => $prop->id
+            ]);
+
+
         }
         return redirect()->route('lease');
     }
