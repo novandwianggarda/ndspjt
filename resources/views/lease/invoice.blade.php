@@ -126,13 +126,12 @@
         <!-- accepted payments column -->
         <div class="col-xs-6">
           <p class="lead">Payment Methods:</p>
-          <img src="{{asset('img/credit/visa.png')}}" alt="Visa">
-          <img src="{{asset('img/credit/mastercard.png')}}" alt="Mastercard">
-          <img src="{{asset('img/credit/american-express.png')}}" alt="American Express">
-          <img src="{{asset('img/credit/paypal2.png')}}" alt="Paypal">
+          <img src="{{asset('img/credit/bca.png')}}" alt="BCA">
 
           <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-            Thank's for Lease In DS-ESTATES
+            Email : lease@dse.id <br>
+            No Hp : 087777887888 <br>
+            Alamat : Jl. K.H Agus Salim no 7 Smg
           </p>
         </div>
         <!-- /.col -->

@@ -150,8 +150,6 @@ class LeasesController extends Controller
         // dd($request->all());
         $x = json_decode($request->data);
         foreach ($x as $d => $value) {
-            
-
             $leas = new Lease();
             $leas->lessor= $value->lessor;
             $leas->lessor_pkp= $value->lessor_pkp;
@@ -192,27 +190,50 @@ class LeasesController extends Controller
             )]);
             $leas->save();
 
-            $cert = new Certificate();
 
-            $cert->no_hm_hgb= $value->no_hm_hgb;
-            $cert->kota= $value->kota;
-            $cert->kelurahann= $value->kelurahann;
-
-            $no_hm_hgb = $value->no_hm_hgb;
-            if($no_hm_hgb){
-                $cert = Certificate::firstOrCreate(['no_hm_hgb' => $no_hm_hgb]);
-            }else{
-
-            $cert->save();
+            $certificate_type= $value->certificate_type;
+            if($certificate_type){
+                $certTypeId = \App\CertificateType::where('short_name', $certificate_type)->get()->first()->id;
+                $cert = new Certificate();
+                $no_hm_hgb = $value->no_hm_hgb;
+                $kota = $value->kota;
+                $nama_sertifikat = $value->nama_sertifikat;
+                $kelurahann = $value->kelurahann;
+                $certificate_type_id= $certTypeId;
+                if($no_hm_hgb){
+                    $cert = Certificate::firstOrCreate(['no_hm_hgb' => $no_hm_hgb, 'kota' => $kota,
+                        'kelurahann' => $kelurahann, 'certificate_type_id' => $certificate_type_id, 'nama_sertifikat' => $nama_sertifikat]);
+                }else{
+                    $cert->save();
+                }
             }
 
 
-            $prop = new Property();
-            $prop->name= $value->name;
-            $prop->address= $value->address;
-            $prop->land_area= $value->land_area;
-            $prop->building_area= $value->building_area;
-            $prop->save();
+
+            $property_type = $value->property_type;
+            if ($property_type){
+                $propTypeId = \App\PropertyType::where('name', $property_type)->get()->first()->id;
+
+                $prop = new Property();
+                $property_type_id = $propTypeId;
+                $name = $value->name; 
+                $block = $value->block;
+                $floor = $value->floor;
+                $electricity = $value->electricity;
+                $block = $value->block;
+                $address = $value->address;
+                $water = $value->water;
+                $telephone = $value->telephone;
+                $building_area = $value->building_area;
+                $land_area = $value->land_area;
+                if ($name) {
+                    $prop = Property::firstOrCreate(['name' => $name, 'address' => $address,
+                        'land_area' => $land_area, 'block' => $block, 'electricity' => $electricity, 'water' => $water, 'floor' => $floor, 'telephone' => $telephone, 'property_type_id' => $property_type_id, 'building_area' => $building_area
+                    ]);
+                } else {
+                    $prop->save();
+                }
+            }
 
             \DB::table('leases')
                 ->where('id', $leas->id)
