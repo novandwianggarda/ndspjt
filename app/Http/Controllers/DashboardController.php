@@ -13,7 +13,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $leases = Lease::all();
+        $leases = Lease::orderBy('id', 'Desc')->paginate(9);
         return view('dashboard', compact('leases'));
     }
 

@@ -28,11 +28,11 @@
                                 <a href="/leases/show/{{ $lease->id }}">{{ $lease->tenant }}</a>
                             </td>
                             <td>{{ $lease->prop->name}}</td>
-                            <td>{{ $lease->prop->type->name}}</td>
+                            <td>{{ $lease->prop->type->name_prop}}</td>
                             <td>{{ $lease->duration }} Year</td>
                             
                             <td>
-                                <?php 
+                                <?php
                                     $tgl=strtotime($lease->start);
                                     $tanggal=date("j F Y", $tgl); 
                                 ?>

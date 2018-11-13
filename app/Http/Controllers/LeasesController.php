@@ -147,29 +147,30 @@ class LeasesController extends Controller
     
     public function tes(Request $request)
     {
-        // dd($request->all());
+        //dd($request->all());
         $x = json_decode($request->data);
         foreach ($x as $d => $value) {
             $leas = new Lease();
-            $leas->lessor= $value->lessor;
-            $leas->lessor_pkp= $value->lessor_pkp;
-            $leas->pic= $value->pic;
-            $leas->tenant= $value->tenant;
-            $leas->purpose= $value->purpose;
-            $leas->grace_start= $value->grace_start;
-            $leas->grace_end= $value->grace_end;
-            $leas->start= $value->start->date;
-            $leas->end= $value->end->date;
+            $leas->lessor= @$value->lessor;
+            $leas->lessor_pkp= @$value->lessor_pkp;
+            $leas->pic= @$value->pic;
+            $leas->tenant= @$value->tenant;
+            $leas->purpose= @$value->purpose;
+            $leas->grace_start= @$value->grace_start->date;
+            $leas->grace_end= @$value->grace_end->date;
+
+            $leas->start= @$value->start->date;
+            $leas->end= @$value->end->date;
             $leas->rent_price= $value->rent_price;
 
-            $leas->rent_assurance= $value->rent_assurance;
-            $leas->note= $value->note;
-            $leas->lease_number= $value->lease_number;
+            $leas->rent_assurance= @$value->rent_assurance;
+            $leas->note= @$value->note;
+            $leas->lease_number= @$value->lease_number;
 
-            $leas->brok_name= $value->brok_name;
-            $leas->brok_fee_yearly= $value->brok_fee_yearly;
-            $leas->lease_deed= $value->lease_deed;
-            $leas->brok_fee_paid= $value->brok_fee_paid;
+            $leas->brok_name= @$value->brok_name;
+            $leas->brok_fee_yearly= @$value->brok_fee_yearly;
+            $leas->lease_deed= @$value->lease_deed;
+            $leas->brok_fee_paid= @$value->brok_fee_paid;
             $leas->lease_deed_date= @$value->lease_deed_date->date;
 
             $leas->payment_terms= json_encode([Array(
@@ -212,10 +213,10 @@ class LeasesController extends Controller
 
             $property_type = $value->property_type;
             if ($property_type){
-                $propTypeId = \App\PropertyType::where('name', $property_type)->get()->first()->id;
+                $propTypeId = \App\PropertyType::where('name_prop', $property_type)->get()->first()->id;
 
                 $prop = new Property();
-                $property_type_id = $propTypeId;
+                
                 $name = $value->name; 
                 $block = $value->block;
                 $floor = $value->floor;
@@ -226,6 +227,8 @@ class LeasesController extends Controller
                 $telephone = $value->telephone;
                 $building_area = $value->building_area;
                 $land_area = $value->land_area;
+                
+                $property_type_id = $propTypeId;
                 if ($name) {
                     $prop = Property::firstOrCreate(['name' => $name, 'address' => $address,
                         'land_area' => $land_area, 'block' => $block, 'electricity' => $electricity, 'water' => $water, 'floor' => $floor, 'telephone' => $telephone, 'property_type_id' => $property_type_id, 'building_area' => $building_area
