@@ -13,11 +13,16 @@
             @foreach($payment_invoices as $mydata)
                 <div class="col-md-4">Total  &nbsp; : {{$mydata->total}}</div>
                 <div class="col-md-4">Paid Date  &nbsp; :
+
                     <?php 
-                        $tgl=strtotime($mydata->paid_date);
-                        $tang=date("j F Y", $tgl); 
+                        if($mydata->paid_date==null){
+                            $tang='';
+                        }else{ 
+                            $tgl=strtotime($mydata->paid_date);
+                            $tang=date("d F Y", $tgl);
+                        }
                     ?>
-                    {{ $tang }}
+                    {{@$tang}}
                 </div>
                 <div class="col-md-4">Note  &nbsp; : {{$mydata->note}}</div>
             @endforeach

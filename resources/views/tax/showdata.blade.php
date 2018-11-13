@@ -34,7 +34,7 @@
 						<td>{{$d->folder_pbb}}</td>
 						<td>{{$d->wajib_pajak}}</td>
 						<td>{{$d->luas_sertifikat}}</td>
-						<td>{{$d->due_date}}</td>
+						<td>{{$d->duedates}}</td>
 						<td>{{$d->njop_land}}</td>
 					</tr>
 					@endforeach

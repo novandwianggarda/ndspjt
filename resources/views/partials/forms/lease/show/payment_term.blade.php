@@ -14,12 +14,14 @@
                 <div class="col-md-4">Total  &nbsp; : {{$mydata->total}}</div>
                 <div class="col-md-4">Paid Date  &nbsp; : 
                     <?php 
-                        $tgl=strtotime($mydata->due_date);
-                        $tang=date("j F Y", $tgl); 
+                        if($mydata->due_date==null){
+                            $tang='';
+                        }else{ 
+                            $tgl=strtotime($mydata->due_date);
+                            $tang=date("d F Y", $tgl);
+                        }
                     ?>
-                    {{ $tang }}
-
-
+                    {{@$tang}}
                 </div>
                 <div class="col-md-4">Note  &nbsp; : {{$mydata->note}}</div>
             @endforeach

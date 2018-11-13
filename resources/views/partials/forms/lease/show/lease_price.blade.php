@@ -8,7 +8,7 @@
         <label slot="label">
             Sewa <span v-text="periodType"></span> (DPP)
         </label>
-        <div>{{ $lease->rent_price }}
+        <div>Rp.{{ $lease->rent_price }}
         </div>
     </frgroup>
 

@@ -34,7 +34,7 @@
 						<td>{{$d->pen_pbb}}</td>
 						<td>{{$d->wajib_pajak}}</td>  
 						<td>{{$d->letak_objek_pajak}}</td>
-						<td>{{$d->due_date}}</td>
+						<td>{{$d->duedates}}</td>
 						<td>{{$d->njop_land}}</td>
 					</tr>
 					@endforeach
