@@ -13,52 +13,46 @@
             <!-- <table id="example1" class="table table-bordered table-striped" style="width: 100%;"> -->
         <div class="box">
         <div class="box-body table-responsive no-padding">
-            <table class="table table-hover bordered table-bordered">
+            <table id="example1" class="table table-bordered table-striped" style="width: 100%;">
                 <thead>
                     <tr>
-                        <th>No</th>
                         <th>Nama Sertifikat</th>
-                        <th>Kepemilikan</th>
                         <th>No HM / HGB</th>
                         <th>Type</th>
-                        <th>Kepemilikan</th>
-                        <th>Keterangan</th>
-                        <th>Archive</th>
                         <th>Kota</th>
-                        <th>Alamat</th>
-                        <th>Purposes</th>
-                        <th>Kelurahan</th>
+                        <th>Archive</th>
                         <th>Kecamatan</th>
-                        <th>Publish Date</th>
+                        <th>Kelurahan</th>
+
+                        <th>Published Date</th>
                         <th>Expired Date</th>
-                        <th>Ajb Date</th>
-                        <th>Ajb Nominal</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($certificates as $cert)
                         <tr>
-                            <td>{{ $i++}}</td>
                             <td>
                                 <a href="/certificates/show/{{ $cert->id }}">{{ $cert->nama_sertifikat }}</a>
                             </td>
-                            <td>{{ $cert->kepemilikan }}</td>
                             <td>{{ $cert->no_hm_hgb }}</td>
                             <td>{{ $cert->certificate_type }}</td>
-                            <td>{{ $cert->kepemilikan }}</td>
-                            <td>{{ $cert->keterangan }}</td>
-                            <td>{{ $cert->archive }}</td>
                             <td>{{ $cert->kota }}</td>
-                            <td>{{ $cert->addrees }}</td>
-                            <td>{{ $cert->purposes }}</td>
-                            <td>{{ $cert->kelurahann }}</td>
+                            <td>{{ $cert->archive }}</td>
                             <td>{{ $cert->kecamatan }}</td>
-                            <?php 
-                                $tgl=strtotime($cert->published_date);
-                                $published=date("d F Y", $tgl); 
-                            ?>
-                            <td>{{ $published }}</td>
+                            <td>{{ $cert->kelurahann }}</td>
+                            <td>
+                                <?php 
+                                    if($cert->published_date==null){
+                                        $publis='';
+                                    }else{ 
+                                        $tgl=strtotime($cert->expired_date);
+                                        $publis=date("d F Y", $tgl);
+                                    }
+                                ?>
+                                {{@$publis}}
+                            </td>
+
                             <td>
                                 <?php 
                                     if($cert->expired_date==null){
@@ -68,14 +62,8 @@
                                         $expired=date("d F Y", $tgl);
                                     }
                                 ?>
-                                {{$expired}}
+                                {{@$expired}}
                             </td>
-                            <td>{{ $cert->ajb_nominal }}</td>
-                            <?php 
-                                $tgl=strtotime($cert->ajb_date);
-                                $ajb=date("d F Y", $tgl); 
-                            ?>
-                            <td>{{ $ajb }}</td>
                             <td>
                                 {!! Form::open(['method'=>'delete', 'route'=>['certificates.destroy', $cert->id], 'style' => 'display: inline-block;']) !!} 
                                 {{ csrf_field() }}

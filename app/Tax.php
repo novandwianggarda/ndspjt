@@ -11,7 +11,7 @@ class Tax extends Model implements Auditable
 
     protected $table = 'taxes';
     protected $fillable = [
-        'tax_type_id', 'folder_pbb', 'rencana_group', 'luas_sertifikat', 'pen_pbb', 'wajib_pajak', 'letak_objek_pajak', 'kelurahan_pbb', 'kota_pbb', 'purposes',
+        'tax_type_id', 'folder_pbb', 'rencana_group', 'luas_sertifikat', 'pen_pbb', 'wajib_pajak', 'letak_objek_pajak', 'kelurahan_pbb', 'kota_pbb', 'purposes', 'duedates',
         'nop', 'luas_tanah_pbb', 'luas_bangun_pbb', 'year',
         //njop
         'njop_land', 'njop_building', 'njop_total',

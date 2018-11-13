@@ -82,12 +82,12 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('/edit/{id}', 'TaxesController@edittax');
         Route::patch('/updatetax/{edit}', 'TaxesController@updatetax');
         Route::delete('/delete/{id}', 'TaxesController@destroy')->name('taxes.destroy');
-        //import
+        //import1sert
         Route::get('import', 'TaxesController@import');
         Route::post('storeimport', 'TaxesController@storeimport')->name('tax.import');
         Route::post('storeimport/save', 'TaxesController@tes');
 
-        //import
+        //importallsert
         Route::get('importsert', 'TaxesController@importsert');
         Route::post('storeimportsert', 'TaxesController@storeimportsert')->name('tax.importsert');
         Route::post('storeimportsert/save', 'TaxesController@tessert');

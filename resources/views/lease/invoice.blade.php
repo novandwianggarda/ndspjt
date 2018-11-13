@@ -61,11 +61,16 @@
           <b>Payment Due:</b>
 
             @foreach($payment_invoices as $mydata)
-                    <?php 
-                      $tgl=strtotime($mydata->paid_date);
-                      $tang=date("j F Y", $tgl);
-                    ?>
-                    {{ $tang }}
+              <?php 
+                if($mydata->paid_date==null){
+                  $paid='';
+                }else{ 
+                  $tgl=strtotime($mydata->paid_date);
+                  $paid=date("d F Y", $tgl);
+                }
+              ?>
+
+              {{@$paid }}
             @endforeach
 
           
@@ -103,10 +108,15 @@
                 <tr>
                   <td width="20%">
                     <?php 
-                      $tgl=strtotime($a->paid_date);
-                      $tang=date("j F Y", $tgl); 
+                      if($a->paid_date==null){
+                        $tang='';
+                      }else{ 
+                        $tgl=strtotime($a->paid_date);
+                        $tang=date("d F Y", $tgl);
+                      }
                     ?>
-                    {{ $tang }}
+              
+                    {{@$tang }}
 
                   </td>
                   <td width="60%">{{ $a->note}}</td>

@@ -32,20 +32,27 @@
                             <td>{{ $lease->duration }} Year</td>
                             
                             <td>
-                                <?php
-                                    $tgl=strtotime($lease->start);
-                                    $tanggal=date("j F Y", $tgl); 
+                                <?php 
+                                    if($lease->start==null){
+                                        $starts='';
+                                    }else{ 
+                                        $tgl=strtotime($lease->start);
+                                        $starts=date("d F Y", $tgl);
+                                    }
                                 ?>
-                                {{ $tanggal }}
+                                {{@$starts }}
                             </td>
 
-                            
                             <td>
                                 <?php 
-                                    $tgl=strtotime($lease->end);
-                                    $tang=date("j F Y", $tgl); 
+                                    if($lease->end==null){
+                                        $ends='';
+                                    }else{ 
+                                        $tgl=strtotime($lease->end);
+                                        $ends=date("d F Y", $tgl);
+                                    }
                                 ?>
-                                {{ $tang }}
+                                {{@$ends}}
                             </td>
                             <td>
                                 {!! Form::open(['method'=>'delete', 'route'=>['lease.destroy', $lease->id], 'style' => 'display: inline-block;']) !!} 

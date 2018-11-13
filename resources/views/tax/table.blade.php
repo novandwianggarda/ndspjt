@@ -70,8 +70,18 @@
                                     <td>{{ $tax->pen_pbb }}</td>
                                     <td>{{ $tax->luas_tanah_pbb }}</td>
                                     <td>{{ $tax->luas_bangun_pbb }}</td>
-                                    <td>{{ $tax->due_date }}</td>
-                                    <td>{{ $tax->due_date_ly }}</td>
+                                    <td>{{ $tax->duedates }}</td>
+                                    <td>
+                                        <?php 
+                                            if($tax->due_date_ly==null){
+                                                $dately='';
+                                            }else{ 
+                                                $tgl=strtotime($tax->due_date_ly);
+                                                $dately=date("d F Y", $tgl);
+                                            }
+                                        ?>
+                                        {{@$dately}}
+                                    </td>
                                     <td>
                                         {!! Form::open(['method'=>'delete', 'route'=>['taxes.destroy', $tax->id], 'style' => 'display: inline-block;']) !!} 
                                         {{ csrf_field() }}

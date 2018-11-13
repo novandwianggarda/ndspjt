@@ -185,15 +185,16 @@ class TaxesController extends Controller
                 $taxes->luas_tanah_pbb= $value->luas_tanah_pbb;
                 $taxes->luas_bangun_pbb= $value->luas_bangun_pbb;
 
-                
                 $taxes->njop_land= $value->njop_land;  
                 $taxes->njop_building= $value->njop_building;
                 $taxes->njop_total= $value->njop_total;
 
-                $taxes->due_date= $value->due_date->date;
-                $taxes->due_date_ly= $value->due_date_ly->date;
+                $taxes->due_date= @$value->due_date->date;
+                $taxes->due_date_ly= @$value->due_date_ly->date;
+                $taxes->duedates= $value->duedates;
 
                 $taxes->selisih= $value->selisih;
+                // dd($taxes->duedates);
                 $taxes->save();
                 $taxes->certax()->attach($request->certificate_ids= $no_hm);
             }
@@ -249,9 +250,10 @@ class TaxesController extends Controller
                 $taxes->njop_total= $value->njop_total;
                 $taxes->pbbly= $value->pbbly;
                 $taxes->nop= $value->nop;
+                $taxes->due_date= $value->due_date;
 
-                $taxes->due_date= $value->due_date->date;
-                $taxes->due_date_ly= $value->due_date_ly->date;
+
+                $taxes->due_date_ly= @$value->due_date_ly->date;
                 
 
                 

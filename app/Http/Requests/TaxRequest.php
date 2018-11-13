@@ -39,6 +39,7 @@ class TaxRequest extends FormRequest
             'kota_pbb' => 'nullable',
             'luas_tanah_pbb' => 'nullable',
             'luas_bangun_pbb' => 'nullable',
+            'due_date' => 'nullable',
             // NJOP
             // 'year' => 'nullable',
             // 'njop_land' => 'nullable|numeric',
