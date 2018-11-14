@@ -8,6 +8,11 @@
 
 @section('content')
     <div class="row">
+
+        <div>
+            Hide / Show : <a class="toggle-vis" data-column="1">NOP</a> | <a class="toggle-vis" data-column="2">Nama Sertifikat</a> | <a class="toggle-vis" data-column="3">Folder PBB</a> | <a class="toggle-vis" data-column="4">No HM</a> | <a class="toggle-vis" data-column="5">Rencana Group</a> | <a class="toggle-vis" data-column="6">Luas Sertifikat</a> | <a class="toggle-vis" data-column="7">Wajib Pajak</a> | <a class="toggle-vis" data-column="8">Jenis Sertifikat</a> | <a class="toggle-vis" data-column="9">Letak Objek Pajak</a> | <a class="toggle-vis" data-column="11">Kota PBB</a>
+        </div>
+
         <div class="col-md-12">
             <!-- <table id="tbl-taxes" class="table table-bordered" style="width:100%"> -->
             <div class="box">
@@ -128,9 +133,21 @@
 @stop
 
 @section('js')
+
     <script>
         $(document).ready(function() {
-            $('#tbl-taxes').DataTable();
+            
+            var table = $('#tbl-taxes').DataTable();
+         
+            $('a.toggle-vis').on( 'click', function (e) {
+                e.preventDefault();
+         
+                // Get the column API object
+                var column = table.column( $(this).attr('data-column') );
+         
+                // Toggle the visibility
+                column.visible( ! column.visible() );
+            });
         });
     </script>
 @stop

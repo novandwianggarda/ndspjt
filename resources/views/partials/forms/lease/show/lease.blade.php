@@ -17,13 +17,7 @@
             PKP Yang Menyewakan
         </label>
         <div class="input-group">
-            <label class="radio-inline"><input type="radio" name="lessor_pkp" v-model="lessorPKP" :value="true">Ya</label>
-            <label class="radio-inline"><input type="radio" name="lessor_pkp" v-model="lessorPKP" :value="false">Tidak</label>
-            <label class="radio-inline text-muted">
-                <i class="fa fa-info-circle"></i>
-                <span v-if="lessorPKP">Termasuk PPN</span>
-                <span v-else>Tanpa PPN</span>
-            </label>
+            {{ $lease->lessor_pkp }}
         </div>
     </frgroup>
 

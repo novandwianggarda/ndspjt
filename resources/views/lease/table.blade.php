@@ -9,6 +9,10 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
+        <div>
+            Hide / Show | <a class="toggle-vis" data-column="0">Tenant</a> | <a class="toggle-vis" data-column="1">Nama Lokasi</a> | <a class="toggle-vis" data-column="2">Jenis</a> | <a class="toggle-vis" data-column="3">Lenght</a> | <a class="toggle-vis" data-column="4">Start</a> | <a class="toggle-vis" data-column="5">End</a> |
+        </div>
+
             <table id="tbl-leases" class="table table-bordered" style="width:100%">
                 <thead>
                     <tr>
@@ -78,9 +82,21 @@
 @stop
 
 @section('js')
+
     <script>
         $(document).ready(function() {
-            $('#tbl-leases').DataTable();
+            
+            var table = $('#tbl-leases').DataTable();
+         
+            $('a.toggle-vis').on( 'click', function (e) {
+                e.preventDefault();
+         
+                // Get the column API object
+                var column = table.column( $(this).attr('data-column') );
+         
+                // Toggle the visibility
+                column.visible( ! column.visible() );
+            });
         });
     </script>
 @stop

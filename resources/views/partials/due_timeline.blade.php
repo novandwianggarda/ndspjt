@@ -9,7 +9,7 @@
                 <i class="fa fa-clock-o ll-acolor"></i>
                 <div class="timeline-item">
                     <h3 class="timeline-header no-border">
-                        <a href="#">{{ $le->lessor }}</a>
+                        <a href="/leases/show/{{ $le->id }}">{{ $le->lessor }}</a>
                     </h3>
                     <span>Tenant&nbsp;: {{ $le->tenant }}</span> <br>
                     <?php 
@@ -35,7 +35,7 @@
     </div>
     <!-- /.box-body -->
     <div class="box-footer text-center">
-        <a href="/lease/{{ $le->id }}" class="uppercase">View All</a>
+        <a href="/leases/show/{{ $le->id }}" class="uppercase">View All</a>
     </div>
     <!-- /.box-footer -->
 </div>

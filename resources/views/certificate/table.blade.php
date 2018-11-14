@@ -9,9 +9,13 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
+
             
             <!-- <table id="example1" class="table table-bordered table-striped" style="width: 100%;"> -->
         <div class="box">
+        <div>
+            Hide / Show : <a class="toggle-vis" data-column="0">Nama Sertifikat</a> | <a class="toggle-vis" data-column="1">No HM / HGB</a> | <a class="toggle-vis" data-column="2">Type</a> | <a class="toggle-vis" data-column="3">Kota</a> | <a class="toggle-vis" data-column="4">Archive</a> | <a class="toggle-vis" data-column="5">Kecamatan</a> | <a class="toggle-vis" data-column="6">Kelurahan</a> | <a class="toggle-vis" data-column="7">Published Date</a> | <a class="toggle-vis" data-column="8">Expired Date</a>
+        </div>
         <div class="box-body table-responsive no-padding">
             <table id="example1" class="table table-bordered table-striped" style="width: 100%;">
                 <thead>
@@ -89,9 +93,22 @@
 
 @section('js')
 
+
+
     <script>
-        $(function () {
-            $('#example1').DataTable();
+        $(document).ready(function() {
+            
+            var table = $('#example1').DataTable();
+         
+            $('a.toggle-vis').on( 'click', function (e) {
+                e.preventDefault();
+         
+                // Get the column API object
+                var column = table.column( $(this).attr('data-column') );
+         
+                // Toggle the visibility
+                column.visible( ! column.visible() );
+            });
         });
     </script>
 @stop
