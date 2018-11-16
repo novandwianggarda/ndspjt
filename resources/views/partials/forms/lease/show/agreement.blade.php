@@ -8,7 +8,7 @@
         <label slot="label">
            Nama Notaris
         </label>
-        <div>{{ $lease->lease_deed }}
+        <div>: &nbsp;{{ $lease->lease_deed }}
         </div>
     </frgroup>
 
@@ -16,7 +16,7 @@
         <label slot="label">
            No Akta Sewa
         </label>
-        <div>{{ $lease->lease_number }}
+        <div>: &nbsp;{{ $lease->lease_number }}
         </div>
     </frgroup>
 
@@ -24,7 +24,17 @@
         <label slot="label">
            Tanggal Akta Sewa
         </label>
-        <div>{{ $lease->lease_deed_date }}
+
+        <div>:
+            <?php 
+                if($lease->lease_deed_date==null){
+                    $tang='';
+                }else{ 
+                $tgl=strtotime($lease->lease_deed_date);
+                $tang=date("d F Y", $tgl);
+                }
+            ?>
+            {{@$tang}}
         </div>
     </frgroup>
 

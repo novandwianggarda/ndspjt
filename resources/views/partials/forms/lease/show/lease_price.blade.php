@@ -6,9 +6,14 @@
 
     <frgroup>
         <label slot="label">
-            Sewa <span v-text="periodType"></span> (DPP)
+            Sewa Pertahun (DPP)
         </label>
-        <div>Rp.{{ $lease->rent_price }}
+        <div>Rp.
+            <?php 
+
+                $jaminan = $lease->rent_price;
+                echo number_format($jaminan, 0, ".", ".")."<br />";
+            ?>
         </div>
     </frgroup>
 

@@ -1,17 +1,18 @@
-<div class="box box-primary">
+<!-- <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Due Leases</h3>
+        <h3 class="box-title">
+            <i class="fa fa-money"></i>&nbsp; PBB Jatuh Tempo
+        </h3>
         <div class="box-tools pull-right">
-            {{-- <button type="button" class="btn btn-box-tool" data-widget="collapse">
+             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                 <i class="fa fa-minus"></i>
-            </button> --}}
-            {{--
+            </button>
+            
             <button type="button" class="btn btn-box-tool" data-widget="remove">
                 <i class="fa fa-times"></i>
-            </button> --}}
+            </button>
         </div>
     </div>
-    <!-- /.box-header -->
     <div class="box-body">
         <ul class="products-list product-list-in-box">
             <li class="item">
@@ -27,7 +28,6 @@
                     </span>
                 </div>
             </li>
-            <!-- /.item -->
             <li class="item">
                 <div class="product-img">
                     <img src="{{ asset('img/superadmin.png') }}" alt="Product Image">
@@ -41,40 +41,39 @@
                     </span>
                 </div>
             </li>
-            <!-- /.item -->
-            <li class="item">
-                <div class="product-img">
-                    <img src="{{ asset('img/superadmin.png') }}" alt="Product Image">
-                </div>
-                <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">Xbox One
-                        <span class="label label-danger pull-right">$350</span>
-                    </a>
-                    <span class="product-description">
-                        Xbox One Console Bundle with Halo Master Chief Collection.
-                    </span>
-                </div>
-            </li>
-            <!-- /.item -->
-            <li class="item">
-                <div class="product-img">
-                    <img src="{{ asset('img/superadmin.png') }}" alt="Product Image">
-                </div>
-                <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">PlayStation 4
-                        <span class="label label-success pull-right">$399</span>
-                    </a>
-                    <span class="product-description">
-                        PlayStation 4 500GB Console (PS4)
-                    </span>
-                </div>
-            </li>
-            <!-- /.item -->
+            
         </ul>
     </div>
-    <!-- /.box-body -->
     <div class="box-footer text-center">
         <a href="javascript:void(0)" class="uppercase">View All</a>
+    </div>
+</div> -->
+
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h2 class="box-title"><i class="fa fa-money"></i>&nbsp; PBB Jatuh Tempo</h2>
+    </div>
+    <br>
+    <!-- /.box-header -->
+    @foreach ($taxes as $tax)
+    <div class="box-body">
+        <ul class="timeline">
+            <li>
+                <i class="fa fa-clock-o ll-acolor"></i>
+                <div class="timeline-item">
+                    <h3 class="timeline-header no-border">
+                        <a href="/taxes/show/{{ $tax->id }}">{{ $tax->pen_pbb }}</a>
+                    </h3>
+                    <span>Wajib Pajak&nbsp;: {{ $tax->wajib_pajak }}</span> <br>
+                    <span>Due&nbsp;: {{$tax->duedates}}</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    @endforeach
+    <!-- /.box-body -->
+    <div class="box-footer text-center">
+        <a href="" class="uppercase">View All</a>
     </div>
     <!-- /.box-footer -->
 </div>

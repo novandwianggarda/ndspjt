@@ -9,15 +9,11 @@
 @section('content')
     <div class="row">
 
-        <div>
-            Hide / Show : <a class="toggle-vis" data-column="1">NOP</a> | <a class="toggle-vis" data-column="2">Nama Sertifikat</a> | <a class="toggle-vis" data-column="3">Folder PBB</a> | <a class="toggle-vis" data-column="4">No HM</a> | <a class="toggle-vis" data-column="5">Rencana Group</a> | <a class="toggle-vis" data-column="6">Luas Sertifikat</a> | <a class="toggle-vis" data-column="7">Wajib Pajak</a> | <a class="toggle-vis" data-column="8">Jenis Sertifikat</a> | <a class="toggle-vis" data-column="9">Letak Objek Pajak</a> | <a class="toggle-vis" data-column="11">Kota PBB</a>
-        </div>
-
         <div class="col-md-12">
             <!-- <table id="tbl-taxes" class="table table-bordered" style="width:100%"> -->
             <div class="box">
                 <div class="box-body table-responsive no-padding">
-                    <table id="tbl-taxes" class="table table-bordered">
+                <table id="example" class="display responsive nowrap" style="width:100%">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -129,25 +125,28 @@
 @stop
 
 @section('css')
-
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css">
 @stop
 
 @section('js')
 
     <script>
         $(document).ready(function() {
-            
-            var table = $('#tbl-taxes').DataTable();
-         
-            $('a.toggle-vis').on( 'click', function (e) {
-                e.preventDefault();
-         
-                // Get the column API object
-                var column = table.column( $(this).attr('data-column') );
-         
-                // Toggle the visibility
-                column.visible( ! column.visible() );
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'colvis'
+                ]
             });
         });
     </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+
 @stop

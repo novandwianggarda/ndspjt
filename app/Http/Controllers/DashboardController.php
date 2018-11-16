@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Lease;
 use App\Certificate;
+use App\Tax;
 
 class DashboardController extends Controller
 {
@@ -13,8 +14,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $leases = Lease::orderBy('id', 'Desc')->paginate(9);
-        return view('dashboard', compact('leases'));
+        $leases = Lease::orderBy('end', 'Desc')->paginate(4);
+        $taxes = Tax::orderBy('duedates', 'Desc')->paginate(4);
+        return view('dashboard', compact('leases', 'taxes'));
     }
 
     /**

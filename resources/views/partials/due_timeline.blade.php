@@ -1,8 +1,11 @@
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Due Leases</h3>
+        <h2 class="box-title"><i class="fa fa-money" style="color:red"></i>
+ &nbsp; Due Lease</h2>
     </div>
+    <br>
     <!-- /.box-header -->
+    @foreach ($leases as $le)
     <div class="box-body">
         <ul class="timeline">
             <li>
@@ -13,12 +16,29 @@
                     </h3>
                     <span>Tenant&nbsp;: {{ $le->tenant }}</span> <br>
                     <?php 
-                      $tgl=strtotime($le->end);
-                      $tanggal=date("d F Y", $tgl); //d F y adalah tgl bulan thn
+                        if($le->start==null){
+                            $starts='';
+                        }else{ 
+                            $tgl=strtotime($le->start);
+                            $starts=date("d F Y", $tgl);
+                        }
                     ?>
-                    <span>Due &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $tanggal }}</span> 
+
+                    <span>Start &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{@$starts}}</span><br> 
+                    <?php 
+                        if($le->end==null){
+                            $tang='';
+                        }else{ 
+                            $tgl=strtotime($le->end);
+                            $tang=date("d F Y", $tgl);
+                        }
+                    ?>
+
+                    <span>Due &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{@$tang}}</span>
                 </div>
             </li>
+
+
             
             <!-- <li>
                 <i class="fa fa-clock-o ll-acolor"></i>
@@ -31,11 +51,11 @@
                 </div>
             </li> -->
         </ul>
-
     </div>
+    @endforeach
     <!-- /.box-body -->
     <div class="box-footer text-center">
-        <a href="/leases/show/{{ $le->id }}" class="uppercase">View All</a>
+        <a href="" class="uppercase">View All</a>
     </div>
     <!-- /.box-footer -->
 </div>

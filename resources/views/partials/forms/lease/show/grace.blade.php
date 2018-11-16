@@ -7,14 +7,34 @@
         <label slot="label">
             Grace Awal
         </label>
-        <div>{{ $lease->grace_start }}
+        <div>
+            :
+            <?php 
+                if($lease->grace_start==null){
+                    $tang='';
+                }else{ 
+                $tgl=strtotime($lease->grace_start);
+                $tang=date("d F Y", $tgl);
+                }
+            ?>
+            {{@$tang}}
         </div>
     </frgroup>
     <frgroup>
         <label slot="label">
             Grace Akhir
         </label>
-        <div>{{ $lease->grace_end }}
+        <div>
+            :
+            <?php 
+                if($lease->grace_end==null){
+                    $ends='';
+                }else{ 
+                $tgl=strtotime($lease->grace_end);
+                $ends=date("d F Y", $tgl);
+                }
+            ?>
+            {{@$ends}}
         </div>
     </frgroup>
 

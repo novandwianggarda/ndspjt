@@ -8,7 +8,7 @@
         <label slot="label">
             Yang Menyewakan
         </label>
-        <div>{{ $lease->lessor }}
+        <div>:&nbsp;&nbsp;{{ $lease->lessor }}
         </div>
     </frgroup>
 
@@ -17,7 +17,7 @@
             PKP Yang Menyewakan
         </label>
         <div class="input-group">
-            {{ $lease->lessor_pkp }}
+            :&nbsp;&nbsp;{{ $lease->lessor_pkp }}
         </div>
     </frgroup>
 
@@ -25,23 +25,17 @@
         <label slot="label">
             Nama Penyewa
         </label>
-        <div>{{ $lease->tenant }}
+        <div>:&nbsp;&nbsp;{{ $lease->tenant }}
         </div>
     </frgroup>
 
-    <frgroup>
-        <label slot="label">
-            Rent Assuransi
-        </label>
-        <div>{{ $lease->rent_assurance }}
-        </div>
-    </frgroup>
+    
 
     <frgroup>
         <label slot="label">
            Keperluan Sewa
         </label>
-        <div>{{ $lease->purpose }}
+        <div>:&nbsp;&nbsp;{{ $lease->purpose }}
         </div>
     </frgroup>
 
@@ -49,7 +43,7 @@
         <label slot="label">
             PIC
         </label>
-        <div>{{ $lease->pic }}
+        <div>:&nbsp;&nbsp;{{ $lease->pic }}
         </div>
     </frgroup>
 

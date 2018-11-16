@@ -10,7 +10,7 @@
                 <h1 style="text-align: center;">DS ESTATES</h1>
                 <h3 style="text-align: center;">Data Certificate</h3>
             
-                <table id="example1" class="table table-bordered table-striped" style="width: 100%;">
+                <table id="example" class="display responsive nowrap" style="width:100%">
                     <thead>
                         <tr>
                             <th>No HM / HGB</th>
@@ -71,14 +71,29 @@
 @stop
 
 @section('css')
-
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css">
 @stop
 
 @section('js')
 
     <script>
-        $(function () {
-            $('#example1').DataTable();
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'colvis'
+                ]
+            });
         });
     </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+
 @stop
+

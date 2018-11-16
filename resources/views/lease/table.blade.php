@@ -8,12 +8,10 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-12">
-        <div>
-            Hide / Show | <a class="toggle-vis" data-column="0">Tenant</a> | <a class="toggle-vis" data-column="1">Nama Lokasi</a> | <a class="toggle-vis" data-column="2">Jenis</a> | <a class="toggle-vis" data-column="3">Lenght</a> | <a class="toggle-vis" data-column="4">Start</a> | <a class="toggle-vis" data-column="5">End</a> |
-        </div>
 
-            <table id="tbl-leases" class="table table-bordered" style="width:100%">
+        <div class="col-md-12">
+
+            <table id="example" class="display responsive nowrap" style="width:100%">
                 <thead>
                     <tr>
                         <th>Tenant</th>
@@ -41,7 +39,7 @@
                                         $starts='';
                                     }else{ 
                                         $tgl=strtotime($lease->start);
-                                        $starts=date("d F Y", $tgl);
+                                        $starts=date("d-m-Y", $tgl);
                                     }
                                 ?>
                                 {{@$starts }}
@@ -53,7 +51,7 @@
                                         $ends='';
                                     }else{ 
                                         $tgl=strtotime($lease->end);
-                                        $ends=date("d F Y", $tgl);
+                                        $ends=date("d-m-Y", $tgl);
                                     }
                                 ?>
                                 {{@$ends}}
@@ -78,25 +76,28 @@
 @stop
 
 @section('css')
-
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css">
 @stop
 
 @section('js')
 
     <script>
         $(document).ready(function() {
-            
-            var table = $('#tbl-leases').DataTable();
-         
-            $('a.toggle-vis').on( 'click', function (e) {
-                e.preventDefault();
-         
-                // Get the column API object
-                var column = table.column( $(this).attr('data-column') );
-         
-                // Toggle the visibility
-                column.visible( ! column.visible() );
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'colvis'
+                ]
             });
         });
     </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+
 @stop
