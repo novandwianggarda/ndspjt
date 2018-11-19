@@ -14,9 +14,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                        page and may cause design problems
+                    <a href="/logActivity">
+                        <i class="fa fa-warning text-yellow"></i> Log Activity
                     </a>
                 </li>
                 <li>

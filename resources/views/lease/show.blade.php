@@ -3,26 +3,21 @@
 @section('title', 'DS-Land  Lord')
 
 @section('content')
-<div class="row">
+
+    <div class="row">
         <div class="col-md-12">
             <div class="box box-solid">
-                <h1 style="text-align: center;">DS ESTATES</h1>
-                <h3 style="text-align: center;">Data Lease</h3>
+                <p>&nbsp;</p>
+                <center><img src="{{asset('img/log1.jpg')}}" height="25%" width="20%" /></center>
+                <h2 style="text-align: center;">Show Data Lease</h2>
                 <div class="box-body">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                     {!! Form::model($lease,  ['url'=>array( '', $lease->id), 'method' => '', 'id' => 'formshow-lease', 'enctype' => 'multipart/form-data', 'files' => true]) !!}
 
                     @csrf
                     <div class="box-group" id="accordion">
                         <div class="panel box">
+                        <a href="/leases/edit/{{ $lease->id }}" class="btn btn-success"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
+                        <a href="/leases/print/{{ $lease->id }}" class="btn btn-info"><i class="fa fa-print" aria-hidden="true"></i>Print</a>
                             <!-- LAND -->
                             @include('partials.forms.lease.show.land')
                             <!-- PROPERTY -->

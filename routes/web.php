@@ -40,6 +40,14 @@ Route::middleware(['web', 'auth'])->group(function () {
     
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    // Route::get('/logActivity', 'DashboardController@log')->name('logActivity');
+
+
+    Route::get('add-to-log', 'DashboardController@myTestAddToLog');
+    Route::get('logActivity', 'DashboardController@logActivity');
+
+
+
     Route::get('/profile', 'DashboardController@showUserProfile')->name('profile');
 
     // Certificate

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use App\LogActivity as LogActivityModel;
+
 class UserManagerController extends Controller
 {
     public function index()
@@ -27,6 +29,8 @@ class UserManagerController extends Controller
 
         $user->save();
         $user->roles()->attach($request->input('role_id'));
+
+        \LogActivity::addToLog('My Testing Add To Log.');
 
         // if($user->save()){
         //     $kategori='success';
@@ -57,6 +61,7 @@ class UserManagerController extends Controller
         \DB::table('role_users')
             ->where('user_id', User::find($id)->id)
             ->update(['role_id' => $request->role_id]);
+        \LogActivity::addToLog('Edit User');
 
         return redirect('users')->with('status', 'Profile updated!');
 

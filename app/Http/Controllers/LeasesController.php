@@ -79,7 +79,11 @@ class LeasesController extends Controller
     public function edit($id)
     {
         $lease=Lease::find($id);
-        return view('lease.edit', compact('lease'));
+        $payment_history = json_decode($lease->payment_history);
+        $payment_invoices = json_decode($lease->payment_invoices);
+        $payment_terms = json_decode($lease->payment_terms);
+
+        return view('lease.edit', compact('lease', 'payment_history', 'payment_invoices', 'payment_terms'));
     }
 
     public function updatelease(Request $request, $id)
@@ -114,7 +118,7 @@ class LeasesController extends Controller
         $data->grace_end = $request->input('grace_end');
 
         $dataUpdate = $request->only([
-        'certificate_ids', 'property_ids', 'lessor', 'lessor_pkp',
+        'lessor', 'lessor_pkp',
         'tenant', 'purpose', 'start', 'end', 'note', 'lease_deed_date', 'lease_number', 'lease_deed',
         'payment_terms', 'payment_history', 'payment_invoices', 'sell_monthly', 'sell_yearly', 'rent_m2_monthly', 'rent_m2_monthly_type', 'rent_price', 'rent_price_type', 'rent_assurance', 'brok_name', 'brok_fee_yearly', 'brok_fee_paid', 'grace_start', 'grace_end']);
         $data->update($dataUpdate);

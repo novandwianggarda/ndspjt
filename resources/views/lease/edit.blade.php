@@ -26,9 +26,7 @@
                     <div class="box-group" id="accordion">
                         <div class="panel box">
                             <!-- LAND -->
-                            @include('partials.forms.lease.edit.land')
-                            <!-- PROPERTY -->
-                            @include('partials.forms.lease.edit.property')
+                            
                             <!-- LEASE -->
                             @include('partials.forms.lease.edit.lease')
                             <!-- SUBMIT BTN -->

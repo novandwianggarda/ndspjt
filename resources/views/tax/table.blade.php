@@ -3,7 +3,8 @@
 @section('title', 'Tax List')
 
 @section('content_header')
-    <h1>Tax List</h1>
+    <h1>&nbsp;</h1>
+    
 @stop
 
 @section('content')
@@ -12,8 +13,12 @@
         <div class="col-md-12">
             <!-- <table id="tbl-taxes" class="table table-bordered" style="width:100%"> -->
             <div class="box">
+                <p>&nbsp;</p>
+                <center><img src="{{asset('img/log1.jpg')}}" height="25%" width="20%" /></center>
+                <h2 style="text-align: center;">Tax List</h2>
+
                 <div class="box-body table-responsive no-padding">
-                <table id="example" class="display responsive nowrap" style="width:100%">
+                    <table id="example" class="display responsive nowrap" style="width:100%">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -95,7 +100,7 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                    <!-- <tfoot>
+                        <!-- <tfoot>
                         <tr>
                             <th>No</th>
                             <th>Nama Sertifikat</th>
@@ -116,7 +121,7 @@
                             <th>Payment PBB</th>
                             <th>Actions</th>
                         </tr>
-                    </tfoot> -->
+                        </tfoot> -->
                     </table>
                 </div>
             </div>
@@ -146,7 +151,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+    <script src="{{asset('js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('js/buttons.colVis.min.js')}}"></script>
+
 
 @stop

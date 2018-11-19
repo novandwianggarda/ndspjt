@@ -4,10 +4,14 @@
 
 
 @section('content')
+
     <div class="row">
+
         <div class="col-md-12">
+            <!-- <table id="tbl-taxes" class="table table-bordered" style="width:100%"> -->
             <div class="box">
-                <h1 style="text-align: center;">DS ESTATES</h1>
+                <p>&nbsp;</p>
+                <center><img src="{{asset('img/log1.jpg')}}" height="25%" width="20%" /></center>
                 <h3 style="text-align: center;">Data Certificate</h3>
             
                 <table id="example" class="display responsive nowrap" style="width:100%">
