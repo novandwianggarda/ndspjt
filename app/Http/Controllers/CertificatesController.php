@@ -164,74 +164,77 @@ class CertificatesController extends Controller
     public function tes(Request $request)
     {
         $x = json_decode($request->data);
+        
         foreach ($x as $d => $value) {
-            
-
             $certificate_type= $value->certificate_type;
-
             if($certificate_type){
-
                 $certTypeId = \App\CertificateType::where('short_name', $certificate_type)->get()->first()->id;
-                
-                $ce = new Certificate();
-                $ce->certificate_type_id= $certTypeId;
-                $ce->folder_sert= $value->folder_sert;
-                $ce->no_folder= $value->no_folder;
-                $ce->nop= $value->nop;
-                $ce->kepemilikan= $value->kepemilikan;
-                $ce->nama_sertifikat= $value->nama_sertifikat;
-                $ce->keterangan= $value->keterangan;
-                $ce->archive= $value->archive;
-                $ce->no_hm_hgb= $value->no_hm_hgb;
+                $cert = new Certificate();
+                $folder_sert = $value->folder_sert;
+                $no_folder = $value->no_folder;
+                $kepemilikan = $value->kepemilikan;
+                $nama_sertifikat = $value->nama_sertifikat;
+                $keterangan = $value->keterangan;
+                $archive = $value->archive;
+                $certificate_type_id= $certTypeId;
+                $no_hm_hgb = $value->no_hm_hgb;
+                $kelurahann = $value->kelurahann;
+                $kecamatan = $value->kecamatan;
+                $kota = $value->kota;
+                $published_date= @$value->published_date->date;
+                $expired_date= @$value->expired_date->date;
+                $addrees  = $value->addrees ;
+                $purposes = $value->purposes;
+                $ajb_nominal= $value->ajb_nominal;
+                $ajb_date= @$value->ajb_date->date;
+                $boundary_coordinates= $value->boundary_coordinates;
 
-                $ce->kota= $value->kota;
-                $ce->published_date= $value->published_date->date;
-                $ce->expired_date= @$value->expired_date->date;
-
-                $ce->addrees  = $value->addrees ;
-                $ce->kelurahann = $value->kelurahann;
-                $ce->kecamatan = $value->kecamatan;
-                $ce->purposes = $value->purposes;
-                
-                $ce->ajb_nominal= $value->ajb_nominal;
-                $ce->ajb_date= @$value->ajb_date->date;
-                $ce->boundary_coordinates= $value->boundary_coordinates;
-                $ce->save();
+                if($no_hm_hgb){
+                    $cert = Certificate::firstOrCreate([
+                        'folder_sert' => $folder_sert, 
+                        'no_folder' => $no_folder, 
+                        'kepemilikan' => $kepemilikan, 
+                        'nama_sertifikat' => $nama_sertifikat, 
+                        'keterangan' => $keterangan, 
+                        'archive' => $archive, 
+                        'certificate_type_id' => $certificate_type_id, 
+                        'no_hm_hgb' => $no_hm_hgb, 
+                        'kelurahann' => $kelurahann, 
+                        'kecamatan' => $kecamatan, 
+                        'kota' => $kota, 
+                        'published_date' => $published_date, 
+                        'expired_date' => $expired_date, 
+                        'addrees' => $addrees, 
+                        'purposes' => $purposes, 
+                        'ajb_nominal' => $ajb_nominal, 
+                        'ajb_date' => $ajb_date, 
+                        'boundary_coordinates' => $boundary_coordinates]);
+                }else{
+                    $cert->save();
+                }
             }
-            // else(
 
-            //     $ce = new Certificate();
-            //     $ce->certificate_type_id= null;
-            //     $ce->folder_sert= $value->folder_sert;
-            //     $ce->no_folder= $value->no_folder;
-            //     $ce->kepemilikan= $value->kepemilikan;
-            //     $ce->nama_sertifikat= $value->nama_sertifikat;
-            //     $ce->keterangan= $value->keterangan;
-            //     $ce->archive= $value->archive;
-            //     $ce->no_hm_hgb= $value->no_hm_hgb;
-            //     $ce->kelurahan= $value->kelurahan;
-            //     $ce->kecamatan= $value->kecamatan;
-            //     $ce->kota= $value->kota;
-
-            //     $ce->published_date = date('Y-m-d', strtotime($ce->published_date));
-            //     $ce->expired_date = date('Y-m-d', strtotime($ce->expired_date));
-            //     $ce->luas_sertifikat= $value->luas_sertifikat;
-            //     $ce->ajb_nominal= $value->ajb_nominal;
-            //     $ce->ajb_date = date('Y-m-d', strtotime($ce->ajb_date));
-            //     $ce->map_coordinate= $value->map_coordinate;
-            //     $ce->penanggung_pbb= $value->penanggung_pbb;
-            //     $ce->purpose= $value->purpose;
-            //     $ce->addrees  = $value->addrees ;
-            //     $ce->wajib_pajak= $value->wajib_pajak;
-            //     $ce->letak_objek_pajak= $value->letak_objek_pajak;
-            //     $ce->kelurahan_pbb= $value->kelurahan_pbb;
-            //     $ce->kota_pbb= $value->kota_pbb;
-            //     $ce->nop= $value->nop;
-            //     $ce->luas_tanah_pbb= $value->luas_tanah_pbb;
-            //     $ce->luas_bangun_pbb= $value->luas_bangun_pbb;
-               
-            //     $ce->save();
-            // )
+            \DB::table('certificates')
+                ->where('no_hm_hgb', $cert->no_hm_hgb)
+                ->update(['kelurahann' => $cert->kelurahann, 
+                    'folder_sert' => $cert->folder_sert,
+                    'no_folder' => $cert->no_folder,
+                    'kepemilikan' => $cert->kepemilikan,
+                    'nama_sertifikat' => $cert->nama_sertifikat,
+                    'keterangan' => $cert->keterangan,
+                    'archive' => $cert->archive,
+                    'certificate_type_id' => $cert->certificate_type_id,
+                    'kelurahann' => $cert->kelurahann,
+                    'kecamatan' => $cert->kecamatan,
+                    'kota' => $cert->kota,
+                    'published_date' => $cert->published_date,
+                    'expired_date' => $cert->expired_date,
+                    'addrees' => $cert->addrees,
+                    'purposes' => $cert->purposes,
+                    'ajb_nominal' => $cert->ajb_nominal,
+                    'ajb_date' => $cert->ajb_date,
+                    'boundary_coordinates' => $cert->boundary_coordinates
+            ]);
         }
         return redirect()->route('certificates');
     }
