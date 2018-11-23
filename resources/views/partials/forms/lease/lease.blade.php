@@ -33,12 +33,7 @@
         <input type="text" name="tenant" value="{{ old('tenant') }}" class="form-control" />
     </frgroup>
 
-    <frgroup>
-            <label slot="label">
-                Jaminan Asuransi
-            </label>
-            <money name="rent_assurance" class="form-control" value="{{ old('rent_assurance') }}"></money>
-    </frgroup>
+    
 
     <frgroup wl="2">
         <label slot="label">
@@ -90,11 +85,12 @@
     <!-- PAYMENT TERMS-->
     @include('partials.forms.lease.payment_term')
 
-    <!-- INVOICE -->
+    <!-- PAYMENT balance HISTORY -->
+    @include('partials.forms.lease.payment_history')
+
+    <!-- INVOICE Tagihan Lainya-->
     @include('partials.forms.lease.payment_invoice')
 
-    <!-- PAYMENT HISTORY -->
-    @include('partials.forms.lease.payment_history')
 
     <!-- BROKER -->
     @include('partials.forms.lease.broker')

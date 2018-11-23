@@ -8,6 +8,9 @@ use App\Certificate;
 use App\User;
 use App\Tax;
 
+use Carbon\Carbon;
+use DB;
+
 class DashboardController extends Controller
 {
     /**
@@ -57,18 +60,25 @@ class DashboardController extends Controller
         return view('user.logtoday',compact('logs'));
     }
 
+    public function datedue(){
+        // $orders_this_month = Lease::where( DB::raw('MONTH(end)'), '=', date('n') )->get();
+        // $orders_this_month = Lease::where('end', '>=', Carbon::now()->startOfMonth())->get();
 
 
-
-
-
+        return view('lease.duedate.index', compact('orders_this_month'));
+    }
 
     
     public function index()
     {
-        $leases = Lease::orderBy('end', 'Desc')->paginate(4);
+        $leases = Lease::whereDate('end', '>', Carbon::now())
+        ->orderBy('end', 'Asc')->paginate(4);
+
+        $lease = Lease::whereDate('duedate_term', '>', Carbon::now())
+        ->orderBy('end', 'Asc')->paginate(4);
+        // $leases = Lease::orderBy('end', 'Desc')->paginate(4);
         $taxes = Tax::orderBy('duedates', 'Desc')->paginate(4);
-        return view('dashboard', compact('leases', 'taxes'));
+        return view('dashboard', compact('leases', 'taxes', 'lease'));
     }
 
     // public function log()

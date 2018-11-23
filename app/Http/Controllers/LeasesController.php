@@ -176,21 +176,23 @@ class LeasesController extends Controller
             $leas->lease_deed= @$value->lease_deed;
             $leas->brok_fee_paid= @$value->brok_fee_paid;
             $leas->lease_deed_date= @$value->lease_deed_date->date;
+            $leas->duedate_term= @$value->duedate_term->date;
+            
 
             $leas->payment_terms= json_encode([Array(
                 "total" => @$value->payment_terms,
-                "due_date" => @$value->du_datepbb->date,
+                "due_date" => @$value->duedate_term->date,
                 "note" => @$value->notes,
             )]);
 
             $leas->payment_invoices= json_encode([Array(
                 "total" => @$value->totsew,
-                "paid_date" => @$value->payment_invoices->date,
+                "paid_date" => @$value->duedate_term->date,
                 "note" => @$value->note,
             )]);
             $leas->payment_history= json_encode([Array(
                 "total" => @$value->total_inv,
-                "paid_date" => @$value->payment_invoices->date,
+                "paid_date" => @$value->duedate_term->date,
                 "note" => @$value->note_payinv,
             )]);
             $leas->save();
@@ -246,6 +248,9 @@ class LeasesController extends Controller
                 ->where('id', $leas->id)
                 ->update(['certificate_ids' => $cert->id, 'property_ids' => $prop->id
             ]);
+
+        \LogActivity::addToLog('Import dan update Lease');
+
 
 
         }

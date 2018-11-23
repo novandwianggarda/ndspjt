@@ -8,11 +8,14 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             @include('partials.due_timeline')
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             @include('partials.due_list')
+        </div>
+        <div class="col-md-4">
+            @include('partials.due_lease')
         </div>
     </div>
 @stop

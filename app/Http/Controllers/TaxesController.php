@@ -62,6 +62,7 @@ class TaxesController extends Controller
         $t->certificate_ids=$request->input('certificate_ids');
         $t->tax_ids=$request->input('tax_ids');
         $t->save();
+        \LogActivity::addToLog('Add new Pbb Year');
         return redirect()->route('year');
     }
 
@@ -75,6 +76,7 @@ class TaxesController extends Controller
     {
         $year = Year::find($id);
         $year->delete();
+        \LogActivity::addToLog('delete year pbb');
         return redirect()->route('year');
     }
 
@@ -125,12 +127,15 @@ class TaxesController extends Controller
 
         $updatecertax = DB::table('certi_taxs')->where('tax_id', $id)->update(['certificate_ids' => $request->input('certificate_ids')]);
         $t->update($tUpdate);
+        \LogActivity::addToLog('Update Pbb');
         return redirect()->route('taxes');
     }
     public function destroy($id)
     {
         $t=Tax::find($id);
         $t->delete();
+        \LogActivity::addToLog('Menghapus data Pbb');
+
         return redirect()->route('taxes');
     }
 
@@ -199,6 +204,7 @@ class TaxesController extends Controller
                 $taxes->certax()->attach($request->certificate_ids= $no_hm);
             }
         }
+        \LogActivity::addToLog('Import PBB Taxes');
         return redirect()->route('taxes');
     }
 
@@ -267,6 +273,8 @@ class TaxesController extends Controller
                 // $taxes->certax()->attach($request->certificate_id= $nop);
             }
         }
+        \LogActivity::addToLog('Import Taxes');
+
         return redirect()->route('taxes');
     }
 
@@ -313,6 +321,9 @@ class TaxesController extends Controller
 
         $t->save();
         $t->certax()->attach($request->input('certificate_ids'));
+        \LogActivity::addToLog('add Taxes');
+
+
         return redirect()->route('taxes');
     }
 
@@ -375,5 +386,8 @@ class TaxesController extends Controller
                     $sheet->fromArray($tax_array, null, 'A1', false, false);
                 });
         })->download('xlsx');
+
+        \LogActivity::addToLog('Export Taxes');
+
     }
 }

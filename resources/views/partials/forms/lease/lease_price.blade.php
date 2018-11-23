@@ -1,4 +1,4 @@
-<accordion name="collapse-lease-price" v-bind:sub="true">
+<accordion name="collapse-lease-price" v-bind:sub="true" collapse="in">
 
     <div slot="title" class="ll-head-2">
         LEASE PRICE
@@ -12,11 +12,18 @@
     </frgroup>
 
     <frgroup>
+            <label slot="label">
+                Jaminan
+            </label>
+            <money name="rent_assurance" class="form-control" value="{{ old('rent_assurance') }}"></money>
+    </frgroup>
+    <frgroup>
         <label slot="label">
             Total Sewa
         </label>
         <money class="form-control" v-bind:value="rentPriceTotal" disabled></money>
     </frgroup>
+
 
     <frgroup>
         <label slot="label">

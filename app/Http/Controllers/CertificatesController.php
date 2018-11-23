@@ -80,6 +80,7 @@ class CertificatesController extends Controller
                     $certificate_docs->title = $request->title[$titleIndex-1];
                     $certificate_docs->save();
                 }
+        \LogActivity::addToLog('add new Certificate');
         // exit;
         return 'success';
     }
@@ -134,6 +135,7 @@ class CertificatesController extends Controller
         'kepemilikan', 'nama_sertifikat', 'purposes', 'keterangan', 'archive', 'no_hm_hgb', 'kelurahann', 'kecamatan',
         'kota', 'published_date', 'expired_date', 'luas_sertifikat', 'ajb_nominal', 'ajb_date', 'boundary_coordinates', 'addrees']);
         $cert->update($certUpdate);
+        \LogActivity::addToLog('Update Certificate');
 
         return redirect(url('dashboard'));
     }
@@ -141,6 +143,7 @@ class CertificatesController extends Controller
     {
         $cert=Certificate::find($id);
         $cert->delete();
+        \LogActivity::addToLog('Hapus data Certificate');
         return redirect()->route('certificates');
     }
 
@@ -235,7 +238,9 @@ class CertificatesController extends Controller
                     'ajb_date' => $cert->ajb_date,
                     'boundary_coordinates' => $cert->boundary_coordinates
             ]);
+
         }
+        \LogActivity::addToLog('Import xls Certificate');
         return redirect()->route('certificates');
     }
 
@@ -289,6 +294,7 @@ class CertificatesController extends Controller
                     $sheet->fromArray($certificate_array, null, 'A1', false, false);
                 });
         })->download('xlsx');
+        \LogActivity::addToLog('Export xls Certificate');
     }
 
     

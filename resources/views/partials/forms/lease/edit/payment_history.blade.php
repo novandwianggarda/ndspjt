@@ -1,4 +1,4 @@
-<accordion name="collapse-payment-history" v-bind:sub="true">
+<accordion name="collapse-payment-history" v-bind:sub="true" collapse="in">
 
     <div slot="title" class="ll-head-2">
         PAYMENT & HISTORY

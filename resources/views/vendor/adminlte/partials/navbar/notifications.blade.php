@@ -9,6 +9,11 @@
             <!-- inner menu: contains the actual data -->
             <ul class="menu">
                 <li>
+                    <a href="/duedates">
+                        <i class="fa fa-calendat text-yellow"></i> Due Reminder
+                    </a>
+                </li>
+                <li>
                     <a href="#">
                         <i class="fa fa-users text-aqua"></i> 5 new members joined today
                     </a>

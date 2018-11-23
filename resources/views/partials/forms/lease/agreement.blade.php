@@ -1,4 +1,4 @@
-<accordion name="collapse-lease-agreement" v-bind:sub="true">
+<accordion name="collapse-lease-agreement" v-bind:sub="true" collapse="in">
 
     <div slot="title" class="ll-head-2">
         LEASE AGREEMENT

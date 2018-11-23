@@ -40,6 +40,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('/duedates', 'DashboardController@datedue')->name('duedates');
     // Route::get('/logActivity', 'DashboardController@log')->name('logActivity');
 
 

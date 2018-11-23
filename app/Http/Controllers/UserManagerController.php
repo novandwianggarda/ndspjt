@@ -30,7 +30,7 @@ class UserManagerController extends Controller
         $user->save();
         $user->roles()->attach($request->input('role_id'));
 
-        \LogActivity::addToLog('My Testing Add To Log.');
+        \LogActivity::addToLog('Menambah User Baru');
 
         // if($user->save()){
         //     $kategori='success';
@@ -61,7 +61,7 @@ class UserManagerController extends Controller
         \DB::table('role_users')
             ->where('user_id', User::find($id)->id)
             ->update(['role_id' => $request->role_id]);
-        \LogActivity::addToLog('Edit User');
+        \LogActivity::addToLog('Edit dan update User');
 
         return redirect('users')->with('status', 'Profile updated!');
 
@@ -71,7 +71,9 @@ class UserManagerController extends Controller
     {
         $users = User::find($id);
         $users->delete();
+        \LogActivity::addToLog('Menghapus User');
         return redirect('users');
+
 
 
     }

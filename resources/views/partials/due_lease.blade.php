@@ -1,11 +1,11 @@
 <div class="box box-primary">
     <div class="box-header with-border">
         <h2 class="box-title"><i class="fa fa-money" style="color:red"></i>
- &nbsp; Due Lease</h2>
+ &nbsp; Reminder Due Lease</h2>
     </div>
     <br>
     <!-- /.box-header -->
-    @foreach ($leases as $le)
+    @foreach ($lease as $le)
     <div class="box-body">
         <ul class="timeline">
             <li>
@@ -15,48 +15,23 @@
                         <a href="/leases/show/{{ $le->id }}">{{ $le->lessor }}</a>
                     </h3>
                     <span>Tenant&nbsp;: {{ $le->tenant }}</span> <br>
-                    <?php 
-                        if($le->start==null){
-                            $starts='';
-                        }else{ 
-                            $tgl=strtotime($le->start);
-                            $starts=date("d F Y", $tgl);
-                        }
-                    ?>
-
-                    <span>Start &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{@$starts}}</span><br> 
-                    
-
                     
 
                     <span>
                         <?php 
-                        if($le->end==null){
+                        if($le->duedate_term==null){
                             $tang='';
                         }else{ 
-                            $tgl=strtotime($le->end);
+                            $tgl=strtotime($le->duedate_term);
                             $tang=date("d F Y", $tgl);
                         }
                         ?>
                         
-                        End Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{@$tang}}
+                        Due Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{@$tang}}
                     </span>
 
                 </div>
             </li>
-
-
-            
-            <!-- <li>
-                <i class="fa fa-clock-o ll-acolor"></i>
-                <div class="timeline-item">
-                    <h3 class="timeline-header no-border">
-                        <a href="#">Title Goes Here</a>
-                    </h3>
-                    <span>Tenant: XXXX</span> <br>
-                    <span>Due: 1 Feb. 2014</span>
-                </div>
-            </li> -->
         </ul>
     </div>
     @endforeach
