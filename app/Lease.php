@@ -39,7 +39,7 @@ class Lease extends Model implements Auditable
         'rent_m2_monthly', 'rent_m2_monthly_type', 'rent_price', 'rent_price_type', 'rent_assurance',
 
         // BROKER
-        'brok_name', 'brok_fee_yearly', 'brok_fee_paid',
+        'brok_name', 'brok_fee_yearly', 'brok_fee_paid', 'due_date', 'balance',
 
         // GRACE
         'grace_start', 'grace_end'

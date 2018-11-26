@@ -1,4 +1,4 @@
-<accordion name="collapse-property">
+<accordion name="collapse-property" collapse="in">
 
     <div slot="title" class="ll-head">
         PROPERTY

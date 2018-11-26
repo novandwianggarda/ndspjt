@@ -61,13 +61,13 @@
 
     <!-- PAYMENT TERMS-->
     @include('partials.forms.lease.show.payment_term')
+    <!-- Balance PAYMENT HISTORY -->
+    @include('partials.forms.lease.show.payment_history')
 
-    <!-- INVOICE -->
+    <!-- INVOICE Tagihan -->
     @include('partials.forms.lease.show.payment_invoice')
     
 
-    <!-- PAYMENT HISTORY -->
-    @include('partials.forms.lease.show.payment_history')
 
     <!-- BROKER -->
     @include('partials.forms.lease.show.broker')

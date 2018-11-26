@@ -1,4 +1,4 @@
-<accordion name="collapse-lease-price" v-bind:sub="true">
+<accordion name="collapse-lease-price" v-bind:sub="true" collapse="in">
 
     <div slot="title" class="ll-head-2">
         LEASE PRICE
@@ -8,7 +8,7 @@
         <label slot="label">
             Sewa Pertahun (DPP)
         </label>
-        <div>Rp.
+        <div>:&nbsp;Rp.
             <?php 
 
                 $jaminan = $lease->rent_price;

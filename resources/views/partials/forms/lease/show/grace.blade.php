@@ -1,4 +1,4 @@
-<accordion name="collapse-grace" v-bind:sub="true" style="margin-bottom:10px;">
+<accordion name="collapse-grace" v-bind:sub="true" style="margin-bottom:10px;" collapse="in">
 
     <div slot="title" class="ll-head-2">
         GRACE PERIOD

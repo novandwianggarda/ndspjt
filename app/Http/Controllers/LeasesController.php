@@ -51,21 +51,24 @@ class LeasesController extends Controller
     public function store(LeaseRequet $request)
     {
         $data = $request->all();
-        // dd($data);
         // parse to int
         // $data['brok_fee_yearly'] = (int)$data['brok_fee_yearly'];
         // $data['brok_fee_paid'] = (int)$data['brok_fee_paid'];
         // parse to date
+        $data['due_date'] = empty($data['due_date']) ? null : $this->parseDate($data['due_date']);
         $data['start'] = empty($data['start']) ? null : $this->parseDate($data['start']);
         $data['end'] = empty($data['end']) ? null : $this->parseDate($data['end']);
         $data['grace_start'] = empty($data['grace_start']) ? null : $this->parseDate($data['grace_start']);
         $data['grace_end'] = empty($data['grace_end']) ? null : $this->parseDate($data['grace_end']);
+        // dd($data);
 
         $add = Lease::create($data);
         if (!$add) {
             return 'error';
         }
-        return 'success';
+        \LogActivity::addToLog('tambah new Lease');
+
+        return redirect()->route('lease');
     }
 
     public function print($id)
@@ -88,43 +91,24 @@ class LeasesController extends Controller
 
     public function updatelease(Request $request, $id)
     {
-        // dd($request->all());
         $data = Lease::find($id);
-        $data->lessor = $request->input('lessor');
-        $data->lessor_pkp = $request->input('lessor_pkp');
-        $data->tenant = $request->input('tenant');
-        $data->purpose = $request->input('purpose');
-        $data->start = $request->input('start');
+        // parse to date
+        $data['due_date'] = empty($data['due_date']) ? null : $this->parseDate($data['due_date']);
+        $data['start'] = empty($data['start']) ? null : $this->parseDate($data['start']);
+        $data['end'] = empty($data['end']) ? null : $this->parseDate($data['end']);
+        $data['grace_start'] = empty($data['grace_start']) ? null : $this->parseDate($data['grace_start']);
+        $data['grace_end'] = empty($data['grace_end']) ? null : $this->parseDate($data['grace_end']);
+        // dd($data);
 
-        $data->end = $request->input('end');
-        $data->note = $request->input('note');
-        $data->lease_deed = $request->input('lease_deed');
-        $data->lease_number = $request->input('lease_number');
-        $data->lease_deed_date = $request->input('lease_deed_date');
-        $data->payment_terms = $request->input('payment_terms');
-        $data->payment_history = $request->input('payment_history');
-        $data->payment_invoices = $request->input('payment_invoices');
-        $data->sell_monthly = $request->input('sell_monthly');
-        $data->sell_yearly = $request->input('sell_yearly');
-        $data->rent_m2_monthly = $request->input('rent_m2_monthly');
-        $data->rent_m2_monthly_type = $request->input('rent_m2_monthly_type');
-        $data->rent_price = $request->input('rent_price');
-        $data->rent_price_type = $request->input('rent_price_type');
-        $data->rent_assurance = $request->input('rent_assurance');
-        $data->brok_name = $request->input('brok_name');
-        $data->brok_fee_yearly = $request->input('brok_fee_yearly');
-        $data->brok_fee_paid = $request->input('brok_fee_paid');
-        $data->grace_start = $request->input('grace_start');
-        $data->grace_end = $request->input('grace_end');
-
-        $dataUpdate = $request->only([
+       $dataUpdate = $request->only([
         'lessor', 'lessor_pkp',
         'tenant', 'purpose', 'start', 'end', 'note', 'lease_deed_date', 'lease_number', 'lease_deed',
-        'payment_terms', 'payment_history', 'payment_invoices', 'sell_monthly', 'sell_yearly', 'rent_m2_monthly', 'rent_m2_monthly_type', 'rent_price', 'rent_price_type', 'rent_assurance', 'brok_name', 'brok_fee_yearly', 'brok_fee_paid', 'grace_start', 'grace_end']);
+        'payment_terms', 'payment_history', 'payment_invoices', 'sell_monthly', 'sell_yearly', 'rent_m2_monthly', 'rent_m2_monthly_type', 'rent_price', 'rent_price_type', 'rent_assurance', 'brok_name', 'brok_fee_yearly', 'brok_fee_paid', 'grace_start', 'due_date', 'balance', 'grace_end']);
         $data->update($dataUpdate);
         return redirect()->route('lease');
+    }
 
-    } 
+
 
 
     public function destroy($id)
@@ -176,23 +160,23 @@ class LeasesController extends Controller
             $leas->lease_deed= @$value->lease_deed;
             $leas->brok_fee_paid= @$value->brok_fee_paid;
             $leas->lease_deed_date= @$value->lease_deed_date->date;
-            $leas->duedate_term= @$value->duedate_term->date;
+            $leas->due_date= @$value->due_date->date;
             
 
             $leas->payment_terms= json_encode([Array(
                 "total" => @$value->payment_terms,
-                "due_date" => @$value->duedate_term->date,
+                "due_date" => @$value->due_date->date,
                 "note" => @$value->notes,
             )]);
 
             $leas->payment_invoices= json_encode([Array(
                 "total" => @$value->totsew,
-                "paid_date" => @$value->duedate_term->date,
+                "paid_date" => @$value->due_date->date,
                 "note" => @$value->note,
             )]);
             $leas->payment_history= json_encode([Array(
                 "total" => @$value->total_inv,
-                "paid_date" => @$value->duedate_term->date,
+                "paid_date" => @$value->due_date->date,
                 "note" => @$value->note_payinv,
             )]);
             $leas->save();
@@ -219,7 +203,7 @@ class LeasesController extends Controller
 
             $property_type = $value->property_type;
             if ($property_type){
-                $propTypeId = \App\PropertyType::where('name_prop', $property_type)->get()->first()->id;
+                $propTypeId = \App\PropertyType::where('name', $property_type)->get()->first()->id;
 
                 $prop = new Property();
                 

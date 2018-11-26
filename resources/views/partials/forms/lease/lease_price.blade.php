@@ -8,14 +8,16 @@
         <label slot="label">
             Sewa <span v-text="periodType"></span> (DPP)
         </label>
-        <money name="rent_price" class="form-control" v-model="rentPrice"></money>
+        {!! Form::text('rent_price', null, ['class'=>'form-control', 'v-model'=>'rentPrice', 'Placeholder'=>'Rp. 0']) !!}
+        {!! $errors->has('rent_price')?$errors->first('rent_price'):'' !!}
     </frgroup>
 
     <frgroup>
-            <label slot="label">
-                Jaminan
-            </label>
-            <money name="rent_assurance" class="form-control" value="{{ old('rent_assurance') }}"></money>
+        <label slot="label">
+            Jaminan
+        </label>
+        {!! Form::text('rent_assurance', null, ['class'=>'form-control', 'Placeholder'=>'Rp. 0']) !!}
+        {!! $errors->has('rent_assurance')?$errors->first('rent_assurance'):'' !!}
     </frgroup>
     <frgroup>
         <label slot="label">

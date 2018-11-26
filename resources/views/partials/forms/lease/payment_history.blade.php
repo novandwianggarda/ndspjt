@@ -8,19 +8,19 @@
 
     <lease-payment-history></lease-payment-history>
 
-	<div class="col-md-3 col-sm-6 col-xs-3">
-	    
-	        <label slot="label">
-	            Balance
-	        </label>
-	        <input type="text" name="balance" value="{{ old('balance') }}" class="form-control" />
-	    
-	</div>
-	<div class="col-md-3 col-sm-3 col-xs-3">
-	        <label slot="label">
-	            Tanggal
-	        </label>
-	        <indate name="end" bind-to="end" v-bind:dateval="end"></indate>
-	</div>
+
+    <frgroup>
+        <label slot="label">
+	    	Balance
+        </label>
+        {!! Form::text('balance', null, ['class'=>'form-control', 'Placeholder'=>'Rp. 0']) !!}
+        {!! $errors->has('balance')?$errors->first('balance'):'' !!}
+    </frgroup>
+    <frgroup>
+        <label slot="label">
+	    	Due Date
+        </label>
+	    <indate name="due_date" bind-to="due_date" v-bind:dateval="due_date"></indate>
+    </frgroup>
 
 </accordion>

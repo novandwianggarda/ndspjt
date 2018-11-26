@@ -29,6 +29,8 @@ class LeaseRequet extends FormRequest
             // -- Offer Price
             'sell_monthly' => 'nullable',
             'sell_yearly' => 'nullable',
+            'balance' => 'nullable',
+            'due_date' => 'nullable|date',
 
             // LEASE BASE
             'lessor' => 'nullable',

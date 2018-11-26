@@ -19,10 +19,10 @@
 
                     <span>
                         <?php 
-                        if($le->duedate_term==null){
+                        if($le->due_date==null){
                             $tang='';
                         }else{ 
-                            $tgl=strtotime($le->duedate_term);
+                            $tgl=strtotime($le->due_date);
                             $tang=date("d F Y", $tgl);
                         }
                         ?>

@@ -1,7 +1,7 @@
-<accordion name="collapse-payment-history" v-bind:sub="true">
+<accordion name="collapse-payment-history" v-bind:sub="true" collapse="in">
 
     <div slot="title" class="ll-head-2">
-        PAYMENT & HISTORY
+        BALANCE & PAYMENT HISTORY
     </div>
 
     <frgroup>
@@ -28,5 +28,28 @@
         </div>
 
     </frgroup>
+
+
+    <frgroup  wl="2" wi="4">
+        <label slot="label">
+            Balance
+        </label>
+        <div>:&nbsp;Rp.
+            <?php 
+
+                $bal = $lease->balance;
+                echo number_format($bal, 0, ".", ".")."<br />";
+            ?>
+        </div>
+
+    </frgroup>
+    <frgroup  wl="2" wi="4">
+        <label slot="label">
+            Due Date
+        </label>
+        <div>:&nbsp;
+        {{ $lease->due_date }}</div>
+    </frgroup>
+
 
 </accordion>

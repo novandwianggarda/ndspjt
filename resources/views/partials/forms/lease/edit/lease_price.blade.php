@@ -8,7 +8,10 @@
         <label slot="label">
             Sewa <span v-text="periodType"></span> (DPP)
         </label>
-        <money name="rent_price" class="form-control" v-model="rentPrice"></money>
+
+        {!! Form::text('rent_price', null, ['class'=>'form-control', 'v-model'=>'rentPrice', 'Placeholder'=>'Rp. 0']) !!}
+        {!! $errors->has('rent_price')?$errors->first('rent_price'):'' !!}
+
     </frgroup>
 
     <frgroup>
