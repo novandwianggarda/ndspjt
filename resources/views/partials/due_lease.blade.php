@@ -14,7 +14,7 @@
                     <h3 class="timeline-header no-border">
                         <a href="/leases/show/{{ $le->id }}">{{ $le->lessor }}</a>
                     </h3>
-                    <span>Tenant&nbsp;: {{ $le->tenant }}</span> <br>
+                    <span>Tenant&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $le->tenant }}</span> <br>
                     
 
                     <span>
@@ -27,7 +27,7 @@
                         }
                         ?>
                         
-                        Due Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{@$tang}}
+                        Due Date &nbsp;&nbsp;: {{@$tang}}
                     </span>
 
                 </div>

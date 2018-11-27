@@ -7,6 +7,7 @@ use App\Lease;
 use App\Certificate;
 use App\User;
 use App\Tax;
+use App\LogActivity;
 
 use Carbon\Carbon;
 use DB;
@@ -54,8 +55,10 @@ class DashboardController extends Controller
 
     public function logActivity()
     {
-        $logs = \LogActivity::logActivityLists();
+        // $logs = \LogActivity::logActivityLists();
         // $logs = Lease::orderBy('end', 'Desc')->paginate(4);
+        $logs = LogActivity::orderBy('created_at', 'Desc')->paginate(10);
+
 
         return view('user.logtoday',compact('logs'));
     }
@@ -72,12 +75,14 @@ class DashboardController extends Controller
     public function index()
     {
         $leases = Lease::whereDate('end', '>', Carbon::now())
-        ->orderBy('end', 'Asc')->paginate(4);
+        ->orderBy('end', 'Asc')->paginate(5);
 
         $lease = Lease::whereDate('due_date', '>', Carbon::now())
-        ->orderBy('due_date', 'Asc')->paginate(4);
+        ->orderBy('due_date', 'Asc')->paginate(3);
         // $leases = Lease::orderBy('end', 'Desc')->paginate(4);
-        $taxes = Tax::orderBy('duedates', 'Desc')->paginate(4);
+        $taxes = Tax::whereDate('duedates', '>', Carbon::now())
+        ->orderBy('duedates', 'Asc')->paginate(5);
+
         return view('dashboard', compact('leases', 'taxes', 'lease'));
     }
 

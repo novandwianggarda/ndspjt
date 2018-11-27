@@ -9,18 +9,13 @@
             <!-- inner menu: contains the actual data -->
             <ul class="menu">
                 <li>
-                    <a href="/duedates">
-                        <i class="fa fa-calendat text-yellow"></i> Due Reminder
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                </li>
-                <li>
                     <a href="/logActivity">
                         <i class="fa fa-warning text-yellow"></i> Log Activity
+                    </a>
+                </li>
+                <!-- <li>
+                    <a href="#">
+                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
                     </a>
                 </li>
                 <li>
@@ -37,7 +32,7 @@
                     <a href="#">
                         <i class="fa fa-user text-red"></i> You changed your username
                     </a>
-                </li>
+                </li> -->
             </ul>
         </li>
         <li class="footer"><a href="#">View all</a></li>

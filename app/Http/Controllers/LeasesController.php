@@ -103,7 +103,7 @@ class LeasesController extends Controller
        $dataUpdate = $request->only([
         'lessor', 'lessor_pkp',
         'tenant', 'purpose', 'start', 'end', 'note', 'lease_deed_date', 'lease_number', 'lease_deed',
-        'payment_terms', 'payment_history', 'payment_invoices', 'sell_monthly', 'sell_yearly', 'rent_m2_monthly', 'rent_m2_monthly_type', 'rent_price', 'rent_price_type', 'rent_assurance', 'brok_name', 'brok_fee_yearly', 'brok_fee_paid', 'grace_start', 'due_date', 'balance', 'grace_end']);
+        'payment_terms', 'payment_history', 'payment_invoices', 'sell_monthly', 'sell_yearly', 'pic', 'rent_m2_monthly', 'rent_m2_monthly_type', 'rent_price', 'rent_price_type', 'rent_assurance', 'brok_name', 'brok_fee_yearly', 'brok_fee_paid', 'grace_start', 'due_date', 'balance', 'grace_end']);
         $data->update($dataUpdate);
         return redirect()->route('lease');
     }

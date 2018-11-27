@@ -64,8 +64,8 @@
                     <h3 class="timeline-header no-border">
                         <a href="/taxes/show/{{ $tax->id }}">{{ $tax->pen_pbb }}</a>
                     </h3>
-                    <span>Wajib Pajak&nbsp;: {{ $tax->wajib_pajak }}</span> <br>
-                    <span>Due&nbsp;: {{$tax->duedates}}</span>
+                    <span>Wajib Pajak &nbsp;&nbsp;: {{ $tax->wajib_pajak }}</span> <br>
+                    <span>Due &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{$tax->duedates}}</span>
                 </div>
             </li>
         </ul>

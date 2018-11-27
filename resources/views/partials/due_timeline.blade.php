@@ -14,7 +14,7 @@
                     <h3 class="timeline-header no-border">
                         <a href="/leases/show/{{ $le->id }}">{{ $le->lessor }}</a>
                     </h3>
-                    <span>Tenant&nbsp;: {{ $le->tenant }}</span> <br>
+                    <span>Tenant&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $le->tenant }}</span> <br>
                     <?php 
                         if($le->start==null){
                             $starts='';
@@ -24,7 +24,7 @@
                         }
                     ?>
 
-                    <span>Start &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{@$starts}}</span><br> 
+                    <span>Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{@$starts}}</span><br> 
                     
 
                     
@@ -39,7 +39,7 @@
                         }
                         ?>
                         
-                        End Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{@$tang}}
+                        End Date  &nbsp;&nbsp;: {{@$tang}}
                     </span>
 
                 </div>

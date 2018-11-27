@@ -26,7 +26,7 @@
 						<a href="show/{{ $property->id}}">{{$property->name}}</a>	
 						</td>
 
-						<td>{{$property->type->name_prop}}</td>
+						<td>{{$property->type->name}}</td>
 						<td>{{$property->address}}</td>
 						<td>
                             {!! Form::open(['method'=>'delete', 'route'=>['property.destroy', $property->id], 'style' => 'display: inline-block;']) !!} 
