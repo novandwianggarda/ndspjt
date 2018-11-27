@@ -12,7 +12,7 @@ class Certificate extends Model implements Auditable
     protected $table = 'certificates';
     protected $fillable = [
         'certificate_type_id', 'folder_sert', 'no_folder', 'purposes', 'certificate_tipe',
-        'kepemilikan', 'nama_sertifikat', 'keterangan', 'archive', 'no_hm_hgb', 
+        'kepemilikan', 'nama_sertifikat', 'keterangan', 'archive', 'no_hm_hgb', 'nop', 
         'kota', 'published_date', 'expired_date', 'ajb_nominal', 'ajb_date', 'boundary_coordinates', 'kecamatan', 'kelurahann', 'addrees'
     ];
 

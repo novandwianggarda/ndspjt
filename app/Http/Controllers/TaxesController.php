@@ -195,8 +195,8 @@ class TaxesController extends Controller
                 $taxes->njop_total= $value->njop_total;
 
                 $taxes->due_date= @$value->due_date->date;
+                $taxes->duedates= @$value->duedates->date;
                 $taxes->due_date_ly= @$value->due_date_ly->date;
-                $taxes->duedates= $value->duedates;
 
                 $taxes->selisih= $value->selisih;
                 // dd($taxes->duedates);

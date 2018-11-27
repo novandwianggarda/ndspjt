@@ -184,6 +184,7 @@ class CertificatesController extends Controller
                 $kelurahann = $value->kelurahann;
                 $kecamatan = $value->kecamatan;
                 $kota = $value->kota;
+                $nop = $value->nop;
                 $published_date= @$value->published_date->date;
                 $expired_date= @$value->expired_date->date;
                 $addrees  = $value->addrees ;
@@ -205,6 +206,7 @@ class CertificatesController extends Controller
                         'kelurahann' => $kelurahann, 
                         'kecamatan' => $kecamatan, 
                         'kota' => $kota, 
+                        'nop' => $nop, 
                         'published_date' => $published_date, 
                         'expired_date' => $expired_date, 
                         'addrees' => $addrees, 
@@ -230,6 +232,7 @@ class CertificatesController extends Controller
                     'kelurahann' => $cert->kelurahann,
                     'kecamatan' => $cert->kecamatan,
                     'kota' => $cert->kota,
+                    'nop' => $cert->nop,
                     'published_date' => $cert->published_date,
                     'expired_date' => $cert->expired_date,
                     'addrees' => $cert->addrees,

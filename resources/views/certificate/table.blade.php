@@ -43,16 +43,17 @@
                                 <td>{{ $cert->archive }}</td>
                                 <td>{{ $cert->kecamatan }}</td>
                                 <td>{{ $cert->kelurahann }}</td>
+
                                 <td>
                                     <?php 
                                         if($cert->published_date==null){
                                             $publis='';
                                         }else{ 
-                                            $tgl=strtotime($cert->expired_date);
-                                            $publis=date("d F Y", $tgl);
+                                            $tgl=strtotime($cert->published_date);
+                                            $publis=date("d-m-Y", $tgl);
                                         }
                                     ?>
-                                    {{@$publis}}
+                                    {{@$publis }}
                                 </td>
 
                                 <td>
@@ -61,7 +62,7 @@
                                             $expired='';
                                         }else{ 
                                             $tgl=strtotime($cert->expired_date);
-                                            $expired=date("d F Y", $tgl);
+                                            $expired=date("d-m-Y", $tgl);
                                         }
                                     ?>
                                     {{@$expired}}
