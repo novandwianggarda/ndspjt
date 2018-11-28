@@ -4,8 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
-use App\Certificate;
-use Carbon\Carbon;
 
 class Lease extends Model implements Auditable
 {
@@ -42,11 +40,15 @@ class Lease extends Model implements Auditable
         'brok_name', 'brok_fee_yearly', 'brok_fee_paid', 'due_date', 'balance',
 
         // GRACE
-        'grace_start', 'grace_end'
+        'grace_start', 'grace_end',
     ];
 
     public $timestamp = true;
 
+    protected $casts = [
+        'payment_terms' => 'array',
+        'payment_invoices' => 'array',
+    ];
 
     /** AUDIT */
 
@@ -56,7 +58,6 @@ class Lease extends Model implements Auditable
      * @var array
      */
     protected $auditExclude = [
-
     ];
 
     /**
@@ -66,11 +67,10 @@ class Lease extends Model implements Auditable
      */
     protected $auditStrict = true;
 
-
     /** ELOQUENT RELATIONSHIP */
 
     /**
-     * get lease payments history
+     * get lease payments history.
      *
      * @return Illuminate\Database\Eloquent\Collection of App\LeasePayment
      */
@@ -89,23 +89,23 @@ class Lease extends Model implements Auditable
         return $this->belongsTo('App\Certificate', 'certificate_ids', 'id');
     }
 
-
     /** ATTRIBUTES */
 
     /**
-     * get certificates
+     * get certificates.
      *
      * @return Illuminate\Database\Eloquent\Collection of App\Certificate
      */
     public function getCertificatesAttribute()
     {
         $certificateIds = explode(',', $this->certificate_ids);
+
         return Certificate::whereIn('id', $certificateIds)->get();
     }
 
     /**
      * get lease duration / masa sewa
-     * in years
+     * in years.
      *
      * @return float
      */
@@ -116,7 +116,7 @@ class Lease extends Model implements Auditable
 
     /**
      * get grace period
-     * in month
+     * in month.
      *
      * @return float
      */
@@ -125,11 +125,10 @@ class Lease extends Model implements Auditable
         return diffTwoDates($this->grace_start, $this->grace_end, 'monthly');
     }
 
-
     /** STATIC */
 
     /**
-     * get all lease with certificate id
+     * get all lease with certificate id.
      *
      * @return array
      */
@@ -144,11 +143,12 @@ class Lease extends Model implements Auditable
         //     }
         // }
         $allIds = Lease::plucK('id')->toArray();
+
         return $allIds;
     }
 
     /**
-     * get all lease with property id
+     * get all lease with property id.
      *
      * @return array
      */
@@ -162,8 +162,47 @@ class Lease extends Model implements Auditable
                 array_push($allIds, ['lease_id' => $lease['id'], 'property_id' => $propertyId]);
             }
         }
+
         return $allIds;
     }
 
-    
+    public static function dueForToday()
+    {
+        $leaseDue = [];
+
+        $leases = static::all();
+        foreach ($leases as $lease) {
+            foreach ($lease->payment_terms as $index => $paymentTerm) {
+                if (empty($paymentTerm['due_date'])) {
+                    continue;
+                }
+
+                $dueDate = \Carbon\Carbon::parse($paymentTerm['due_date']);
+                if ($dueDate->gte(today())) {
+                    $leaseDue[] = [
+                        'lease_id' => $lease->id,
+                        'tenant' => $lease->tenant,
+                        'total' => $paymentTerm['total'],
+                        'due_date' => $dueDate,
+                        'timestamp' => $dueDate->timestamp,
+                    ];
+                }
+            }
+        }
+
+        return collect($leaseDue)->sortBy('timestamp')->take(2);
+    }
+
+    /**
+     * Undocumented function.
+     *
+     * @param array $paymentTerm
+     */
+    public function addPaymentTerm($paymentTerm)
+    {
+        $paymentTerms = (array) $this->payment_terms;
+        $paymentTerms[] = $paymentTerm;
+
+        return $this->update(['payment_terms' => $paymentTerms]);
+    }
 }
