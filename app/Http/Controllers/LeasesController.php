@@ -25,13 +25,15 @@ class LeasesController extends Controller
 
     public function todolist()
     {
-        $leases = Lease::whereDate('due_date', '<', Carbon::now())
-        ->orderBy('due_date', 'Asc')->paginate(100);
+        // $leases = Lease::whereDate('due_date', '<', Carbon::now())
+        // ->orderBy('due_date', 'Asc')->paginate(100);
 
-        $leasess = Lease::whereDate('due_date', '>', Carbon::now())
-        ->orderBy('due_date', 'Asc')->paginate(100);
+        // $leasess = Lease::whereDate('due_date', '>', Carbon::now())
+        // ->orderBy('due_date', 'Asc')->paginate(100);
+        $leasess = Lease::dueForToday();
+        dd($leasess);
 
-        return view('lease.todolist', compact('leases', 'leasess'));
+        return view('lease.todolist', compact('leasess'));
     }
     
 
@@ -41,6 +43,7 @@ class LeasesController extends Controller
     public function show($id)
     {
         $lease = Lease::find($id);
+
         $payment_history = json_decode($lease->payment_history);
         $payment_invoices = json_decode($lease->payment_invoices);
         $payment_terms = json_decode($lease->payment_terms);

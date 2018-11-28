@@ -23,84 +23,7 @@
                     <table id="example1" class="display responsive nowrap" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Tenant</th>
-                                <th>Nama Lokasi</th>
-                                <th>Jenis</th>
-                                <th>Length</th>
-                                <th>Start</th>
-                                <th>End</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($leasess as $lease)
-                                <tr>
-                                    <td>
-                                        <a href="/leases/show/{{ $lease->id }}">{{ $lease->tenant }}</a>
-                                    </td>
-                                    <td>{{ $lease->prop->name}}</td>
-                                    <td>{{ $lease->prop->type->name}}</td>
-                                    <td>{{ $lease->duration }} Year</td>
-                                    
-                                    <td>
-                                        <?php 
-                                            if($lease->start==null){
-                                                $starts='';
-                                            }else{ 
-                                                $tgl=strtotime($lease->start);
-                                                $starts=date("d-m-Y", $tgl);
-                                            }
-                                        ?>
-                                        {{@$starts }}
-                                    </td>
-
-                                    <td>
-                                        <?php 
-                                            if($lease->end==null){
-                                                $ends='';
-                                            }else{ 
-                                                $tgl=strtotime($lease->end);
-                                                $ends=date("d-m-Y", $tgl);
-                                            }
-                                        ?>
-                                        {{@$ends}}
-                                    </td>
-                                    <td>
-                                        {!! Form::open(['method'=>'delete', 'route'=>['lease.destroy', $lease->id], 'style' => 'display: inline-block;']) !!} 
-                                        {{ csrf_field() }}
-                                        <a href="/leases/print/{{ $lease->id }}" class="btn btn-info btn-xs"><i class="fa fa-print" aria-hidden="true"></i>Print</a>
-                                        <a href="/leases/edit/{{ $lease->id }}" class="btn btn-success btn-xs"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
-
-                                        {!! Form::button('<i class="fa fa-trash"></i>&nbsp;Delete', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("Do you want to delete this Lease List ?")']) !!}
-
-                                        {!! Form::close() !!}
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <br>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box">
-                <p>&nbsp;</p>
-                <center><img src="{{asset('img/log1.jpg')}}" height="25%" width="20%" /></center>
-                <h2 style="text-align: center;">To Do List</h2>
-                <div>
-                	
-                <p align="center">Tanggal Tagihan Lease yang sudah terlewat</p>
-                </div>
-                <div class="box-body table-responsive no-padding">
-                    <table id="example" class="display responsive nowrap" style="width:100%">
-                        <thead>
-                            <tr>
+                                <th>Due Date</th>
                                 <th>Tenant</th>
                                 <th>Nama Lokasi</th>
                                 <th>Jenis</th>
@@ -113,12 +36,25 @@
                         <tbody>
                             @foreach ($leases as $lease)
                                 <tr>
+                                    <td>{{ $leases->due_date}}</td>
+                                    <td>
+                                        <?php 
+                                            if($lease->due_date==null){
+                                                $starts='';
+                                            }else{ 
+                                                $tgl=strtotime($lease->due_date);
+                                                $starts=date("d-m-Y", $tgl);
+                                            }
+                                        ?>
+                                        {{@$starts }}
+                                    </td>
                                     <td>
                                         <a href="/leases/show/{{ $lease->id }}">{{ $lease->tenant }}</a>
                                     </td>
                                     <td>{{ $lease->prop->name}}</td>
                                     <td>{{ $lease->prop->type->name}}</td>
                                     <td>{{ $lease->duration }} Year</td>
+
                                     
                                     <td>
                                         <?php 

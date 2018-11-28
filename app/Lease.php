@@ -190,7 +190,7 @@ class Lease extends Model implements Auditable
             }
         }
 
-        return collect($leaseDue)->sortBy('timestamp')->take(2);
+        return collect($leaseDue)->sortBy('timestamp')->take(3);
     }
 
     /**
