@@ -23,6 +23,18 @@ class LeasesController extends Controller
         return view('lease.table')->with('leases', $leases);
     }
 
+    public function todolist()
+    {
+        $leases = Lease::whereDate('due_date', '<', Carbon::now())
+        ->orderBy('due_date', 'Asc')->paginate(100);
+
+        $leasess = Lease::whereDate('due_date', '>', Carbon::now())
+        ->orderBy('due_date', 'Asc')->paginate(100);
+
+        return view('lease.todolist', compact('leases', 'leasess'));
+    }
+    
+
     /**
      * show lease
      */

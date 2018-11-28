@@ -244,6 +244,11 @@ return [
                     'icon' => 'plus',
                 ],
                 [
+                    'text' => 'To Do List',
+                    'url'  => '/leases/todolist',
+                    'icon' => 'calendar',
+                ],
+                [
                     'text' => 'Data List',
                     'url'  => '/leases/list',
                     'icon' => 'list',

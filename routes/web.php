@@ -124,6 +124,7 @@ Route::middleware(['web', 'auth'])->group(function () {
             return redirect('/' . $this->current->uri . '/list');
         });
         Route::get('list', 'LeasesController@index')->name('lease');
+        Route::get('todolist', 'LeasesController@todolist')->name('todolist');
         Route::get('show/{id}', 'LeasesController@show');
         //crud lease
         Route::get('add', 'LeasesController@showAddForm');

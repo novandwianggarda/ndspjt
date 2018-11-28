@@ -6,7 +6,7 @@
 
     <frgroup>
         <label slot="label">
-            Sewa Pertahun (DPP)
+            Sewa Per Tahun (DPP)
         </label>
         <div>:&nbsp;Rp.
             <?php 

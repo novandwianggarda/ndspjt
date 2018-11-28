@@ -15,7 +15,13 @@
         <label slot="label">
            Fee Per Tahun
         </label>
-        <div>{{ $lease->brok_fee_yearly }}</div>
+        <div>:&nbsp;Rp.
+            <?php 
+
+                $fee = $lease->brok_fee_yearly;
+                echo number_format($fee, 0, ".", ".")."<br />";
+            ?>
+        </div>
     </frgroup>
 
     

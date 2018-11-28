@@ -15,7 +15,8 @@
         <label slot="label">
             Fee per Tahun
         </label>
-        <money name="brok_fee_yearly" value="{{ old('brok_fee_yearly') }}" v-model="brokFeeYearly" class="form-control"></money>
+        {!! Form::text('brok_fee_yearly', null, ['class'=>'form-control', 'v-model'=>'brokFeeYearly', 'Placeholder'=>'Rp. 0']) !!}
+        {!! $errors->has('brok_fee_yearly')?$errors->first('brok_fee_yearly'):'' !!}
     </frgroup>
 
     <frgroup>
@@ -29,7 +30,9 @@
         <label slot="label">
             Fee Payment
         </label>
-        <money name="brok_fee_paid" value="{{ old('brok_fee_paid') }}" class="form-control"></money>
+        {!! Form::text('brok_fee_paid', null, ['class'=>'form-control', 'Placeholder'=>'Rp. 0']) !!}
+        {!! $errors->has('brok_fee_paid')?$errors->first('brok_fee_paid'):'' !!}
+
     </frgroup>
 
 </accordion>

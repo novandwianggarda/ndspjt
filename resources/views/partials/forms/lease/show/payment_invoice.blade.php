@@ -11,7 +11,14 @@
 
         <div class="col-md-12">
             @foreach($payment_invoices as $mydata)
-                <div class="col-md-4">Total  &nbsp; : {{$mydata->total}}</div>
+                <div class="col-md-4">:&nbsp;Rp.
+                    <?php 
+
+                        $tagihan = $mydata->total;
+                        echo number_format($tagihan, 0, ".", ".")."<br />";
+                    ?>
+                </div>
+
                 <div class="col-md-4">Paid Date  &nbsp; :
 
                     <?php 
