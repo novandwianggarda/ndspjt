@@ -10,7 +10,7 @@
         </label>
 
          <div class="col-md-12">
-            @foreach($payment_terms as $mydata)
+            @foreach($payment_term as $mydata)
                 <div class="col-md-4">Total  &nbsp; : {{$mydata->total}}</div>
                 <div class="col-md-4">Paid Date  &nbsp; : 
                     <?php 

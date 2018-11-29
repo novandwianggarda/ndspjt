@@ -31,9 +31,9 @@ class LeasesController extends Controller
         // $leasess = Lease::whereDate('due_date', '>', Carbon::now())
         // ->orderBy('due_date', 'Asc')->paginate(100);
         $leasess = Lease::dueForToday();
-        dd($leasess);
+        $leaseyest = Lease::dueForYesterday();
 
-        return view('lease.todolist', compact('leasess'));
+        return view('lease.todolist', compact('leasess', 'leaseyest'));
     }
     
 
@@ -44,11 +44,24 @@ class LeasesController extends Controller
     {
         $lease = Lease::find($id);
 
-        $payment_history = json_decode($lease->payment_history);
-        $payment_invoices = json_decode($lease->payment_invoices);
-        $payment_terms = json_decode($lease->payment_terms);
+        $payment_term = [];
+        foreach ($lease->payment_terms as $index => $paymentTerm) {
+            $dueDate = \Carbon\Carbon::parse($paymentTerm['due_date']);
+            $payment_term[] = [
+                'id' => $lease->id,
+                'tenant' => $lease->tenant,
+                'total' => $paymentTerm['total'],
+                'due_date' => $dueDate,
+            ];
+        }
+        $payment_term = json_encode($payment_term);
+        dd($payment_term);
         
-        return view('lease.show', compact('lease', 'payment_history', 'payment_invoices', 'payment_terms'));
+        $payment_terms = $lease->payment_terms;
+        $payment_invoices = $lease->payment_invoices;
+        $payment_history = $lease->payment_history;
+        
+        return view('lease.show', compact('lease', 'payment_history', 'payment_invoices', 'payment_term'));
         // view('your-view')->with('leads', json_decode($leads, true));
     }
 

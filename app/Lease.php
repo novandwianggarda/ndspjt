@@ -173,16 +173,17 @@ class Lease extends Model implements Auditable
         $leases = static::all();
         foreach ($leases as $lease) {
             foreach ($lease->payment_terms as $index => $paymentTerm) {
-                if (empty($paymentTerm['due_date'])) {
+                if (empty($paymentTerm['due_date'])){
                     continue;
                 }
 
                 $dueDate = \Carbon\Carbon::parse($paymentTerm['due_date']);
                 if ($dueDate->gte(today())) {
                     $leaseDue[] = [
-                        'lease_id' => $lease->id,
+                        'id' => $lease->id,
                         'tenant' => $lease->tenant,
                         'total' => $paymentTerm['total'],
+                        'note' => $paymentTerm['note'],
                         'due_date' => $dueDate,
                         'timestamp' => $dueDate->timestamp,
                     ];
@@ -190,7 +191,36 @@ class Lease extends Model implements Auditable
             }
         }
 
-        return collect($leaseDue)->sortBy('timestamp')->take(3);
+        return collect($leaseDue)->sortBy('timestamp')->take(10);
+    }
+
+
+    public static function dueForYesterday()
+    {
+        $leaseDue = [];
+
+        $leases = static::all();
+        foreach ($leases as $lease) {
+            foreach ($lease->payment_terms as $index => $paymentTerm) {
+                if (empty($paymentTerm['due_date'])){
+                    continue;
+                }
+
+                $dueDate = \Carbon\Carbon::parse($paymentTerm['due_date']);
+                if ($dueDate->lte(today())) {
+                    $leaseDue[] = [
+                        'id' => $lease->id,
+                        'tenant' => $lease->tenant,
+                        'total' => $paymentTerm['total'],
+                        'note' => $paymentTerm['note'],
+                        'due_date' => $dueDate,
+                        'timestamp' => $dueDate->timestamp,
+                    ];
+                }
+            }
+        }
+
+        return collect($leaseDue)->sortBy('timestamp')->take(10);
     }
 
     /**
