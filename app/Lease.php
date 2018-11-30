@@ -48,6 +48,7 @@ class Lease extends Model implements Auditable
     protected $casts = [
         'payment_terms' => 'array',
         'payment_invoices' => 'array',
+        'payment_history' => 'array',
     ];
 
     /** AUDIT */
@@ -173,7 +174,7 @@ class Lease extends Model implements Auditable
         $leases = static::all();
         foreach ($leases as $lease) {
             foreach ($lease->payment_terms as $index => $paymentTerm) {
-                if (empty($paymentTerm['due_date'])){
+                if (empty($paymentTerm['due_date'])) {
                     continue;
                 }
 
@@ -194,7 +195,6 @@ class Lease extends Model implements Auditable
         return collect($leaseDue)->sortBy('timestamp')->take(10);
     }
 
-
     public static function dueForYesterday()
     {
         $leaseDue = [];
@@ -202,7 +202,7 @@ class Lease extends Model implements Auditable
         $leases = static::all();
         foreach ($leases as $lease) {
             foreach ($lease->payment_terms as $index => $paymentTerm) {
-                if (empty($paymentTerm['due_date'])){
+                if (empty($paymentTerm['due_date'])) {
                     continue;
                 }
 
@@ -234,5 +234,21 @@ class Lease extends Model implements Auditable
         $paymentTerms[] = $paymentTerm;
 
         return $this->update(['payment_terms' => $paymentTerms]);
+    }
+
+    public function getTotalBalanceAttribute()
+    {
+        // kalsu
+        return 10000000;
+    }
+
+    public function getTotalPaymentAttribute()
+    {
+        return (int) collect($this->payment_history)->pluck('total')->sum();
+    }
+
+    public function getMasaSewaAttribute()
+    {
+        return diffTwoDates($this->start, $this->end, $this->rent_price_type);
     }
 }

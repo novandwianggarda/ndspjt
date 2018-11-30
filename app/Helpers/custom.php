@@ -2,20 +2,20 @@
 
 /**
  * custom Landlord helpers
- * register global function here
+ * register global function here.
  */
 
- /**
-  * test function to say hello
-  */
-if (! function_exists('sayHello')) {
+/**
+ * test function to say hello.
+ */
+if (!function_exists('sayHello')) {
     function sayHello()
     {
         return 'Hello';
     }
 }
 
-/**
+/*
  * parse date using carbon
  * with default format Y-m-d
  *
@@ -25,14 +25,14 @@ if (! function_exists('sayHello')) {
  * @return string
  */
 
-if (! function_exists('parseDate')) {
+if (!function_exists('parseDate')) {
     function parseDate($string, $format = 'Y-m-d')
     {
         return \Carbon\Carbon::parse($string)->format($format);
     }
 }
 
-/**
+/*
  * calculate different between two day
  *
  * @param $start start date
@@ -41,7 +41,7 @@ if (! function_exists('parseDate')) {
  *
  * @return integer
  */
-if (! function_exists('diffTwoDates')) {
+if (!function_exists('diffTwoDates')) {
     function diffTwoDates($start, $end, $period = 'monthly')
     {
         $startDate = \Carbon\Carbon::parse($start);
@@ -57,25 +57,26 @@ if (! function_exists('diffTwoDates')) {
             $endMonth = $endDate->format('m');
         }
 
-        $totalMonthDays = 0; $totalDays = 0;
+        $totalMonthDays = 0;
+        $totalDays = 0;
         $totalMonths = $endMonth - $startMonth + 1;
         $difference = 0;
 
-        for ($i = (int)$startMonth; $i <= (int)$endMonth; $i++){
-            if ($i == (int)$startMonth && $i == (int)$endMonth) {
+        for ($i = (int) $startMonth; $i <= (int) $endMonth; ++$i) {
+            if ($i == (int) $startMonth && $i == (int) $endMonth) {
                 $usedDays = $endDay - $startDay + 1;
                 $totalDays = \Carbon\Carbon::parse($startDate)->endOfMonth()->format('d');
-                $difference += ($usedDays/$totalDays);
-            } else if ($i == (int)$startMonth) {
+                $difference += ($usedDays / $totalDays);
+            } elseif ($i == (int) $startMonth) {
                 $usedDays = \Carbon\Carbon::parse($startDate)->endOfMonth()->format('d') - $startDay + 1;
                 $totalDays = \Carbon\Carbon::parse($startDate)->endOfMonth()->format('d');
-                $difference += ($usedDays/$totalDays);
-            } else if ($i == (int)$endMonth) {
+                $difference += ($usedDays / $totalDays);
+            } elseif ($i == (int) $endMonth) {
                 $usedDays = $endDay;
                 $totalDays = \Carbon\Carbon::parse($startDate)->endOfMonth()->format('d');
-                $difference += ($usedDays/$totalDays);
+                $difference += ($usedDays / $totalDays);
             } else {
-                $difference += 1;
+                ++$difference;
             }
             $startDate->addMonth();
         }
@@ -83,11 +84,12 @@ if (! function_exists('diffTwoDates')) {
         if ($period == 'yearly') {
             return round($difference / 12, 2);
         }
+
         return round($difference, 2);
     }
 }
 
-/**
+/*
  * get translations json file
  * located at /resources/lang/vendor/landlord
  * and return as a php array
@@ -96,10 +98,11 @@ if (! function_exists('diffTwoDates')) {
  *
  * @return array
  */
-if (! function_exists('getTranslations')) {
+if (!function_exists('getTranslations')) {
     function getTranslations($group)
     {
-        $file = realpath(dirname(__FILE__)) . '/../../resources/lang/vendor/landlord/' . $group . '.json';
+        $file = realpath(dirname(__FILE__)).'/../../resources/lang/vendor/landlord/'.$group.'.json';
+
         return json_decode(file_get_contents($file), true);
     }
 }
