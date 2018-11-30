@@ -8,7 +8,7 @@
     		<div>
     			<p> Data Sebelumnya</p>
     		</div>
-            @foreach($payment_history as $mydata)
+            @foreach($payment_hist as $mydata)
                 <div class="col-md-4">Total  &nbsp; : {{$mydata->total}}</div>
                 <div class="col-md-4">Paid Date  &nbsp; : 
                     <?php 

@@ -11,7 +11,8 @@
         <div class="col-md-12">
             <div class="box">
                 <p>&nbsp;</p>
-                <center><img src="{{asset('img/log1.jpg')}}" height="25%" width="20%" /></center>
+                <!-- <center><img src="{{asset('img/log1.jpg')}}" height="25%" width="20%" /></center> -->
+                <center><img src="{{asset('img/log2.png')}}" width="10%" /></center>
                 <h2 style="text-align: center;">Lease List</h2>
                 <div class="box-body table-responsive no-padding">
                     <table id="example" class="display responsive nowrap" style="width:100%">

@@ -8,7 +8,7 @@
         <div class="col-md-12">
             <div class="box box-solid">
                 <p>&nbsp;</p>
-                <center><img src="{{asset('img/log1.jpg')}}" height="25%" width="20%" /></center>
+                <center><img src="{{asset('img/log2.png')}}" width="10%" /></center>
                 <h2 style="text-align: center;">Show Data Lease</h2>
                 <div class="box-body">
                     {!! Form::model($lease,  ['url'=>array( '', $lease->id), 'method' => '', 'id' => 'formshow-lease', 'enctype' => 'multipart/form-data', 'files' => true]) !!}
@@ -16,6 +16,7 @@
                     @csrf
                     <div class="box-group" id="accordion">
                         <div class="panel box">
+                        <a href="/leases" class="btn btn-warning"><i class="fa fa-angle-double-left" aria-hidden="true"></i>&nbsp;Back</a>
                         <a href="/leases/edit/{{ $lease->id }}" class="btn btn-success"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
                         <a href="/leases/print/{{ $lease->id }}" class="btn btn-info"><i class="fa fa-print" aria-hidden="true"></i>Print</a>
                             <!-- LAND -->

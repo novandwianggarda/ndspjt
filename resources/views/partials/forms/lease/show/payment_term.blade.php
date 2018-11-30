@@ -10,9 +10,19 @@
         </label>
 
          <div class="col-md-12">
-            @foreach($payment_term as $mydata)
-                <div class="col-md-4">Total  &nbsp; : {{$mydata->total}}</div>
-                <div class="col-md-4">Paid Date  &nbsp; : 
+
+
+            @foreach($payment_teerm as $mydata)
+                <div class="col-md-6">Pembayaran  &nbsp; :&nbsp;Rp.
+                    <?php 
+
+                        $bal = $mydata->total;
+                        echo number_format($bal, 0, ".", ".")."<br />";
+                    ?>
+                        
+                </div>
+
+                <div class="col-md-6">Paid Date  &nbsp; : 
                     <?php 
                         if($mydata->due_date==null){
                             $tang='';
@@ -22,8 +32,9 @@
                         }
                     ?>
                     {{@$tang}}
-                </div>
-                <div class="col-md-4">Note  &nbsp; : {{$mydata->note}}</div>
+                </div> <br>
+                <div class="col-md-12">Keterangan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{$mydata->note}}</div>
+
             @endforeach
         </div>
 

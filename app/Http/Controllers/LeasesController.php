@@ -44,24 +44,20 @@ class LeasesController extends Controller
     {
         $lease = Lease::find($id);
 
-        $payment_term = [];
-        foreach ($lease->payment_terms as $index => $paymentTerm) {
-            $dueDate = \Carbon\Carbon::parse($paymentTerm['due_date']);
-            $payment_term[] = [
-                'id' => $lease->id,
-                'tenant' => $lease->tenant,
-                'total' => $paymentTerm['total'],
-                'due_date' => $dueDate,
-            ];
-        }
-        $payment_term = json_encode($payment_term);
-        dd($payment_term);
+        //payterm
+        $payment_term = json_encode($lease->payment_terms);
+        $payment_teerm = json_decode($payment_term);
+
+        //payinv
+        $payment_inv = json_encode($lease->payment_invoices);
+        $payment_invoice = json_decode($payment_inv);
+
+        //history
+        $payment_hist = json_decode($lease->payment_history);
+
+        // $payment_history = json_encode($payment_history);
         
-        $payment_terms = $lease->payment_terms;
-        $payment_invoices = $lease->payment_invoices;
-        $payment_history = $lease->payment_history;
-        
-        return view('lease.show', compact('lease', 'payment_history', 'payment_invoices', 'payment_term'));
+        return view('lease.show', compact('lease', 'payment_hist', 'payment_invoice', 'payment_teerm'));
         // view('your-view')->with('leads', json_decode($leads, true));
     }
 
@@ -103,18 +99,29 @@ class LeasesController extends Controller
     {
         $lease=Lease::find($id);
         $now = date_create()->format('d-m-Y');
-        $payment_invoices = json_decode($lease->payment_invoices);
+        //payinv
+        $payment_inv = json_encode($lease->payment_invoices);
+        $payment_invoices = json_decode($payment_inv);
+
         return view('lease.invoice', compact('lease', 'now', 'payment_invoices'));
     }
 
     public function edit($id)
     {
         $lease=Lease::find($id);
-        $payment_history = json_decode($lease->payment_history);
-        $payment_invoices = json_decode($lease->payment_invoices);
-        $payment_terms = json_decode($lease->payment_terms);
 
-        return view('lease.edit', compact('lease', 'payment_history', 'payment_invoices', 'payment_terms'));
+        //payterm
+        $payment_term = json_encode($lease->payment_terms);
+        $payment_teerm = json_decode($payment_term);
+
+        //payinv
+        $payment_inv = json_encode($lease->payment_invoices);
+        $payment_invoice = json_decode($payment_inv);
+
+        //history
+        $payment_hist = json_decode($lease->payment_history);
+
+        return view('lease.edit', compact('lease', 'payment_hist', 'payment_invoice', 'payment_teerm'));
     }
 
     public function updatelease(Request $request, $id)

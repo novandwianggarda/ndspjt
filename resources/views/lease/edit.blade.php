@@ -31,7 +31,10 @@
                             @include('partials.forms.lease.edit.lease')
                             <!-- SUBMIT BTN -->
                             <div class="form-group" style="margin-top:15px;">
-                                <div class="col-sm-12" style="padding:0px 25px">
+                                <div class="col-sm-6" style="padding:0px 25px">
+                                    <a href="/leases" class="btn form-control ll-bgcolor ll-white">Back</a>
+                                </div>
+                                <div class="col-sm-6" style="padding:0px 25px">
                                     
                                     <button type="submit" class="btn form-control ll-bgcolor ll-white">
                                         <i class="fa fa-plus"></i>

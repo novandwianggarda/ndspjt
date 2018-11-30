@@ -10,8 +10,8 @@
         </label>
 
         <div class="col-md-12">
-            @foreach($payment_invoices as $mydata)
-                <div class="col-md-4">:&nbsp;Rp.
+            @foreach($payment_invoice as $mydata)
+                <div class="col-md-6">Pembayaran  &nbsp; :&nbsp;Rp.
                     <?php 
 
                         $tagihan = $mydata->total;
@@ -19,7 +19,7 @@
                     ?>
                 </div>
 
-                <div class="col-md-4">Paid Date  &nbsp; :
+                <div class="col-md-6">Paid Date  &nbsp; :
 
                     <?php 
                         if($mydata->paid_date==null){
@@ -31,7 +31,9 @@
                     ?>
                     {{@$tang}}
                 </div>
-                <div class="col-md-4">Note  &nbsp; : {{$mydata->note}}</div>
+                <br>
+                <div class="col-md-12">Keterangan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{$mydata->note}}</div>
+
             @endforeach
         </div>
     </frgroup>

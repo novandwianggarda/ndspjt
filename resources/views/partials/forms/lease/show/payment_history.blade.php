@@ -10,9 +10,15 @@
         </label>
 
         <div class="col-md-12">
-            @foreach($payment_history as $mydata)
-                <div class="col-md-4">Total  &nbsp; : {{$mydata->total}}</div>
-                <div class="col-md-4">Paid Date  &nbsp; : 
+            @foreach($payment_hist as $mydata)
+                <div class="col-md-6">Pembayaran  &nbsp; :&nbsp;Rp.
+                    <?php 
+
+                        $tagihan = $mydata->total;
+                        echo number_format($tagihan, 0, ".", ".")."<br />";
+                    ?>
+                </div>
+                <div class="col-md-6">Paid Date  &nbsp; : 
                     <?php 
                         if($mydata->paid_date==null){
                             $tang='';
@@ -23,32 +29,10 @@
                     ?>
                     {{@$tang}}
                 </div>
-                <div class="col-md-4">Note  &nbsp; : {{$mydata->note}}</div>
+                <div class="col-md-12">Keterangan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{$mydata->note}}</div>
             @endforeach
         </div>
 
-    </frgroup>
-
-
-    <frgroup  wl="2" wi="4">
-        <label slot="label">
-            Balance
-        </label>
-        <div>:&nbsp;Rp.
-            <?php 
-
-                $bal = $lease->balance;
-                echo number_format($bal, 0, ".", ".")."<br />";
-            ?>
-        </div>
-
-    </frgroup>
-    <frgroup  wl="2" wi="4">
-        <label slot="label">
-            Due Date
-        </label>
-        <div>:&nbsp;
-        {{ $lease->due_date }}</div>
     </frgroup>
 
 
