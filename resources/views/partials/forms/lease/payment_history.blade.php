@@ -9,7 +9,7 @@
     <lease-payment-history></lease-payment-history>
 
 
-    <frgroup>
+    <!-- <frgroup>
         <label slot="label">
 	    	Balance
         </label>
@@ -21,6 +21,6 @@
 	    	Due Date
         </label>
 	    <indate name="due_date" bind-to="due_date" v-bind:dateval="due_date"></indate>
-    </frgroup>
+    </frgroup> -->
 
 </accordion>

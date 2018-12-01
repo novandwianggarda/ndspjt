@@ -47,12 +47,8 @@
                                         ?>
                                         {{@$due }}
                                     </td>
-
-                                    <td>Rp.
-                                        <?php 
-                                            $tot = $lease['total'];
-                                            echo number_format($tot, 0, ".", ".")."<br />";
-                                        ?>
+                                    <td>
+                                        Rp.{{ $lease['total'] }}
                                     </td>
                                 </tr>
                             @endforeach

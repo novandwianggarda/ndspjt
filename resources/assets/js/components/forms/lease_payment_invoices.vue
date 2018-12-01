@@ -6,7 +6,7 @@
                 <b>No</b>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-6">
-                <b>Total</b>
+                <b>Pembayaran</b>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-6">
                 <b>Paid Date</b>
