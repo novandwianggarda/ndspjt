@@ -53,7 +53,8 @@ class LeasesController extends Controller
         $payment_invoice = json_decode($payment_inv);
 
         //history
-        $payment_hist = json_decode($lease->payment_history);
+        $paymenthist = json_encode($lease->payment_history);
+        $payment_hist = json_decode($paymenthist);
 
         // $payment_history = json_encode($payment_history);
         
