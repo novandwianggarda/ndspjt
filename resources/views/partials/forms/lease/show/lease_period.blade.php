@@ -7,9 +7,9 @@
 
      <frgroup  wl="2" wi="4">
         <label slot="label">
-            Awal Sewa &nbsp; :
+            Awal Sewa &nbsp; 
         </label>
-        <div>
+        <div>:
             <?php 
                 if($lease->start==null){
                     $tang='';
@@ -23,9 +23,9 @@
     </frgroup>
     <frgroup  wl="2" wi="4">
         <label slot="label">
-            Akhir Sewa &nbsp; :
+            Akhir Sewa &nbsp; 
         </label>
-        <div>
+        <div>:
             <?php 
                 if($lease->end==null){
                     $ends='';

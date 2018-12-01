@@ -49,6 +49,7 @@
                                     </td>
                                     <td>
                                         Rp.{{ $lease['total'] }}
+                                        
                                     </td>
                                 </tr>
                             @endforeach

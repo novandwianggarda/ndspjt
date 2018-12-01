@@ -3,7 +3,7 @@
     <div slot="title" class="ll-head-2">
         GRACE PERIOD
     </div>
-    <frgroup>
+    <frgroup wl="2" wi="4">
         <label slot="label">
             Grace Awal
         </label>
@@ -20,7 +20,7 @@
             {{@$tang}}
         </div>
     </frgroup>
-    <frgroup>
+    <frgroup wl="2" wi="4">
         <label slot="label">
             Grace Akhir
         </label>
@@ -37,7 +37,6 @@
             {{@$ends}}
         </div>
     </frgroup>
-
     <div class="clearfix"></div>
 
 </accordion>
