@@ -42,7 +42,7 @@
         <label slot="label">
             Keterangan
         </label>
-        <textarea name="note" cols="30" rows="5" class="form-control"></textarea>
+        <textarea id="editor1" name="note" cols="30" rows="5" class="form-control"></textarea>
     </frgroup>
 
 </accordion>

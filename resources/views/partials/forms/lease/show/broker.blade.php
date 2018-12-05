@@ -19,7 +19,7 @@
             <?php 
 
                 $fee = $lease->brok_fee_yearly;
-                echo number_format($fee, 0, ".", ".")."<br />";
+                echo number_format((float)$fee, 0, ".", ".")."<br />";
             ?>
         </div>
     </frgroup>

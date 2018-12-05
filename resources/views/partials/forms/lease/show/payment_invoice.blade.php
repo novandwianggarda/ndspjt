@@ -15,7 +15,7 @@
                     <?php 
 
                         $tagihan = $mydata->total;
-                        echo number_format($tagihan, 0, ".", ".")."<br />";
+                        echo number_format((float)$tagihan, 0, ".", ".")."<br />";
                     ?>
                 </div>
 

@@ -130,8 +130,8 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('add', 'LeasesController@showAddForm');
         Route::post('add', 'LeasesController@store');
         Route::get('/edit/{id}', 'LeasesController@edit');
-        Route::get('/print/{id}', 'LeasesController@print');
         Route::patch('/updatelease/{edit}', 'LeasesController@updatelease');
+        Route::get('/print/{id}', 'LeasesController@print');
 
 
 
@@ -156,7 +156,7 @@ Route::middleware(['web', 'auth'])->group(function () {
         //crud Property
         Route::get('add', 'PropertiesController@showAddForm');
         Route::post('add', 'PropertiesController@store');
-        Route::get('/editprop/{id}', 'PropertiesController@editprop' );
+        Route::get('/editprop/{id}', 'PropertiesController@editprop' )->name('editprop');
         Route::patch('/updateprop/{edit}', 'PropertiesController@updateprop');
         Route::delete('/deleteprop/{id}', 'PropertiesController@destroyprop' )->name('property.destroy');
         //import

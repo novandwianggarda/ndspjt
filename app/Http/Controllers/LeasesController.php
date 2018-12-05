@@ -31,7 +31,11 @@ class LeasesController extends Controller
         // $leasess = Lease::whereDate('due_date', '>', Carbon::now())
         // ->orderBy('due_date', 'Asc')->paginate(100);
         $leasess = Lease::dueForToday();
+        // $leasess = json_decode($today);
+
+        // dd($leasess);
         $leaseyest = Lease::dueForYesterday();
+        // $leaseyest = json_decode($yest);
 
         return view('lease.todolist', compact('leasess', 'leaseyest'));
     }
@@ -45,14 +49,17 @@ class LeasesController extends Controller
         $lease = Lease::find($id);
 
         //payterm
-        $payment_term = json_encode($lease->payment_terms);
-        $payment_teerm = json_decode($payment_term);
+        // $payment_teerm = json_decode($lease->payment_terms);
+        $payterm = json_encode($lease->payment_terms);
+        $payment_teerm = json_decode($payterm);
 
         //payinv
-        $payment_inv = json_encode($lease->payment_invoices);
-        $payment_invoice = json_decode($payment_inv);
+        // $payment_invoice = json_decode($lease->payment_invoices);
+        $payinv = json_encode($lease->payment_invoices);
+        $payment_invoice = json_decode($payinv);
 
         //history
+        // $payment_hist = json_decode($lease->payment_history);
         $paymenthist = json_encode($lease->payment_history);
         $payment_hist = json_decode($paymenthist);
 
@@ -80,7 +87,10 @@ class LeasesController extends Controller
         // $data['brok_fee_yearly'] = (int)$data['brok_fee_yearly'];
         // $data['brok_fee_paid'] = (int)$data['brok_fee_paid'];
         // parse to date
-        $data['due_date'] = empty($data['due_date']) ? null : $this->parseDate($data['due_date']);
+        // $data = json_decode($request->payment_terms);
+        $data['payment_terms'] = json_decode($data['payment_terms']);
+        $data['payment_history'] = json_decode($data['payment_history']);
+        $data['payment_invoices'] = json_decode($data['payment_invoices']);
         $data['start'] = empty($data['start']) ? null : $this->parseDate($data['start']);
         $data['end'] = empty($data['end']) ? null : $this->parseDate($data['end']);
         $data['grace_start'] = empty($data['grace_start']) ? null : $this->parseDate($data['grace_start']);
@@ -95,6 +105,8 @@ class LeasesController extends Controller
 
         return redirect()->route('lease');
     }
+
+
 
     public function print($id)
     {
@@ -112,35 +124,52 @@ class LeasesController extends Controller
         $lease=Lease::find($id);
 
         //payterm
-        $payment_term = json_encode($lease->payment_terms);
-        $payment_teerm = json_decode($payment_term);
+        // $payment_teerm = array($lease->payment_terms);
 
         //payinv
-        $payment_inv = json_encode($lease->payment_invoices);
-        $payment_invoice = json_decode($payment_inv);
+        // $payment_invoice = array($lease->payment_invoices);
 
         //history
-        $payment_hist = json_decode($lease->payment_history);
+        // $payment_hist = array($lease->payment_history);
 
-        return view('lease.edit', compact('lease', 'payment_hist', 'payment_invoice', 'payment_teerm'));
+        return view('lease.edit', compact('lease'));
     }
 
-    public function updatelease(Request $request, $id)
+    // public function updatelease(LeaseRequet $request, $id)
+    // {
+    //     $data = Lease::find($id);
+    //     $dataUpdate = $request->only([
+    //     'lessor', 'lessor_pkp',
+    //     'tenant', 'purpose', 'start', 'end', 'note', 'lease_deed_date', 'lease_number', 'lease_deed',
+    //     'payment_terms', 'payment_history', 'payment_invoices', 'sell_monthly', 'sell_yearly', 'pic', 'rent_m2_monthly', 'rent_m2_monthly_type', 'rent_price', 'rent_price_type', 'rent_assurance', 'brok_name', 'brok_fee_yearly', 'brok_fee_paid', 'grace_start', 'grace_end']);
+    //     dd($dataUpdate);
+
+    //     $dataUpdate['payment_terms'] = json_decode($dataUpdate['payment_terms']);
+    //     $dataUpdate['payment_history'] = json_decode($dataUpdate['payment_history']);
+    //     $dataUpdate['payment_invoices'] = json_decode($dataUpdate['payment_invoices']);
+
+    //     $data->update($dataUpdate);
+
+    //     return redirect()->route('lease');
+    // }
+
+
+
+
+    public function updatelease(LeaseRequet $request, $id)
     {
         $data = Lease::find($id);
-        // parse to date
-        $data['due_date'] = empty($data['due_date']) ? null : $this->parseDate($data['due_date']);
-        $data['start'] = empty($data['start']) ? null : $this->parseDate($data['start']);
-        $data['end'] = empty($data['end']) ? null : $this->parseDate($data['end']);
-        $data['grace_start'] = empty($data['grace_start']) ? null : $this->parseDate($data['grace_start']);
-        $data['grace_end'] = empty($data['grace_end']) ? null : $this->parseDate($data['grace_end']);
-        // dd($data);
+       // dd($request->payment_terms);
 
-       $dataUpdate = $request->only([
-        'lessor', 'lessor_pkp',
-        'tenant', 'purpose', 'start', 'end', 'note', 'lease_deed_date', 'lease_number', 'lease_deed',
-        'payment_terms', 'payment_history', 'payment_invoices', 'sell_monthly', 'sell_yearly', 'pic', 'rent_m2_monthly', 'rent_m2_monthly_type', 'rent_price', 'rent_price_type', 'rent_assurance', 'brok_name', 'brok_fee_yearly', 'brok_fee_paid', 'grace_start', 'due_date', 'balance', 'grace_end']);
+        $dataUpdate = $request->all();
+        // dd($dataUpdate);
+
+        $dataUpdate['payment_terms'] = json_decode($dataUpdate['payment_terms']);
+        $dataUpdate['payment_history'] = json_decode($dataUpdate['payment_history']);
+        $dataUpdate['payment_invoices'] = json_decode($dataUpdate['payment_invoices']);
+
         $data->update($dataUpdate);
+
         return redirect()->route('lease');
     }
 
@@ -173,6 +202,7 @@ class LeasesController extends Controller
     {
         //dd($request->all());
         $x = json_decode($request->data);
+        // $x = $request->data;
         foreach ($x as $d => $value) {
             $leas = new Lease();
             $leas->lessor= @$value->lessor;
@@ -196,25 +226,23 @@ class LeasesController extends Controller
             $leas->lease_deed= @$value->lease_deed;
             $leas->brok_fee_paid= @$value->brok_fee_paid;
             $leas->lease_deed_date= @$value->lease_deed_date->date;
-            $leas->due_date= @$value->due_date->date;
-            
 
-            $leas->payment_terms= json_encode([Array(
+            $leas->payment_terms= [[
                 "total" => @$value->payment_terms,
                 "due_date" => @$value->due_date->date,
                 "note" => @$value->notes,
-            )]);
+            ]];
 
-            $leas->payment_invoices= json_encode([Array(
+            $leas->payment_invoices= [[
                 "total" => @$value->totsew,
                 "paid_date" => @$value->due_date->date,
                 "note" => @$value->note,
-            )]);
-            $leas->payment_history= json_encode([Array(
+            ]];
+            $leas->payment_history= [[
                 "total" => @$value->total_inv,
                 "paid_date" => @$value->due_date->date,
                 "note" => @$value->note_payinv,
-            )]);
+            ]];
             $leas->save();
 
 

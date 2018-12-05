@@ -210,6 +210,7 @@ return [
         [
             'text'    => 'Property',
             'icon'    => 'home',
+            'can'     => 'userall',
             'submenu' => [
                 [
                     'text' => 'Add New',
@@ -233,6 +234,7 @@ return [
                 ],
             ],
         ],
+        
         [
             'text'    => 'Lease',
             'icon'    => 'dollar',

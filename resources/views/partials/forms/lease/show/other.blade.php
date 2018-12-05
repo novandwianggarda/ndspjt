@@ -12,7 +12,7 @@
         	<?php 
 
         		$jaminan = $lease->rent_assurance;
-        		echo number_format($jaminan, 0, ".", ".")."<br />";
+        		echo number_format((float)$jaminan, 0, ".", ".")."<br />";
         	?>
         </div>    
     </frgroup>	
@@ -20,7 +20,7 @@
         <label slot="label">
            Keterangan
         </label>
-        <div>{{ $lease->note }}</div>
+        <div>{!! $lease->note !!}</div>
     </frgroup>
 
 

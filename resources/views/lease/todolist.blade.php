@@ -23,8 +23,8 @@
                     <table id="example" class="display responsive nowrap" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Tenant</th>
                                 <th>Due Date</th>
+                                <th>Tenant</th>
                                 <th>Nominal</th>
                             </tr>
                         </thead>
@@ -33,9 +33,6 @@
                             @foreach ($leasess as $lease)
                                 <tr>
 
-                                    <td>
-                                        <a href="/leases/show/{{ $lease['id'] }}">{{ $lease['tenant'] }}</a>
-                                    </td>
                                     <td>
                                         <?php 
                                             if($lease['due_date']==null){
@@ -48,8 +45,15 @@
                                         {{@$due }}
                                     </td>
                                     <td>
-                                        Rp.{{ $lease['total'] }}
-                                        
+                                        <a href="/leases/show/{{ $lease['id'] }}">{{ $lease['tenant'] }}</a>
+                                    </td>
+                                    <td>
+                                        Rp.
+                                        <?php 
+                                            $tot = $lease['total'];
+                                            echo number_format((float)$tot, 0, ".", ".")."<br />";
+                                        ?>
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -81,8 +85,8 @@
                     <table id="example1" class="display responsive nowrap" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Tenant</th>
                                 <th>Due Date</th>
+                                <th>Tenant</th>
                                 <th>Nominal</th>
                             </tr>
                         </thead>
@@ -90,9 +94,6 @@
                         <tbody>
                             @foreach ($leaseyest as $lease)
                                 <tr>
-                                    <td>
-                                        <a href="/leases/show/{{ $lease['id'] }}">{{ $lease['tenant'] }}</a>
-                                    </td>
                                     <td>
                                         <?php 
                                             if($lease['due_date']==null){
@@ -104,10 +105,14 @@
                                         ?>
                                         {{@$due }}
                                     </td>
-                                    <td>Rp.
+                                    <td>
+                                        <a href="/leases/show/{{ $lease['id'] }}">{{ $lease['tenant'] }}</a>
+                                    </td>
+                                    <td>
+                                        Rp.
                                         <?php 
                                             $tot = $lease['total'];
-                                            echo number_format($tot, 0, ".", ".")."<br />";
+                                            echo number_format((float)$tot, 0, ".", ".")."<br />";
                                         ?>
                                     </td>
                                 </tr>

@@ -42,6 +42,16 @@
 @stop
 
 @section('js')
+    <script src="{{asset('bower_components/ckeditor/ckeditor.js')}}"></script>
+
+
+    <script>
+      $(function () {
+        CKEDITOR.replace('editor1')
+        $('.textarea').wysihtml5()
+      })
+    </script>
+
     <script>
 
         var form = $('#form-add-lease');

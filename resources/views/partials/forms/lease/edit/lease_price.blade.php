@@ -14,6 +14,14 @@
 
     </frgroup>
 
+
+    <frgroup>
+        {!! Form::label('rent_assurance', 'Jaminan', ['slot'=>'label']) !!}
+        {!! Form::text('rent_assurance', null, ['class'=>'form-control', 'Placeholder'=>'Rp. 0']) !!}
+                        {!! $errors->has('rent_assurance')?$errors->first('rent_assurance'):'' !!}
+    </frgroup>
+
+
     <frgroup>
         <label slot="label">
             Total Sewa

@@ -38,11 +38,14 @@
     </frgroup>
 
 
+
     <frgroup>
         <label slot="label">
             Keterangan
         </label>
-        <textarea name="note" cols="30" rows="5" class="form-control"></textarea>
+
+            {!! Form::textArea('note', null, [ 'id'=>'editor1', 'class'=>'form-control', 'rows' => '5', 'cols' => '30']) !!}
+            {!! $errors->has('note')?$errors->first('note'):'' !!}
     </frgroup>
 
 </accordion>

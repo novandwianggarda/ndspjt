@@ -31,6 +31,7 @@
             </div>
             <div class="col-md-3 col-sm-3 col-xs-6">
                 <input type="text" class="form-control" v-model="row.note">
+                
             </div>
             <div class="col-md-2 col-sm-2 col-xs-6">
                 <button class="btn btn-sm btn-danger" @click.prevent="deleteRow(i)"><i class="fa fa-trash"></i></button>
