@@ -236,7 +236,7 @@ class LeasesController extends Controller
             $leas->payment_invoices= [[
                 "total" => @$value->totsew,
                 "paid_date" => @$value->due_date->date,
-                "note" => @$value->note,
+                "note" => @$value->notes,
             ]];
             $leas->payment_history= [[
                 "total" => @$value->total_inv,
