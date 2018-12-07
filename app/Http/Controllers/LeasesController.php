@@ -153,6 +153,15 @@ class LeasesController extends Controller
     //     return redirect()->route('lease');
     // }
 
+    public function updatemodal(LeaseRequet $request)
+    {
+        $leases = Lease::find($request->id);
+        $leases->status = 'Acc';
+        $leases->save();
+
+        return redirect()->route('lease');
+    }
+
 
 
 

@@ -28,6 +28,8 @@ class Lease extends Model implements Auditable
         // PAYMENT INVOICES
         'payment_invoices',
 
+        'status',
+
         // PRICES
 
         // -- Offer Price

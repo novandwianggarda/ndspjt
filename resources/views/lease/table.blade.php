@@ -12,7 +12,7 @@
             <div class="box">
                 <p>&nbsp;</p>
                 <!-- <center><img src="{{asset('img/log1.jpg')}}" height="25%" width="20%" /></center> -->
-                <center><img src="{{asset('img/log2.png')}}" width="10%" /></center>
+                <!-- <center><img src="{{asset('img/log2.png')}}" width="10%" /></center> -->
                 <h2 style="text-align: center;">Lease List</h2>
                 <div class="box-body table-responsive no-padding">
                     <table id="example" class="display responsive nowrap" style="width:100%">
@@ -30,31 +30,68 @@
                         <tbody>
                             @foreach ($leases as $lease)
                                 <tr>
-                                    @if($lease->status =='Belum')
+                                    @if($lease->status =='')
                                         <td>
                                             <a href="/leases/show/{{ $lease->id }}">{{ $lease->tenant }}</a> 
                                                 &nbsp;
-                                            <button type="button" class="badge badge-danger" data-toggle="modal" data-target="#myModal">{{ $lease->status }}</button>
-                                                <div class="modal fade" id="myModal" role="dialog">
-                                                    <div class="modal-dialog">
-                                                    
-                                                      <!-- Modal content-->
-                                                      <div class="modal-content">
-                                                        <div class="modal-header">
-                                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                          <h4 class="modal-title">Update Status Lease</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <input type="radio" name="Belum" value="Milk">Belum &nbsp;<input type="radio" name="Acc" value="Acc">Acc 
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                          <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
-                                                        </div>
-                                                      </div>
-                                                      
-                                                    </div>
-                                                </div>
 
+                                                @can('userman', $lease)
+
+                                                    <button type="button" class="badge badge-danger" data-toggle="modal" data-target="#editModal">Belum</button>
+
+
+                                                    <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+                                                        <div class="modal-dialog">
+                                                        
+                                                          <!-- Modal content-->
+                                                          <div class="modal-content">
+                                                            <div class="modal-header">
+                                                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                              <h4 class="modal-title">Update Status Lease</h4>
+                                                            </div>
+
+
+                                                            <div class="modal-body">
+
+                                                                <form method="POST" action="/leases/updatemodal/" id="editForm">
+                                                                    {{ csrf_field() }}
+                                                                    <input type="hidden" name="id" value="{{ $lease->id }}">
+                                                                    <input type="radio" name="Acc" value="Acc">&nbsp;Acc
+                                                                    <br>
+
+                                                                    <div align="right">
+                                                                    <button type="submit" class="btn btn-custom dropdown-toggle waves-effect waves-light">
+                                                                        <i class="fa fa-plus"></i>
+                                                                        Update
+                                                                    </button>
+                                                                    </div>
+                                                                </form>
+
+                                                            </div>
+
+                                                            <!-- <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                            </div> -->
+
+
+
+
+
+
+                
+
+
+
+
+
+
+
+
+                                                          </div>
+                                                          
+                                                        </div>
+                                                    </div>
+                                                @endcan  
                                         </td>
                                         <td>{{ $lease->prop->name}}</td>
                                         <td>{{ $lease->prop->type->name}}</td>
@@ -101,28 +138,45 @@
 
                                         <td>
                                             <a href="/leases/show/{{ $lease->id }}">{{ $lease->tenant }}</a> &nbsp;
+                                            @can('userman', $lease)
+
+                                                    <button type="button" class="badge badge-danger" data-toggle="modal" data-target="#editModal">{{ $lease->status }}</button>
 
 
-                                            <button type="button" class="badge badge-info" data-toggle="modal" data-target="#myModal">{{ $lease->status }}</button>
-                                                <div class="modal fade" id="myModal" role="dialog">
-                                                    <div class="modal-dialog">
-                                                    
-                                                      <!-- Modal content-->
-                                                      <div class="modal-content">
-                                                        <div class="modal-header">
-                                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                          <h4 class="modal-title">Update Status Lease</h4>
+                                                    <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+                                                        <div class="modal-dialog">
+                                                        
+                                                          <!-- Modal content-->
+                                                          <div class="modal-content">
+                                                            <div class="modal-header">
+                                                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                              <h4 class="modal-title">Update Status Lease</h4>
+                                                            </div>
+
+
+                                                            <div class="modal-body">
+
+                                                                <form method="POST" action="/leases/updatemodal/" id="editForm">
+                                                                    {{ csrf_field() }}
+                                                                    <input type="hidden" name="id" value="{{ $lease->id }}">
+                                                                    <input type="radio" name="Acc" value="Acc">&nbsp;Acc
+                                                                    <br>
+
+                                                                    <div align="right">
+                                                                    <button type="submit" class="btn btn-custom dropdown-toggle waves-effect waves-light">
+                                                                        <i class="fa fa-plus"></i>
+                                                                        Update
+                                                                    </button>
+                                                                    </div>
+                                                                </form>
+
+                                                            </div>
+
+                                                          </div>
+                                                          
                                                         </div>
-                                                        <div class="modal-body">
-                                                            <input type="radio" name="Belum" value="Milk">Belum &nbsp;<input type="radio" name="Acc" value="Acc">Acc 
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                          <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
-                                                        </div>
-                                                      </div>
-                                                      
                                                     </div>
-                                                </div>
+                                                @endcan   
 
 
                                         </td>
@@ -192,7 +246,33 @@
                     'colvis'
                 ]
             });
+
+           
         });
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+        $('.editModalBtn').click(function() {
+          var id=$(this).data('id');
+          var action ='{{URL::to('updatemodal')}}/'+id;
+
+
+          var url = '{{URL::to('updatemodal')}}';
+          $.ajax({
+            type : 'get',
+            url  : url,
+            data : {'id':id},
+            success:function(data){
+              $('#id').val(data.id);
+              $('.Acc').val(data.Acc);
+              $('.classFormUpdate').attr('action',action);
+              $('#editModal').modal('show');
+            }
+          });
+        });
+    });
     </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>

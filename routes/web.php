@@ -131,6 +131,8 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::post('add', 'LeasesController@store');
         Route::get('/edit/{id}', 'LeasesController@edit');
         Route::patch('/updatelease/{edit}', 'LeasesController@updatelease');
+
+        Route::post('/updatemodal/', 'LeasesController@updatemodal')->name('updatemodal');
         Route::get('/print/{id}', 'LeasesController@print');
 
 
