@@ -112,11 +112,12 @@ class LeasesController extends Controller
     {
         $lease=Lease::find($id);
         $now = date_create()->format('d-m-Y');
-        //payinv
-        $payment_inv = json_encode($lease->payment_invoices);
-        $payment_invoices = json_decode($payment_inv);
 
-        return view('lease.invoice', compact('lease', 'now', 'payment_invoices'));
+
+        $paymen = json_encode($lease->payment_terms);
+        $payterm = json_decode($paymen);
+
+        return view('lease.invoice', compact('lease', 'now', 'payterm'));
     }
 
     public function edit($id)
@@ -161,6 +162,8 @@ class LeasesController extends Controller
         $leases = Lease::find($request->id);
         $leases->status = $request->status;
         $leases->save();
+        \LogActivity::addToLog('update status Lease Lessor');
+
         // dd($leases);
 
         return redirect()->route('lease');
@@ -192,6 +195,7 @@ class LeasesController extends Controller
         $dataUpdate['payment_invoices'] = json_decode($dataUpdate['payment_invoices']);
 
         $data->update($dataUpdate);
+        \LogActivity::addToLog('Update data Lease');
 
         return redirect()->route('lease');
     }
@@ -217,7 +221,9 @@ class LeasesController extends Controller
             $path = $request->file('upload-file')->getRealPath();
             $data = Excel::load($path, function($reader){})->get();
             return view('lease.showdata')->with('data', $data);
-        }   
+        }
+        \LogActivity::addToLog('Import Lease');
+
         return back();
     }
     

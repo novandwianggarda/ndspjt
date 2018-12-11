@@ -14,6 +14,7 @@
 					<tr>
 						<th>Name</th>
 						<th>Type Property</th>
+						<th>Block</th>
 						<th>Address</th>
 						<th>Action</th>
 
@@ -27,6 +28,7 @@
 						</td>
 
 						<td>{{$property->type->name}}</td>
+						<td>{{$property->block}}</td>
 						<td>{{$property->address}}</td>
 						<td>
                             {!! Form::open(['method'=>'delete', 'route'=>['property.destroy', $property->id], 'style' => 'display: inline-block;']) !!} 

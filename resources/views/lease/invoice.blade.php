@@ -60,12 +60,12 @@
 
           <b>Payment Due:</b>
 
-            @foreach($payment_invoices as $mydata)
+            @foreach($payterm as $mydata)
               <?php 
-                if($mydata->paid_date==null){
+                if($mydata->due_date==null){
                   $paid='';
                 }else{ 
-                  $tgl=strtotime($mydata->paid_date);
+                  $tgl=strtotime($mydata->due_date);
                   $paid=date("d F Y", $tgl);
                 }
               ?>
@@ -85,7 +85,7 @@
           <table class="table table-striped">
             <thead>
             <tr>
-              <th>Paid Date</th>
+              <th>Due Date</th>
               <th>Description</th>
               <th>Total Sewa </th>
             
@@ -97,7 +97,7 @@
                 $rent_price='';
                 $rentprice='';
               ?>
-            @foreach($payment_invoices as $a)
+            @foreach($payterm as $a)
               
 
               <?php 
@@ -108,10 +108,10 @@
                 <tr>
                   <td width="20%">
                     <?php 
-                      if($a->paid_date==null){
+                      if($a->due_date==null){
                         $tang='';
                       }else{ 
-                        $tgl=strtotime($a->paid_date);
+                        $tgl=strtotime($a->due_date);
                         $tang=date("d F Y", $tgl);
                       }
                     ?>

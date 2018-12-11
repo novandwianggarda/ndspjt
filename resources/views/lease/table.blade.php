@@ -46,7 +46,7 @@
                                                             </div>
                                                             <div class="modal-body">
 
-                                                                <form method="POST" action="/leases/updatemodal/" id="editModal">
+                                                                <form method="POST" action="{{ route('updatemodal')}}" id="editModal">
 
                                                                     @csrf
                                                                     <input type="hidden" name="id" value="{{ $lease->id}}">
@@ -134,7 +134,7 @@
 
                                                             <div class="modal-body">
 
-                                                                <form method="POST" action="/leases/updatemodal/" id="editModal">
+                                                                <form method="POST" action="{{ route('updatemodal')}}" id="editModal">
                                                                     @csrf
                                                                     
                                                                     <input type="hidden" name="id" value="{{ $lease->id }}">

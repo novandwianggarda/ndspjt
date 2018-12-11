@@ -1,4 +1,4 @@
-<li class="dropdown messages-menu">
+<!-- <li class="dropdown messages-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <i class="fa fa-envelope-o"></i>
         <span class="label label-info">2</span>
@@ -6,9 +6,8 @@
     <ul class="dropdown-menu">
         <li class="header">You have 2 messages</li>
         <li>
-            <!-- inner menu: contains the actual data -->
             <ul class="menu">
-                <li><!-- start message -->
+                <li>
                     <a href="#">
                         <div class="pull-left">
                             <img src="{{ asset('img/administrator.png') }}" class="img-circle" alt="User Image">
@@ -20,7 +19,6 @@
                         <p>Lorem ipsum dolor sit amet.</p>
                     </a>
                 </li>
-                <!-- end message -->
                 <li>
                     <a href="#">
                         <div class="pull-left">
@@ -37,4 +35,4 @@
         </li>
         <li class="footer"><a href="#">See All Messages</a></li>
     </ul>
-</li>
+</li> -->

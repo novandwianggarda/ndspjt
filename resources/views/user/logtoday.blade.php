@@ -14,11 +14,13 @@
 
             @if($logs->count())
               @foreach($logs as $key => $log)
-            <li class="time-label">
+           <!--  <li class="time-label">
                   <span class="bg-red">
-                    {{ $log->updated_at }}
+                    //
                   </span>
-            </li>
+            </li> -->
+
+            
             <!-- <li>
               <i class="fa fa-envelope bg-blue"></i>
 
@@ -59,7 +61,8 @@
               <i class="fa fa-user bg-aqua"></i>
 
               <div class="timeline-item">
-                <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
+                    
+                <span class="time"><i class="fa fa-clock-o"></i>{{ $log->updated_at }} </span>
 
                 <h3 class="timeline-header"><a href="#"> {{ $log->userr->name }}</a> menggunakan ip {{ $log->ip }} </h3>
 
