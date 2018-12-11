@@ -14,20 +14,47 @@
                     {!! Form::model($lease,  ['url'=>array( '', $lease->id), 'method' => '', 'id' => 'formshow-lease', 'enctype' => 'multipart/form-data', 'files' => true]) !!}
 
                     @csrf
-                    <div class="box-group" id="accordion">
-                        <div class="panel box">
-                        <a href="/leases" class="btn btn-warning"><i class="fa fa-angle-double-left" aria-hidden="true"></i>&nbsp;Back</a>
-                        <a href="/leases/edit/{{ $lease->id }}" class="btn btn-success"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
-                        <a href="/leases/print/{{ $lease->id }}" class="btn btn-info"><i class="fa fa-print" aria-hidden="true"></i>Print</a>
-                            <!-- LAND -->
-                            @include('partials.forms.lease.show.land')
-                            <!-- PROPERTY -->
-                            @include('partials.forms.lease.show.property')
-                            <!-- LEASE -->
-                            @include('partials.forms.lease.show.lease')
-                            
+
+                    @if($lease->status =='')
+                        <div class="box-group" id="accordion">
+                            <div class="panel box">
+                            <a href="/leases" class="btn btn-warning"><i class="fa fa-angle-double-left" aria-hidden="true"></i>&nbsp;Back</a>
+                            @can('userall', $lease)
+                                <a href="/leases/edit/{{ $lease->id }}" class="btn btn-success"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
+                            @endcan  
+
+                            <a href="/leases/print/{{ $lease->id }}" class="btn btn-info"><i class="fa fa-print" aria-hidden="true"></i>Print</a>
+                                <!-- LAND -->
+                                @include('partials.forms.lease.show.land')
+                                <!-- PROPERTY -->
+                                @include('partials.forms.lease.show.property')
+                                <!-- LEASE -->
+                                @include('partials.forms.lease.show.lease')
+                                
+                            </div>
                         </div>
-                    </div>
+                    @else($lease->status =='Acc')
+                        <div class="box-group" id="accordion">
+                            <div class="panel box">
+                            <a href="/leases" class="btn btn-warning"><i class="fa fa-angle-double-left" aria-hidden="true"></i>&nbsp;Back</a>
+                            @can('userman', $lease)
+                                <a href="/leases/edit/{{ $lease->id }}" class="btn btn-success"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
+                            @endcan  
+
+                            <a href="/leases/print/{{ $lease->id }}" class="btn btn-info"><i class="fa fa-print" aria-hidden="true"></i>Print</a>
+                                <!-- LAND -->
+                                @include('partials.forms.lease.show.land')
+                                <!-- PROPERTY -->
+                                @include('partials.forms.lease.show.property')
+                                <!-- LEASE -->
+                                @include('partials.forms.lease.show.lease')
+                                
+                            </div>
+                        </div>
+                    @endif
+
+
+
                     {!! Form::close() !!}
                 </div>
             </div>
