@@ -25,7 +25,7 @@
         <label slot="label">
             Nama Penyewa
         </label>
-        <div>:&nbsp;&nbsp;{{ $lease->tenant }}
+        <div>:&nbsp;&nbsp;{{ old('tenant', $lease->tenant) }} diubah {{ $lease->tenant }}
         </div>
     </frgroup>
 

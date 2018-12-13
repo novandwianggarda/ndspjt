@@ -13891,7 +13891,7 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-3 col-sm-3 col-xs-6" }, [
-        _c("b", [_vm._v("Due Date")])
+        _c("b", [_vm._v("Paid Date")])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-3 col-sm-3 col-xs-6" }, [

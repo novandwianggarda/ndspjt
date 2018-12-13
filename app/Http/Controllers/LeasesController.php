@@ -39,6 +39,15 @@ class LeasesController extends Controller
 
         return view('lease.todolist', compact('leasess', 'leaseyest'));
     }
+
+
+    public function drafts()
+    {
+        // dd($leasess);
+        $leasess = Lease::all();
+        
+        return view('lease.drafts', compact('leasess'));
+    }
     
 
     /**

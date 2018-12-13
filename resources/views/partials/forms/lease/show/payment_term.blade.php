@@ -22,7 +22,7 @@
                         
                 </div>
 
-                <div class="col-md-6">Paid Date  &nbsp; : 
+                <div class="col-md-6">Due Date  &nbsp; : 
                     <?php 
                         if($mydata->due_date==null){
                             $tang='';

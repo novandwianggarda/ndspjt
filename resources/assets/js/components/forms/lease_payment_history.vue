@@ -9,7 +9,7 @@
                 <b>Pembayaran</b>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-6">
-                <b>Due Date</b>
+                <b>Paid Date</b>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-6">
                 <b>Note</b>

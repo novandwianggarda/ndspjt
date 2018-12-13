@@ -125,6 +125,7 @@ Route::middleware(['web', 'auth'])->group(function () {
         });
         Route::get('list', 'LeasesController@index')->name('lease');
         Route::get('todolist', 'LeasesController@todolist')->name('todolist');
+        Route::get('drafts', 'LeasesController@drafts')->name('drafts');
         Route::get('show/{id}', 'LeasesController@show');
         //crud lease
         Route::get('add', 'LeasesController@showAddForm');

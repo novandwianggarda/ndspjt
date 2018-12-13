@@ -256,6 +256,11 @@ return [
                     'icon' => 'list',
                 ],
                 [
+                    'text' => 'Drafts',
+                    'url'  => '/leases/drafts',
+                    'icon' => 'file',
+                ],
+                [
                     'text' => 'Import',
                     'url'  => '/leases/import',
                     'icon' => 'file',

@@ -18,7 +18,7 @@
     </frgroup>	
     <frgroup>
         <label slot="label">
-           Keterangan
+           Notes
         </label>
         <div>{!! $lease->note !!}</div>
     </frgroup>
