@@ -1,0 +1,14 @@
+button.active::after{
+    font-family: FontAwesome;
+    content: '\f00c';
+    color: #a60099;
+    float: right;
+}
+.dt-button-collection{
+    max-height: 300px;
+    overflow-y: auto !important;
+}
+
+.dt-button-collection button{
+    padding: 5px !important;
+}

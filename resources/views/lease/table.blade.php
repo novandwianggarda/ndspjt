@@ -1,5 +1,17 @@
 @extends('adminlte::page')
 
+<style>
+    .box, #example_wrapper{
+        min-height: 500px;
+    }
+    button.active::after{
+        font-family: FontAwesome;
+        content: '\f00c';
+        color: #a60099;
+        float: right;
+    }
+</style>
+
 @section('title', 'Lease List')
 
 @section('content_header')
@@ -223,6 +235,9 @@
                     'colvis'
                 ]
             });
+            // if ($("button").hasClass("active")) {
+            //     $(".active").css("background","red");
+            // }
         });
     </script>
 

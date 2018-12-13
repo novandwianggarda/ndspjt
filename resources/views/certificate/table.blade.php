@@ -1,5 +1,17 @@
 @extends('adminlte::page')
 
+{{-- <head>
+    <style>
+        button.active::after{
+            font-family: FontAwesome;
+            content: '\f00c';
+            color: #a60099;
+            float: right;
+        }
+    </style>
+</head> --}}
+<link rel="stylesheet" href="/css/certificatelist.css">
+
 @section('title', 'Certificate List')
 
 @section('content_header')
@@ -13,7 +25,7 @@
             <!-- <table id="tbl-taxes" class="table table-bordered" style="width:100%"> -->
             <div class="box">
                 <p>&nbsp;</p>
-                <center><img src="{{asset('img/log1.jpg')}}" height="25%" width="20%" /></center>
+                <center><img class="img img-responsive" src="{{asset('img/log1.jpg')}}" height="25%" width="20%" /></center>
                 <h3 style="text-align: center;">Certificate List</h3>
                 <table id="example" class="display responsive nowrap" style="width:100%">
                     <thead>
