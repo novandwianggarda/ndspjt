@@ -1,5 +1,14 @@
 @extends('adminlte::page')
 
+<style>
+    button.active::after{
+        font-family: FontAwesome;
+        content: '\f00c';
+        color: #a60099;
+        float: right;
+    }
+</style>
+
 @section('title', 'Tax List')
 
 @section('content_header')
@@ -14,7 +23,7 @@
             <!-- <table id="tbl-taxes" class="table table-bordered" style="width:100%"> -->
             <div class="box">
                 <p>&nbsp;</p>
-                <center><img src="{{asset('img/log1.jpg')}}" height="25%" width="20%" /></center>
+                <center><img class="img img-responsive" src="{{asset('img/log1.jpg')}}" height="25%" width="20%" /></center>
                 <h2 style="text-align: center;">Tax List</h2>
 
                 <div class="box-body table-responsive no-padding">

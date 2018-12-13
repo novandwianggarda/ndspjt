@@ -1,7 +1,17 @@
 @extends('adminlte::page')
-
+<style>
+    button.active::after{
+        font-family: FontAwesome;
+        content: '\f00c';
+        color: #a60099;
+        float: right;
+    }
+</style>
 @section('title', 'Certificate List')
 
+@section('content_header')
+    <h1>&nbsp;</h1>
+@stop
 
 @section('content')
 
@@ -11,7 +21,8 @@
             <!-- <table id="tbl-taxes" class="table table-bordered" style="width:100%"> -->
             <div class="box">
                 <p>&nbsp;</p>
-                <center><img src="{{asset('img/log1.jpg')}}" height="25%" width="20%" /></center>
+                <center><img class="img img-responsive" src="{{asset('img/log1.jpg')}}" height="25%" width="20%" /></center>
+
                 <h3 style="text-align: center;">Data Certificate</h3>
             
                 <table id="example" class="display responsive nowrap" style="width:100%">
@@ -96,8 +107,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+    <script src="{{asset('js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('js/buttons.colVis.min.js')}}"></script>
 
 @stop
 

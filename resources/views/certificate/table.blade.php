@@ -1,16 +1,14 @@
 @extends('adminlte::page')
 
-{{-- <head>
-    <style>
-        button.active::after{
-            font-family: FontAwesome;
-            content: '\f00c';
-            color: #a60099;
-            float: right;
-        }
-    </style>
-</head> --}}
-<link rel="stylesheet" href="/css/certificatelist.css">
+
+<style>
+    button.active::after{
+        font-family: FontAwesome;
+        content: '\f00c';
+        color: #a60099;
+        float: right;
+    }
+</style>
 
 @section('title', 'Certificate List')
 
@@ -113,6 +111,9 @@
                     'colvis'
                 ]
             });
+            // if ($("button").hasClass("active")) {
+            //     $(".active").css("background","red");
+            // }
         });
     </script>
 

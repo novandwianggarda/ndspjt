@@ -15,7 +15,9 @@
                 <!-- <center><img src="{{asset('img/log2.png')}}" width="10%" /></center> -->
                 <h2 style="text-align: center;">Drafts</h2>
                 <div class="box-body table-responsive no-padding">
+                    
                     <table id="example" class="display responsive nowrap" style="width:100%">
+
                         <thead>
                             <tr>
                                 <th>Tenant</th>
