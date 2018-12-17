@@ -1,5 +1,15 @@
 @extends('adminlte::page')
-
+<style>
+    .box, #example_wrapper{
+        min-height: 500px;
+    }
+    button.active::after{
+        font-family: FontAwesome;
+        content: '\f00c';
+        color: #a60099;
+        float: right;
+    }
+</style>
 @section('title', 'Drafts')
 
 @section('content_header')
@@ -25,6 +35,8 @@
                                 <th>Nama Lokasi</th>
                                 <th>Type</th>
                                 <th>Payment Term</th>
+                                <th>Payment History</th>
+                                <th>Tagihan Lainya</th>
                                 <th>Masa Sewa</th>
                                 <th>Start</th>
                                 <th>End</th>
@@ -70,7 +82,90 @@
                                         </td>
                                         <td>{{ $lease->prop->name}}</td>
                                         <td>{{ $lease->prop->type->name}}</td>
-                                        <td>{{ $lease->payment_term }}</td>
+
+                                        <?php 
+                                            $payterm = json_encode($lease->payment_terms);
+                                            $payment_terms = json_decode($payterm);
+                                        ?>
+                                        <td>
+                                             @foreach($payment_terms as $mydata => $value)
+                                                Pembayaran  &nbsp; :&nbsp;Rp.
+                                                    <?php 
+                                                        $tagihan = $value->total;
+                                                        echo number_format((float)$tagihan, 0, ".", ".")."<br />";
+                                                    ?>
+                                                <br>
+                                                Due Date  &nbsp; :
+                                                    <?php 
+                                                        if($value->due_date==null){
+                                                            $tang='';
+                                                        }else{ 
+                                                            $tgl=strtotime($value->due_date);
+                                                            $tang=date("d F Y", $tgl);
+                                                        }
+                                                    ?>
+                                                    {{@$tang}}
+                                                <br>
+                                            @endforeach
+                                        </td>
+
+
+
+                                        <?php 
+                                            $payhis = json_encode($lease->payment_history);
+                                            $paymenthist = json_decode($payhis);
+                                        ?>
+                                        <td>
+                                             @foreach($paymenthist as $mydata => $value)
+                                                Pembayaran  &nbsp; :&nbsp;Rp.
+                                                    <?php 
+                                                        $tagihan = $value->total;
+                                                        echo number_format((float)$tagihan, 0, ".", ".")."<br />";
+                                                    ?>
+                                                <br>
+                                                Paid Date  &nbsp; :
+                                                    <?php 
+                                                        if($value->paid_date==null){
+                                                            $tang='';
+                                                        }else{ 
+                                                            $tgl=strtotime($value->paid_date);
+                                                            $tang=date("d F Y", $tgl);
+                                                        }
+                                                    ?>
+                                                    {{@$tang}}
+                                                <br>
+                                            @endforeach
+                                        </td>
+
+
+
+
+                                        <?php 
+                                            $payinvo = json_encode($lease->payment_invoices);
+                                            $payinv = json_decode($payinvo);
+                                        ?>
+                                        <td>
+                                             @foreach($payinv as $mydata => $value)
+                                                Pembayaran  &nbsp; :&nbsp;Rp.
+                                                    <?php 
+                                                        $tagihan = $value->total;
+                                                        echo number_format((float)$tagihan, 0, ".", ".")."<br />";
+                                                    ?>
+                                                <br>
+                                                Paid Date  &nbsp; :
+                                                    <?php 
+                                                        if($value->paid_date==null){
+                                                            $tang='';
+                                                        }else{ 
+                                                            $tgl=strtotime($value->paid_date);
+                                                            $tang=date("d F Y", $tgl);
+                                                        }
+                                                    ?>
+                                                    {{@$tang}}
+                                                <br>
+                                            @endforeach
+                                        </td>
+
                                         <td>{{ $lease->duration }} Year</td>
                                         <td>
                                             <?php 

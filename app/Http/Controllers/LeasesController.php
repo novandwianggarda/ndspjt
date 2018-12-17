@@ -45,7 +45,8 @@ class LeasesController extends Controller
     {
         // dd($leasess);
         $leasess = Lease::all();
-        
+
+
         return view('lease.drafts', compact('leasess'));
     }
     
