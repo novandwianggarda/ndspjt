@@ -45,6 +45,7 @@
                         </thead>
                         <tbody>
                             @foreach ($leasess as $lease)
+                                @if($lease->status =='')
                                 <tr>
                                         <td>
                                             <a href="/leases/show/{{ $lease->id }}">{{ $lease->tenant }}</a> 
@@ -207,6 +208,8 @@
                                             {!! Form::close() !!}
                                         </td>
                                 </tr>
+                                @endif
+
                             @endforeach
                         </tbody>
                     </table>

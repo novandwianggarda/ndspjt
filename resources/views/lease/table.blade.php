@@ -42,48 +42,8 @@
                         <tbody>
                             @foreach ($leases as $lease)
                                 <tr>
-                                    @if($lease->status =='')
                                         <td>
-                                            <a href="/leases/show/{{ $lease->id }}">{{ $lease->tenant }}</a> 
-                                                &nbsp;
-                                                @can('userman', $lease)
-                                                    <button type="button" class="badge badge-danger" data-toggle="modal" data-target="#editModal-{{ $lease->id }}">Belum</button>
-                                                    <div class="modal fade" id="editModal-{{ $lease->id }}" tabindex="-1" role="dialog">
-                                                        <div class="modal-dialog">
-                                                          <!-- Modal content-->
-                                                          <div class="modal-content">
-                                                            <div class="modal-header">
-                                                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                              <h4 class="modal-title">Update Status Lease</h4>
-                                                            </div>
-                                                            <div class="modal-body">
-
-                                                                <form method="POST" action="{{ route('updatemodal')}}" id="editModal">
-
-                                                                    @csrf
-                                                                    <input type="hidden" name="id" value="{{ $lease->id}}">
-                                                                    <input type="radio" name="status" value="Acc">&nbsp;Acc
-                                                                    <br>
-
-                                                                    <div align="right">
-                                                                    <button type="submit" class="btn btn-custom dropdown-toggle waves-effect waves-light">
-                                                                        <i class="fa fa-plus"></i>
-                                                                        Update
-                                                                    </button>
-                                                                    </div>
-                                                                </form>
-
-                                                            </div>
-
-                                                            <!-- <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                            </div> -->
-
-                                                          </div>
-                                                          
-                                                        </div>
-                                                    </div>
-                                                @endcan  
+                                            <a href="/leases/show/{{ $lease->id }}">{{ $lease->tenant }}</a>
                                         </td>
                                         <td>{{ $lease->prop->name}}</td>
                                         <td>{{ $lease->prop->type->name}}</td>
@@ -124,91 +84,6 @@
                                             {!! Form::button('<i class="fa fa-trash"></i>&nbsp;Delete', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("Do you want to delete this Lease List ?")']) !!}
                                             {!! Form::close() !!}
                                         </td>
-
-                                    @else($lease->status =='Acc')
-                                        <td>
-                                            <a href="/leases/show/{{ $lease->id }}">{{ $lease->tenant }}</a> &nbsp;
-                                                @can('userman', $lease)
-
-                                                    <button type="button" class="badge badge-danger" data-toggle="modal" data-target="#editModal-{{ $lease->id }}">{{ $lease->status }}</button>
-
-
-                                                    <div class="modal fade" id="editModal-{{ $lease->id }}" role="dialog">
-                                                        <div class="modal-dialog">
-                                                        
-                                                          <!-- Modal content-->
-                                                          <div class="modal-content">
-                                                            <div class="modal-header">
-                                                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                              <h4 class="modal-title">Update Status Lease</h4>
-                                                            </div>
-
-
-                                                            <div class="modal-body">
-
-                                                                <form method="POST" action="{{ route('updatemodal')}}" id="editModal">
-                                                                    @csrf
-                                                                    
-                                                                    <input type="hidden" name="id" value="{{ $lease->id }}">
-                                                                    <input type="radio" name="status" value="Acc">&nbsp;Acc
-                                                                    <br>
-
-                                                                    <div align="right">
-                                                                    <button type="submit" class="btn btn-custom dropdown-toggle waves-effect waves-light">
-                                                                        <i class="fa fa-plus"></i>
-                                                                        Update
-                                                                    </button>
-                                                                    </div>
-                                                                </form>
-
-                                                            </div>
-
-                                                          </div>
-                                                          
-                                                        </div>
-                                                    </div>
-                                                @endcan   
-                                        </td>
-                                        <td>{{ $lease->prop->name}}</td>
-                                        <td>{{ $lease->prop->type->name}}</td>
-                                        <td>{{ $lease->duration }} Year</td>
-                                        <td>
-                                            <?php 
-                                                if($lease->start==null){
-                                                    $starts='';
-                                                }else{ 
-                                                    $tgl=strtotime($lease->start);
-                                                    $starts=date("d-m-Y", $tgl);
-                                                }
-                                            ?>
-                                            {{@$starts }}
-                                        </td>
-
-                                        <td>
-                                            <?php 
-                                                if($lease->end==null){
-                                                    $ends='';
-                                                }else{ 
-                                                    $tgl=strtotime($lease->end);
-                                                    $ends=date("d-m-Y", $tgl);
-                                                }
-                                            ?>
-                                            {{@$ends}}
-                                        </td>
-
-                                        <td>
-                                            {!! Form::open(['method'=>'delete', 'route'=>['lease.destroy', $lease->id], 'style' => 'display: inline-block;']) !!} 
-                                                {{ csrf_field() }}
-                                                <a href="/leases/print/{{ $lease->id }}" class="btn btn-primary btn-xs"><i class="fa fa-print" aria-hidden="true"></i>Print</a>
-                                            
-                                            @can('userman', $lease)
-                                                <a href="/leases/edit/{{ $lease->id }}" class="btn btn-success btn-xs"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
-                                            @endcan  
-
-                                            {!! Form::button('<i class="fa fa-trash"></i>&nbsp;Delete', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("Do you want to delete this Lease List ?")']) !!}
-                                            {!! Form::close() !!}
-                                        </td>        
-                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

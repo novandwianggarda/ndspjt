@@ -172,11 +172,10 @@ class LeasesController extends Controller
         $leases = Lease::find($request->id);
         $leases->status = $request->status;
         $leases->save();
-        \LogActivity::addToLog('update status Lease Lessor');
+        // \LogActivity::addToLog('update status Lease Lessor');
 
         // dd($leases);
-
-        return redirect()->route('lease');
+        return redirect()->back();
     }
 
 

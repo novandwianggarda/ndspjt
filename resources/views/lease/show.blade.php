@@ -11,15 +11,12 @@
                 <center><img src="{{asset('img/log2.png')}}" width="10%" /></center>
                 <h2 style="text-align: center;">Show Data Lease</h2>
                 <div class="box-body">
-                    {!! Form::model($lease,  ['url'=>array( '', $lease->id), 'method' => '', 'id' => 'formshow-lease', 'enctype' => 'multipart/form-data', 'files' => true]) !!}
-
+                    {!! Form::model($lease,  ['route'=>array('updatemodal', $lease->id), 'method' => '', 'id' => 'formshow-lease', 'enctype' => 'multipart/form-data', 'files' => true]) !!}
                     @csrf
-
-                    @if($lease->status =='')
                         <div class="box-group" id="accordion">
                             <div class="panel box">
                             <a href="/leases" class="btn btn-warning"><i class="fa fa-angle-double-left" aria-hidden="true"></i>&nbsp;Back</a>
-                            @can('userall', $lease)
+                            @can('user', $lease)
                                 <a href="/leases/edit/{{ $lease->id }}" class="btn btn-success"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
                             @endcan  
 
@@ -33,25 +30,6 @@
                                 
                             </div>
                         </div>
-                    @else($lease->status =='Acc')
-                        <div class="box-group" id="accordion">
-                            <div class="panel box">
-                            <a href="/leases" class="btn btn-warning"><i class="fa fa-angle-double-left" aria-hidden="true"></i>&nbsp;Back</a>
-                            @can('userman', $lease)
-                                <a href="/leases/edit/{{ $lease->id }}" class="btn btn-success"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
-                            @endcan  
-
-                            <a href="/leases/print/{{ $lease->id }}" class="btn btn-info"><i class="fa fa-print" aria-hidden="true"></i>Print</a>
-                                <!-- LAND -->
-                                @include('partials.forms.lease.show.land')
-                                <!-- PROPERTY -->
-                                @include('partials.forms.lease.show.property')
-                                <!-- LEASE -->
-                                @include('partials.forms.lease.show.lease')
-                                
-                            </div>
-                        </div>
-                    @endif
 
 
 
@@ -67,6 +45,28 @@
 @stop
 
 @section('js')
+<script type="text/javascript">
+        $(document).ready(function() {
+        $('.editModalBtn').click(function() {
+          var id=$(this).data('id');
+          var action ='{{URL::to('updatemodal')}}/'+id;
+
+
+          var url = '{{URL::to('updatemodal')}}';
+          $.ajax({
+            type : 'post',
+            url  : url,
+            data : {'id':id},
+            success:function(data){
+              $('#id').val(data.id);
+              $('.status').val(data.status);
+              $('.classFormUpdate').attr('action',action);
+              $('#editModal').modal('show');
+            }
+          });
+        });
+    });
+    </script>
 
 
     <script>
@@ -239,4 +239,5 @@
         });
 
     </script>
+
 @stop
