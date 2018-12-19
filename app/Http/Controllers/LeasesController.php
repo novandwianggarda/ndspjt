@@ -130,6 +130,21 @@ class LeasesController extends Controller
         return view('lease.invoice', compact('lease', 'now', 'payterm'));
     }
 
+    public function transpose($id)
+    {
+        $lease = Lease::find($id);
+        $payterm = json_encode($lease->payment_terms);
+        $payment_teerm = json_decode($payterm);
+        $payinv = json_encode($lease->payment_invoices);
+        $payment_invoice = json_decode($payinv);
+        $paymenthist = json_encode($lease->payment_history);
+        $payment_hist = json_decode($paymenthist);
+        return view('lease.transpose', compact('lease', 'payment_hist', 'payment_invoice', 'payment_teerm'));
+        // view('your-view')->with('leads', json_decode($leads, true));
+    }
+
+    
+
     public function edit($id)
     {
         $lease=Lease::find($id);

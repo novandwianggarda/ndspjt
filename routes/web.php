@@ -135,6 +135,7 @@ Route::middleware(['web', 'auth'])->group(function () {
 
         Route::post('/updatemodal/', 'LeasesController@updatemodal')->name('updatemodal');
         Route::get('/print/{id}', 'LeasesController@print');
+        Route::get('/transpose/{id}', 'LeasesController@transpose');
 
 
 

@@ -7,29 +7,17 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box box-solid">
-                <p>&nbsp;</p>
-                <center><img src="{{asset('img/log2.png')}}" width="10%" /></center>
-                <h2 style="text-align: center;">Show Data Lease</h2>
                 <div class="box-body">
-                    {!! Form::model($lease,  ['route'=>array('updatemodal', $lease->id), 'method' => '', 'id' => 'formshow-lease', 'enctype' => 'multipart/form-data', 'files' => true]) !!}
+
+                    {!! Form::model($lease,  ['url'=>array( '/leases/list'), 'method' => 'patch', 'id' => 'formshow-lease', 'enctype' => 'multipart/form-data', 'files' => true]) !!}
                     @csrf
                         <div class="box-group" id="accordion">
-                        <!-- <button onclick="myFunction()"><i class="fa fa-print"></i>Print </button> -->
 
                             <div class="panel box">
-                            <a href="/leases" class="btn btn-warning"><i class="fa fa-angle-double-left" aria-hidden="true"></i>&nbsp;Back</a>
-                            @can('user', $lease)
-                                <a href="/leases/edit/{{ $lease->id }}" class="btn btn-success"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Edit</a>
-                            @endcan  
-
-                            <a href="/leases/print/{{ $lease->id }}" class="btn btn-info"><i class="fa fa-print" aria-hidden="true"></i>Invoice</a>
-                            <a href="/leases/transpose/{{ $lease->id }}" class="btn btn-default"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;Transpose</a>
+                                <a href="/leases" class="btn btn-warning"><i class="fa fa-angle-double-left" aria-hidden="true"></i>&nbsp;Back</a>
+                            <button class="btn btn-dafault" onclick="myFunction()"><i class="fa fa-print"></i>Print </button>
                                 <!-- LAND -->
-                                @include('partials.forms.lease.show.land')
-                                <!-- PROPERTY -->
-                                @include('partials.forms.lease.show.property')
-                                <!-- LEASE -->
-                                @include('partials.forms.lease.show.lease')
+                                @include('partials.forms.lease.transpose.land')
                                 
                             </div>
                         </div>
@@ -54,28 +42,6 @@ function myFunction() {
 }
 </script>
 
-<script type="text/javascript">
-        $(document).ready(function() {
-        $('.editModalBtn').click(function() {
-          var id=$(this).data('id');
-          var action ='{{URL::to('updatemodal')}}/'+id;
-
-
-          var url = '{{URL::to('updatemodal')}}';
-          $.ajax({
-            type : 'post',
-            url  : url,
-            data : {'id':id},
-            success:function(data){
-              $('#id').val(data.id);
-              $('.status').val(data.status);
-              $('.classFormUpdate').attr('action',action);
-              $('#editModal').modal('show');
-            }
-          });
-        });
-    });
-    </script>
 
 
     <script>
@@ -217,21 +183,6 @@ function myFunction() {
                 submitForm() {
                     console.log(form.serialize());
                 },
-                // submitForm: function (event) {
-                //   axios.post('add', {
-                //     lessor: '',
-                //     lessor_pkp: '',
-                //     tenant: '',
-                //     purpose: '',
-                //     start: '',
-                //     end: '',
-                //     note: '',
-                //     lease_deed: '',
-                //     lease_deed_date: '',
-                //     payment_terms: '',
-                //     payment_history: '',
-                //     lastName: ''
-                // }),
             },
             created() {
                 var vm = this;
