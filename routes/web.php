@@ -147,6 +147,10 @@ Route::middleware(['web', 'auth'])->group(function () {
         //eksport
         Route::get('eksport', 'LeasesController@eksport');
         Route::get('eksported', 'LeasesController@eksported')->name('exportlease.excel');
+
+        
+
+        Route::get('eksportedlease/{id}', 'LeasesController@eksportedleases');
     });
 
     // Property

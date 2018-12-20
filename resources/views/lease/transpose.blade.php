@@ -15,6 +15,8 @@
 
                             <div class="panel box">
                                 <a href="/leases" class="btn btn-warning"><i class="fa fa-angle-double-left" aria-hidden="true"></i>&nbsp;Back</a>
+                                <a href="/leases/eksportedlease/{{ $lease->id }}" class="btn btn-success"><i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;Export</a>
+
                             <button class="btn btn-dafault" onclick="myFunction()"><i class="fa fa-print"></i>Print </button>
                                 <!-- LAND -->
                                 @include('partials.forms.lease.transpose.land')

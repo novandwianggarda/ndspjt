@@ -13,7 +13,7 @@
 
         <frgroup>
             <label slot="label">
-               Penawaran per Bulan
+               Penawaran per Tahun
             </label>
             <div>: &nbsp;{{ $lease->sell_yearly }}</div>
         </frgroup>

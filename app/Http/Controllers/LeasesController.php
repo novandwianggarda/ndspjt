@@ -424,7 +424,7 @@ class LeasesController extends Controller
             $lease_array[] = array(
                 'Lessor' => $leasess->lessor, 
                 'Lessor PKP' => $leasess->lessor_pkp, 
-                'Tenan' => $leasess->tenant, 'Purposes' => $leasess->tenant, 'Start' => $leasess->start, 'End' => $leasess->end, 'Note' => $leasess->note, 'Lease Deed' => $leasess->lease_deed, 'Lease Deed Date' => $leasess->lease_deed_date, 'Payment Terms' => $leasess->payment_terms, 'Payment History' => $leasess->payment_history, 'Payment Invoices' => $leasess->payment_invoices, 'Sell Monthly' => $leasess->sell_monthly, 'Sell Yearly' => $leasess->sell_yearly, 'Rent m2 Monthly' => $leasess->rent_m2_monthly, 'Rent m2 Monthly Type' => $leasess->rent_m2_monthly_type, 'Rent Price' => $leasess->rent_price, 'Rent price Type' => $leasess->rent_price_type, 'Rent Assurance' => $leasess->rent_assurance, 'Brok Name' => $leasess->brok_name, 'Brok Fee Yearly' => $leasess->brok_fee_yearly, 'Brok Fee Paid' => $leasess->brok_fee_paid, 'Grace Start' => $leasess->grace_start, 'Grace End' => $leasess->grace_end,
+                'Tenan' => $leasess->tenant, 'Purposes' => $leasess->purposes, 'Start' => $leasess->start, 'End' => $leasess->end, 'Note' => $leasess->note, 'Lease Deed' => $leasess->lease_deed, 'Lease Deed Date' => $leasess->lease_deed_date, 'Payment Terms' => $leasess->payment_terms, 'Payment History' => $leasess->payment_history, 'Payment Invoices' => $leasess->payment_invoices, 'Sell Monthly' => $leasess->sell_monthly, 'Sell Yearly' => $leasess->sell_yearly, 'Rent m2 Monthly' => $leasess->rent_m2_monthly, 'Rent m2 Monthly Type' => $leasess->rent_m2_monthly_type, 'Rent Price' => $leasess->rent_price, 'Rent price Type' => $leasess->rent_price_type, 'Rent Assurance' => $leasess->rent_assurance, 'Brok Name' => $leasess->brok_name, 'Brok Fee Yearly' => $leasess->brok_fee_yearly, 'Brok Fee Paid' => $leasess->brok_fee_paid, 'Grace Start' => $leasess->grace_start, 'Grace End' => $leasess->grace_end,
             );
         }
         Excel::create('Lease', function($excel) use (
@@ -436,6 +436,36 @@ class LeasesController extends Controller
                 });
         })->download('xlsx');
     }
+
+
+
+    public function eksportedleases($id)
+    {
+        $data = Lease::where('id', $id)
+            ->get();
+            // print_r($data);exit;
+        $filename = "Transpose.csv";
+        $handle = fopen($filename, 'w+');
+        fputcsv($handle, array('Sertifikat','No Hm Hgb', 'Kota', 'Kecamatan', 'Kepemilikan', 'Nama Area', 'Alamat', 'Listrik', 'Air', 'Area', 'Block', 'Penawaran /bln', 'Penawaran /Thn', 'lessor', 'lessor pkp', 'Tenant', 'Purposes', 'PIC',
+        'Nama Notaris', 'No Akta Sewa', 'Tgl Sewa', 'Grace Awal', 'Grace Akhir', 'Awal Sewa', 'Akhir Sewa', 'Sewa Per Tahun (DPP)', 'Payment Term', 'Nama Broker', 'Fee Per Tahun', 'Jaminan', 'note'));
+        foreach ($data as $lease)
+        {
+            fputcsv($handle, array($lease->cert->nama_sertifikat, $lease->cert->no_hm_hgb, $lease->cert->kota, $lease->cert->kecamatan, $lease->cert->kepemilikan, $lease->prop->name, $lease->prop->address, $lease->prop->electricity, $lease->prop->water, $lease->prop->land_area, $lease->prop->block, $lease->sell_monthly, $lease->sell_yearly, $lease->lessor, 
+                $lease->lessor_pkp, $lease->tenant, $lease->purpose, $lease->pic,
+                $lease->lease_deed, $lease->lease_number, $lease->lease_deed_date, $lease->grace_start, $lease->grace_end, $lease->start, $lease->end, $lease->rent_price, $lease->payment_terms, 
+                $lease->brok_name, $lease->brok_fee_yearly, $lease->rent_assurance,
+                 $lease->note ));
+        }
+        fclose($handle);
+
+        $headers = array(
+            'Content-Type' => 'text/csv',
+        );
+
+        return \Response::download($filename, 'Transpose.csv', $headers);
+    }
+
+
 
 
 

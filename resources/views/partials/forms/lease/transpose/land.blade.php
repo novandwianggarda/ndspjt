@@ -4,7 +4,8 @@
         Transpose
     </div>
 
-    <table border="1" style="width:100%">
+    <table border="1" style="width:100%; word-break: break-word;">
+
         <thead>
             <tr>
                 <th><center>Nama Sertifikat</center></th>
@@ -26,7 +27,7 @@
     </table>
     <br>
 
-    <table border="1" style="width:100%">
+    <table border="1" style="width:100%; word-break: break-word;">
         <thead>
             <tr>
                 <th><center>Yang Menyewakan</center></th>
@@ -48,7 +49,7 @@
     </table>
     <br>
 
-    <table border="1" style="width:100%">
+    <table border="1" style="width:100%; word-break: break-word;">
         <thead>
             <tr>
                <th><center>Nama Notaris</center></th>
@@ -99,7 +100,8 @@
     </table>
     <br>
 
-    <table border="1" style="width:100%">
+    <table border="1" style="width:100%; word-break: break-word;">
+    
         <thead>
             <tr>
                 <th><center>Awal Sewa</center></th>
@@ -143,7 +145,6 @@
     </table>
     <br>
 
-
     <table border="1" style="width:100%">
         <thead>
             <tr>
@@ -183,6 +184,7 @@
 
 
     <table border="1" style="width:100%">
+    
         <thead>
             <tr>
                 <th><center>Balance &amp; Payment History</center></th>
@@ -219,7 +221,7 @@
     <br>
 
     <table border="1" style="width:100%">
-        <thead>
+            <thead>
             <tr>
                 <th><center>Tagihan Lainya</center></th>
             </tr>
@@ -259,6 +261,7 @@
     <br>
 
     <table border="1" style="width:100%">
+    
         <thead>
             <tr>
                 <th><center>Nama Broker</center></th>
@@ -290,7 +293,8 @@
     </table>
     <br>
 
-    <table border="1" style="width:100%">
+    <table border="1" style="width:100%; word-break: break-word;">
+    
         <thead>
             <tr>
                 <th><center>Notes</center></th>
