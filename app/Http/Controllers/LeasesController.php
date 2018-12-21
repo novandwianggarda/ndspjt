@@ -441,18 +441,32 @@ class LeasesController extends Controller
 
     public function eksportedleases($id)
     {
-        $data = Lease::where('id', $id)
-            ->get();
-            // print_r($data);exit;
+        $data = Lease::where('id', $id)->get();
+        // $data = Lease::find($id);
+        // echo "<pre>";
+        // print_r($data);
+        // echo "</pre>";
+        // print_r($data->first()->payment_terms[0]['total']);
+        // exit;
+
+        $payterm = ($data->first()->payment_terms[0]['total']);
+
+        // foreach ($payment_teerm as $key => $mydata) {
+        //     $tagihan = $mydata->total;
+        // }
+
         $filename = "Transpose.csv";
         $handle = fopen($filename, 'w+');
+
+
+
         fputcsv($handle, array('Sertifikat','No Hm Hgb', 'Kota', 'Kecamatan', 'Kepemilikan', 'Nama Area', 'Alamat', 'Listrik', 'Air', 'Area', 'Block', 'Penawaran /bln', 'Penawaran /Thn', 'lessor', 'lessor pkp', 'Tenant', 'Purposes', 'PIC',
         'Nama Notaris', 'No Akta Sewa', 'Tgl Sewa', 'Grace Awal', 'Grace Akhir', 'Awal Sewa', 'Akhir Sewa', 'Sewa Per Tahun (DPP)', 'Payment Term', 'Nama Broker', 'Fee Per Tahun', 'Jaminan', 'note'));
         foreach ($data as $lease)
         {
             fputcsv($handle, array($lease->cert->nama_sertifikat, $lease->cert->no_hm_hgb, $lease->cert->kota, $lease->cert->kecamatan, $lease->cert->kepemilikan, $lease->prop->name, $lease->prop->address, $lease->prop->electricity, $lease->prop->water, $lease->prop->land_area, $lease->prop->block, $lease->sell_monthly, $lease->sell_yearly, $lease->lessor, 
                 $lease->lessor_pkp, $lease->tenant, $lease->purpose, $lease->pic,
-                $lease->lease_deed, $lease->lease_number, $lease->lease_deed_date, $lease->grace_start, $lease->grace_end, $lease->start, $lease->end, $lease->rent_price, $lease->payment_terms, 
+                $lease->lease_deed, $lease->lease_number, $lease->lease_deed_date, $lease->grace_start, $lease->grace_end, $lease->start, $lease->end, $lease->rent_price, $payterm, 
                 $lease->brok_name, $lease->brok_fee_yearly, $lease->rent_assurance,
                  $lease->note ));
         }
