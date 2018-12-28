@@ -4,7 +4,30 @@
         PROPERTY
     </div>
 
-    <frgroup wl="2" wi="4">
+    <div class="col-md-12">
+        <table style="width:100%">
+          <tr>
+            <th>Nama Area</th>
+            <th>Alamat</th>
+            <th>Listrik</th>
+            <th>Air</th>
+            <th>Land Area</th>
+            <th>Block</th>
+          </tr>
+          <tr>
+            <td>{{ $lease->prop->name }}</td>
+            <td>{{ $lease->prop->address }}</td>
+            <td>{{ $lease->prop->electricity }}</td>
+            <td>{{ $lease->prop->water }}</td>
+            <td>{{ $lease->prop->land_area }}</td>
+            <td>{{ $lease->prop->block }}</td>
+          </tr>
+        </table>
+    </div>
+
+
+
+    <!-- <frgroup wl="2" wi="4">
         <label slot="label">
            Nama Area
         </label>
@@ -49,10 +72,7 @@
         </label>
         <div>: &nbsp;{{ $lease->prop->block }}
         </div>
-    </frgroup>
-    <div class="clearfix"></div>
-
-    <!-- PRICE -->
-    @include('partials.forms.lease.show.property_price')
+    </frgroup> -->
+    
 
 </accordion>

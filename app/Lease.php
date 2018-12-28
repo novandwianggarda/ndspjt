@@ -220,6 +220,41 @@ class Lease extends Model implements Auditable
                     ];
                 }
             }
+
+            foreach ($lease->payment_history as $index => $paymentTerm) {
+                if (empty($paymentTerm['paid_date'])) {
+                    continue;
+                }
+
+                $dueDate = \Carbon\Carbon::parse($paymentTerm['paid_date']);
+                if ($dueDate->lte(today())) {
+                    $leaseDue[] = [
+                        'id' => $lease->id,
+                        'tenant' => $lease->tenant,
+                        'total' => $paymentTerm['total'],
+                        'note' => $paymentTerm['note'],
+                        'paid_date' => $dueDate,
+                        'timestamp' => $dueDate->timestamp,
+                    ];
+                }
+
+            foreach ($lease->payment_invoices as $index => $paymentTerm) {
+                if (empty($paymentTerm['paid_date'])) {
+                    continue;
+                }
+
+                $dueDate = \Carbon\Carbon::parse($paymentTerm['paid_date']);
+                if ($dueDate->lte(today())) {
+                    $leaseDue[] = [
+                        'id' => $lease->id,
+                        'tenant' => $lease->tenant,
+                        'total' => $paymentTerm['total'],
+                        'note' => $paymentTerm['note'],
+                        'paid_date' => $dueDate,
+                        'timestamp' => $dueDate->timestamp,
+                    ];
+                }
+            }
         }
 
         return collect($leaseDue)->sortBy('timestamp')->take(10);
@@ -237,6 +272,26 @@ class Lease extends Model implements Auditable
 
         return $this->update(['payment_terms' => $paymentTerms]);
     }
+
+    public function addPaymentHistory($paymentHistory)
+    {
+        $paymentHistorys = (array) $this->payment_history;
+        $paymentHistorys[] = $paymentHistorys;
+        return $this->update(['payment_history' => $paymentHistory]);
+    }
+    public function addPaymentInvoice($paymentInvoice)
+    {
+        $paymentInvoices = (array) $this->payment_invoices;
+        $paymentInvoices[] = $paymentInvoices;
+        return $this->update(['payment_invoices' => $paymentInvoices]);
+    }
+
+
+
+
+
+
+
 
     public function getTotalBalanceAttribute()
     {

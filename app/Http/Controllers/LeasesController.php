@@ -121,6 +121,7 @@ class LeasesController extends Controller
     public function print($id)
     {
         $lease=Lease::find($id);
+        
         $now = date_create()->format('d-m-Y');
 
 

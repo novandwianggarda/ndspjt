@@ -7,9 +7,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box box-solid">
-                <p>&nbsp;</p>
-                <center><img src="{{asset('img/log2.png')}}" width="10%" /></center>
-                <h2 style="text-align: center;">Show Data Lease</h2>
+                <center><img src="{{asset('img/log2.png')}}" width="5%" /></center>
+                
                 <div class="box-body">
                     {!! Form::model($lease,  ['route'=>array('updatemodal', $lease->id), 'method' => '', 'id' => 'formshow-lease', 'enctype' => 'multipart/form-data', 'files' => true]) !!}
                     @csrf
@@ -23,11 +22,13 @@
                             @endcan  
 
                             <a href="/leases/print/{{ $lease->id }}" class="btn btn-info"><i class="fa fa-print" aria-hidden="true"></i>Invoice</a>
-                            <a href="/leases/transpose/{{ $lease->id }}" class="btn btn-default"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;Transpose</a>
+                            <a href="/leases/eksportedlease/{{ $lease->id }}" class="btn btn-success"><i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;Export</a>
+                            <button class="btn btn-dafault" onclick="myFunction()"><i class="fa fa-print"></i>Print </button>
+                            <!-- <a href="/leases/transpose/{{ $lease->id }}" class="btn btn-default"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;Transpose</a> -->
+
                                 <!-- LAND -->
                                 @include('partials.forms.lease.show.land')
                                 <!-- PROPERTY -->
-                                @include('partials.forms.lease.show.property')
                                 <!-- LEASE -->
                                 @include('partials.forms.lease.show.lease')
                                 

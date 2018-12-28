@@ -275,3 +275,168 @@
     </div>
 
 </accordion>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<accordion name="collapse-lease" collapse="in">
+
+    <div slot="title" class="ll-head">
+        LEASE
+    </div>
+
+    <div class="col-md-12">
+        <table style="width:100%">
+          <tr>
+            <th>Yang Menyewakan</th>
+            <th>Nama Penyewa</th>
+            <th>PKP Yang Menyewakan</th>
+            <th>Keperluan Sewa</th>
+            <th>PIC</th>
+          </tr>
+          <tr>
+            <td width="25%">{{ $lease->lessor }}</td>
+            <td width="20%">{{ $lease->tenant }}</td>
+            <td width="20%">{{ $lease->lessor_pkp }}</td>
+            <td width="20%">{{ $lease->purpose }}</td>
+            <td width="15%">{{ $lease->pic }}</td>
+          </tr>
+        </table>
+    </div>
+    <!-- <hr> -->
+
+    <div class="col-md-12">
+        <table style="width:100%">
+          <tr>
+            <th>Awal Sewa</th>
+            <th>Akhir Sewa</th>
+            <th>Sewa Per Tahun (DPP)</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+          </tr>
+          <tr>
+            <td width="25%">
+                <?php 
+                if($lease->start==null){
+                    $staar='';
+                }else{ 
+                $tgl=strtotime($lease->start);
+                $staar=date("d F Y", $tgl);
+                }
+                ?>
+                {{@$staar}}
+            </td>
+            <td width="20%">
+                <?php 
+                if($lease->end==null){
+                    $ends='';
+                }else{ 
+                $tgl=strtotime($lease->end);
+                $ends=date("d F Y", $tgl);
+                }
+                ?>
+                {{@$ends}}
+            </td>
+            <td width="20%">
+                Rp.
+                <?php 
+
+                    $jaminan = $lease->rent_price;
+                    echo number_format($jaminan, 0, ".", ".")."<br />";
+                ?>
+            </td>
+           <td width="20%">&nbsp;</td>
+            <td width="15%">&nbsp;</td>
+
+          </tr>
+        </table>
+    </div>
+
+    
+
+
+    <!-- <frgroup>
+        <label slot="label">
+            Yang Menyewakan
+        </label>
+        <div>:&nbsp;&nbsp;{{ $lease->lessor }}
+        </div>
+    </frgroup>
+
+    <frgroup>
+        <label slot="label">
+            PKP Yang Menyewakan
+        </label>
+        <div class="input-group">
+            :&nbsp;&nbsp;{{ $lease->lessor_pkp }}
+        </div>
+    </frgroup>
+
+    <frgroup>
+        <label slot="label">
+            Nama Penyewa
+        </label>
+        <div>:&nbsp;&nbsp;{{ $lease->tenant }}
+        </div>
+    </frgroup>
+
+    
+
+    <frgroup>
+        <label slot="label">
+           Keperluan Sewa
+        </label>
+        <div>:&nbsp;&nbsp;{{ $lease->purpose }}
+        </div>
+    </frgroup>
+
+    <frgroup>
+        <label slot="label">
+            PIC
+        </label>
+        <div>:&nbsp;&nbsp;{{ $lease->pic }}
+        </div>
+    </frgroup> -->
+
+    <!-- AGREEMENT -->
+    <div class="clearfix"></div>
+
+    @include('partials.forms.lease.show.agreement')
+
+    <!-- GRACE PERIOD -->
+    <!-- @include('partials.forms.lease.show.grace') -->
+
+    <!-- LEASE PERIOD -->
+    <!-- @include('partials.forms.lease.show.lease_period') -->
+
+    <!-- LEASE PRICE -->
+    <!-- @include('partials.forms.lease.show.lease_price') -->
+
+    <!-- PAYMENT TERMS-->
+    @include('partials.forms.lease.show.payment_term')
+    <!-- Balance PAYMENT HISTORY -->
+    @include('partials.forms.lease.show.payment_history')
+
+    <!-- INVOICE Tagihan -->
+    @include('partials.forms.lease.show.payment_invoice')
+    
+
+
+    <!-- BROKER -->
+    @include('partials.forms.lease.show.broker')
+
+    <!-- OTHER -->
+    @include('partials.forms.lease.show.other')
+
+</accordion>
