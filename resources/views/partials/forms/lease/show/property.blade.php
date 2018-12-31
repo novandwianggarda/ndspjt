@@ -4,7 +4,7 @@
         PROPERTY
     </div>
 
-    <div class="col-md-12">
+    <!-- <div class="col-md-12">
         <table style="width:100%">
           <tr>
             <th>Nama Area</th>
@@ -24,10 +24,10 @@
           </tr>
         </table>
     </div>
+ -->
 
 
-
-    <!-- <frgroup wl="2" wi="4">
+    <frgroup wl="2" wi="4">
         <label slot="label">
            Nama Area
         </label>
@@ -72,7 +72,7 @@
         </label>
         <div>: &nbsp;{{ $lease->prop->block }}
         </div>
-    </frgroup> -->
+    </frgroup>
     
 
 </accordion>

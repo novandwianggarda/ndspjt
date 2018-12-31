@@ -57,6 +57,63 @@
                                     </td>
                                 </tr>
                             @endforeach
+
+                            @foreach ($leaseshist as $lease)
+                                <tr>
+
+                                    <td>
+                                        <?php 
+                                            if($lease['paid_date']==null){
+                                                $due='';
+                                            }else{ 
+                                                $tgl=strtotime($lease['paid_date']);
+                                                $due=date("d-m-Y", $tgl);
+                                            }
+                                        ?>
+                                        {{@$due }}
+                                    </td>
+                                    <td>
+                                        <a href="/leases/show/{{ $lease['id'] }}">{{ $lease['tenant'] }}</a>
+                                    </td>
+                                    <td>
+                                        Rp.
+                                        <?php 
+                                            $tot = $lease['total'];
+                                            echo number_format((float)$tot, 0, ".", ".")."<br />";
+                                        ?>
+
+                                    </td>
+                                </tr>
+                            @endforeach
+
+
+                             @foreach ($leasesinv as $lease)
+                                <tr>
+
+                                    <td>
+                                        <?php 
+                                            if($lease['paid_date']==null){
+                                                $due='';
+                                            }else{ 
+                                                $tgl=strtotime($lease['paid_date']);
+                                                $due=date("d-m-Y", $tgl);
+                                            }
+                                        ?>
+                                        {{@$due }}
+                                    </td>
+                                    <td>
+                                        <a href="/leases/show/{{ $lease['id'] }}">{{ $lease['tenant'] }}</a>
+                                    </td>
+                                    <td>
+                                        Rp.
+                                        <?php 
+                                            $tot = $lease['total'];
+                                            echo number_format((float)$tot, 0, ".", ".")."<br />";
+                                        ?>
+
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

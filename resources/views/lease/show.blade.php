@@ -23,8 +23,9 @@
 
                             <a href="/leases/print/{{ $lease->id }}" class="btn btn-info"><i class="fa fa-print" aria-hidden="true"></i>Invoice</a>
                             <a href="/leases/eksportedlease/{{ $lease->id }}" class="btn btn-success"><i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;Export</a>
-                            <button class="btn btn-dafault" onclick="myFunction()"><i class="fa fa-print"></i>Print </button>
+                            <!-- <button class="btn btn-dafault" onclick="myFunction()"><i class="fa fa-print"></i>Print </button> -->
                             <!-- <a href="/leases/transpose/{{ $lease->id }}" class="btn btn-default"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;Transpose</a> -->
+                            <a href="/leases/printpdf/{{ $lease->id }}" class="btn btn-default"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;Print</a>
 
                                 <!-- LAND -->
                                 @include('partials.forms.lease.show.land')

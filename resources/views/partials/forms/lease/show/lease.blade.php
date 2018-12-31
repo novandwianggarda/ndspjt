@@ -1,4 +1,4 @@
-<accordion name="collapse-lease" collapse="in">
+<!-- <accordion name="collapse-lease" collapse="in">
 
     <div slot="title" class="ll-head">
         LEASE
@@ -74,11 +74,6 @@
           </tr>
         </table>
     </div>
-
-
-
-
-
     <div class="col-md-12">
         <table style="width:100%">
           <tr>
@@ -101,7 +96,6 @@
                         <button type="button" class="badge badge-danger" data-toggle="modal" data-target="#editModal-{{ $lease->id }}">Belum</button>
                                                         <div class="modal fade" id="editModal-{{ $lease->id }}" tabindex="-1" role="dialog">
                                                                 <div class="modal-dialog">
-                                                                  <!-- Modal content-->
                                                                   <div class="modal-content">
                                                                     <div class="modal-header">
                                                                       <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -135,7 +129,6 @@
                        <button type="button" class="badge badge-danger" data-toggle="modal" data-target="#editModal-{{ $lease->id }}">{{ $lease->status }}</button>
                                                         <div class="modal fade" id="editModal-{{ $lease->id }}" tabindex="-1" role="dialog">
                                                                 <div class="modal-dialog">
-                                                                  <!-- Modal content-->
                                                                   <div class="modal-content">
                                                                     <div class="modal-header">
                                                                       <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -173,7 +166,6 @@
           </tr>
         </table>
     </div>
-    <!-- <hr> -->
 
     
 
@@ -273,5 +265,100 @@
             </tbody>
         </table>
     </div>
+
+</accordion> -->
+
+
+<accordion name="collapse-lease" collapse="in">
+
+    <div slot="title" class="ll-head">
+        LEASE
+    </div>
+
+    <frgroup>
+        <label slot="label">
+            Yang Menyewakan
+        </label>
+        <div>: &nbsp;{{ $lease->lessor }}</div>
+    </frgroup>
+
+    <frgroup>
+        <label slot="label">
+            PKP Yang Menyewakan
+        </label>
+        <div class="input-group">
+            <label class="radio-inline"><input type="radio" name="lessor_pkp" v-model="lessorPKP" :value="true">Ya</label>
+            <label class="radio-inline"><input type="radio" name="lessor_pkp" v-model="lessorPKP" :value="false">Tidak</label>
+            <label class="radio-inline text-muted">
+                <i class="fa fa-info-circle"></i>
+                <span v-if="lessorPKP">Termasuk PPN</span>
+                <span v-else>Tanpa PPN</span>
+            </label>
+        </div>
+    </frgroup>
+
+    <frgroup>
+        <label slot="label">
+            Nama Penyewa
+        </label>
+        <div>: &nbsp;{{ $lease->tenant }}</div>
+
+    </frgroup>
+
+    
+
+    <frgroup>
+        <label slot="label">
+            Tipe Penyewa
+        </label>
+        <div>: &nbsp;{{ $lease->tenant_type }}</div>
+    </frgroup>
+
+    <frgroup>
+        <label slot="label">
+            Keperluan Sewa
+        </label>
+        <div>: &nbsp;{{ $lease->purpose }}</div>
+
+    </frgroup>
+
+    <frgroup>
+        <label slot="label">
+            PIC
+        </label>
+        <div>: &nbsp;{{ $lease->pic }}</div>
+        
+
+    </frgroup>
+
+    <!-- AGREEMENT -->
+    @include('partials.forms.lease.show.agreement')
+
+    <!-- GRACE PERIOD -->
+    @include('partials.forms.lease.show.grace')
+
+    <!-- LEASE PERIOD -->
+    @include('partials.forms.lease.show.lease_period')
+
+    <!-- LEASE PRICE -->
+    @include('partials.forms.lease.show.lease_price')
+
+    <!-- PAYMENT TERMS-->
+    @include('partials.forms.lease.show.payment_term')
+
+    <!-- PAYMENT balance HISTORY -->
+    @include('partials.forms.lease.show.payment_history')
+
+    <!-- INVOICE Tagihan Lainya-->
+    @include('partials.forms.lease.show.payment_invoice')
+
+
+    <!-- BROKER -->
+    @include('partials.forms.lease.show.broker')
+
+    <!-- OTHER -->
+    @include('partials.forms.lease.show.other')
+
+</div>
 
 </accordion>

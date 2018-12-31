@@ -153,6 +153,7 @@ return [
          */
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         
         Spatie\TranslationLoader\TranslationServiceProvider::class,
@@ -221,6 +222,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'LogActivity' => App\Helpers\LogActivity::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

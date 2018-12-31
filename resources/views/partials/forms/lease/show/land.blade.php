@@ -3,7 +3,7 @@
     <div slot="title" class="ll-head">
         LAND
     </div>
-    <div class="col-md-12">
+    <!-- <div class="col-md-12">
       <table style="width:100%">
       <tr>
         <th>Nama Sertifikat</th>
@@ -20,13 +20,11 @@
         <td>{{ $lease->cert->kepemilikan }}</td>
       </tr>
     </table>  
-    </div>
-    <div class="clearfix"></div>
+    </div> -->
 
     <!-- PRICE -->
-    @include('partials.forms.lease.show.property')
 
-    <!-- <frgroup>
+    <frgroup>
         <label slot="label">
            Nama Sertifikat
         </label>
@@ -59,7 +57,11 @@
         </label>
         <div>: &nbsp;{{ $lease->cert->kepemilikan }}</div>
         
-    </frgroup> -->
+    </frgroup>
+
+    <div class="clearfix"></div>
+    @include('partials.forms.lease.show.property')
+    
 
 </accordion>
 

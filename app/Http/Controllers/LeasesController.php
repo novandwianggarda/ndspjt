@@ -10,6 +10,8 @@ use App\Http\Requests\LeaseRequet;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
 use DB;
+use PDF;
+
 
 class LeasesController extends Controller
 {
@@ -31,13 +33,15 @@ class LeasesController extends Controller
         // $leasess = Lease::whereDate('due_date', '>', Carbon::now())
         // ->orderBy('due_date', 'Asc')->paginate(100);
         $leasess = Lease::dueForToday();
+        $leasesinv = Lease::dueForTodayinv();
+        $leaseshist = Lease::dueForTodayhist();
         // $leasess = json_decode($today);
 
         // dd($leasess);
         $leaseyest = Lease::dueForYesterday();
         // $leaseyest = json_decode($yest);
 
-        return view('lease.todolist', compact('leasess', 'leaseyest'));
+        return view('lease.todolist', compact('leasess', 'leaseyest', 'leasesinv', 'leaseshist'));
     }
 
 
@@ -130,6 +134,17 @@ class LeasesController extends Controller
 
         return view('lease.invoice', compact('lease', 'now', 'payterm'));
     }
+
+
+     public function printpdf($id)
+    {
+        $lease=Lease::find($id);
+        $pdf = PDF::loadView('lease.pdf', $lease);
+
+        // return $pdf->download('invoice.pdf');
+        return $pdf->download('lease.invoice', compact('lease'));
+    }
+
 
     public function transpose($id)
     {
