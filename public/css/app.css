@@ -3,28 +3,28 @@
 }
 
 .ll-color {
-  color: #a60099 !important;
+  color: #ef0712 !important;
 }
 
 .ll-bgcolor {
-  background-color: #a60099 !important;
+  background-color: #ef0712 !important;
 }
 
 .ll-acolor {
-  background-color: #a60099 !important;
+  background-color: #ef0712 !important;
   color: white !important;
 }
 
 .ll-head {
   display: block !important;
-  background-color: #a60099;
+  background-color: #ef0712;
   padding: 10px;
   color: white;
 }
 
 .ll-head-2 {
   display: block !important;
-  background-color: #a60099;
+  background-color: #ef0712;
   padding: 5px 5px;
   color: white;
 }
@@ -50,7 +50,7 @@
 .left-border {
   border-left-width: 5px;
   border-left-style: solid;
-  border-left-color: #a60099;
+  border-left-color: #ef0712;
   margin-left: 10px;
 }
 

@@ -51,159 +51,29 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     Route::get('/profile', 'DashboardController@showUserProfile')->name('profile');
 
-    // Certificate
-    Route::prefix('certificates')->group(function() {
-
-        Route::get('/', function () {
-            return redirect('/' . $this->current->uri . '/list');
-        });
-        Route::get('list', 'CertificatesController@index')->name('certificates');
-        Route::get('filter', 'CertificatesController@filter');
-        Route::get('show/{id}', 'CertificatesController@show');
-        Route::get('shows/', 'CertificatesController@certid');
-        //create
-        Route::get('add', 'CertificatesController@showAddForm');
-        Route::post('add', 'CertificatesController@store');
-        //edit
-        Route::get('/editcert/{id}', 'CertificatesController@editcert' );
-        Route::patch('/updatecert/{edit}', 'CertificatesController@updatecert');
-        Route::delete('/deletecert/{id}', 'CertificatesController@destroycert')->name('certificates.destroy');
-        //import
-        Route::get('import', 'CertificatesController@import');
-        Route::post('storeimport', 'CertificatesController@storeimport')->name('certificate.import');
-        Route::post('storeimport/save', 'CertificatesController@tes');
-        Route::get('eksport', 'CertificatesController@eksport');
-        Route::get('eksported', 'CertificatesController@eksported')->name('export.excel');
-
-    });
-
-    // Tax
-    Route::prefix('taxes')->group(function () {
-
-        Route::get('/', function () {
-            return redirect('/' . $this->current->uri . '/list');
-        });
-        Route::get('list', 'TaxesController@index')->name('taxes');
-        Route::get('show/{id}', 'TaxesController@show');
-        //crud pbb
-        Route::get('add', 'TaxesController@showAddForm');
-        Route::post('add', 'TaxesController@store');
-        Route::get('/edit/{id}', 'TaxesController@edittax');
-        Route::patch('/updatetax/{edit}', 'TaxesController@updatetax');
-        Route::delete('/delete/{id}', 'TaxesController@destroy')->name('taxes.destroy');
-        //import1sert
-        Route::get('import', 'TaxesController@import');
-        Route::post('storeimport', 'TaxesController@storeimport')->name('tax.import');
-        Route::post('storeimport/save', 'TaxesController@tes');
-
-        //importallsert
-        Route::get('importsert', 'TaxesController@importsert');
-        Route::post('storeimportsert', 'TaxesController@storeimportsert')->name('tax.importsert');
-        Route::post('storeimportsert/save', 'TaxesController@tessert');
-        //eksport
-        Route::get('eksport', 'TaxesController@eksport');
-        Route::get('eksported', 'TaxesController@eksported')->name('exporttax.excel');
-    });
-
-
-    Route::prefix('pbb')->group(function () {
-        
-        //crud pbb
-        Route::get('2018', 'YearController@index')->name('2018');
-        Route::get('2018add', 'YearController@add2018');
-        Route::post('2018add', 'YearController@store2018');
-        Route::delete('/delete2018/{id}', 'YearController@destroy2018')->name('pbb2018.destroy');
-        Route::get('show2018/{id}', 'YearController@show2018');
-        
-    });
-    
-    // Lease
-    Route::prefix('leases')->group(function() {
-
-        Route::get('/', function () {
-            return redirect('/' . $this->current->uri . '/list');
-        });
-        Route::get('list', 'LeasesController@index')->name('lease');
-        Route::get('todolist', 'LeasesController@todolist')->name('todolist');
-        Route::get('drafts', 'LeasesController@drafts')->name('drafts');
-        Route::get('show/{id}', 'LeasesController@show');
-        //crud lease
-        Route::get('add', 'LeasesController@showAddForm');
-        Route::post('add', 'LeasesController@store');
-        Route::get('/edit/{id}', 'LeasesController@edit');
-        Route::patch('/updatelease/{edit}', 'LeasesController@updatelease');
-
-        Route::post('/updatemodal/', 'LeasesController@updatemodal')->name('updatemodal');
-        Route::get('/print/{id}', 'LeasesController@print');
-
-        Route::get('/printpdf/{id}', 'LeasesController@printpdf');
-        Route::get('/transpose/{id}', 'LeasesController@transpose');
-
-
-
-        Route::delete('/deletelease/{id}', 'LeasesController@destroy' )->name('lease.destroy');
-        //import
-        Route::get('import', 'LeasesController@import');
-        Route::post('storeimport', 'LeasesController@storeimport')->name('leases.import');
-        Route::post('storeimport/save', 'LeasesController@tes');
-        //eksport
-        Route::get('eksport', 'LeasesController@eksport');
-        Route::get('eksported', 'LeasesController@eksported')->name('exportlease.excel');
-
-        
-
-        Route::get('eksportedlease/{id}', 'LeasesController@eksportedleases');
-    });
-
     // Property
-    Route::prefix('properties')->group(function() {
+    Route::prefix('penduduk')->group(function() {
 
         Route::get('/', function () {
             return redirect('/' . $this->current->uri . '/list');
         });
-        Route::get('list', 'PropertiesController@index')->name('properties');
-        Route::get('show/{id}', 'PropertiesController@show');
+        Route::get('list', 'PendudukController@index')->name('penduduk');
+        Route::get('show/{id}', 'PendudukController@show');
         //crud Property
-        Route::get('add', 'PropertiesController@showAddForm');
-        Route::post('add', 'PropertiesController@store');
-        Route::get('/editprop/{id}', 'PropertiesController@editprop' )->name('editprop');
-        Route::patch('/updateprop/{edit}', 'PropertiesController@updateprop');
-        Route::delete('/deleteprop/{id}', 'PropertiesController@destroyprop' )->name('property.destroy');
+        Route::get('add', 'PendudukController@showAddForm');
+        Route::post('add', 'PendudukController@store');
+        Route::get('/edit/{id}', 'PendudukController@editprop' )->name('editprop');
+        Route::patch('/updateprop/{edit}', 'PendudukController@updateprop');
+        Route::delete('/deleteprop/{id}', 'PendudukController@destroyprop' )->name('pend.destroy');
         //import
-        Route::get('import', 'PropertiesController@import')->name('import');
-        Route::post('storeimport', 'PropertiesController@storeimport')->name('properti.import');
-        Route::post('storeimport/save', 'PropertiesController@tes');
+        Route::get('import', 'PendudukController@import')->name('import');
+        Route::post('storeimport', 'PendudukController@storeimport')->name('properti.import');
+        Route::post('storeimport/save', 'PendudukController@tes');
         //eksport
-        Route::get('eksport', 'PropertiesController@eksport');
-        Route::get('eksported', 'PropertiesController@eksported')->name('exportprop.excel');
+        Route::get('eksport', 'PendudukController@eksport');
+        Route::get('eksported', 'PendudukController@eksported')->name('exportprop.excel');
     });
 
-    // Lease
-    Route::prefix('land')->group(function() {
-
-        Route::get('/', function () {
-            return redirect('/' . $this->current->uri . '/maps');
-        });
-        Route::get('maps', 'LandController@index');
-        Route::get('show/{id}', 'LandController@show');
-    });
-
-
-
-    // Route::prefix('user')->group(function() {
-
-    //     Route::get('/', function () {
-    //         return redirect('/' . $this->current->uri . '/user');
-    //     });
-    //     Route::get('list', 'PropertiesController@index');
-    //     Route::get('show/{id}', 'PropertiesController@show');
-    //     Route::get('add', 'PropertiesController@showAddForm');
-    //     Route::post('add', 'PropertiesController@store');
-    // });
-    // User Manager
-    // Route::get('users', 'UserManagerController@index');
-    // Route::get('add_user', array('uses' => 'UserManagerController@ShowAddUser', 'as' => 'add_user' ));
-    // Route::post('add_users', 'UserManagerController@store');
 
     Route::get('/users', 'UserManagerController@index');
     Route::get('add_user', array('uses' => 'UserManagerController@ShowAddUser', 'as' => 'add_user' ));

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Land-Lord')
+@section('title', 'KPU - Jateng 1')
 
 @section('content_header')
-    <h1>Form Edit Property</h1>
+    <h1>Form Edit Penduduk</h1>
 @stop
 
 @section('content')
@@ -21,107 +21,122 @@
                         </div>
                     @endif
 
-                    {!! Form::model($prop,  ['url'=>array( '/properties/updateprop', $prop->id), 'method' => 'patch','enctype' => 'multipart/form-data', 'files' => true]) !!}
+                    {!! Form::model($pend,  ['url'=>array( '/penduduk/updateprop', $pend->id), 'method' => 'patch','enctype' => 'multipart/form-data', 'files' => true]) !!}
                     
                     <div class="form-group">
-                      {!! Form::label('name', 'Nama Lokasi', ['class'=>'control-label col-md-2']) !!}
+                      {!! Form::label('nokk', ' No kk', ['class'=>'control-label col-md-2']) !!}
                       <div class="col-md-10">
-                        {!! Form::text('name', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('name')?$errors->first('name'):'' !!}
+                        {!! Form::text('nokk', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('nokk')?$errors->first('nokk'):'' !!}
                       </div>
                     </div>
                     <br>
                     <br>
                     <div class="form-group">
-                        {!! Form::label('property_type_id', 'Jenis:', ['class'=>'control-label col-md-2']) !!}
-                        <div class="col-md-10">
-                        {!! Form::select('property_type_id', $proptype,null, ['class'=>'form-control']) !!}
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-group">
-                      {!! Form::label('address', 'Alamat', ['class'=>'control-label col-md-2']) !!}
+                      {!! Form::label('nik', 'NIK', ['class'=>'control-label col-md-2']) !!}
                       <div class="col-md-10">
-                        {!! Form::text('address', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('address')?$errors->first('address'):'' !!}
+                        {!! Form::text('nik', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('nik')?$errors->first('nik'):'' !!}
                       </div>
                     </div>
                     <br>
                     <br>
                     <div class="form-group">
-                      {!! Form::label('land_area', 'land_area', ['class'=>'control-label col-md-2']) !!}
+                      {!! Form::label('nama', 'Nama', ['class'=>'control-label col-md-2']) !!}
                       <div class="col-md-10">
-                        {!! Form::text('land_area', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('land_area')?$errors->first('land_area'):'' !!}
+                        {!! Form::text('nama', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('nama')?$errors->first('nama'):'' !!}
                       </div>
                     </div>
                     <br>
                     <br>
                     <div class="form-group">
-                      {!! Form::label('building_area', 'building_area', ['class'=>'control-label col-md-2']) !!}
+                      {!! Form::label('ttl', 'Tempat Lahir', ['class'=>'control-label col-md-2']) !!}
                       <div class="col-md-10">
-                        {!! Form::text('building_area', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('building_area')?$errors->first('building_area'):'' !!}
+                        {!! Form::text('ttl', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('ttl')?$errors->first('ttl'):'' !!}
                       </div>
                     </div>
                     <br>
                     <br>
                     <div class="form-group">
-                      {!! Form::label('block', 'Block', ['class'=>'control-label col-md-2']) !!}
+                      {!! Form::label('tl', 'Tanggal Lahir', ['class'=>'control-label col-md-2']) !!}
                       <div class="col-md-10">
-                        {!! Form::text('block', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('block')?$errors->first('block'):'' !!}
-                      </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-group">
-                      {!! Form::label('floor', 'Floor', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('floor', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('floor')?$errors->first('floor'):'' !!}
-                      </div>
-                    </div>
-                    <br>
-                    <br>
-                     <div class="form-group">
-                      {!! Form::label('unit', 'unit', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('unit', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('unit')?$errors->first('unit'):'' !!}
-                      </div>
-                    </div>
-                    <br>
-                    <br>
-                     <div class="form-group">
-                      {!! Form::label('electricity', 'Floor', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('electricity', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('electricity')?$errors->first('electricity'):'' !!}
-                      </div>
-                    </div>
-                    <br>
-                    <br>
-                     <div class="form-group">
-                      {!! Form::label('water', 'Floor', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('water', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('water')?$errors->first('water'):'' !!}
-                      </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-group">
-                      {!! Form::label('telephone', 'Floor', ['class'=>'control-label col-md-2']) !!}
-                      <div class="col-md-10">
-                        {!! Form::text('telephone', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
-                        {!! $errors->has('telephone')?$errors->first('telephone'):'' !!}
+                        {!! Form::text('tl', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('tl')?$errors->first('tl'):'' !!}
                       </div>
                     </div>
                     <br>
                     <br>
 
+                    <div class="form-group">
+                      {!! Form::label('statusper', 'Status Perkawinan ', ['class'=>'control-label col-md-2']) !!}
+                      <div class="col-md-10">
+                        {!! Form::text('statusper', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('statusper')?$errors->first('statusper'):'' !!}
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                      {!! Form::label('jkl', 'Jenis Kelamin', ['class'=>'control-label col-md-2']) !!}
+                      <div class="col-md-10">
+                        {!! Form::text('jkl', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('jkl')?$errors->first('jkl'):'' !!}
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                      {!! Form::label('jln', 'Jalan / Dukuh', ['class'=>'control-label col-md-2']) !!}
+                      <div class="col-md-10">
+                        {!! Form::text('jln', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('jln')?$errors->first('jln'):'' !!}
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                      {!! Form::label('rt', 'RT', ['class'=>'control-label col-md-2']) !!}
+                      <div class="col-md-10">
+                        {!! Form::text('rt', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('rt')?$errors->first('rt'):'' !!}
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                      {!! Form::label('rw', 'RW', ['class'=>'control-label col-md-2']) !!}
+                      <div class="col-md-10">
+                        {!! Form::text('rw', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('rw')?$errors->first('rw'):'' !!}
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                      {!! Form::label('disabi', 'Disabi', ['class'=>'control-label col-md-2']) !!}
+                      <div class="col-md-10">
+                        {!! Form::text('disabi', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('disabi')?$errors->first('disabi'):'' !!}
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                      {!! Form::label('ket', 'Ket', ['class'=>'control-label col-md-2']) !!}
+                      <div class="col-md-10">
+                        {!! Form::text('ket', null, ['class'=>'form-control', 'Placeholder'=>'']) !!}
+                        {!! $errors->has('ket')?$errors->first('ket'):'' !!}
+                      </div>
+                    </div>
+                    <br>
+                    <br>
 
                     <div class="form-group">
                       <div class="col-sm-6" style="padding:0px 25px">

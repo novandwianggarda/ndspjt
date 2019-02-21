@@ -5,32 +5,32 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PropertyRequest;
 use DB;
-use App\Property;
+use App\Penduduk;
 use App\PropertyType;
 use Maatwebsite\Excel\Facades\Excel;
 
 
-class PropertiesController extends Controller
+class PendudukController extends Controller
 {
     //show add properti
     public function showAddForm(){
-    	return view('property.add');
+    	return view('penduduk.add');
     }
 
     //show all properti as a table
     public function index(){
-    	$properties = Property::all();
-    	return view('property.table')->with('properties', $properties);
+    	$penduduks = Penduduk::all();
+    	return view('penduduk.table')->with('penduduks', $penduduks);
     }
     //show properties
     public function show($id){
-    	$property = Property::find($id);
-    	return view('property.show')->with('property', $property);
+    	$property = Penduduk::find($id);
+    	return view('penduduk.show')->with('property', $property);
     }
     //ini buat add nya :)
     public function store(PropertyRequest $request){
     	$data = $request->all();
-    	$add = Property::create($data);
+    	$add = Penduduk::create($data);
     	if (!$add){
     		return 'error';
     	}
@@ -40,27 +40,28 @@ class PropertiesController extends Controller
     //ini edit data
     public function editprop($id)
     {
-        $prop = Property::find($id);
-        $proptype = PropertyType::all()->pluck('name', 'id');
-        return view('property.edit', compact('prop', 'proptype'));
+        $pend = Penduduk::find($id);
+        return view('penduduk.edit', compact('pend'));
     }
 
     public function updateprop(Request $request, $id)
     {
-        $prop = Property::find($id);
-        $prop->name = $request->input('name');
-        $prop->address = $request->input('address');
-        $prop->land_area = $request->input('land_area');
-        $prop->building_area = $request->input('building_area');
-        $prop->block = $request->input('block');
-        $prop->floor = $request->input('floor');
-        $prop->unit = $request->input('unit');
-        $prop->electricity = $request->input('electricity');
-        $prop->water = $request->input('water');
-        $prop->telephone = $request->input('telephone');
+        $prop = Penduduk::find($id);
+        $prop->nokk = $request->input('nokk');
+        $prop->nik = $request->input('nik');
+        $prop->nama = $request->input('nama');
+        $prop->ttl = $request->input('ttl');
+        $prop->tgl = $request->input('tgl');
+        $prop->statusper = $request->input('statusper');
+        $prop->jkl = $request->input('jkl');
+        $prop->jl = $request->input('jl');
+        $prop->rt = $request->input('rt');
+        $prop->rw = $request->input('rw');
+        $prop->disabi = $request->input('disabi');
+        $prop->ket = $request->input('ket');
 
         $propUpdate = $request->only([
-        'property_type_id', 'name', 'address',
+        'property_type_id', 'nama', 'address',
         'land_area', 'building_area', 'floor', 'unit', 'electricity', 'water', 'telephone']);
         $prop->update($propUpdate);
 
@@ -76,7 +77,7 @@ class PropertiesController extends Controller
 
     // import properti
     public function import(){
-        return view('property.upload');
+        return view('penduduk.upload');
     }
 
     public function storeimport(Request $request){
@@ -86,9 +87,9 @@ class PropertiesController extends Controller
             $path = $request->file('upload-file')->getRealPath();
             $data = Excel::load($path, function($reader){})->get();
 
-            return view('property.showdata')->with('data', $data);
+            return view('penduduk.showdata')->with('data', $data);
         }
-        return redirect()->route('properties');
+        return redirect()->route('penduduk');
     }
 
 
@@ -97,25 +98,22 @@ class PropertiesController extends Controller
         // dd($request->all());
         $x = json_decode($request->data);
         foreach ($x as $d => $value) {
-            $property_type = $value->property_type;
-
-            if($property_type){
-
-                $propTypeId = \App\PropertyType::where('name', $property_type)->get()->first()->id;
-                
-                $properties = new Property();
-                $properties->property_type_id= $propTypeId;
-                $properties->name= $value->name;
-                $properties->address= $value->address;
-                $properties->land_area= $value->land_area;
-                $properties->block= $value->block;
-                $properties->electricity= $value->electricity;
-                $properties->water= $value->water;
-                $properties->telephone= $value->telephone;
-                $properties->save();
-            }
+            $pend = new Penduduk();
+            $pend->nokk= $value->nokk;
+            $pend->nik= $value->nik;
+            $pend->nama= $value->nama;
+            $pend->ttl= $value->ttl;
+            $pend->tgl= $value->tgl;
+            $pend->statusper= $value->statusper;
+            $pend->jkl= $value->jkl;
+            $pend->jl= $value->jl;
+            $pend->rt= $value->rt;
+            $pend->rw= $value->rw;
+            $pend->disabi= $value->disabi;
+            $pend->ket= $value->ket;
+            $pend->save();
         }
-        return redirect()->route('properties');
+        return redirect()->route('penduduk');
     }
 
 

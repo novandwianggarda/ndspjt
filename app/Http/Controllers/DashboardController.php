@@ -74,19 +74,7 @@ class DashboardController extends Controller
     
     public function index()
     {
-        $leases = Lease::whereDate('end', '>', Carbon::now())
-        ->orderBy('end', 'Asc')->paginate(5);
-
-        // $lease = Lease::whereDate('due_date', '>', Carbon::now())
-        // ->orderBy('due_date', 'Asc')->paginate(3);
-        $taxes = Tax::whereDate('due_date', '>', Carbon::now())
-        ->orderBy('due_date', 'Asc')->paginate(5);
-        // $leases = Lease::orderBy('end', 'Desc')->paginate(4);
-
-
-        $leasess = Lease::dueForToday();
-
-        return view('dashboard', compact('leases', 'taxes', 'lease', 'leasess'));
+        return view('dashboard');
     }
 
     // public function log()

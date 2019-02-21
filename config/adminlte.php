@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'DS-LandLord',
+    'title' => 'KPU-JTG1',
 
     'title_prefix' => '',
 
@@ -36,9 +36,9 @@ return [
     |
     */
 
-    'logo' => '<b>DS</b> LandLord',
+    'logo' => '<b>KPU</b> Jateng 1',
 
-    'logo_mini' => '<b>LL</b>ds',
+    'logo_mini' => '<b>J</b>tg1',
 
     /*
     |--------------------------------------------------------------------------
@@ -121,170 +121,63 @@ return [
             'icon' => 'tachometer',
         ],
         [
-            'text'    => 'Land', /*certificates*/
-            'icon'    => 'tags',
+            'text'    => 'Penduduk', /*penduduk*/
+            'icon'    => 'group',
             'submenu' => [
                 [
-                    'text' => 'Add New',
-                    'url'  => '/certificates/add',
-                    'icon' => 'plus',
-                ],
-                [
-                    'text' => 'Data List All',
-                    'url'  => '/certificates/list',
-                    'icon' => 'list',
-                ],
-                
-                [
-                    'text' => 'Data Filter',
-                    'url'  => '/certificates/filter',
-                    'icon' => 'list',
-                ],
-                [
-                    'text' => 'Import',
-                    'url'  => '/certificates/import',
-                    'icon' => 'file',
-                ],
-                [
-                    'text' => 'Eksport',
-                    'url'  => '/certificates/eksport',
-                    'icon' => 'file',
-                ],
-            ],
-        ],
-        [
-            'text'    => 'NOP',
-            'icon'    => 'money',
-            'submenu' => [
-                [
-                    'text' => 'Add New NOP',
-                    'url'  => '/taxes/add',
+                    'text' => 'Add New Penduduk',
+                    'url'  => '/penduduk/add',
                     'icon' => 'plus',
                 ],
 
                 [
-                    'text' => 'NOP List',
-                    'url'  => '/taxes/list',
+                    'text' => 'Penduduk List',
+                    'url'  => '/penduduk/list',
                     'icon' => 'list',
                 ],
 
                 [
-                    'text' => 'Import 1 Sert',
-                    'url'  => '/taxes/import',
-                    'icon' => 'file-text',
-                ],
-                [
-                    'text' => 'Import 1 PBB',
-                    'url'  => '/taxes/importsert',
+                    'text' => 'Import data',
+                    'url'  => '/penduduk/import',
                     'icon' => 'file-text',
                 ],
                 [
                     'text' => 'Eksport',
-                    'url'  => '/taxes/eksport',
+                    'url'  => '/penduduk/eksport',
                     'icon' => 'download',
                 ],
             ],
         ],
-        [
-            'text'    => 'PBB',
-            'icon'    => 'money',
+
+         [
+            'text'    => 'Koordinator', /*penduduk*/
+            'icon'    => 'group',
             'submenu' => [
                 [
-                    'text' => '2017',
-                    'url'  => '/pbb/2017',
+                    'text' => 'Add New Koordinator',
+                    'url'  => '/koordinator/add',
                     'icon' => 'plus',
                 ],
+
                 [
-                    'text' => '2018',
-                    'url'  => '/pbb/2018',
-                    'icon' => 'plus',
-                ],
-                [
-                    'text' => '2019',
-                    'url'  => '/pbb/2019',
-                    'icon' => 'plus',
-                ],
-                
-            ],
-        ],
-        [
-            'text'    => 'Property',
-            'icon'    => 'home',
-            'can'     => 'userall',
-            'submenu' => [
-                [
-                    'text' => 'Add New',
-                    'url'  => '/properties/add',
-                    'icon' => 'plus',
-                ],
-                [
-                    'text' => 'Data List',
-                    'url'  => '/properties/list',
+                    'text' => 'koordinator List',
+                    'url'  => '/koordinator/list',
                     'icon' => 'list',
                 ],
-                [
-                    'text' => 'Import',
-                    'url'  => '/properties/import',
-                    'icon' => 'file',
-                ],
-                [
-                    'text' => 'Eksport',
-                    'url'  => '/properties/eksport',
-                    'icon' => 'download',
-                ],
             ],
         ],
-        
-        [
-            'text'    => 'Lease',
-            'icon'    => 'dollar',
-            'can'     => 'userall',
-            'submenu' => [
-                [
-                    'text' => 'Add New',
-                    'url'  => '/leases/add',
-                    'icon' => 'plus',
-                ],
-                [
-                    'text' => 'To Do List',
-                    'url'  => '/leases/todolist',
-                    'icon' => 'calendar',
-                ],
-                [
-                    'text' => 'Data List',
-                    'url'  => '/leases/list',
-                    'icon' => 'list',
-                ],
-                [
-                    'text' => 'Drafts',
-                    'url'  => '/leases/drafts',
-                    'icon' => 'file',
-                ],
-                [
-                    'text' => 'Import',
-                    'url'  => '/leases/import',
-                    'icon' => 'file',
-                ],
-                [
-                    'text' => 'Eksport',
-                    'url'  => '/leases/eksport',
-                    'icon' => 'download',
-                ],
-            ],
-        ],
-        
         [
             'text'    => 'Users',
             'icon'    => 'group',
             'url'     => '/users',
             'can'     => 'userman',
         ],
-        [
-            'text'    => 'Land Maps',
-            'icon'    => 'globe',
-            'url'     => '/land/maps'
-            // 'can'     => 'user-manager',
-        ],
+        // [
+        //     'text'    => 'Land Maps',
+        //     'icon'    => 'globe',
+        //     'url'     => '/land/maps'
+        //     'can'     => 'user-manager',
+        // ],
     ],
 
     /*

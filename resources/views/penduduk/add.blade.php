@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Year Tax')
+@section('title', 'Pemilu Jateng 1')
 
 @section('content_header')
-    <h1>Year NOP</h1>
+    <h1>Add Penduduk</h1>
 @stop
 
 @section('content')
@@ -20,15 +20,12 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" id="form-year" action="/pbb/2018add" method="POST">
+                    <form class="form-horizontal" id="form-property" action="/penduduk/add" method="POST">
                         @csrf
                         <div class="box-group" id="accordion">
                             <div class="panel box">
                                 <!-- BASIC INFORMATION -->
-                                @include('partials.forms.tax.certinformation')
-                                @include('partials.forms.tax.pbbinfo')
-                                @include('partials.forms.tax.tahun')
-                                <!-- DETAILS INFORMATION-->
+                                @include('partials.forms.penduduk.basicinformation')
                                 
                                 <div class="form-groxup">
                                     <div class="col-sm-12" style="padding:0px 25px">
@@ -47,36 +44,18 @@
     </div>
 @stop
 
-@section('css')
-
-@stop
-
 @section('js')
-    <script>
+        <script type="text/javascript">
+                    // property
+        var oldLandArea = "{{ old('prop_land_area') }}";
+        var oldBuildingArea = "{{ old('prop_building_area') }}";
 
-        var form = $('#form-year');
-
-        var fvue = new Vue({
-            el: '#form-year',
-            data: {
-                // land
-                certificateIds: '',
-                taxIds: '',
-           },
-            created() {
-                var vm = this;
-                vueEvent.$on('YC-certificateSelected', function() {
-                    console.log($('#years-certificates').val().toString());
-                    vm.certificateIds = $('#years-certificates').val().toString();
-                });
-
-                var vm = this;
-                vueEvent.$on('YT-taxSelected', function() {
-                    vm.taxIds = $('#years-tax').val().toString();
-                });
-                
-            },
-        });
-
-    </script>
+            var fvue = new Vue({
+                el: '#form-property',
+                data: {
+                    landArea: oldLandArea,
+                    buildingArea: oldBuildingArea,
+                }
+            });
+        </script>
 @stop

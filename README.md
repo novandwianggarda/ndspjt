@@ -1,10 +1,8 @@
-# DS-LandLord
-A new LandLord has come.
+# ND Solution
+A new ND Solution has come.
 
 ## Developers
-* 👨 David Adi Nugroho \<<davidadi216@gmail.com>\>. Work: July 13th, 2018 - now.
-* 👨 Victor Wicaksono \<<victorwicaksono6@gmail.com>\>. Work: July 23th, 2018 - now.
-* 👨 Novan Dwi Anggarda \<<novandwianggarda@gmail.com>\>. Work: September 23th, 2018 - now.
+* 👨 Novan Dwi Anggarda, S.Kom \<<novandwianggarda@gmail.com>\>. Work: Februari 23th, 2019 - now.
 
 ## Tutorial
 Here are some tutorials used to create this app:

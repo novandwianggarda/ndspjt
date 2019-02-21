@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Add Property')
+@section('title', 'KPU - Jateng 1')
 
 @section('content_header')
-    <h1>Add Property</h1>
+    <h1>Import Penduduk</h1>
 @stop
 
 @section('content')
@@ -20,23 +20,25 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" id="form-property" action="/properties/add" method="POST">
+                    <form class="form-horizontal" id="form-property" action="{{ route('properti.import')}}" method="POST" enctype="multipart/form-data">
                         @csrf
+
                         <div class="box-group" id="accordion">
+                            
                             <div class="panel box">
-                                <!-- BASIC INFORMATION -->
-                                @include('partials.forms.properties.basicinformation')
-                                
-                                <div class="form-groxup">
-                                    <div class="col-sm-12" style="padding:0px 25px">
-                                        <button type="submit" class="btn form-control ll-bgcolor ll-white" style="margin-top: 10px;">
-                                            <i class="fa fa-plus"></i>
-                                            Submit
-                                        </button>
-                                    </div>
+                                <div class="">
+                                @if (Session::has('success'))
+                                    <div class="alert-success"> {{ Session::get('success') }}</div>
+                                @elseif(Session::has('warnning'))
+                                    <div class="alert-warnning"> {{ Session::get('warnning') }}</div>
+                                @endif
                                 </div>
+                                
+                                <label for="upload-file">Upload CSV</label>
+                                <input type="file" name="upload-file" class="form-control">
                             </div>
                         </div>
+                        <input class="btn btn-info" type="submit" value="Import" name="submit">
                     </form>
                 </div>
             </div>

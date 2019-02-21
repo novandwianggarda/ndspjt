@@ -5,7 +5,7 @@
  */
 
 .skin-landlord .main-header .navbar {
-  background-color: #a60099;
+  background-color: #ef0712;
 }
 
 .skin-landlord .main-header .navbar .nav > li > a {
@@ -55,18 +55,18 @@
 }
 
 .skin-landlord .main-header .logo {
-  background-color: #56114f;
+  background-color: #ef0712;
   color: #ffffff;
   border-bottom: 0 solid transparent;
 }
 
 .skin-landlord .main-header .logo:hover {
-  background-color: #a60099;
+  background-color: #ef0712;
   border-right: 1px solid #56114f;
 }
 
 .skin-landlord .main-header li.user-header {
-  background-color: #a60099;
+  background-color: #ef0712;
 }
 
 .skin-landlord .content-header {
@@ -101,7 +101,7 @@
 }
 
 .skin-landlord .sidebar-menu > li.active > a {
-  border-left-color: #a60099;
+  border-left-color: #ef0712;
 }
 
 .skin-landlord .sidebar-menu > li > .treeview-menu {

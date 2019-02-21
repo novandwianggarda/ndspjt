@@ -5,16 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class Property extends Model implements Auditable
+class Penduduk extends Model implements Auditable
 {
 
 	use  \OwenIt\Auditing\Auditable;
 
-	protected $table = 'properties';
+	protected $table = 'penduduks';
 	protected $fillable = [
-		'property_type_id', 
-		'name', 'address',
-		'land_area', 'building_area', 'block', 'floor', 'unit', 'electricity', 'water', 'telephone'
+		'nokk', 'nik',
+		'nama', 'ttl', 'tgl', 'statusper', 'jkl', 'jl', 'rt', 'rw', 'disambi', 'ket'
 
 
 	];
