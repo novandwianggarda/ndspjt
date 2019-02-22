@@ -149,9 +149,9 @@ return [
             ],
         ],
 
-         [
-            'text'    => 'Koordinator', /*penduduk*/
-            'icon'    => 'group',
+        [
+            'text'    => 'Koordinator', /*koord*/
+            'icon'    => 'gears',
             'submenu' => [
                 [
                     'text' => 'Add New Koordinator',
@@ -166,6 +166,47 @@ return [
                 ],
             ],
         ],
+
+        [
+            'text'    => 'DPT', /*dpt*/
+            'icon'    => 'book',
+            'submenu' => [
+                [
+                    'text' => 'Add New DPT',
+                    'url'  => '/dpt/add',
+                    'icon' => 'plus',
+                ],
+
+                [
+                    'text' => 'DPT List',
+                    'url'  => '/dpt/list',
+                    'icon' => 'list',
+                ],
+            ],
+        ],
+
+        [
+            'text'    => 'Laporan', /*laporan*/
+            'icon'    => 'file-text-o',
+            'submenu' => [
+                [
+                    'text' => 'koordinator',
+                    'url'  => '/koordinator/list',
+                    'icon' => 'group',
+                ],
+                [
+                    'text' => 'posko',
+                    'url'  => '/posko/list',
+                    'icon' => 'home',
+                ],
+                [
+                    'text' => 'Regional',
+                    'url'  => '/regional/list',
+                    'icon' => 'globe',
+                ],
+            ],
+        ],
+
         [
             'text'    => 'Users',
             'icon'    => 'user',

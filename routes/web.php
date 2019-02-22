@@ -75,7 +75,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     });
 
 
-    // Penduduk
+    // koordinator
     Route::prefix('koordinator')->group(function() {
 
         Route::get('/', function () {
@@ -96,6 +96,29 @@ Route::middleware(['web', 'auth'])->group(function () {
         //eksport
         Route::get('eksport', 'KoordinatorController@eksport');
         Route::get('eksported', 'KoordinatorController@eksported')->name('exportprop.excel');
+    });
+
+    // koordinator
+    Route::prefix('dpt')->group(function() {
+
+        Route::get('/', function () {
+            return redirect('/' . $this->current->uri . '/list');
+        });
+        Route::get('list', 'DptController@index')->name('dpt');
+        Route::get('show/{id}', 'DptController@show');
+        //crud dpt
+        Route::get('add', 'DptController@showAddForm');
+        Route::post('add', 'DptController@store');
+        Route::get('/edit/{id}', 'DptController@editkoord' )->name('editkoord');
+        Route::patch('/update/{edit}', 'DptController@updatekoor');
+        Route::delete('/delete/{id}', 'DptController@destroy' )->name('koord.destroy');
+        //import
+        Route::get('import', 'DptController@import')->name('import');
+        Route::post('storeimport', 'DptController@storeimport')->name('properti.import');
+        Route::post('storeimport/save', 'DptController@tes');
+        //eksport
+        Route::get('eksport', 'DptController@eksport');
+        Route::get('eksported', 'DptController@eksported')->name('exportprop.excel');
     });
 
 
