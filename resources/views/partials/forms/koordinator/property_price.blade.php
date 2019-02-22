@@ -1,4 +1,4 @@
-<accordion name="collapse-property-price" v-bind:sub="true" collapse="in">
+<accordion name="collapse-property-price" v-bind:sub="true">
 
         <div slot="title" class="ll-head-2">
             OFFER PRICE

@@ -51,7 +51,7 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     Route::get('/profile', 'DashboardController@showUserProfile')->name('profile');
 
-    // Property
+    // Penduduk
     Route::prefix('penduduk')->group(function() {
 
         Route::get('/', function () {
@@ -59,7 +59,7 @@ Route::middleware(['web', 'auth'])->group(function () {
         });
         Route::get('list', 'PendudukController@index')->name('penduduk');
         Route::get('show/{id}', 'PendudukController@show');
-        //crud Property
+        //crud Penduduk
         Route::get('add', 'PendudukController@showAddForm');
         Route::post('add', 'PendudukController@store');
         Route::get('/edit/{id}', 'PendudukController@editprop' )->name('editprop');
@@ -73,6 +73,32 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('eksport', 'PendudukController@eksport');
         Route::get('eksported', 'PendudukController@eksported')->name('exportprop.excel');
     });
+
+
+    // Penduduk
+    Route::prefix('koordinator')->group(function() {
+
+        Route::get('/', function () {
+            return redirect('/' . $this->current->uri . '/list');
+        });
+        Route::get('list', 'KoordinatorController@index')->name('koordinator');
+        Route::get('show/{id}', 'KoordinatorController@show');
+        //crud koordinator
+        Route::get('add', 'KoordinatorController@showAddForm');
+        Route::post('add', 'KoordinatorController@store');
+        Route::get('/edit/{id}', 'KoordinatorController@editkoord' )->name('editkoord');
+        Route::patch('/update/{edit}', 'KoordinatorController@updatekoor');
+        Route::delete('/delete/{id}', 'KoordinatorController@destroy' )->name('koord.destroy');
+        //import
+        Route::get('import', 'KoordinatorController@import')->name('import');
+        Route::post('storeimport', 'KoordinatorController@storeimport')->name('properti.import');
+        Route::post('storeimport/save', 'KoordinatorController@tes');
+        //eksport
+        Route::get('eksport', 'KoordinatorController@eksport');
+        Route::get('eksported', 'KoordinatorController@eksported')->name('exportprop.excel');
+    });
+
+
 
 
     Route::get('/users', 'UserManagerController@index');

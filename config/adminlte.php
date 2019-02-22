@@ -168,7 +168,7 @@ return [
         ],
         [
             'text'    => 'Users',
-            'icon'    => 'group',
+            'icon'    => 'user',
             'url'     => '/users',
             'can'     => 'userman',
         ],

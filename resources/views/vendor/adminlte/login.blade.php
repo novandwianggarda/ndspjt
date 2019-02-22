@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/auth.css') }}">
     <style>
         html, body {
-            background-color: #a60099 !important;
+            background-color: #ef0712 !important;
         }
     </style>
     @yield('css')
