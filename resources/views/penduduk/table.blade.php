@@ -9,6 +9,9 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-12">
+			<a href="/penduduk/add" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add</a>
+			<a href="/penduduk/import" class="btn btn-default"><i class="fa fa-file" aria-hidden="true"></i>&nbsp;Import</a>
+
 			<table id="tbl-properties" class="table table-bordered" style="width: 100%">
 				<thead>
 					<tr>

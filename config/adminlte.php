@@ -120,49 +120,26 @@ return [
             'url'  => '/dashboard',
             'icon' => 'tachometer',
         ],
-        [
-            'text'    => 'Penduduk', /*penduduk*/
-            'icon'    => 'group',
+
+         [
+            'text'    => 'Data Master', /*master*/
+            'icon'    => 'hdd-o',
             'submenu' => [
                 [
-                    'text' => 'Add New Penduduk',
-                    'url'  => '/penduduk/add',
-                    'icon' => 'plus',
-                ],
-
-                [
-                    'text' => 'Penduduk List',
+                    'text' => 'Penduduk',
                     'url'  => '/penduduk/list',
-                    'icon' => 'list',
+                    'icon' => 'group',
                 ],
 
                 [
-                    'text' => 'Import data',
-                    'url'  => '/penduduk/import',
-                    'icon' => 'file-text',
-                ],
-                [
-                    'text' => 'Eksport',
-                    'url'  => '/penduduk/eksport',
-                    'icon' => 'download',
-                ],
-            ],
-        ],
-
-        [
-            'text'    => 'Koordinator', /*koord*/
-            'icon'    => 'gears',
-            'submenu' => [
-                [
-                    'text' => 'Add New Koordinator',
-                    'url'  => '/koordinator/add',
-                    'icon' => 'plus',
-                ],
-
-                [
-                    'text' => 'koordinator List',
+                    'text' => 'Koordinator',
                     'url'  => '/koordinator/list',
-                    'icon' => 'list',
+                    'icon' => 'gears',
+                ],
+                [
+                    'text' => 'posko',
+                    'url'  => '/posko/list',
+                    'icon' => 'home',
                 ],
             ],
         ],
@@ -196,7 +173,7 @@ return [
                 ],
                 [
                     'text' => 'posko',
-                    'url'  => '/posko/list',
+                    'url'  => '/posko/filter',
                     'icon' => 'home',
                 ],
                 [

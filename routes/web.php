@@ -98,7 +98,7 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('eksported', 'KoordinatorController@eksported')->name('exportprop.excel');
     });
 
-    // koordinator
+    // dpt
     Route::prefix('dpt')->group(function() {
 
         Route::get('/', function () {
@@ -112,13 +112,22 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('/edit/{id}', 'DptController@editkoord' )->name('editkoord');
         Route::patch('/update/{edit}', 'DptController@updatekoor');
         Route::delete('/delete/{id}', 'DptController@destroy' )->name('koord.destroy');
-        //import
-        Route::get('import', 'DptController@import')->name('import');
-        Route::post('storeimport', 'DptController@storeimport')->name('properti.import');
-        Route::post('storeimport/save', 'DptController@tes');
-        //eksport
-        Route::get('eksport', 'DptController@eksport');
-        Route::get('eksported', 'DptController@eksported')->name('exportprop.excel');
+    });
+
+    // posko
+    Route::prefix('posko')->group(function() {
+
+        Route::get('/', function () {
+            return redirect('/' . $this->current->uri . '/list');
+        });
+        Route::get('list', 'PoskoController@index')->name('posko');
+        Route::get('show/{id}', 'PoskoController@show');
+        //crud posko
+        Route::get('add', 'PoskoController@showAddForm');
+        Route::post('add', 'PoskoController@store');
+        Route::get('/edit/{id}', 'PoskoController@editkoord' )->name('editkoord');
+        Route::patch('/update/{edit}', 'PoskoController@updatekoor');
+        Route::delete('/delete/{id}', 'PoskoController@destroy' )->name('posk.destroy');
     });
 
 
