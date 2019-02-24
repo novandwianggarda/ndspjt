@@ -21,6 +21,25 @@ class DptController extends Controller
 
         return view('dpt.add', compact('dptss', 'kord'));
     }
+    public function dataPenduduk(Request $request){
+        // if ($request->has('query'))
+        $search = $request->input('nama');
+
+        if (is_null($search))
+        {
+           $posts = '';
+           $kord = Koordinator::all()->pluck('name', 'id');
+           return view('dpt.add', compact('kord'))->withPosts($posts);        
+        }
+        else
+        {
+            $posts = Penduduk::where('nama','LIKE',"%{$search}%")
+                           ->get();
+            $kord = Koordinator::all()->pluck('name', 'id');
+
+            return view('dpt.add', compact('kord'))->withPosts($posts);
+        }
+    }
 
 
     //show all koordinator as a table

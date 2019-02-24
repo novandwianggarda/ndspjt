@@ -72,6 +72,10 @@ Route::middleware(['web', 'auth'])->group(function () {
         //eksport
         Route::get('eksport', 'PendudukController@eksport');
         Route::get('eksported', 'PendudukController@eksported')->name('exportprop.excel');
+        //data_penduduk
+        Route::post('/add/datapenduduk', 'DptController@dataPenduduk')->name('add.datapenduduk');
+        Route::get('/add/koordinator/{nama}', 'DptController@tambahKoordinator')->name('add.koordinator');
+        // Route::get('add/data_penduduk', ['as' => 'add.data_penduduk', 'uses' => 'DptController@dataPenduduk']);
     });
 
 
