@@ -22,6 +22,8 @@
 						<th>Nama</th>
 						<th>Tempat Lahir</th>
 						<th>Status</th>
+						<th>Kab/Kot</th>
+						<th>TPS</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -32,6 +34,8 @@
 						<td>{{$d->nama}}</td>
 						<td>{{$d->ttl}}</td>
 						<td>{{$d->statusper}}</td>
+						<td>{{$d->kabkot}}</td>
+						<td>{{$d->tps}}</td>
 					</tr>
 					@endforeach
 				</tbody>

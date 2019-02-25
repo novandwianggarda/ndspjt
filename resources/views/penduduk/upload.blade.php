@@ -20,7 +20,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" id="form-property" action="{{ route('properti.import')}}" method="POST" enctype="multipart/form-data">
+                    <form class="form-horizontal" id="form-property" action="{{ route('penduduk.import')}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="box-group" id="accordion">

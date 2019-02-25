@@ -109,8 +109,14 @@ class PendudukController extends Controller
             $pend->jl= $value->jl;
             $pend->rt= $value->rt;
             $pend->rw= $value->rw;
-            $pend->disabi= $value->disabi;
-            $pend->ket= $value->ket;
+            $pend->disabi= @$value->disabi;
+            $pend->ket= @$value->ket;
+            $pend->kabkot= @$value->kabkot;
+            $pend->kec= @$value->kec;
+            $pend->desakel= @$value->desakel;
+            $pend->tps= @$value->tps;
+            $pend->koordinator_id= @$value->koordinator_id;
+            $pend->posko_id= @$value->posko_id;
             $pend->save();
         }
         return redirect()->route('penduduk');

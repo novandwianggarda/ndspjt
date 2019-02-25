@@ -67,7 +67,7 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::delete('/deleteprop/{id}', 'PendudukController@destroyprop' )->name('pend.destroy');
         //import
         Route::get('import', 'PendudukController@import')->name('import');
-        Route::post('storeimport', 'PendudukController@storeimport')->name('properti.import');
+        Route::post('storeimport', 'PendudukController@storeimport')->name('penduduk.import');
         Route::post('storeimport/save', 'PendudukController@tes');
         //eksport
         Route::get('eksport', 'PendudukController@eksport');
